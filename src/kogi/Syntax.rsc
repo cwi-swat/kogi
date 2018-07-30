@@ -93,3 +93,28 @@ lexical Color
 	= String rrggbb
 	| DecimalIntegerLiteral hue
 	;
+	
+lexical Whitespace
+  = [\t-\n\r\ ]
+  ;
+  
+lexical CommentChar
+  = ![*]
+  | [*] !>> [/]
+  ;
+
+lexical Comment
+  = @category="Comment" "/*" CommentChar* "*/"
+  | @category="Comment" "//" ![\n]*  $
+  ;
+
+lexical LAYOUT
+  = Whitespace
+  | Comment
+  ;
+
+layout LAYOUTLIST
+  = LAYOUT*
+  !>> [\t\ \n]
+  !>> "/*"
+  !>> "//" ;
