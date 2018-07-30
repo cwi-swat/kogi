@@ -6,45 +6,15 @@ syntax Workspace
 	= String language DecimalIntegerLiteral height DecimalIntegerLiteral width;
 	
 	
-syntax Toolbar 
-	= Category* categories
-	| Block* blocks
-	;
+//syntax Toolbar 
+//	= Category* categories
+//	| Block* blocks
+//	;
+//	
+//syntax Category
+//	= Block+ blocks
+//	;
 	
-syntax Category
-	= Block+ blocks
-	;
-
-syntax Block
-	= String text Color color Shape shape Blocks* compatible
-	| String type String message String args String output Color color String tooltip String helpUrl String nextStatement
-	;	
-
-// //HSV hue value (0 to 360) or #RRGGBB string	
-syntax Color 
-	= String rrggbb
-	| DecimalIntegerLiteral hue
-	;
-	
-syntax Field
-	= FieldType type String message  "args" "[" {Key ","}* args "]"
-	;	
-	
-syntax FieldType 
-	=
-	;
-	
-lexical DecimalIntegerLiteral
-	= "0" !>> [0-9 A-Z _ a-z] 
-	| [1-9] [0-9]* !>> [0-9 A-Z _ a-z] ;
-	
-lexical Id  = [a-z][a-z0-9]* !>> [a-z0-9];
-
-lexical String = "\"" ![\"]*  "\"";
-
-lexical Bool  = "false"| "true";
-//-----------------------------------------------
-
 start syntax Block 
  = String name Input+ inputs InputType inputsType Connection connection String tooltip String helpURL Type output Color color;
 
@@ -102,28 +72,24 @@ lexical InputType
 	| auto: "auto" 
 	;
 
+lexical DecimalIntegerLiteral
+	= "0" !>> [0-9 A-Z _ a-z] 
+	| [1-9] [0-9]* !>> [0-9 A-Z _ a-z] 
+	;
+	
+lexical Id  
+	= [a-z][a-z0-9]* !>> [a-z0-9]
+	;
 
+lexical String = "\"" ![\"]*  "\"";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+lexical Bool  
+	= "false"
+	| "true"
+	;
+	
+// HSV hue value (0 to 360) or #RRGGBB string	
+lexical Color 
+	= String rrggbb
+	| DecimalIntegerLiteral hue
+	;
