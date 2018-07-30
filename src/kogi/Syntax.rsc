@@ -1,0 +1,129 @@
+module kogi::Syntax
+
+start syntax Kogi = Workspace workspace Toolbar toolbar;
+
+syntax Workspace 
+	= String language DecimalIntegerLiteral height DecimalIntegerLiteral width;
+	
+	
+syntax Toolbar 
+	= Category* categories
+	| Block* blocks
+	;
+	
+syntax Category
+	= Block+ blocks
+	;
+
+syntax Block
+	= String text Color color Shape shape Blocks* compatible
+	| String type String message String args String output Color color String tooltip String helpUrl String nextStatement
+	;	
+
+// //HSV hue value (0 to 360) or #RRGGBB string	
+syntax Color 
+	= String rrggbb
+	| DecimalIntegerLiteral hue
+	;
+	
+syntax Field
+	= FieldType type String message  "args" "[" {Key ","}* args "]"
+	;	
+	
+syntax FieldType 
+	=
+	;
+	
+lexical DecimalIntegerLiteral
+	= "0" !>> [0-9 A-Z _ a-z] 
+	| [1-9] [0-9]* !>> [0-9 A-Z _ a-z] ;
+	
+lexical Id  = [a-z][a-z0-9]* !>> [a-z0-9];
+
+lexical String = "\"" ![\"]*  "\"";
+
+lexical Bool  = "false"| "true";
+//-----------------------------------------------
+
+start syntax Block 
+ = String name Input+ inputs InputType inputsType Connection connection String tooltip String helpURL Type output Color color;
+
+
+// Value and statement inputs have the same syntax but different semantic and GUI representation
+syntax Input
+= generic: String inputType String name FieldAlignment fieldAlignment Field+ fields Type type
+| dummy: FieldAlignment fieldAlignment Field+ fields
+;
+
+syntax Field
+	= text: String text
+	| textInput: String value String name
+	| numeric: DecimalIntegerLiteral value String name "min" DecimalIntegerLiteral min "max" DecimalIntegerLiteral max "precision" DecimalIntegerLiteral precision
+	| angle: DecimalIntegerLiteral initValue String name
+	| dropDown: Option+ options String name
+	| checkbox: Bool value String name
+	| color: Color color String name
+	| variable: String variable String name
+	| image: String url DecimalIntegerLiteral width DecimalIntegerLiteral height String alt
+	;
+	
+syntax Option
+	= textOption: String value String optionName
+	| imageOption: String url DecimalIntegerLiteral width DecimalIntegerLiteral height String alt String optionName
+	;
+
+syntax Types
+	= \any: "any"
+	| \bool: "boolean"
+	| \num: "numeric"
+	| \str: "string"
+	| arr: "array"
+	| other: "other" String newType
+	| anyOf: "anyOf" Type+ types
+	;
+
+syntax Connection
+	= noConn: "empty"
+	| output: "output"
+	| top: "top"
+	| bottom: "bottom"
+	| both: "both"
+	; 
+
+lexical FieldAlignment
+	= left: "LEFT"
+	| right: "RIGHT"
+	| center :"CENTER" 
+	;
+	
+lexical InputType 
+	= external: "external"
+	| inline: "inline"
+	| auto: "auto" 
+	;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
