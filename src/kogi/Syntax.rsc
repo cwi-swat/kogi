@@ -1,11 +1,10 @@
 module kogi::Syntax
 
-start syntax Kogi = Workspace workspace Toolbar toolbar;
+//start syntax Kogi = Workspace workspace Toolbar toolbar;
 
 syntax Workspace 
-	= String language DecimalIntegerLiteral height DecimalIntegerLiteral width;
-	
-	
+	= "{" "name" ":" String language "," "dimensions" ":" DecimalIntegerLiteral height "X" DecimalIntegerLiteral width "}";
+		
 //syntax Toolbar 
 //	= Category* categories
 //	| Block* blocks
@@ -14,32 +13,46 @@ syntax Workspace
 //syntax Category
 //	= Block+ blocks
 //	;
-	
-start syntax Block 
- = String name Input+ inputs InputType inputsType Connection connection String tooltip String helpURL Type output Color color;
+
+start syntax Kogi
+	= "{" "workspace" ":" Workspace langName ","  "blocks" ":" "[" {Block ","}+ blocks  "]" "}"
+	;
+		
+syntax Block 
+ = def: "{" "name" ":" String name "," "inputBlocks" ":" "[" Input+ inputs "]" InputType inputsType Connection connection String tooltip String helpURL Type output Color color "}" 
+ ;
 
 
 // Value and statement inputs have the same syntax but different semantic and GUI representation
 syntax Input
-= generic: String inputType String name FieldAlignment fieldAlignment Field+ fields Type type
-| dummy: FieldAlignment fieldAlignment Field+ fields
+= generic: "{" "type" ":" String inputType "," "name" ":" String name "," "alignment" ":" FieldAlignment fieldAlignment "," "fields" ":" "[" {Field ","}+ fields "]" "," "type" ":" Type type "}"
+| dummy: "{" "alignment" ":" FieldAlignment fieldAlignment "," "fields" ":" "[" {Field ","}+ fields "]" "}"
 ;
 
+
+//syntax KogiValue
+//	= Id name ":" KogiValue
+//	| numeric: DecimalIntegerLiteral num 
+//  | Color
+//	;
+
 syntax Field
-	= text: String text
-	| textInput: String value String name
-	| numeric: DecimalIntegerLiteral value String name "min" DecimalIntegerLiteral min "max" DecimalIntegerLiteral max "precision" DecimalIntegerLiteral precision
-	| angle: DecimalIntegerLiteral initValue String name
-	| dropDown: Option+ options String name
-	| checkbox: Bool value String name
-	| color: Color color String name
-	| variable: String variable String name
-	| image: String url DecimalIntegerLiteral width DecimalIntegerLiteral height String alt
+	= template: "{" Field field "}"
+	| text: "text" ":" String text
+	| textInput: "value" ":" String value "," "name" ":" String name
+	| numeric: "value" ":" DecimalIntegerLiteral value "," "name" ":" String name "," "min" ":" DecimalIntegerLiteral min "," "max" ":" DecimalIntegerLiteral max "," "precision" ":" DecimalIntegerLiteral precision
+	| angle: "initValue" ":" DecimalIntegerLiteral initValue "," "name" ":" String name
+	| dropDown: "options" ":" "[" {Option ","}+ options "]" "," "name" ":" String name
+	| checkbox: "value" ":" Bool value "," "name" ":"  String name
+	| color: "color" ":" Color color "," "name" ":"  String name
+	| variable: "variable" ":" String variable "," "name" ":" String name
+	| image: "url" ":" String url "," "width" ":"  DecimalIntegerLiteral width "," "height" ":" DecimalIntegerLiteral height "," "alt" ":" String alt
 	;
 	
 syntax Option
-	= textOption: String value String optionName
-	| imageOption: String url DecimalIntegerLiteral width DecimalIntegerLiteral height String alt String optionName
+	= template: "{" Option "}"
+	| textOption: "value" ":" String value "," "optionName" ":"  String optionName
+	| imageOption: "url" ":" String url "," "width" ":" DecimalIntegerLiteral width "," "height" ":" DecimalIntegerLiteral height "," "alt" ":" String alt "," "optionName" ":"  String optionName
 	;
 
 syntax Types
@@ -52,7 +65,7 @@ syntax Types
 	| anyOf: "anyOf" Type+ types
 	;
 
-syntax Connection
+lexical Connection
 	= noConn: "empty"
 	| output: "output"
 	| top: "top"
@@ -118,3 +131,9 @@ layout LAYOUTLIST
   !>> [\t\ \n]
   !>> "/*"
   !>> "//" ;
+  
+ keyword KW
+ 	= "new"
+	| "kogi"
+	| "Language"
+ 	;
