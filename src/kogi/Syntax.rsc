@@ -3,7 +3,7 @@ module kogi::Syntax
 //start syntax Kogi = Workspace workspace Toolbar toolbar;
 
 syntax Workspace 
-	= "{" "name" ":" String language "," "dimensions" ":" DecimalIntegerLiteral height "X" DecimalIntegerLiteral width "}";
+	= @Foldable "{" "name" ":" String language "," "dimensions" ":" DecimalIntegerLiteral height "X" DecimalIntegerLiteral width "}";
 		
 //syntax Toolbar 
 //	= Category* categories
@@ -17,16 +17,19 @@ syntax Workspace
 start syntax Kogi
 	= "{" "workspace" ":" Workspace langName ","  "blocks" ":" "[" {Block ","}+ blocks  "]" "}"
 	;
-		
+
+//"output" ":" Type
 syntax Block 
- = def: "{" "name" ":" String name "," "inputBlocks" ":" "[" Input+ inputs "]" InputType inputsType Connection connection String tooltip String helpURL Type output Color color "}" 
+ = de: Id name ":" Block block
+ | @Foldable def: "{" "name" ":" String name "," "inputBlocks" ":" "[" {Input ","}+ inputs "]" "," InputType inputType "," Connection connection "," "tooltip" ":" String tooltip "," "helpurl" ":" String helpURL "," Type output "," Color color "}" 
  ;
 
 
 // Value and statement inputs have the same syntax but different semantic and GUI representation
+// "type" ":" Type type
 syntax Input
-= generic: "{" "type" ":" String inputType "," "name" ":" String name "," "alignment" ":" FieldAlignment fieldAlignment "," "fields" ":" "[" {Field ","}+ fields "]" "," "type" ":" Type type "}"
-| dummy: "{" "alignment" ":" FieldAlignment fieldAlignment "," "fields" ":" "[" {Field ","}+ fields "]" "}"
+= @Foldable generic: "{" "type" ":" String inputType "," "name" ":" String name "," FieldAlignment fieldAlignment "," "fields" ":" "[" {Field ","}+ fields "]" "," Type type "}"
+| @Foldable dummy: "{" FieldAlignment fieldAlignment "," "fields" ":" "[" {Field ","}+ fields "]" "}"
 ;
 
 
@@ -44,7 +47,7 @@ syntax Field
 	| angle: "initValue" ":" DecimalIntegerLiteral initValue "," "name" ":" String name
 	| dropDown: "options" ":" "[" {Option ","}+ options "]" "," "name" ":" String name
 	| checkbox: "value" ":" Bool value "," "name" ":"  String name
-	| color: "color" ":" Color color "," "name" ":"  String name
+	| color: Color color "," "name" ":"  String name
 	| variable: "variable" ":" String variable "," "name" ":" String name
 	| image: "url" ":" String url "," "width" ":"  DecimalIntegerLiteral width "," "height" ":" DecimalIntegerLiteral height "," "alt" ":" String alt
 	;
@@ -55,8 +58,9 @@ syntax Option
 	| imageOption: "url" ":" String url "," "width" ":" DecimalIntegerLiteral width "," "height" ":" DecimalIntegerLiteral height "," "alt" ":" String alt "," "optionName" ":"  String optionName
 	;
 
-syntax Types
-	= \any: "any"
+syntax Type
+	= Id name ":" Type val
+	| \any: "any"
 	| \bool: "boolean"
 	| \num: "numeric"
 	| \str: "string"
@@ -65,22 +69,25 @@ syntax Types
 	| anyOf: "anyOf" Type+ types
 	;
 
-lexical Connection
-	= noConn: "empty"
+syntax Connection
+	= "connection" ":" Connection
+	| noConn: "empty"
 	| output: "output"
-	| top: "top"
-	| bottom: "bottom"
+	| \top: "top"
+	| \bottom: "bottom"
 	| both: "both"
 	; 
 
-lexical FieldAlignment
-	= left: "LEFT"
-	| right: "RIGHT"
-	| center :"CENTER" 
+syntax FieldAlignment
+	= def: "alignment" ":" FieldAlignment val
+	| \left: "left"
+	| \right: "right"
+	| \center: "center" 
 	;
 	
-lexical InputType 
-	= external: "external"
+syntax InputType 
+	= "inputType" ":" InputType
+	| external: "external"
 	| inline: "inline"
 	| auto: "auto" 
 	;
@@ -102,13 +109,14 @@ lexical Bool
 	;
 	
 // HSV hue value (0 to 360) or #RRGGBB string	
-lexical Color 
-	= String rrggbb
+syntax Color 
+	= "color" ":" Color color
+	| String rrggbb
 	| DecimalIntegerLiteral hue
 	;
 	
 lexical Whitespace
-  = [\t-\n\r\ ]
+  = [\ \t-\n\r\ ]
   ;
   
 lexical CommentChar
@@ -125,10 +133,16 @@ lexical LAYOUT
   = Whitespace
   | Comment
   ;
+//
+//layout Layout = WhiteSpaceAndComment* !>> [\ \t\n\r#];
+//
+//lexical WhiteSpaceAndComment 
+//	= [\ \t\n\r]
+
 
 layout LAYOUTLIST
   = LAYOUT*
-  !>> [\t\ \n]
+  !>> [\t\ \n\r]
   !>> "/*"
   !>> "//" ;
   
