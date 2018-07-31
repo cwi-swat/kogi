@@ -1,0 +1,30 @@
+{
+	workspace : {
+		name : "hola",
+		dimensions : 10 X 29
+	},
+	blocks: [
+		test : {
+			name : "",
+			inputBlocks : [
+				{
+					type : "df",
+					name : "f",
+					alignment : right,
+					fields : [
+						{
+							text : "hola"
+						}
+					],
+					type: any
+				}
+			],
+			inputType : external,
+			connection : empty,
+			tooltip:"fd",
+			helpurl:"f",
+			output: any,
+			color : "fd"
+		}
+	]
+}
