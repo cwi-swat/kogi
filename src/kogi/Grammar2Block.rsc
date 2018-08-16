@@ -35,42 +35,6 @@ void grammar2blocks(type[&T<:Tree] g){
     writeJSON(|project://kogi/src/kogi/rest.json|, blocks);
 }
 
-
-//{
-//  "type": "addition",
-//  "message0": "%1 + %2 %3",
-//  "args0": [
-//    {
-//      "type": "input_value",
-//      "name": "LEFT",
-//      "check": "Number"
-//    },
-//    {
-//      "type": "input_dummy"
-//    },
-//    {
-//      "type": "input_value",
-//      "name": "RIGHT",
-//      "check": "Number"
-//    }
-//  ],
-//  "inputsInline": true,
-//  "output": null,
-//  "colour": 195,
-//  "tooltip": "",
-//  "helpUrl": ""
-//},
-void toBlockJSON(Block block){
-	Block rta = ();
-	rta += ("type":"<block.\type>", "message":"<block.message0>");
-	println(block.args0);
-	//fromFields(block.args0);
-	//list[Field]
-	//block.args0
-	
-
-}
-
 //void fromFields(list[Field] fields){
 //	map[str, value] rest =();
 //	for(x<- fields){
