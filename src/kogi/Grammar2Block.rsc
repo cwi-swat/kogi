@@ -7,16 +7,21 @@ import Type;
 import ParseTree;
 import lang::json::IO;
 
-set[Production] getAllProductionz(type[&T <: Tree] grammar){
-     return ({} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions);
-}
+
 
 alias BlockLang = set[Block];
 
 alias Block = map[str, value];
 
+alias Toolbox = set[str];
+
+set[Production] getAllProductionz(type[&T <: Tree] grammar){
+     return ({} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions);
+}
+
 void grammar2blocks(type[&T<:Tree] g){
 	BlockLang blocks = {};
+	toolbox = {};
     allProds = getAllProductionz(g);
     prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols)};
     
@@ -24,6 +29,11 @@ void grammar2blocks(type[&T<:Tree] g){
     	//println(production);
     	blocks += production2Block(production);
     }
+    
+    for(xf <- blocks){
+    	toolbox += xf["type"];
+    }
+    
     //println(toJSON(blocks[0]));
     
     content = (""| it + toBlocklyLang(blo) | blo<- blocks);
@@ -48,7 +58,12 @@ Block production2Block(Production p){
 		return lexical2Block(nombre, p);
 	}
 	else{
-		message ="";
+		return createStandarBlock(p);
+	}
+}
+
+Block createStandarBlock(Production p){
+	message ="";
 		list[map[str, value]] fields = [];
 		int i = 1;
 		for(Symbol s <- p.symbols){
@@ -71,9 +86,7 @@ Block production2Block(Production p){
 		tt +=1;
 		//TODO: Labels are needed to define the type of the block.
 		return createBlock("<p.def[0]><tt>", message, fields, 120, output="null");
-	}
 }
-
 Block createMainBlock(str name, Production p){
 	return createBlock(name, "<name> %1", [("type":"input_value", "name":"NAME")], 10);
 }
