@@ -25,7 +25,11 @@ void grammar2blocks(type[&T<:Tree] g){
     	blocks += production2Block(production);
     }
     //println(toJSON(blocks[0]));
-    writeJSON(|project://kogi/src/kogi/rest.json|, blocks);
+    
+    content = (""| it + toBlocklyLang(blo) | blo<- blocks);
+    content = replaceAll(content, "\"null\"", "null");
+    writeFile(|project://kogi/src/kogi/blocs.js|, content);
+    //writeJSON(|project://kogi/src/kogi/rest.json|, blocks);
 }
 
 map[str, list[str]] defs = ();
@@ -66,7 +70,7 @@ Block production2Block(Production p){
 		}
 		tt +=1;
 		//TODO: Labels are needed to define the type of the block.
-		return createBlock("<p.def[0]><tt>", message, fields, 120, output="");
+		return createBlock("<p.def[0]><tt>", message, fields, 120, output="null");
 	}
 }
 
@@ -80,21 +84,30 @@ Block lexical2Block(str name, Production p){
 			try{
 				// If it doesn't throw an exception we asume it is numerical field
 				toInt(stringChar(max));
-				return createBlock(name, "%1", [("name":"<name>", "type":"field_number", "value":0)], 120);
+				return createBlock(name, "%1", [("name":"<name>", "type":"field_number", "value":0)], 120, output="null");
 			}
 			catch:
-				return createBlock(name, "%1", [("name":"<name>", "type":"field_input", "value":0)], 110);
+				return createBlock(name, "%1", [("name":"<name>", "type":"field_input", "value":0)], 110, output="null");
 		}
 	}
 }
 
 Block createBlock(str \type, str message, list[map[str, value]] args0, int colour, str tooltip ="", str helpurl="", str output=""){
-	return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"", "output":(output!="")?output:"");
+	if(output != "")
+		return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"", "output": output);
+	else
+		return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"");
 }
 
-void toBlockly(){
-
-}
+str toBlocklyLang(Block b) =
+	"Blockly.Blocks[\'<b["type"]>\'] = {
+	'    init: function() {
+	'        this.jsonInit(
+	'		< toJSON(b, true)>
+	' 		);
+	'	}
+	'}
+	";
 
 // TODO: Fix args0, is it possible to have many args0
 //data Block 
