@@ -25,28 +25,11 @@ void grammar2blocks(type[&T<:Tree] g){
     
     for(production <- prods){
     	//println(production);
-    	//blocks += toBlockJSON(production2Block(production));
-    	
-    	pr = production2Block(production);
-    	//toBlockJSON(pr);
-    	blocks += pr;
+    	blocks += production2Block(production);
     }
     //println(toJSON(blocks[0]));
     writeJSON(|project://kogi/src/kogi/rest.json|, blocks);
 }
-
-//void fromFields(list[Field] fields){
-//	map[str, value] rest =();
-//	for(x<- fields){
-//		if(field(b,name=bb) := x){
-//			println("<x>");
-//		}
-//		else if(field(_) := x)
-//		{	
-//			println("Field1");
-//		}
-//	}
-//}
 
 map[str, list[str]] defs = ();
 set[str] lexicals ={};
@@ -86,18 +69,11 @@ Block production2Block(Production p){
 		}
 		tt +=1;
 		//TODO: Labels are needed to define the type of the block.
-		//return block("<p.def[0]><tt>", message, fields, 10, "", "", output = "");
 		return createBlock("<p.def[0]><tt>", message, fields, 120, output="");
 	}
-	
-	//if( startsWith("<p.def>", "start(")){
-	//	name = "<p.def[0]>"[6..-2];
-	//}
-	//println(p);
 }
 
 Block createMainBlock(str name, Production p){
-	//return block("<name>", "<name> %1", [("type":"input_value", "name":"NAME")], 10, "","");
 	return createBlock(name, "<name> %1", [("type":"input_value", "name":"NAME")], 10);
 }
 
