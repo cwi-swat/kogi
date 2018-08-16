@@ -13,7 +13,7 @@ set[Production] getAllProductionz(type[&T <: Tree] grammar){
 
 alias BlockLang = list[BlockR];
 
-alias BlockR = map[str, value];
+alias Block = map[str, value];
 
 void grammar2blocks(type[&T<:Tree] g){
 	set[Block] blocks = {};
@@ -26,8 +26,10 @@ void grammar2blocks(type[&T<:Tree] g){
     for(production <- prods){
     	//println(production);
     	//blocks += toBlockJSON(production2Block(production));
-    	toBlockJSON(production2Block(production));
-    	blocks += production2Block(production);
+    	
+    	pr = production2Block(production);
+    	toBlockJSON(pr);
+    	blocks += pr;
     }
     //println(toJSON(blocks[0]));
     writeJSON(|project://kogi/src/kogi/rest.json|, blocks);
@@ -140,10 +142,12 @@ Block lexical2Block(str name, Production p){
 			try{
 				// If it doesn't throw an exception we asume it is numerical field
 				toInt(stringChar(max));
-				return block("<name>", "%1", [("name":"<name>", "type":"field_number", "value":0)], 120, "","", output="" );
+				//return block("<name>", "%1", [("name":"<name>", "type":"field_number", "value":0)], 120, "","", output="" );
+				return ("type": "<name>", "message0": "%1", "args0":[("name":"<name>", "type":"field_number", "value":0)], "colour":120, "tooltip":"", "helpurl":"", "output":"");
 			}
 			catch:
-				return block("<name>", "%1", [("name":"<name>", "type":"field_input", "value":0)], 120, "","", output="" );
+				//return block("<name>", "%1", [("name":"<name>", "type":"field_input", "value":0)], 110, "","", output="" );
+				return ("type": "<name>", "message0": "%1", "args0":[("name":"<name>", "type":"field_input", "value":0)], "colour":110, "tooltip":"", "helpurl":"", "output":"");
 		}
 	}
     //writeJSON(|project://kogi/src/kogi/rest.json|, tmp);
@@ -151,14 +155,14 @@ Block lexical2Block(str name, Production p){
 }
 
 // TODO: Fix args0, is it possible to have many args0
-data Block 
-	= block(str \type, str message0, list[map[str, value]] args0, int colour, str tooltip, str helpurl, str output = "")
-	| blockz()
-	;
+//data Block 
+//	= block(str \type, str message0, list[map[str, value]] args0, int colour, str tooltip, str helpurl, str output = "")
+//	| blockz()
+//	;
 	
-data Field
-	= fieldNumber(str name, str \type = "", int \value=0, int min=-100000, int max=1000000, int precision=0)
-	|imageField(str src, int height, int width, str alt)
-	|text(str txt) // 
-	|field(str \type, str name = "")
-	; 
+//data Field
+//	= fieldNumber(str name, str \type = "", int \value=0, int min=-100000, int max=1000000, int precision=0)
+//	|imageField(str src, int height, int width, str alt)
+//	|text(str txt) // 
+//	|field(str \type, str name = "")
+//	; 
