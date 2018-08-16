@@ -11,15 +11,12 @@ set[Production] getAllProductionz(type[&T <: Tree] grammar){
      return ({} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions);
 }
 
-alias BlockLang = list[Block];
+alias BlockLang = set[Block];
 
 alias Block = map[str, value];
 
 void grammar2blocks(type[&T<:Tree] g){
-	set[Block] blocks = {};
-	
-	BlockLang bs = [];
-	
+	BlockLang blocks = {};
     allProds = getAllProductionz(g);
     prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols)};
     
@@ -83,13 +80,9 @@ Block lexical2Block(str name, Production p){
 			try{
 				// If it doesn't throw an exception we asume it is numerical field
 				toInt(stringChar(max));
-				//return block("<name>", "%1", [("name":"<name>", "type":"field_number", "value":0)], 120, "","", output="" );
-				//return ("type": "<name>", "message0": "%1", "args0":[("name":"<name>", "type":"field_number", "value":0)], "colour":120, "tooltip":"", "helpurl":"", "output":"");
 				return createBlock(name, "%1", [("name":"<name>", "type":"field_number", "value":0)], 120);
 			}
 			catch:
-				//return block("<name>", "%1", [("name":"<name>", "type":"field_input", "value":0)], 110, "","", output="" );
-				//return ("type": "<name>", "message0": "%1", "args0":[("name":"<name>", "type":"field_input", "value":0)], "colour":110, "tooltip":"", "helpurl":"", "output":"");
 				return createBlock(name, "%1", [("name":"<name>", "type":"field_input", "value":0)], 110);
 		}
 	}
@@ -97,6 +90,10 @@ Block lexical2Block(str name, Production p){
 
 Block createBlock(str \type, str message, list[map[str, value]] args0, int colour, str tooltip ="", str helpurl="", str output=""){
 	return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"", "output":(output!="")?output:"");
+}
+
+void toBlockly(){
+
 }
 
 // TODO: Fix args0, is it possible to have many args0
