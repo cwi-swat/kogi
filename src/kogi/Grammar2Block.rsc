@@ -20,19 +20,10 @@ set[Production] getAllProductionz(type[&T <: Tree] grammar){
 }
 
 void grammar2blocks(type[&T<:Tree] g){
-	BlockLang blocks = {};
-	toolbox = {};
     allProds = getAllProductionz(g);
     prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols)};
-    
-    for(production <- prods){
-    	//println(production);
-    	blocks += production2Block(production);
-    }
-    
-    for(xf <- blocks){
-    	toolbox += xf["type"];
-    }
+    BlockLang blocks = { production2Block(production) | production <- prods};
+    toolbox = { block["type"] | block <- blocks};
     
     //println(toJSON(blocks[0]));
     
