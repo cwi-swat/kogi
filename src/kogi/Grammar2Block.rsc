@@ -5,32 +5,32 @@ import Set;
 import String;
 import Type;
 import ParseTree;
-import lang::json::IO;
-
 
 
 alias BlockLang = set[Block];
 
 alias Block = map[str, value];
 
-alias Toolbox = set[str];
+//TODO: List of tuples and each tuple should contain a color field
+alias Toolbox = tuple[str id, str category, set[str] bls];
 
 set[Production] getAllProductionz(type[&T <: Tree] grammar){
      return ({} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions);
 }
 
-void grammar2blocks(type[&T<:Tree] g){
+Toolbox createToolbox(BlockLang blocks, str id ="toolbox"){
+	return <id,"Unnamed", {"<block["type"]>" | block <- blocks}>;
+}
+
+BlockLang grammar2blocks(type[&T<:Tree] g){
     allProds = getAllProductionz(g);
     prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols)};
     BlockLang blocks = { production2Block(production) | production <- prods};
-    toolbox = { block["type"] | block <- blocks};
+    toolbox = createToolbox(blocks);
     
     //println(toJSON(blocks[0]));
-    
-    content = (""| it + toBlocklyLang(blo) | blo<- blocks);
-    content = replaceAll(content, "\"null\"", "null");
-    writeFile(|project://kogi/src/kogi/blocs.js|, content);
     //writeJSON(|project://kogi/src/kogi/rest.json|, blocks);
+    return blocks;
 }
 
 map[str, list[str]] defs = ();
@@ -78,6 +78,7 @@ Block createStandarBlock(Production p){
 		//TODO: Labels are needed to define the type of the block.
 		return createBlock("<p.def[0]><tt>", message, fields, 120, output="null");
 }
+
 Block createMainBlock(str name, Production p){
 	return createBlock(name, "<name> %1", [("type":"input_value", "name":"NAME")], 10);
 }
@@ -103,15 +104,6 @@ Block createBlock(str \type, str message, list[map[str, value]] args0, int colou
 		return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"");
 }
 
-str toBlocklyLang(Block b) =
-	"Blockly.Blocks[\'<b["type"]>\'] = {
-	'    init: function() {
-	'        this.jsonInit(
-	'		< toJSON(b, true)>
-	' 		);
-	'	}
-	'}
-	";
 
 // TODO: Fix args0, is it possible to have many args0
 //data Block 
