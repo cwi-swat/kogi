@@ -95,6 +95,7 @@ Block lexical2Block(str name, Production p){
 				return createBlock(name, "%1", [("name":"<name>", "type":"field_input", "value":0)], 110, output="null");
 		}
 	}
+	return createBlock(name, "%1", [("name":"<name>", "type":"field_input", "value":0)], 110, output="null"); 
 }
 
 Block createBlock(str \type, str message, list[map[str, value]] args0, int colour, str tooltip ="", str helpurl="", str output=""){
