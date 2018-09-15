@@ -24,7 +24,7 @@ str createBlocklyApp(str divName, Toolbox toolb, BlockLang blocks, str title="Bl
 	createHTML(parseToolbox(toolb), title, divName);
 }
 
-void createJS(BlockLang blocks, str divId,str toolbarId){
+void createJS(BlockLang blocks, str divId,str toolbarId, str folderName = ""){
 	content = (""| it + toBlocklyLang(blo) | blo<- blocks);
     content = replaceAll(content, "\"null\"", "null");
     
