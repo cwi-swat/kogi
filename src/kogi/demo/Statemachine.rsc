@@ -8,6 +8,6 @@ start syntax Machine
 syntax State
   = "state" Id "{" Trans* "}";
 
-syntax Trans = Id "to" Id;
+syntax Trans = "on" Id "to" Id;
 
 lexical Id = [a-zA-Z]+;
