@@ -18,13 +18,13 @@ set[Production] getAllProductionz(type[&T <: Tree] grammar){
      return ({} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions);
 }
 
-Toolbox createToolbox(BlockLang blocks, str id ="toolbox"){
+Toolbox createToolbox(BlockLang blocks, str id = "toolbox"){
 	return <id,"Unnamed", {"<block["type"]>" | block <- blocks}>;
 }
 
 BlockLang grammar2blocks(type[&T<:Tree] g){
     allProds = getAllProductionz(g);
-    prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols)};
+    prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols), layouts(_) !:= p.def};
     BlockLang blocks = { production2Block(production) | production <- prods};
     toolbox = createToolbox(blocks);
     
@@ -38,16 +38,26 @@ set[str] lexicals ={};
 set[Symbol] nonTerminal ={};
 
 int tt =0;
+tuple[Symbol, Production] cachedStartSymbol = <\empty(), skipped()>;  
 Block production2Block(Production p){
 	// starting block
-	if(\start(sort(st)) := p.def){
-		return createMainBlock(st, p);
+	if(\start(xx) := p.def){
+		cachedStartSymbol = <xx,p>;
+		// This case shouldn't create something
+		return createMainBlock("", p);
 	}
 	// lexicals
 	else if(lex(nombre) := p.def && !(nombre in lexicals)){
 		lexicals += nombre;
 		return lexical2Block(nombre, p);
 	}
+	else if(symbol:sort(name) := p.def){
+		if(symbol == cachedStartSymbol[0])
+			return createMainBlock(name, p);
+		else		
+			return createStandarBlock(p);
+	}
+	// It seems this is no longer needed
 	else{
 		return createStandarBlock(p);
 	}
@@ -79,12 +89,16 @@ Block createStandarBlock(Production p){
 		return createBlock("<p.def[0]><tt>", message, fields, 120, output="null");
 }
 
+/*
+* This function takes the raw data and produces a Block. 
+*/
 Block createMainBlock(str name, Production p){
 	return createBlock(name, "<name> %1", [("type":"input_value", "name":"NAME")], 10);
 }
 
 Block lexical2Block(str name, Production p){
 	for(vv <- p.symbols){
+		dsfd= 3;
 		if(a:/\char-class([range(min, max)]) := vv){
 			try{
 				// If it doesn't throw an exception we asume it is numerical field
