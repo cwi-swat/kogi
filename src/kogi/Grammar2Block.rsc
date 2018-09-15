@@ -39,54 +39,54 @@ set[Symbol] nonTerminal ={};
 
 int tt =0;
 tuple[Symbol, Production] cachedStartSymbol = <\empty(), skipped()>;  
-Block production2Block(Production p){
+Block production2Block(Production production){
 	// starting block
-	if(\start(xx) := p.def){
-		cachedStartSymbol = <xx,p>;
+	if(\start(symbol) := production.def){
+		cachedStartSymbol = <symbol, production>;
 		// This case shouldn't create something
-		return createMainBlock("", p);
+		return createMainBlock("", production);
 	}
 	// lexicals
-	else if(lex(nombre) := p.def && !(nombre in lexicals)){
-		lexicals += nombre;
-		return lexical2Block(nombre, p);
+	else if(lex(name) := production.def && !(name in lexicals)){
+		lexicals += name;
+		return lexical2Block(name, production);
 	}
-	else if(symbol:sort(name) := p.def){
+	else if(symbol:sort(name) := production.def){
 		if(symbol == cachedStartSymbol[0])
-			return createMainBlock(name, p);
+			return createMainBlock(name, production);
 		else		
-			return createStandarBlock(p);
+			return createStandarBlock(production);
 	}
 	// It seems this is no longer needed
 	else{
-		return createStandarBlock(p);
+		return createStandarBlock(production);
 	}
 }
 
-Block createStandarBlock(Production p){
+Block createStandarBlock(Production production){
 	message ="";
-		list[map[str, value]] fields = [];
-		int i = 1;
-		for(Symbol s <- p.symbols){
-			if(lit(ss) := s){
-				message += "<ss> %<i> ";
-				i+=1;
-				fields += ("type":"input_dummy");
-			}
-			else if(sort(ss) := s){
-				message += "%<i> ";
-				nonTerminal += s;
-				i+=1;
-				fields += ("type":"input_value", "name":"<ss>");
-			}
-			else{
-				//TODO: figure out what to do with these elements. Are they uselss? I don't know…
-				println(s);
-			}
+	list[map[str, value]] fields = [];
+	int i = 1;
+	for(Symbol symbol <- production.symbols){
+		if(lit(string) := symbol){
+			message += "<string> %<i> ";
+			i += 1;
+			fields += ("type":"input_dummy");
 		}
-		tt +=1;
-		//TODO: Labels are needed to define the type of the block.
-		return createBlock("<p.def[0]><tt>", message, fields, 120, output="null");
+		else if(sort(string) := symbol){
+			message += "%<i> ";
+			nonTerminal += symbol;
+			i += 1;
+			fields += ("type":"input_value", "name":"<string>");
+		}
+		else{
+			//TODO: figure out what to do with these elements. Are they uselss? I don't know…
+			println(symbol);
+		}
+	}
+	tt +=1;
+	//TODO: Labels are needed to define the type of the block.
+	return createBlock("<production.def[0]><tt>", message, fields, 120, output="null");
 }
 
 /*
@@ -97,9 +97,8 @@ Block createMainBlock(str name, Production p){
 }
 
 Block lexical2Block(str name, Production p){
-	for(vv <- p.symbols){
-		dsfd= 3;
-		if(a:/\char-class([range(min, max)]) := vv){
+	for(symbols <- p.symbols){
+		if(a:/\char-class([range(min, max)]) := symbols){
 			try{
 				// If it doesn't throw an exception we asume it is numerical field
 				toInt(stringChar(max));
