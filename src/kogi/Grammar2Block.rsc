@@ -5,6 +5,8 @@ import Set;
 import String;
 import Type;
 import ParseTree;
+//import kogi::Block;
+import kogi::Production2Block;
 
 
 alias BlockLang = set[Block];
@@ -37,7 +39,6 @@ map[str, list[str]] defs = ();
 set[str] lexicals ={};
 set[Symbol] nonTerminal ={};
 
-int tt =0;
 tuple[Symbol, Production] cachedStartSymbol = <\empty(), skipped()>;  
 Block production2Block(Production production){
 	// starting block
@@ -63,6 +64,7 @@ Block production2Block(Production production){
 	}
 }
 
+int blockId = 0;
 Block createStandarBlock(Production production){
 	message ="";
 	list[map[str, value]] fields = [];
@@ -84,16 +86,9 @@ Block createStandarBlock(Production production){
 			println(symbol);
 		}
 	}
-	tt +=1;
+	blockId +=1;
 	//TODO: Labels are needed to define the type of the block.
-	return createBlock("<production.def[0]><tt>", message, fields, 120, output="null");
-}
-
-/*
-* This function takes the raw data and produces a Block. 
-*/
-Block createMainBlock(str name, Production p){
-	return createBlock(name, "<name> %1", [("type":"input_value", "name":"NAME")], 10);
+	return createBlock("<production.def[0]><blockId>", message, fields, 120, output="null");
 }
 
 Block lexical2Block(str name, Production p){
