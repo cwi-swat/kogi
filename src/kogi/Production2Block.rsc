@@ -4,14 +4,16 @@ import IO;
 import List;
 import Type;
 import kogi::Grammar2Block;
-//import kogi::Block;
+import kogi::Block;
 
 /*
 * This function takes the raw data and produces a Block. 
 */
 Block createMainBlock(str name, Production production){
-	println("Syze: <symbols2Message(production.symbols)>");
-	return createBlock(name, "<name> %1", [("type":"input_value", "name":"NAME")], 10);
+	kogi::Block::Message message = symbols2Message(production.symbols);
+	return block(name, [message], colour = hsv(10)); // Fixed value for this block? Green?
+	
+	//return createBlock(name, "<name> %1", [("type":"input_value", "name":"NAME")], 10);
 	
 	//block(name, 
 	//	[message(
@@ -24,23 +26,33 @@ Block createMainBlock(str name, Production production){
 	//);
 }
 
-//Message symbols2Format(list[Symbol] symbols){
-int symbols2Message(list[Symbol] symbols){
+Block lexical2Block(str name, Production production){
+	kogi::Block::Message message = symbols2Message(production.symbols, lexicalName = name);
+	return block(name, [message], output = block(""), colour = hsv(20));
+}
+
+Block nonTerminal2Block(str name, Production production){
+	kogi::Block::Message message = symbols2Message(production.symbols, lexicalName = name);
+	return block(name, [message], previous = block(""), next = block(""), inputsInline = true, colour = hsv(30));
+}
+
+kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = ""){
 	symbolsToProcess = [ symbol |symbol <- symbols, layouts(_) !:= symbol];
-	
 	format = symbols2format(symbolsToProcess);
-	 f = symbols2Args(symbolsToProcess);
-	return size(symbolsToProcess);
+	args = symbols2Args(symbolsToProcess,lexicalName = lexicalName);
+	return message(format, args);
 }
 
 int counter = 0;
+
+//FIX: if the last symbol is a lit, it shouldn't add  the last %n 
 str symbols2format(list[Symbol] symbols){
-	result =  (""|it + formatz(symbol)| symbol <- symbols);
+	result =  (""|it + formt(symbol)| symbol <- symbols);
 	counter = 0;
 	return result;
 }
 
-str formatz(Symbol symbol){
+str formt(Symbol symbol){
 	counter += 1;
 	if(lit(string) := symbol){
 		return "<string> %<counter> ";
@@ -52,10 +64,8 @@ str formatz(Symbol symbol){
 	}
 }
 
-//list[Arg]
-void symbols2Args(list[Symbol] symbols){
-	a =(""|it + symbol2Arg(symbol)|symbol<-symbols);
-}
+list[Arg] symbols2Args(list[Symbol] symbols, str lexicalName = "") =
+	[ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols];
 
 //data Symbol
 //     = \empty() 
@@ -73,28 +83,27 @@ void symbols2Args(list[Symbol] symbols){
 //	return "";
 //}
 
-//Arg
-str symbol2Arg(Symbol symbol, str labeledName = ""){
+Arg symbol2Arg(Symbol symbol, str labeledName = "", str lexicalName = ""){
 	if(lit(string) := symbol){
-		//arg(labeledName, dummy());
-		println("");
+		return arg(labeledName, dummy());
 	}
 	else if(lex(name) := symbol){
-		//arg("<name>", \value(check="<name>"));
-		println("");
+		kogi::Block::Type t = kogi::Block::\value(check = "<name>");
+		return arg("<labeledName>", t);
+	}
+	else if(\iter(symb) := symbol){
+		if(\char-class(_) := symb)
+			return arg(lexicalName+"Name", input(lexicalName)); // TODO: Need a name
 	}
 	else if(\iter-star-seps(symb, separators) := symbol){
-		// We can use it in the same way as the next case. The \iter… give us some information about the block or the behaviour of the block. 
-		//arg();
-		println("");
+		// We can use it in the same way as the next case. The \iter… give us some information about the block or the behaviour of the block.
+		// \iter-star-seps( sort("Trans"), […]) -> The symb can be used to define de type check
+		return arg(labeledName, statement()); // TODO: how to type check? missing, I guess.
 	}
 	else if(\label(str name, Symbol s) := symbol){
-	// TODO: HERE
-		symbol2Arg(s, labeledName = name);
-		println("");
+		return symbol2Arg(s, labeledName = name);
 	}
 	else{
-		println("");
+		return Arg::none();
 	}
-	return "";
 }
