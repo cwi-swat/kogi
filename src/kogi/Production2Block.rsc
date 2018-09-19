@@ -74,9 +74,9 @@ void symbols2Args(list[Symbol] symbols){
 //}
 
 //Arg
-str symbol2Arg(Symbol symbol){
+str symbol2Arg(Symbol symbol, str labeledName = ""){
 	if(lit(string) := symbol){
-		//arg("", dummy());
+		//arg(labeledName, dummy());
 		println("");
 	}
 	else if(lex(name) := symbol){
@@ -84,10 +84,13 @@ str symbol2Arg(Symbol symbol){
 		println("");
 	}
 	else if(\iter-star-seps(symb, separators) := symbol){
+		// We can use it in the same way as the next case. The \iter… give us some information about the block or the behaviour of the block. 
 		//arg();
 		println("");
 	}
 	else if(\label(str name, Symbol s) := symbol){
+	// TODO: HERE
+		symbol2Arg(s, labeledName = name);
 		println("");
 	}
 	else{
