@@ -17,7 +17,9 @@ data Block
        str helpUrl = "",
        list[str] extensions = [],
        str mutator = "",
-       bool inputsInline = false);
+       bool inputsInline = false)
+   | none()
+   ;
        
 data Colour
   = rgb(str rgb)
