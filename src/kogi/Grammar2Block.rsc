@@ -6,6 +6,7 @@ import String;
 import Type;
 import ParseTree;
 import kogi::Block;
+import lang::json::IO;
 import kogi::Production2Block;
 
 
@@ -22,15 +23,15 @@ Toolbox createToolbox(BlockLang blocks, str id = "toolbox"){
 	return <id,"Unnamed", {"<block["type"]>" | block <- blocks}>;
 }
 
-void grammar2blocks(type[&T<:Tree] g){
+list[Block] grammar2blocks(type[&T<:Tree] g){
     allProds = getAllProductionz(g);
     prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols), layouts(_) !:= p.def};
-    BlockLang blocks = { production2Block(production) | production <- prods}; // TODO: ignore productions with attrs tag("category"("Comment"))
+    blocks = [ production2Block(production) | production <- prods]; // TODO: ignore productions with attrs tag("category"("Comment"))
     //toolbox = createToolbox(blocks);
-    
+    println(size(blocks));
     //println(toJSON(blocks[0]));
-    //writeJSON(|project://kogi/src/kogi/rest.json|, blocks);
-    //return blocks;
+    //writeJSON(|project://kogi/src/kogi/tmp/rest.json|, blocks);
+    return blocks;
 }
 
 map[str, list[str]] defs = ();
@@ -66,32 +67,32 @@ Block production2Block(Production production){
 	}
 }
 
-int blockId = 0;
-Block createStandarBlock(Production production){
-	messag ="";
-	list[map[str, value]] fields = [];
-	int i = 1;
-	for(Symbol symbol <- production.symbols){
-		if(lit(string) := symbol){
-			messag += "<string> %<i> ";
-			i += 1;
-			fields += ("type":"input_dummy");
-		}
-		else if(sort(string) := symbol){
-			messag += "%<i> ";
-			nonTerminal += symbol;
-			i += 1;
-			fields += ("type":"input_value", "name":"<string>");
-		}
-		else{
-			//TODO: figure out what to do with these elements. Are they uselss? I don't know…
-			println(symbol);
-		}
-	}
-	blockId +=1;
-	//TODO: Labels are needed to define the type of the block.
-	return createBlock("<production.def[0]><blockId>", messag, fields, 120, output="null");
-}
+//int blockId = 0;
+//Block createStandarBlock(Production production){
+//	messag ="";
+//	list[map[str, value]] fields = [];
+//	int i = 1;
+//	for(Symbol symbol <- production.symbols){
+//		if(lit(string) := symbol){
+//			messag += "<string> %<i> ";
+//			i += 1;
+//			fields += ("type":"input_dummy");
+//		}
+//		else if(sort(string) := symbol){
+//			messag += "%<i> ";
+//			nonTerminal += symbol;
+//			i += 1;
+//			fields += ("type":"input_value", "name":"<string>");
+//		}
+//		else{
+//			//TODO: figure out what to do with these elements. Are they uselss? I don't know…
+//			println(symbol);
+//		}
+//	}
+//	blockId +=1;
+//	//TODO: Labels are needed to define the type of the block.
+//	return createBlock("<production.def[0]><blockId>", messag, fields, 120, output="null");
+//}
 
 //Block lexical2Block(str name, Production p){
 //	for(symbols <- p.symbols){
@@ -108,12 +109,12 @@ Block createStandarBlock(Production production){
 //	return createBlock(name, "%1", [("name":"<name>", "type":"field_input", "value":0)], 110, output="null"); 
 //}
 
-Block createBlock(str \type, str message, list[map[str, value]] args0, int colour, str tooltip ="", str helpurl="", str output=""){
-	if(output != "")
-		return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"", "output": output);
-	else
-		return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"");
-}
+//Block createBlock(str \type, str message, list[map[str, value]] args0, int colour, str tooltip ="", str helpurl="", str output=""){
+//	if(output != "")
+//		return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"", "output": output);
+//	else
+//		return ("type": \type, "message0": message, "args0": args0, "colour":colour, "tooltip":(tooltip != "")?tooltip:"", "helpurl":(helpurl!="")?helpurl:"");
+//}
 
 
 // TODO: Fix args0, is it possible to have many args0
