@@ -1,4 +1,4 @@
-module kogi::demo::Statemachine
+module kogi::demo::stateMachine::StateMachine
 
 extend lang::std::Layout;
 
