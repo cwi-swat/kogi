@@ -6,7 +6,6 @@ import String;
 import Type;
 import ParseTree;
 import kogi::Block;
-import lang::json::IO;
 import kogi::Production2Block;
 
 

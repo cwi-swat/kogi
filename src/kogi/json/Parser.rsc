@@ -1,4 +1,4 @@
-module kogi::toJson::Parser
+module kogi::json::Parser
 
 import IO;
 import List;

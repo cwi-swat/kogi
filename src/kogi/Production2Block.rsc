@@ -3,8 +3,8 @@ module kogi::Production2Block
 import IO;
 import List;
 import Type;
-import kogi::Grammar2Block;
 import kogi::Block;
+import kogi::Grammar2Block;
 
 /*
 * This function takes the raw data and produces a Block. 
