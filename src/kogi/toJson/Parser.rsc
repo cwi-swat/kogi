@@ -91,6 +91,5 @@ str toJson(Arg val) {
 		"	<toJson("name", val.name)>,
 		'	<toJson("type", val.\type)>,";
 	}
-	result += "\n	},\n";
-	return result;
+	return result + "\n	},\n";
 }
