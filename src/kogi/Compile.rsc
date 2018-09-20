@@ -3,80 +3,72 @@ module kogi::Compile
 import IO;
 import String;
 import ParseTree;
-import lang::json::IO;
+import kogi::Block;
+import kogi::xml::Parser;
 import kogi::Grammar2Block;
+import kogi::toJson::Parser;
+
 
 
 void createBlocklyApp(str divName, type[&T<:Tree] g, str title = "Block Language"){
 	blocks = grammar2blocks(g);
-	toolb = createToolbox(blocks);
+	Section sectionz = section("tmp", hsv(200), blocks);
+	Toolbox toolbox = toolbox([sectionz]);
+		
 	// create JS
-	createJS(blocks, divName, toolb.id);
+	// TODO: The toolbox name should be parametrized!
+	createJS(blocks, divName, "toolbox");
 	// create HTML
-	createHTML(parseToolbox(toolb), title, divName);
+	createHTML(parseToolbox(toolbox), title, divName);
 }
 
-str createBlocklyApp(str divName, Toolbox toolb, BlockLang blocks, str title="Block Language"){
+//str createBlocklyApp(str divName, Toolbox toolb, BlockLang blocks, str title="Block Language"){
+//
+//	// create JS
+//	createJS(blocks, divName, toolb.id);
+//	// create HTML
+//	createHTML(parseToolbox(toolb), title, divName);
+//}
 
-	// create JS
-	createJS(blocks, divName, toolb.id);
-	// create HTML
-	createHTML(parseToolbox(toolb), title, divName);
-}
-
-void createJS(BlockLang blocks, str divId,str toolbarId, str folderName = ""){
-	content = (""| it + toBlocklyLang(blo) | blo<- blocks);
-    content = replaceAll(content, "\"null\"", "null");
-    
-    //toolbar
+void createJS(list[Block] blocks, str divId, str toolbarId, str folderName = ""){
+	content = (""| it + createBlocklyBlock(block) | block <- blocks);
     content += blocklyApp(divId, toolbarId);
-    
-    writeFile(|project://kogi/src/kogi/gen/blocs.js|, content);
+    writeFile(|project://kogi/src/kogi/tmp/blocs.js|, content);
 }
 
 private loc HTML_TEMPLATE = |project://kogi/resources/blocklyTemplate.html|;
 
-void createHTML(str tb, str title, str div){
-	writeFile(|project://kogi/src/kogi/gen/index.html|, HTMLcontent(tb, title, div));
+void createHTML(str toolbox, str title, str div){
+	writeFile(|project://kogi/src/kogi/tmp/index.html|, HTMLcontent(toolbox, title, div));
 }
 
-str HTMLcontent(str tb, str title, str div) 
+str HTMLcontent(str toolbox, str title, str div) 
   = replaceAll(
        replaceAll(
          replaceAll(tmpl, 
-           "{__TOOLBOX__}", tb),
+           "{__TOOLBOX__}", toolbox),
            "{__TITLE__}", title),
            "{__DIV__}", div)
   when tmpl := readFile(HTML_TEMPLATE);
 
 
-str blocklyApp(str divId, str tbId, str tbposition="start", bool trashCan=true) = 
-"
-'function loadBlockly(){
-'    var workspace = Blockly.inject(\'<divId>\', {
-'            toolbox: document.getElementById(\'<tbId>\'),
-'            collapse: true,
-'            toolboxPosition: \'<tbposition>\', // end
-'            trashcan: <trashCan>
-'    });
-'}
-";
+str blocklyApp(str divId, str tbId, str tbposition = "start", bool trashCan = true) = 
+	"function loadBlockly(){
+	'    var workspace = Blockly.inject(\'<divId>\', {
+	'            toolbox: document.getElementById(\'<tbId>\'),
+	'            collapse: true,
+	'            toolboxPosition: \'<tbposition>\', // end
+	'            trashcan: <trashCan>
+	'    });
+	'}"
+	;
 
-str toBlocklyLang(Block b) =
-	"Blockly.Blocks[\'<b["type"]>\'] = {
+str createBlocklyBlock(Block block) =
+	"Blockly.Blocks[\'<block.\type>\'] = {
 	'    init: function() {
 	'        this.jsonInit(
-	'		< toJSON(b, true)>
+	'			<toJson(block)>
 	' 		);
 	'	}
 	'}
-	";
-	
-str parseToolbox(Toolbox tb) =
-"
-'\<xml id=\"<tb.id>\" style=\"display: none\"\>
-'    \<category name=\"<tb.category>\" colour=\"20\"\>
-'        <("" | it+ "\<block type=\"<bl>\"\>\</block\>\n" | bl <- tb.bls)>
-'    \</category\>
-'\</xml\>
-";
+	'";
