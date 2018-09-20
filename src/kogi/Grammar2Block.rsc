@@ -44,8 +44,8 @@ Block production2Block(Production production){
 	// starting block
 	if(\start(symbol) := production.def){
 		cachedStartSymbol = <symbol, production>;
-		// This case shouldn't create something
-		return none();
+		// This case shouldn't create anything
+		return Block::none();
 	}
 	// lexicals
 	else if(lex(name) := production.def){
@@ -63,7 +63,7 @@ Block production2Block(Production production){
 	}
 	// It seems this is no longer needed
 	else{
-		return none();
+		return Block::none();
 	}
 }
 

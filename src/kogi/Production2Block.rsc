@@ -28,12 +28,12 @@ Block createMainBlock(str name, Production production){
 
 Block lexical2Block(str name, Production production){
 	kogi::Block::Message message = symbols2Message(production.symbols, lexicalName = name);
-	return block(name, [message], output = block(""), colour = hsv(20));
+	return block(name, [message], output = Ref::block(""), colour = hsv(20));
 }
 
 Block nonTerminal2Block(str name, Production production){
 	kogi::Block::Message message = symbols2Message(production.symbols, lexicalName = name);
-	return block(name, [message], previous = block(""), next = block(""), inputsInline = true, colour = hsv(30));
+	return block(name, [message], previous = Ref::block(""), next = Ref::block(""), inputsInline = true, colour = hsv(30));
 }
 
 kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = ""){
@@ -66,6 +66,8 @@ str formt(Symbol symbol){
 
 list[Arg] symbols2Args(list[Symbol] symbols, str lexicalName = "") =
 	[ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols];
+	//return [arg | arg <- args, Arg::none()!:= arg];
+
 
 //data Symbol
 //     = \empty() 
@@ -93,7 +95,7 @@ Arg symbol2Arg(Symbol symbol, str labeledName = "", str lexicalName = ""){
 	}
 	else if(\iter(symb) := symbol){
 		if(\char-class(_) := symb)
-			return arg(lexicalName+"Name", input(lexicalName)); // TODO: Need a name
+			return arg(lexicalName+"Name", input(lexicalName)); // TODO: This needs a name
 	}
 	else if(\iter-star-seps(symb, separators) := symbol){
 		// We can use it in the same way as the next case. The \iter… give us some information about the block or the behaviour of the block.
