@@ -10,23 +10,15 @@ import lang::json::IO;
 import kogi::Production2Block;
 
 
-alias BlockLang = set[Block];
-
-//TODO: List of tuples and each tuple should contain a color field
-//alias Toolbox = tuple[str id, str category, set[str] bls];
-
 set[Production] getAllProductionz(type[&T <: Tree] grammar){
      return ({} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions);
 }
 
-Toolbox createToolbox(BlockLang blocks, str id = "toolbox"){
-	return <id,"Unnamed", {"<block["type"]>" | block <- blocks}>;
-}
-
-list[Block] grammar2blocks(type[&T<:Tree] g){
-    allProds = getAllProductionz(g);
-    prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols), layouts(_) !:= p.def};
-    blocks = [ production2Block(production) | production <- prods, isEmpty(production.attributes)]; // TODO: ignore productions with attrs tag("category"("Comment"))
+list[Block] grammar2blocks(type[&T<:Tree] grammar){
+    allProductions = getAllProductionz(grammar);
+    productions = { p | /p:prod(_,_,_) := allProductions, !isEmpty(p.symbols), layouts(_) !:= p.def};
+    // FIX: ignore only the productions with attrs tag("category"("Comment"))
+    blocks = [ production2Block(production) | production <- productions, isEmpty(production.attributes)];
     return [block | block <- blocks, Block::none() !:= block];
 }
 
