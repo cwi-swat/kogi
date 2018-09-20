@@ -26,11 +26,7 @@ Toolbox createToolbox(BlockLang blocks, str id = "toolbox"){
 list[Block] grammar2blocks(type[&T<:Tree] g){
     allProds = getAllProductionz(g);
     prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols), layouts(_) !:= p.def};
-    blocks = [ production2Block(production) | production <- prods]; // TODO: ignore productions with attrs tag("category"("Comment"))
-    //toolbox = createToolbox(blocks);
-    //println(size(blocks));
-    //println(toJSON(blocks[0]));
-    //writeJSON(|project://kogi/src/kogi/tmp/rest.json|, blocks);
+    blocks = [ production2Block(production) | production <- prods, isEmpty(production.attributes)]; // TODO: ignore productions with attrs tag("category"("Comment"))
     return [block | block <- blocks, Block::none() !:= block];
 }
 
@@ -44,12 +40,14 @@ Block production2Block(Production production){
 	// starting block
 	if(\start(symbol) := production.def){
 		cachedStartSymbol = <symbol, production>;
-		// This case shouldn't create anything
 		return Block::none();
 	}
 	// lexicals
 	else if(lex(name) := production.def){
-		return lexical2Block(name, production);
+		if( name == "Whitespace")
+			return Block::none();
+		else	
+			return lexical2Block(name, production);
 	}
 	//else if(lex(name) := production.def && !(name in lexicals)){
 	//	lexicals += name;

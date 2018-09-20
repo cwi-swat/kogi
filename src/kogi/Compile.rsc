@@ -8,8 +8,6 @@ import kogi::xml::Parser;
 import kogi::Grammar2Block;
 import kogi::toJson::Parser;
 
-
-
 void createBlocklyApp(str divName, type[&T<:Tree] g, str title = "Block Language"){
 	blocks = grammar2blocks(g);
 	Section sectionz = section("tmp", hsv(200), blocks);
