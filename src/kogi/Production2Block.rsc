@@ -10,64 +10,42 @@ import kogi::Block;
 * This function takes the raw data and produces a Block. 
 */
 Block createMainBlock(str name, Production production){
-	kogi::Block::Message message = symbols2Message(production.symbols);
+	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(production.symbols));
 	return block(name, [message], colour = hsv(10)); // Fixed value for this block? Green?
-	
-	//return createBlock(name, "<name> %1", [("type":"input_value", "name":"NAME")], 10);
-	
-	//block(name, 
-	//	[message(
-	//		"name %1 %2 %3",
-	//		[ arg("", dummy()), 
-	//		  arg("ID", \value("Id")),
-	//		  arg(statement()) //Name and check is missing?
-	//		]
-	//	)]
-	//);
 }
 
+list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
+	[ symbol |symbol <- symbols, layouts(_) !:= symbol];
+
 Block lexical2Block(str name, Production production){
-	kogi::Block::Message message = symbols2Message(production.symbols, lexicalName = name);
+	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(production.symbols), lexicalName = name);
 	return block(name, [message], output = Ref::block(""), colour = hsv(20));
 }
 
 Block nonTerminal2Block(str name, Production production){
-	kogi::Block::Message message = symbols2Message(production.symbols, lexicalName = name);
+	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(production.symbols), lexicalName = name);
 	return block(name, [message], previous = Ref::block(""), next = Ref::block(""), inputsInline = true, colour = hsv(30));
 }
 
 kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = ""){
-	symbolsToProcess = [ symbol |symbol <- symbols, layouts(_) !:= symbol];
-	format = symbols2format(symbolsToProcess);
-	args = symbols2Args(symbolsToProcess,lexicalName = lexicalName);
+	format = symbols2format(symbols);
+	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols];
 	return message(format, args);
 }
 
-int counter = 0;
-
-//FIX: if the last symbol is a lit, it shouldn't add  the last %n 
+//FIX: if the last symbol is a lit, it shouldn't add  the last %n
+//FIX : Not sure if this is completely true, but it reduces the number of conditionals(e.g., lex(…), \iter-start(…)) 
 str symbols2format(list[Symbol] symbols){
-	result =  (""|it + formt(symbol)| symbol <- symbols);
-	counter = 0;
-	return result;
-}
-
-str formt(Symbol symbol){
-	counter += 1;
-	if(lit(string) := symbol){
-		return "<string> %<counter> ";
+	int counter = 0;
+	str format(Symbol symbol){
+		counter += 1;
+		if(lit(string) := symbol)
+			return "<string> %<counter> ";
+		else
+			return "%<counter> ";
 	}
-	//else if(lex(name) := symbol){ 
-	// TODO: Not sure if this is completely true, but it reduces the number of conditionals(e.g., lex(…), \iter-start(…))
-	else{
-		return "%<counter> ";
-	}
+	return (""|it + format(symbol)| symbol <- symbols);
 }
-
-list[Arg] symbols2Args(list[Symbol] symbols, str lexicalName = "") =
-	[ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols];
-	//return [arg | arg <- args, Arg::none()!:= arg];
-
 
 //data Symbol
 //     = \empty() 
@@ -79,11 +57,6 @@ list[Arg] symbols2Args(list[Symbol] symbols, str lexicalName = "") =
 //     | \alt(set[Symbol] alternatives) 
 //     | \seq(list[Symbol] symbols)     
 //     ;
-
-//str symbol2Arg((Symbol)`label(<str name>,<Symbol s>)`){
-//
-//	return "";
-//}
 
 Arg symbol2Arg(Symbol symbol, str labeledName = "", str lexicalName = ""){
 	if(lit(string) := symbol){
