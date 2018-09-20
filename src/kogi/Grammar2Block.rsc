@@ -28,10 +28,10 @@ list[Block] grammar2blocks(type[&T<:Tree] g){
     prods = { p | /p:prod(_,_,_) := allProds, !isEmpty(p.symbols), layouts(_) !:= p.def};
     blocks = [ production2Block(production) | production <- prods]; // TODO: ignore productions with attrs tag("category"("Comment"))
     //toolbox = createToolbox(blocks);
-    println(size(blocks));
+    //println(size(blocks));
     //println(toJSON(blocks[0]));
     //writeJSON(|project://kogi/src/kogi/tmp/rest.json|, blocks);
-    return blocks;
+    return [block | block <- blocks, Block::none() !:= block];
 }
 
 map[str, list[str]] defs = ();
