@@ -8,36 +8,33 @@ import kogi::xml::Parser;
 import kogi::Grammar2Block;
 import kogi::toJson::Parser;
 
-void createBlocklyApp(str divName, type[&T<:Tree] g, str title = "Block Language"){
-	blocks = grammar2blocks(g);
+void createBlocklyApp(str divName, type[&T<:Tree] grammar, str title = "Block Language", str toolboxName = "toolbox", loc dstPath = |project://kogi/src/kogi/result|){
+	blocks = grammar2blocks(grammar);
 	Section sectionz = section("tmp", hsv(200), blocks);
 	Toolbox toolbox = toolbox([sectionz]);
-		
 	// create JS
-	// TODO: The toolbox name should be parametrized!
-	createJS(blocks, divName, "toolbox");
+	createJS(blocks, divName, toolboxName, dstPath);
+	// create HTML
+	createHTML(parseToolbox(toolbox), title, divName, dstPath);
+}
+
+void createBlocklyApp(str divName, list[Block] blocks, Toolbox toolbox, str title = "Block Language", str toolboxName = "toolbox", loc dstPath = |project://kogi/src/kogi/result|){
+	// create JS
+	createJS(blocks, divName, toolboxName);
 	// create HTML
 	createHTML(parseToolbox(toolbox), title, divName);
 }
 
-//str createBlocklyApp(str divName, Toolbox toolb, BlockLang blocks, str title="Block Language"){
-//
-//	// create JS
-//	createJS(blocks, divName, toolb.id);
-//	// create HTML
-//	createHTML(parseToolbox(toolb), title, divName);
-//}
-
-void createJS(list[Block] blocks, str divId, str toolbarId, str folderName = ""){
+void createJS(list[Block] blocks, str divId, str toolbarId, loc dstPath){
 	content = (""| it + createBlocklyBlock(block) | block <- blocks);
     content += blocklyApp(divId, toolbarId);
-    writeFile(|project://kogi/src/kogi/tmp/blocs.js|, content);
+    writeFile(dstPath + "locs.js", content);
 }
 
 private loc HTML_TEMPLATE = |project://kogi/resources/blocklyTemplate.html|;
 
-void createHTML(str toolbox, str title, str div){
-	writeFile(|project://kogi/src/kogi/tmp/index.html|, HTMLcontent(toolbox, title, div));
+void createHTML(str toolbox, str title, str div, loc dstPath){
+	writeFile(dstPath + "index.html", HTMLcontent(toolbox, title, div));
 }
 
 str HTMLcontent(str toolbox, str title, str div) 
