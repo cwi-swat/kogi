@@ -1,7 +1,7 @@
 module kogi::xml::Parser
 
 import kogi::Block;
-import kogi::toJson::Parser;
+import kogi::json::Parser;
 
 str parseToolbox(Toolbox toolbox, str toolboxId = "toolbox", str display = "none") =
 	"\<xml id=\"<toolboxId>\" style=\"display: <display>\"\>
