@@ -6,19 +6,24 @@ import String;
 import kogi::Block;
 
 str toJson(list[Block] blocks) =
-	("" | it + toJson(block) + "\n"| block <- blocks, Block::none() !:= block);
+	("" | it + toJson(block) + ",\n"| block <- blocks, Block::none() !:= block);
 	
 str toJson(Block block) {
 return "{
 '	<toJson("type", block.\type)>,
 '	<toJson("message0", block.messages[0].format)>,
-'	<toJson("args0", block.messages[0].args)>
-'	<if(Ref::none() !:= block.output){><toJson("output", block.output)><}>
-'	<if(Colour::none() !:= block.colour){><toJson("colour", block.colour)><}>
-},";
-//if(block.output) toJson("output","chao");
-
+'	<toJson("args0", block.messages[0].args)>,
+'	<if(Ref::none() !:= block.output){><toJson("output", block.output) + ","><}>
+'	<if(Colour::none() !:= block.colour){><toJson("colour", block.colour) + ","><}>
+'	<if(Ref::none() !:= block.previous){><toJson("previousStatement", block.previous) + ","><}>
+'	<if(Ref::none() !:= block.next){><toJson("nextStatement", block.next) + ","><}>
+'	<toJson("inputsInline", block.inputsInline)>
+}";
 }
+
+str optionalBlockParts(Block block) =
+"
+";
   //"inputsInline": true,
   //"previousStatement": null,
   //"nextStatement": null,
@@ -33,6 +38,9 @@ str toJson(str val) =
 	"\"<val>\"";
 	
 str toJson(int val) =
+	"<val>";
+	
+str toJson(bool val) =
 	"<val>";
 	
 str toJson(kogi::Block::Message val) =
