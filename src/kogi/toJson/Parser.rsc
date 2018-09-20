@@ -6,30 +6,21 @@ import String;
 import kogi::Block;
 
 str toJson(list[Block] blocks) =
-	("" | it + toJson(block) + ",\n"| block <- blocks, Block::none() !:= block);
+	"[\n<("" | it + toJson(block) + ",\n"| block <- blocks, Block::none() !:= block)[..-2]>]";
 	
-str toJson(Block block) {
-return "{
-'	<toJson("type", block.\type)>,
-'	<toJson("message0", block.messages[0].format)>,
-'	<toJson("args0", block.messages[0].args)>,
-'	<if(Ref::none() !:= block.output){><toJson("output", block.output) + ","><}>
-'	<if(Colour::none() !:= block.colour){><toJson("colour", block.colour) + ","><}>
-'	<if(Ref::none() !:= block.previous){><toJson("previousStatement", block.previous) + ","><}>
-'	<if(Ref::none() !:= block.next){><toJson("nextStatement", block.next) + ","><}>
-'	<toJson("inputsInline", block.inputsInline)>
-}";
-}
-
-str optionalBlockParts(Block block) =
-"
-";
-  //"inputsInline": true,
-  //"previousStatement": null,
-  //"nextStatement": null,
-  //"colour": 120,
-  //"tooltip": "",
-  //"helpUrl": ""
+str toJson(Block block) =
+"	{
+'		<toJson("type", block.\type)>,
+'		<toJson("message0", block.messages[0].format)>,
+'		<toJson("args0", block.messages[0].args)>,
+'		<if(Colour::none() !:= block.colour){><toJson("colour", block.colour) + ","><}>
+'		<if(Ref::none() !:= block.output){><toJson("output", block.output) + ","><}>
+'		<if(Ref::none() !:= block.previous){><toJson("previousStatement", block.previous) + ","><}>
+'		<if(Ref::none() !:= block.next){><toJson("nextStatement", block.next) + ","><}>
+'		<toJson("inputsInline", block.inputsInline)>,
+'		<toJson("tooltip", block.tooltip)>,
+'		<toJson("helpUrl", block.helpUrl)>
+'	}";
 
 str toJson(str key, value valo) =
 	"\"<key>\" : <toJson(valo)>";
@@ -50,7 +41,7 @@ str toJson(Ref val) =
 	val.\type == "" ? "null" : val.\type;
 	
 str toJson(list[&T] val) =
-	"["+("" | it + toJson(x)| x <- val, Arg::none() !:= x)[..-1] + "]";
+	"[\n<("" | it + toJson(x)| x <- val, Arg::none() !:= x)[..-2]>\n]";
 	
 int toJson(Colour val) {
 	if(rgb(rgb) := val){
@@ -65,44 +56,41 @@ int toJson(Colour val) {
 }
 	
 str toJson(Arg val) {
+	result = "	{\n"; 
 	if(arg(name, dummy()) := val){
-		return "{
-		'	<toJson("name", name)>,
-		'	<toJson("type", "input_dummy")>
-		},";
+		result +=
+		"		<toJson("name", name)>,
+		'		<toJson("type", "input_dummy")>";
 	}
 	else if(arg(name, statement()) := val){
-		return "{
-		'	<toJson("name", name)>,
-		'	<toJson("type", "input_statement")>,
-		'	<toJson("check", name)>
-		},";
+		result +=
+		"		<toJson("name", name)>,
+		'		<toJson("type", "input_statement")>,
+		'		<toJson("check", name)>";
 	}
 	else if(arg(name, \value()) := val){
-		return "{
-		'	<toJson("name", name)>,
-		'	<toJson("type", "input_value")>
-		},";
+		result +=
+		"		<toJson("name", name)>,
+		'		<toJson("type", "input_value")>";
 	}
 	else if(arg(name, \value(check=a)) := val){
-		return "{
-		'	<toJson("name", name)>,
-		'	<toJson("type", "input_value")>
-		'	<toJson("check", a)>
-		},";
+		result +=
+		"		<toJson("name", name)>,
+		'		<toJson("type", "input_value")>
+		'		<toJson("check", a)>";
 	}
 	// spellcheck is discarted
 	else if(arg(name, input(text)) := val){
-		return "{
-		'	<toJson("name", name)>,
+		result +=
+		"	<toJson("name", name)>,
 		'	<toJson("type", "field_input")>,
-		'	<toJson("text", "<text>")>
-		},";
+		'	<toJson("text", "<text>")>";
 	}
 	else{
-		return "{
-		'	<toJson("name", val.name)>,
-		'	<toJson("type", val.\type)>,
-		},";
+		result +=
+		"	<toJson("name", val.name)>,
+		'	<toJson("type", val.\type)>,";
 	}
+	result += "\n	},\n";
+	return result;
 }
