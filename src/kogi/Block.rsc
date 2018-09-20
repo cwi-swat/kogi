@@ -9,9 +9,9 @@ data Section
 data Block
   = block(str \type, // type is defined here, e.g. Exp_Add
        list[Message] messages, 
-       Ref output = none(), 
-       Ref previous = none(), 
-       Ref next = none(),
+       Ref output = Ref::none(), 
+       Ref previous = Ref::none(), 
+       Ref next = Ref::none(),
        Colour colour = none(), 
        str tooltip = "",
        str helpUrl = "",
@@ -43,7 +43,7 @@ data Arg
 
 data Type
   = \value(str check = "")  // input
-  | statement() // input
+  | statement() // input // TODO: Inlcude a check field?
   | dummy() // input (not needed?)
   | input(str text, bool spellcheck = true) // fields from here on down
   | dropdown(lrel[str, str] options)
