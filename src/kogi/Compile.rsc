@@ -5,8 +5,8 @@ import String;
 import ParseTree;
 import kogi::Block;
 import kogi::xml::Parser;
-import kogi::Grammar2Block;
 import kogi::json::Parser;
+import kogi::Grammar2Block;
 
 void createBlocklyApp(str divName, type[&T<:Tree] grammar, str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/result|){
 	blocks = grammar2blocks(grammar);

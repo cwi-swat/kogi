@@ -3,82 +3,32 @@ module kogi::Production2Block
 import IO;
 import List;
 import Type;
+import ParseTree;
 import kogi::Block;
+import kogi::Symbol2Block;
 import kogi::Grammar2Block;
+import kogi::Symbol2Message;
 
-/*
-* This function takes the raw data and produces a Block. 
-*/
-Block createMainBlock(str name, Production production){
-	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(production.symbols));
-	return block(name, [message], colour = hsv(10)); // Fixed value for this block? Green?
+
+tuple[Symbol, list[Symbol]] cachedStartProduction = <\empty(), []>;
+
+Block production2Block(prod(\start(Symbol symbol), list[Symbol] symbols, set[Attr] attributes)){ 
+	cachedStartSymbol = <symbol, symbols>;
+	return Block::none();
 }
 
-list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
-	[ symbol |symbol <- symbols, layouts(_) !:= symbol];
-
-Block lexical2Block(str name, Production production){
-	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(production.symbols), lexicalName = name);
-	return block(name, [message], output = Ref::block(""), colour = hsv(20));
+Block production2Block(prod(lex(str name), list[Symbol] symbols, set[Attr] attributes)){ 
+	if( name == "Whitespace")
+			return Block::none();
+		else	
+			return lexical2Block(name, symbols);
 }
 
-Block nonTerminal2Block(str name, Production production){
-	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(production.symbols), lexicalName = name);
-	return block(name, [message], previous = Ref::block(""), next = Ref::block(""), inputsInline = true, colour = hsv(30));
+Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes)){ 
+	if(symbol == cachedStartProduction[0])
+			return createMainBlock(name, symbols);
+		else		
+			return nonTerminal2Block(name, symbols);
 }
-
-kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = ""){
-	format = symbols2format(symbols);
-	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols];
-	return message(format, args);
-}
-
-//FIX: if the last symbol is a lit, it shouldn't add  the last %n
-//FIX : Not sure if this is completely true, but it reduces the number of conditionals(e.g., lex(…), \iter-start(…)) 
-str symbols2format(list[Symbol] symbols){
-	int counter = 0;
-	str format(Symbol symbol){
-		counter += 1;
-		if(lit(string) := symbol)
-			return "<string> %<counter> ";
-		else
-			return "%<counter> ";
-	}
-	return (""|it + format(symbol)| symbol <- symbols);
-}
-
-//data Symbol
-//     = \empty() 
-//     | \opt(Symbol symbol)  
-//     | \iter(Symbol symbol) 
-//     | \iter-star(Symbol symbol)  
-//     | \iter-seps(Symbol symbol, list[Symbol] separators)      
-//     | \iter-star-seps(Symbol symbol, list[Symbol] separators) 
-//     | \alt(set[Symbol] alternatives) 
-//     | \seq(list[Symbol] symbols)     
-//     ;
-
-Arg symbol2Arg(Symbol symbol, str labeledName = "", str lexicalName = ""){
-	if(lit(string) := symbol){
-		return arg(labeledName, dummy());
-	}
-	else if(lex(name) := symbol){
-		kogi::Block::Type t = kogi::Block::\value(check = "<name>");
-		return arg("<labeledName>", t);
-	}
-	else if(\iter(symb) := symbol){
-		if(\char-class(_) := symb)
-			return arg(lexicalName+"Name", input(lexicalName)); // TODO: This needs a name
-	}
-	else if(\iter-star-seps(symb, separators) := symbol){
-		// We can use it in the same way as the next case. The \iter… give us some information about the block or the behaviour of the block.
-		// \iter-star-seps( sort("Trans"), […]) -> The symb can be used to define de type check
-		return arg(labeledName, statement()); // TODO: how to type check? missing, I guess.
-	}
-	else if(\label(str name, Symbol s) := symbol){
-		return symbol2Arg(s, labeledName = name);
-	}
-	else{
-		return Arg::none();
-	}
-}
+  
+Block production2Block(Production production) = Block::none();
