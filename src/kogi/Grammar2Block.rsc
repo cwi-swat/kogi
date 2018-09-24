@@ -22,6 +22,6 @@ list[Block] grammar2blocks(type[&T<:Tree] grammar){
     // Then this information should be used before creating each block.
 	multiplicityInfo = nonTerminalMultiplicity(productions);
     // FIX: ignore only the productions with attrs tag("category"("Comment"))
-    blocks = [ production2Block(production) | production <- productions, isEmpty(production.attributes) ];
+    blocks = [ production2Block(production, multiplicityInfo) | production <- productions, isEmpty(production.attributes) ];
     return [ block | block <- blocks, Block::none() !:= block ];
 }
