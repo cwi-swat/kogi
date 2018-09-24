@@ -33,11 +33,17 @@ Arg symbol2Arg(lex(str name), str labeledName = "", str lexicalName = "")
 Arg symbol2Arg(\iter(Symbol symbol), str labeledName = "", str lexicalName = "") =
 	symbol2Arg(symbol, lexicalName=lexicalName);
 
-Arg symbol2Arg(\iter-star-seps(Symbol symbol, list[Symbol] separators), str labeledName = "", str lexicalName = ""){
-	// We can use it in the same way as the next case. The \iter… give us some information about the block or the behaviour of the block.
-	// \iter-star-seps( sort("Trans"), […]) -> The symb can be used to define de type check
-	return arg(labeledName, statement(check = symbol.name));
-}
+Arg symbol2Arg(\iter-star-seps(Symbol symbol, list[Symbol] separators), str labeledName = "", str lexicalName = "") =
+	arg(labeledName, statement(check = symbol.name));
+
+Arg symbol2Arg(\iter-seps(Symbol symbol, list[Symbol] separators), str labeledName = "", str lexicalName = "") =
+	arg(labeledName, statement(check = symbol.name));
+
+Arg symbol2Arg(\iter-star(Symbol symbol), str labeledName = "", str lexicalName = "") =
+	arg(labeledName, statement(check = symbol.name));
+
+Arg symbol2Arg(\opt(Symbol symbol), str labeledName = "", str lexicalName = "") =
+	arg(labeledName, statement(check = symbol.name));
 
 Arg symbol2Arg(\label(str name, Symbol s), str labeledName = "", str lexicalName = "")
 	= symbol2Arg(s, labeledName = name);
