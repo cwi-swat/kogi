@@ -56,6 +56,7 @@ str blocklyApp(str divId, str tbId, str tbposition = "start", bool trashCan = tr
 	'            toolboxPosition: \'<tbposition>\', // end
 	'            trashcan: <trashCan>
 	'    });
+	'	 workspace.addChangeListener(Blockly.Events.disableOrphans);
 	'}"
 	;
 
