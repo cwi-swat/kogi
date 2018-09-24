@@ -4,6 +4,7 @@ import IO;
 import List;
 import Type;
 import ParseTree;
+import util::Math;
 import kogi::Block;
 import kogi::Grammar2Block;
 import kogi::Symbol2Message;
@@ -12,7 +13,7 @@ import kogi::Symbol2Message;
 tuple[Symbol, list[Symbol]] cachedStartProduction = <\empty(), []>;
 
 Block production2Block(prod(\start(Symbol symbol), list[Symbol] symbols, set[Attr] attributes)){ 
-	cachedStartSymbol = <symbol, symbols>;
+	cachedStartProduction = <symbol, symbols>;
 	return Block::none();
 }
 
@@ -30,7 +31,7 @@ Block production2Block(prod(lex("Whitespace"), list[Symbol] symbols, set[Attr] a
 
 Block production2Block(prod(lex(str name), list[Symbol] symbols, set[Attr] attributes)){
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
-	return block(name, [ message ], output = Ref::block(""), colour = hsv(20));
+	return block(name, [ message ], output = Ref::block(""), colour = hsv(arbInt(360)));
 }
 
 list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
@@ -39,7 +40,7 @@ list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
 Block nonTerminal2Block(str name, list[Symbol] symbols){
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
 	// TODO: Check the list of symbols to determine if it has a next and/or previous statement
-	return block(name, [message], previous = Ref::block(""), next = Ref::block(""), inputsInline = true, colour = hsv(30));
+	return block(name, [message], previous = Ref::block(""), next = Ref::block(""), inputsInline = true, colour = hsv(arbInt(360)));
 }
 
 /*
@@ -47,7 +48,7 @@ Block nonTerminal2Block(str name, list[Symbol] symbols){
 */
 Block createMainBlock(str name, list[Symbol] symbols){
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols));
-	return block(name, [message], colour = hsv(10)); // Fixed value for this block? Green?
+	return block(name, [message], colour = hsv(90)); // Fixed value for this block Green.
 }
 
 //data Symbol
