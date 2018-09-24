@@ -17,6 +17,8 @@ set[Production] getAllProductionz(type[&T <: Tree] grammar){
 list[Block] grammar2blocks(type[&T<:Tree] grammar){
     allProductions = getAllProductionz(grammar);
     productions = { p | /p:prod(_,_,_) := allProductions, !isEmpty(p.symbols), layouts(_) !:= p.def };
+    //TODO: Extract information from the productions to know the multiplicity of the non-terminals (e.g. one, one or more, zero or more)
+    // Then this information should be used before creating each block.
     // FIX: ignore only the productions with attrs tag("category"("Comment"))
     blocks = [ production2Block(production) | production <- productions, isEmpty(production.attributes) ];
     return [ block | block <- blocks, Block::none() !:= block ];
