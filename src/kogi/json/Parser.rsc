@@ -38,7 +38,7 @@ str toJson(kogi::Block::Message val) =
 	"<val>";
 	
 str toJson(Ref val) =
-	val.\type == "" ? "null" : val.\type;
+	val.\type == "" ? "null" : "\"<val.\type>\"";
 	
 str toJson(list[&T] val) =
 	"[\n<("" | it + toJson(x)| x <- val, Arg::none() !:= x)[..-2]>\n]";
