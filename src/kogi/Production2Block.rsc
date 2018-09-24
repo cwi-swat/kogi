@@ -38,7 +38,7 @@ list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
 	
 Block nonTerminal2Block(str name, list[Symbol] symbols){
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
-	//Check whether the list of symbols to determine if it has a next and/or previous 
+	// TODO: Check the list of symbols to determine if it has a next and/or previous statement
 	return block(name, [message], previous = Ref::block(""), next = Ref::block(""), inputsInline = true, colour = hsv(30));
 }
 

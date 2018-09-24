@@ -49,6 +49,7 @@ str HTMLcontent(str toolbox, str title, str div)
 
 str blocklyApp(str divId, str tbId, str tbposition = "start", bool trashCan = true) = 
 	"function loadBlockly(){
+	'	 Blockly.BlockSvg.START_HAT = true;
 	'    var workspace = Blockly.inject(\'<divId>\', {
 	'            toolbox: document.getElementById(\'<tbId>\'),
 	'            collapse: true,
