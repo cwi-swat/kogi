@@ -42,8 +42,8 @@ data Arg
   ;
 
 data Type
-  = \value(str check = "")  // input
-  | statement() // input // TODO: Inlcude a check field?
+  = \value(str check = "")  // input_value
+  | statement(str check = "") // input_statement
   | dummy() // input (not needed?)
   | input(str text, bool spellcheck = true) // fields from here on down
   | dropdown(lrel[str, str] options)

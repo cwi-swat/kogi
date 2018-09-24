@@ -62,11 +62,12 @@ str toJson(Arg val) {
 		"		<toJson("name", name)>,
 		'		<toJson("type", "input_dummy")>";
 	}
-	else if(arg(name, statement()) := val){
+	else if(arg(name, statement(check = c)) := val){
 		result +=
 		"		<toJson("name", name)>,
 		'		<toJson("type", "input_statement")>,
-		'		<toJson("check", name)>";
+		'		<if( c != ""){><toJson("check", c)><}else{><toJson("check", name)><}>";
+		//'		<toJson("check", c)>";
 	}
 	else if(arg(name, \value()) := val){
 		result +=

@@ -21,4 +21,3 @@ list[Block] grammar2blocks(type[&T<:Tree] grammar){
     blocks = [ production2Block(production) | production <- productions, isEmpty(production.attributes) ];
     return [ block | block <- blocks, Block::none() !:= block ];
 }
-
