@@ -11,8 +11,8 @@ import kogi::Grammar2Block;
 
 void createBlocklyApp(str divName, type[&T<:Tree] grammar, str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/result|){
 	blocks = grammar2blocks(grammar);
-	Section sectionz = section("Grammar", hsv(getAverageColor(blocks)), blocks);
-	Toolbox toolbox = toolbox([sectionz]);
+	Section sections = section("Grammar", hsv(getAverageColor(blocks)), blocks);
+	Toolbox toolbox = toolbox([sections]);
 	// create JS
 	createJS(blocks, divName, toolboxName, targetPath);
 	// create HTML
@@ -27,7 +27,7 @@ void createBlocklyApp(str divName, list[Block] blocks, Toolbox toolbox, str titl
 }
 
 void createJS(list[Block] blocks, str divId, str toolbarId, loc dstPath){
-	content = (""| it + createBlocklyBlock(block) | block <- blocks);
+	content = ( "" | it + createBlocklyBlock(block) | block <- blocks );
     content += blocklyApp(divId, toolbarId);
     writeFile(dstPath + "blocks.js", content);
 }
