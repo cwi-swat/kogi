@@ -18,6 +18,9 @@ Block production2Block(prod(\start(Symbol symbol), list[Symbol] symbols, set[Att
 	return Block::none();
 }
 
+@doc{
+	This function creates blocks from context-free non-terminals.
+}
 Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity){ 
 	@doc{
 		This function takes the raw data and produces a Block.
@@ -59,15 +62,5 @@ Block production2Block(prod(lex(str name), list[Symbol] symbols, set[Attr] attri
 Block production2Block(prod(\label(str name, Symbol symbol), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity)
 	=	production2Block(prod(symbol, symbols, attributes), multiplicity);
 
-Block production2Block(Production production, map[str, bool] multiplicity) = Block::none();
-
-//data Symbol
-//     = \empty() 
-//     | \opt(Symbol symbol)  
-//     | \iter(Symbol symbol) 
-//     | \iter-star(Symbol symbol)  
-//     | \iter-seps(Symbol symbol, list[Symbol] separators)      
-//     | \iter-star-seps(Symbol symbol, list[Symbol] separators) 
-//     | \alt(set[Symbol] alternatives) 
-//     | \seq(list[Symbol] symbols)     
-//     ;
+Block production2Block(Production production, map[str, bool] multiplicity) 
+	= Block::none();
