@@ -23,3 +23,6 @@ map[str, bool] extractMultiplicity(Symbol symbol){
 		return ("": false);
 	}
 }
+
+list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
+	[ symbol |symbol <- symbols, layouts(_) !:= symbol];
