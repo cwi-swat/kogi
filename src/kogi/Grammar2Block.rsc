@@ -19,7 +19,7 @@ set[Production] getAllProductions(type[&T <: Tree] grammar){
 list[Block] grammar2blocks(type[&T<:Tree] grammar){
     productions = getAllProductions(grammar);
 	multiplicityInfo = nonTerminalMultiplicity(productions);
-    // FIX: ignore only the productions with attrs tag("category"("Comment"))
+    // FIX: Ignore only the productions with some layout tags
     blocks = [ production2Block(production, multiplicityInfo) | production <- productions, isEmpty(production.attributes) ];
     return [ block | block <- blocks, Block::none() !:= block ];
 }
