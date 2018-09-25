@@ -1,7 +1,9 @@
 module kogi::Util
 
+import List;
 import Set;
 import Type;
+import kogi::Block;
 
 
 map[str, bool] nonTerminalMultiplicity(set[Production] productions) =
@@ -26,3 +28,9 @@ map[str, bool] extractMultiplicity(Symbol symbol){
 
 list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
 	[ symbol |symbol <- symbols, layouts(_) !:= symbol];
+	
+@doc{
+	This function calculates the average HSV color of the list of blocks given as parameter.
+}	
+int getAverageColor(list[Block] blocks)
+	= (0| it + block.colour.hsv | block <- blocks)/size(blocks);
