@@ -1,3 +1,35 @@
+Blockly.Blocks['Machine'] = {
+    init: function() {
+        this.jsonInit(
+				{
+					"type" : "Machine",
+					"message0" : "machine %1 %2 %3 ",
+					"args0" : [
+						{
+							"name" : "",
+							"type" : "input_dummy"
+						},
+						{
+							"name" : "id",
+							"type" : "input_value"
+						},
+						{
+							"name" : "states",
+							"type" : "input_statement",
+							"check" : "State"
+						}
+					],
+					"colour" : 90,
+					
+					
+					
+					"inputsInline" : true,
+					"tooltip" : "",
+					"helpUrl" : ""
+				}
+ 		);
+	}
+}
 Blockly.Blocks['Id'] = {
     init: function() {
         this.jsonInit(
@@ -11,51 +43,11 @@ Blockly.Blocks['Id'] = {
 						"text" : "Id"
 						}
 					],
-					"colour" : 20,
-					"output" : null,
+					"colour" : 8,
+					"output" : "Id",
 					
 					
 					"inputsInline" : false,
-					"tooltip" : "",
-					"helpUrl" : ""
-				}
- 		);
-	}
-}
-Blockly.Blocks['State'] = {
-    init: function() {
-        this.jsonInit(
-				{
-					"type" : "State",
-					"message0" : "state %1 %2 { %3 %4 } %5 ",
-					"args0" : [
-						{
-							"name" : "",
-							"type" : "input_dummy"
-						},
-						{
-							"name" : "id",
-							"type" : "input_value"
-						},
-						{
-							"name" : "",
-							"type" : "input_dummy"
-						},
-						{
-							"name" : "transitions",
-							"type" : "input_statement",
-							"check" : "transitions"
-						},
-						{
-							"name" : "",
-							"type" : "input_dummy"
-						}
-					],
-					"colour" : 30,
-					
-					"previousStatement" : null,
-					"nextStatement" : null,
-					"inputsInline" : true,
 					"tooltip" : "",
 					"helpUrl" : ""
 				}
@@ -86,10 +78,10 @@ Blockly.Blocks['Trans'] = {
 							"type" : "input_value"
 						}
 					],
-					"colour" : 30,
+					"colour" : 157,
 					
-					"previousStatement" : null,
-					"nextStatement" : null,
+					"previousStatement" : "Trans",
+					"nextStatement" : "Trans",
 					"inputsInline" : true,
 					"tooltip" : "",
 					"helpUrl" : ""
@@ -97,12 +89,12 @@ Blockly.Blocks['Trans'] = {
  		);
 	}
 }
-Blockly.Blocks['Machine'] = {
+Blockly.Blocks['State'] = {
     init: function() {
         this.jsonInit(
 				{
-					"type" : "Machine",
-					"message0" : "machine %1 %2 %3 ",
+					"type" : "State",
+					"message0" : "state %1 %2 { %3 %4 } %5 ",
 					"args0" : [
 						{
 							"name" : "",
@@ -113,16 +105,24 @@ Blockly.Blocks['Machine'] = {
 							"type" : "input_value"
 						},
 						{
-							"name" : "states",
+							"name" : "",
+							"type" : "input_dummy"
+						},
+						{
+							"name" : "transitions",
 							"type" : "input_statement",
-							"check" : "states"
+							"check" : "Trans"
+						},
+						{
+							"name" : "",
+							"type" : "input_dummy"
 						}
 					],
-					"colour" : 10,
+					"colour" : 273,
 					
-					
-					
-					"inputsInline" : false,
+					"previousStatement" : "State",
+					"nextStatement" : "State",
+					"inputsInline" : true,
 					"tooltip" : "",
 					"helpUrl" : ""
 				}
@@ -130,10 +130,12 @@ Blockly.Blocks['Machine'] = {
 	}
 }
 function loadBlockly(){
+	 Blockly.BlockSvg.START_HAT = true;
     var workspace = Blockly.inject('aqui', {
             toolbox: document.getElementById('toolbox'),
             collapse: true,
             toolboxPosition: 'start', // end
             trashcan: true
     });
+	 workspace.addChangeListener(Blockly.Events.disableOrphans);
 }
