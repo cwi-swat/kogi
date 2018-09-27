@@ -20,11 +20,11 @@ Blockly.Blocks['multiplication'] = {
 							"check" : "Exp"
 						}
 					],
-					"colour" : 155,
+					"colour" : 190,
 					
 					"previousStatement" : "Exp",
 					
-					// "inputsInline" : true,
+					"inputsInline" : true,
 					"tooltip" : "",
 					"helpUrl" : ""
 				}
@@ -53,7 +53,7 @@ Blockly.Blocks['addition'] = {
 							"check" : "Exp"
 						}
 					],
-					"colour" : 99,
+					"colour" : 91,
 					
 					"previousStatement" : "Exp",
 					
@@ -100,7 +100,7 @@ Blockly.Blocks['numbers'] = {
 							"type" : "input_value"
 						}
 					],
-					"colour" : 3,
+					"colour" : 355,
 					
 					"previousStatement" : "Exp",
 					
@@ -124,7 +124,7 @@ Blockly.Blocks['IntegerLiteral'] = {
 						"text" : "IntegerLiteral"
 						}
 					],
-					"colour" : 335,
+					"colour" : 28,
 					"output" : "IntegerLiteral",
 					
 					
