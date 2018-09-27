@@ -8,11 +8,11 @@ import kogi::Block;
 import kogi::xml::Parser;
 import kogi::json::Parser;
 import kogi::Grammar2Block;
+import kogi::Block2Section;
 
 void createBlocklyApp(str divName, type[&T<:Tree] grammar, str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/result|){
 	blocks = grammar2blocks(grammar);
-	Section sections = section("Grammar", hsv(getAverageColor(blocks)), blocks);
-	Toolbox toolbox = toolbox([sections]);
+	Toolbox toolbox = toolbox(createSections(blocks));
 	// create JS
 	createJS(blocks, divName, toolboxName, targetPath);
 	// create HTML
