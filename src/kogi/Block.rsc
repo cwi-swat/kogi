@@ -7,7 +7,8 @@ data Section
   = section(str category, Colour colour, list[Block] blocks);
 
 data Block
-  = block(str \type, // type is defined here, e.g. Exp_Add
+  = block(str name, // name to reference the block.
+  	   str \type, // type is defined here, e.g. Exp_Add
        list[Message] messages, 
        Ref output = Ref::none(), 
        Ref previous = Ref::none(), 

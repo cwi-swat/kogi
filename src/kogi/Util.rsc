@@ -29,3 +29,8 @@ list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
 }	
 int getAverageColor(list[Block] blocks)
 	= (0| it + block.colour.hsv | block <- blocks)/size(blocks);
+	
+Block setBlockName(str name, Block block){
+	block.name = name;
+	return block;
+}	

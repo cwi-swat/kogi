@@ -62,7 +62,7 @@ str blocklyApp(str divId, str tbId, str tbposition = "start", bool trashCan = tr
 	;
 
 str createBlocklyBlock(Block block) =
-	"Blockly.Blocks[\'<block.\type>\'] = {
+	"Blockly.Blocks[\'<block.name>\'] = {
 	'    init: function() {
 	'        this.jsonInit(
 	'			<toJson(block)>

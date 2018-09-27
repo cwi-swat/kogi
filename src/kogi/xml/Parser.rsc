@@ -14,4 +14,4 @@ str parseSection(Section section) =
 	' \</category\>";	
 	
 str parseBlock(Block block) =
-	"\<block type=\"<block.\type>\"\>\</block\>\n";
+	"\<block type=\"<block.name>\"\>\</block\>\n";
