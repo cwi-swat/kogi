@@ -34,3 +34,8 @@ Block setBlockName(str name, Block block){
 	block.name = name;
 	return block;
 }	
+
+bool containLayoutAttributes(set[Attr] attributes){
+	filtered = [ attribute | attribute <- attributes, \bracket() := attribute || \tag("lineComment") := attribute || \tag("category"("Comment")) := attribute ];
+	return isEmpty(filtered);
+}
