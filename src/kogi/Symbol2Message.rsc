@@ -27,7 +27,7 @@ str symbols2format(list[Symbol] symbols){
 Arg symbol2Arg(lit(str string), str labeledName = "", str lexicalName = "")
 	= arg(labeledName, dummy());
 
-Arg symbol2Arg(lex(str name), str labeledName = "", str lexicalName = "")
+Arg symbol2Arg(lex(str name), str labeledName = "lex", str lexicalName = "")
 	= arg(labeledName, kogi::Block::\value(check = name));
 
 Arg symbol2Arg(\sort(str name), str labeledName = "", str lexicalName = "")
