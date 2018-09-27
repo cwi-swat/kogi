@@ -1,4 +1,4 @@
-Blockly.Blocks['Machine'] = {
+Blockly.Blocks['machine'] = {
     init: function() {
         this.jsonInit(
 				{
@@ -19,9 +19,9 @@ Blockly.Blocks['Machine'] = {
 							"check" : "State"
 						}
 					],
-					"colour" : 90,
+					"colour" : 183,
 					
-					
+					"previousStatement" : "Machine",
 					
 					"inputsInline" : true,
 					"tooltip" : "",
@@ -43,7 +43,7 @@ Blockly.Blocks['Id'] = {
 						"text" : "Id"
 						}
 					],
-					"colour" : 8,
+					"colour" : 208,
 					"output" : "Id",
 					
 					
@@ -54,7 +54,31 @@ Blockly.Blocks['Id'] = {
  		);
 	}
 }
-Blockly.Blocks['Trans'] = {
+Blockly.Blocks['start'] = {
+    init: function() {
+        this.jsonInit(
+				{
+					"type" : "Machine",
+					"message0" : "%1",
+					"args0" : [
+						{
+							"name" : "start",
+							"type" : "input_statement",
+							"check" : "Machine"
+						}
+					],
+					"colour" : 90,
+					
+					
+					
+					"inputsInline" : true,
+					"tooltip" : "",
+					"helpUrl" : ""
+				}
+ 		);
+	}
+}
+Blockly.Blocks['transitions'] = {
     init: function() {
         this.jsonInit(
 				{
@@ -78,7 +102,7 @@ Blockly.Blocks['Trans'] = {
 							"type" : "input_value"
 						}
 					],
-					"colour" : 157,
+					"colour" : 319,
 					
 					"previousStatement" : "Trans",
 					"nextStatement" : "Trans",
@@ -89,7 +113,7 @@ Blockly.Blocks['Trans'] = {
  		);
 	}
 }
-Blockly.Blocks['State'] = {
+Blockly.Blocks['state'] = {
     init: function() {
         this.jsonInit(
 				{
@@ -118,7 +142,7 @@ Blockly.Blocks['State'] = {
 							"type" : "input_dummy"
 						}
 					],
-					"colour" : 273,
+					"colour" : 271,
 					
 					"previousStatement" : "State",
 					"nextStatement" : "State",
@@ -131,7 +155,7 @@ Blockly.Blocks['State'] = {
 }
 function loadBlockly(){
 	 Blockly.BlockSvg.START_HAT = true;
-    var workspace = Blockly.inject('aqui', {
+    var workspace = Blockly.inject('blockDiv', {
             toolbox: document.getElementById('toolbox'),
             collapse: true,
             toolboxPosition: 'start', // end

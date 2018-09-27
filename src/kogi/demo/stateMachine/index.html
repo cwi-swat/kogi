@@ -7,21 +7,26 @@
     <script src="../../../../resources/blockly/blocks_compressed.js"></script>
     <!-- Messages for the user's language -->
     <script src="../../../../resources/blockly/msg/js/en.js"></script>
-    <title>Block Language for State Machines</title>
+    <title>Block Language for the State Machine language</title>
 </head>
 <body onload="loadBlockly()">
-    <h1> Block Language for State Machines</h1>
-    <div id="aqui" style= "height: 600px; width: 800px;">
+    <h1> Generated Block Language For State Machines</h1>
+    <div id="blockDiv" style= "height: 600px; width: 800px;">
     </div>
 </body>
 
 <!--TOOLBOX-->
 <xml id="toolbox" style="display: none">
-	<category name="Grammar" colour="132" >
-		<block type="Machine"></block>
-		<block type="Id"></block>
-		<block type="Trans"></block>
-		<block type="State"></block> 
+	<category name="Start" colour="90" >
+		<block type="start"></block> 
+	 </category><category name="Machine" colour="183" >
+		<block type="machine"></block> 
+	 </category><category name="Trans" colour="319" >
+		<block type="transitions"></block> 
+	 </category><category name="State" colour="271" >
+		<block type="state"></block> 
+	 </category><category name="Id" colour="208" >
+		<block type="Id"></block> 
 	 </category>
 </xml>
 
