@@ -61,8 +61,10 @@ Block production2Block(prod(lex(str name), list[Symbol] symbols, set[Attr] attri
 	return block(name, name, [ message ], output = Ref::block(name), colour = hsv(arbInt(360)));
 }
 
-Block production2Block(prod(\label(str name, Symbol symbol), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity)
-	=	setBlockName(name, production2Block(prod(symbol, symbols, attributes), multiplicity));
+Block production2Block(prod(\label(str name, Symbol symbol), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity){
+	Block block = production2Block(prod(symbol, symbols, attributes), multiplicity);
+	return block := Block::none() ? block :	setBlockName(name, block);
+}
 
 Block production2Block(Production production, map[str, bool] multiplicity) 
 	= Block::none();
