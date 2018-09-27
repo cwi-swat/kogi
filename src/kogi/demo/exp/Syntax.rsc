@@ -3,8 +3,8 @@ module kogi::demo::exp::Syntax
 lexical IntegerLiteral = [0-9]+;
 
 start syntax Exp
-  = IntegerLiteral
-  | bracket "(" Exp ")"
-  > left Exp "*" Exp
-  > left Exp "+" Exp
+  = numbers: IntegerLiteral
+  | bracket brackets: "(" Exp ")"
+  > left multiplication: Exp "*" Exp
+  > left addition: Exp "+" Exp
   ;
