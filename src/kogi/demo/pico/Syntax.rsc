@@ -18,7 +18,7 @@ start syntax Program
    = program: "begin" Declarations decls {Statement  ";"}* body "end" ;
 
 syntax Declarations 
-   = "declare" {Declaration ","}* decls ";" ;  
+   = declarations: "declare" {Declaration ","}* decls ";" ;  
  
 syntax Declaration = decl: Id id ":" Type tp;
 
