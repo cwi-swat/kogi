@@ -14,10 +14,18 @@ kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = "")
 //FIX: Not sure if this is completely true, but it reduces the number of conditionals(e.g., lex(…), \iter-start(…)) 
 str symbols2format(list[Symbol] symbols){
 	int counter = 0;
+	
+	str escape(str string){
+		if(string == "\"")
+			return "\\\"";
+		else
+			return string;
+	}
+	
 	str format(Symbol symbol){
 		counter += 1;
 		if(lit(string) := symbol)
-			return "<string> %<counter> ";
+			return "<escape(string)> %<counter> ";
 		else
 			return "%<counter> ";
 	}
@@ -42,8 +50,8 @@ Arg symbol2Arg(\iter-star-seps(Symbol symbol, list[Symbol] separators), str labe
 Arg symbol2Arg(\iter-seps(Symbol symbol, list[Symbol] separators), str labeledName = "", str lexicalName = "") =
 	arg(labeledName, statement(check = symbol.name));
 
-Arg symbol2Arg(\iter-star(Symbol symbol), str labeledName = "", str lexicalName = "") =
-	arg(labeledName, statement(check = symbol.name));
+Arg symbol2Arg(\iter-star(Symbol symbol), str labeledName = "", str lexicalName = "") 
+	= symbol2Arg(symbol, labeledName = labeledName, lexicalName = lexicalName); //arg(labeledName, statement(check = symbol.name));}
 
 Arg symbol2Arg(\opt(Symbol symbol), str labeledName = "", str lexicalName = "") =
 	arg(labeledName, statement(check = symbol.name));
