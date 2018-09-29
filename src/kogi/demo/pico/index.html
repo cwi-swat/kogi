@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+    <script src="../../../../resources/blockly/blockly_compressed.js"></script>
+    <script src="../../../../resources/blockly/blocks_compressed.js"></script>
+    <!-- Messages for the user's language -->
+    <script src="../../../../resources/blockly/msg/js/en.js"></script>
+    <title>Block Language for the Pico language</title>
+</head>
+<body onload="loadBlockly()">
+    <h1> Block Language for the Pico language</h1>
+    <div id="blockDiv" style= "height: 600px; width: 800px;">
+    </div>
+</body>
+
+<!--TOOLBOX-->
+<xml id="toolbox" style="display: none">
+	<category name="Start" colour="90" >
+		<block type="start"></block> 
+	 </category><category name="Program" colour="116" >
+		<block type="program"></block> 
+	 </category><category name="WhitespaceAndComment" colour="61" >
+		<block type="WhitespaceAndComment"></block> 
+	 </category><category name="Natural" colour="15" >
+		<block type="Natural"></block> 
+	 </category><category name="Statement" colour="191" >
+		<block type="asgStat"></block>
+		<block type="whileStat"></block>
+		<block type="ifElseStat"></block> 
+	 </category><category name="String" colour="322" >
+		<block type="String"></block> 
+	 </category><category name="Expression" colour="233" >
+		<block type="conc"></block>
+		<block type="strCon"></block>
+		<block type="add"></block>
+		<block type="id"></block>
+		<block type="natCon"></block>
+		<block type="sub"></block> 
+	 </category><category name="Declarations" colour="35" >
+		<block type="declarations"></block> 
+	 </category><category name="Id" colour="282" >
+		<block type="Id"></block> 
+	 </category><category name="Declaration" colour="348" >
+		<block type="decl"></block> 
+	 </category><category name="Type" colour="277" >
+		<block type="natural"></block>
+		<block type="string"></block> 
+	 </category>
+</xml>
+
+<script src="blocks.js"></script>
+</html>
