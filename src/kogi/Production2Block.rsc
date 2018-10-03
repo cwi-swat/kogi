@@ -55,10 +55,13 @@ Block production2Block(prod(lex("Whitespace"), list[Symbol] symbols, set[Attr] a
 	
 Block production2Block(prod(lex("WhitespaceOrComment"), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity)
 	= Block::none();
+	
+Block production2Block(prod(lex("WhitespaceAndComment"), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity)
+	= Block::none();
 
 Block production2Block(prod(lex(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity){
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
-	return block(name, name, [ message ], output = Ref::block(name), colour = hsv(arbInt(360)));
+	return block(name, name, [ message ], output = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)));
 }
 
 Block production2Block(prod(\label(str name, Symbol symbol), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity){

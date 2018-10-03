@@ -7,7 +7,7 @@ import kogi::Block;
 kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = ""){
 	format = symbols2format(symbols);
 	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols ];
-	return message(format, args);
+	return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
 }
 
 //FIX: If the last symbol is a lit, it shouldn't add  the last %n
@@ -26,6 +26,8 @@ str symbols2format(list[Symbol] symbols){
 		counter += 1;
 		if(lit(string) := symbol)
 			return "<escape(string)> %<counter> ";
+		else if(conditional(_,_) := symbol)
+			return "";
 		else
 			return "%<counter> ";
 	}
