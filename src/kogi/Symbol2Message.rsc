@@ -11,7 +11,7 @@ kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = "")
 }
 
 //FIX: If the last symbol is a lit, it shouldn't add  the last %n
-//FIX: Not sure if this is completely true, but it reduces the number of conditionals(e.g., lex(…), \iter-start(…)) 
+//FIX: Not sure, but it reduces the number of conditionals(e.g., lex(…), \iter-start(…)) 
 str symbols2format(list[Symbol] symbols){
 	int counter = 0;
 	
