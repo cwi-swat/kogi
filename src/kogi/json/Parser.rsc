@@ -22,67 +22,51 @@ str toJson(Block block) =
 '  <toJson("helpUrl", block.helpUrl)>
 '}";
 
-str toJson(str key, value valo) =
-	"\"<key>\" : <toJson(valo)>";
+str toJson(str key, value valo) = "\"<key>\" : <toJson(valo)>";
 
-str toJson(str val) =
-	"\"<val>\"";
+str toJson(str val) = "\"<val>\"";
 	
-str toJson(int val) =
-	"<val>";
+str toJson(int val) = "<val>";
 	
-str toJson(bool val) =
-	"<val>";
+str toJson(bool val) = "<val>";
 	
-str toJson(kogi::Block::Message val) =
-	"<val>";
+str toJson(kogi::Block::Message val) = "<val>";
 	
-str toJson(Ref val) =
-	val.\type == "" ? "null" : "\"<val.\type>\"";
+str toJson(Ref val) = val.\type == "" ? "null" : "\"<val.\type>\"";
 	
 str toJson(list[&T] val) =
 	"[\n<("" | it + toJson(x)| x <- val, Arg::none() !:= x)[..-2]>\n]";
-	
-int toJson(Colour val) {
-	if(rgb(rgb) := val){
-		return -3;
-	}
-	else if(hsv(hsv):= val){
-		return hsv;
-	}
-	else if(bky(category):= val){
-		return -3;
-	}
-}
 
-//arg(str name, Type \type, Arg alt = none())
+int toJson(rgb(str rgb)) = -3;
+
+int toJson(hsv(int hsv)) = hsv;
+	
+int toJson(bky(str category)) = -3;
+
+str toJson(Arg arg)
+	= "	{
+	  '	  <toJson(arg)>
+	  '	},";
+
 str toJson(arg(str name, dummy()))
-	=	" 	<toJson("name", name)>,
-		'  	<toJson("type", "input_dummy")>";
+	=	"<toJson("name", name)>,
+		'<toJson("type", "input_dummy")>";
 		
 str toJson(arg(name, statement(check = c)))
-	=	" 	<toJson("name", name)>,
-		'	<toJson("type", "input_statement")>,
-		'	<if( c != ""){><toJson("check", c)><}else{><toJson("check", name)><}>";
+	=	"<toJson("name", name)>,
+		'<toJson("type", "input_statement")>,
+		'<if( c != ""){><toJson("check", c)><}else{><toJson("check", name)><}>";
 		
 str toJson(arg(name, \value(check=tipo)))
-	=	"	<toJson("name", name)>,
-		'	<toJson("type", "input_value")>,
-		'	<toJson("check", tipo)>";
+	=	"<toJson("name", name)>,
+		'<toJson("type", "input_value")>,
+		'<toJson("check", tipo)>";
 	
 str toJson(arg(name, \value()))
-	=	"	<toJson("name", name)>,
-		'	<toJson("type", "input_value")>";
+	=	"<toJson("name", name)>,
+		'<toJson("type", "input_value")>";
 
 str toJson(arg(name, input(text)))
-	=	"	<toJson("name", name)>,
-		'	<toJson("type", "field_input")>,
-		'	<toJson("text", "<text>")>";
-		
-str toJson(Arg val) {
-	result = "{\n";
-	
-	result += toJson(val); 
-
-	return result + "\n	},\n";
-}
+	=	"<toJson("name", name)>,
+		'<toJson("type", "field_input")>,
+		'<toJson("text", "<text>")>";
