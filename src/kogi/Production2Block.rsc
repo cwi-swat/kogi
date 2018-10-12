@@ -25,7 +25,7 @@ Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Att
 	if(name in multiplicity && !multiplicity[name])
 		return block(labelName, name, [message], previous = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
 	else
-		return block(labelName, name, [message], previous = Ref::block(name), next = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)));
+		return block(labelName, name, [message], previous = Ref::block(name), next = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
 }
   
 Block production2Block(prod(lex("Whitespace"), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "")
