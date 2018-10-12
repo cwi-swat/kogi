@@ -69,16 +69,16 @@ str toJson(Arg val) {
 		'		<if( c != ""){><toJson("check", c)><}else{><toJson("check", name)><}>";
 		//'		<toJson("check", c)>";
 	}
+	else if(arg(name, \value(check=tipo)) := val){
+		result +=
+		"		<toJson("name", name)>,
+		'		<toJson("type", "input_value")>,
+		'		<toJson("check", tipo)>";
+	}
 	else if(arg(name, \value()) := val){
 		result +=
 		"		<toJson("name", name)>,
 		'		<toJson("type", "input_value")>";
-	}
-	else if(arg(name, \value(check=a)) := val){
-		result +=
-		"		<toJson("name", name)>,
-		'		<toJson("type", "input_value")>
-		'		<toJson("check", a)>";
 	}
 	// spellcheck is discarted
 	else if(arg(name, input(text)) := val){
