@@ -1,137 +1,143 @@
 Blockly.Blocks['multiplication'] = {
     init: function() {
         this.jsonInit(
-				{
-					"type" : "Exp",
-					"message0" : "%1 * %2 %3 ",
-					"args0" : [
-						{
-							"name" : "Exp",
-							"type" : "input_statement",
-							"check" : "Exp"
-						},
-						{
-							"name" : "",
-							"type" : "input_dummy"
-						},
-						{
-							"name" : "Exp",
-							"type" : "input_statement",
-							"check" : "Exp"
-						}
-					],
-					"colour" : 190,
-					
-					"previousStatement" : "Exp",
-					
-					"inputsInline" : true,
-					"tooltip" : "",
-					"helpUrl" : ""
-				}
+			{
+			  "type" : "Exp",
+			  "message0" : "%1 * %2 %3 ",
+			  "args0" : [
+			  	{
+			  	  "name" : "Exp",
+			  	  "type" : "input_statement",
+			  	  "check" : "Exp"
+			  	},
+			  	  	{
+			  	  "name" : "",
+			  	  "type" : "input_dummy"
+			  	},
+			  	  	{
+			  	  "name" : "Exp",
+			  	  "type" : "input_statement",
+			  	  "check" : "Exp"
+			  	},
+			  	
+			  ],
+			  "colour" : 165,
+			  
+			  "previousStatement" : "Exp",
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "multiplication",
+			  "helpUrl" : ""
+			}
  		);
 	}
 }
 Blockly.Blocks['addition'] = {
     init: function() {
         this.jsonInit(
-				{
-					"type" : "Exp",
-					"message0" : "%1 + %2 %3 ",
-					"args0" : [
-						{
-							"name" : "Exp",
-							"type" : "input_statement",
-							"check" : "Exp"
-						},
-						{
-							"name" : "",
-							"type" : "input_dummy"
-						},
-						{
-							"name" : "Exp",
-							"type" : "input_statement",
-							"check" : "Exp"
-						}
-					],
-					"colour" : 91,
-					
-					"previousStatement" : "Exp",
-					
-					"inputsInline" : true,
-					"tooltip" : "",
-					"helpUrl" : ""
-				}
+			{
+			  "type" : "Exp",
+			  "message0" : "%1 + %2 %3 ",
+			  "args0" : [
+			  	{
+			  	  "name" : "Exp",
+			  	  "type" : "input_statement",
+			  	  "check" : "Exp"
+			  	},
+			  	  	{
+			  	  "name" : "",
+			  	  "type" : "input_dummy"
+			  	},
+			  	  	{
+			  	  "name" : "Exp",
+			  	  "type" : "input_statement",
+			  	  "check" : "Exp"
+			  	},
+			  	
+			  ],
+			  "colour" : 230,
+			  
+			  "previousStatement" : "Exp",
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "addition",
+			  "helpUrl" : ""
+			}
  		);
 	}
 }
 Blockly.Blocks['start'] = {
     init: function() {
         this.jsonInit(
-				{
-					"type" : "Exp",
-					"message0" : "%1",
-					"args0" : [
-						{
-							"name" : "start",
-							"type" : "input_statement",
-							"check" : "Exp"
-						}
-					],
-					"colour" : 90,
-					
-					
-					
-					"inputsInline" : true,
-					"tooltip" : "",
-					"helpUrl" : ""
-				}
+			{
+			  "type" : "Exp",
+			  "message0" : "%1",
+			  "args0" : [
+			  	{
+			  	  "name" : "start",
+			  	  "type" : "input_statement",
+			  	  "check" : "Exp"
+			  	},
+			  	
+			  ],
+			  "colour" : 90,
+			  
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
  		);
 	}
 }
 Blockly.Blocks['numbers'] = {
     init: function() {
         this.jsonInit(
-				{
-					"type" : "Exp",
-					"message0" : "%1 ",
-					"args0" : [
-						{
-							"name" : "lex",
-							"type" : "input_value"
-						}
-					],
-					"colour" : 355,
-					
-					"previousStatement" : "Exp",
-					
-					"inputsInline" : true,
-					"tooltip" : "",
-					"helpUrl" : ""
-				}
+			{
+			  "type" : "Exp",
+			  "message0" : "%1 ",
+			  "args0" : [
+			  	{
+			  	  "name" : "lex",
+			  	  "type" : "input_value",
+			  	  "check" : "IntegerLiteral"
+			  	},
+			  	
+			  ],
+			  "colour" : 301,
+			  
+			  "previousStatement" : "Exp",
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "numbers",
+			  "helpUrl" : ""
+			}
  		);
 	}
 }
 Blockly.Blocks['IntegerLiteral'] = {
     init: function() {
         this.jsonInit(
-				{
-					"type" : "IntegerLiteral",
-					"message0" : "%1 ",
-					"args0" : [
-						{
-						"name" : "IntegerLiteralName",
-						"type" : "field_input",
-						"text" : "IntegerLiteral"
-						}
-					],
-					"colour" : 28,
-					"output" : "IntegerLiteral",
-					
-					
-					"inputsInline" : false,
-					"tooltip" : "",
-					"helpUrl" : ""
-				}
+			{
+			  "type" : "IntegerLiteral",
+			  "message0" : "%1 ",
+			  "args0" : [
+			  	{
+			  	  "name" : "IntegerLiteralName",
+			  	  "type" : "field_input",
+			  	  "text" : "IntegerLiteral"
+			  	},
+			  	
+			  ],
+			  "colour" : 83,
+			  "output" : "IntegerLiteral",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
  		);
 	}
 }
