@@ -29,11 +29,6 @@ list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
 }	
 int getAverageColor(list[Block] blocks)
 	= (0| it + block.colour.hsv | block <- blocks)/size(blocks);
-	
-Block setBlockName(str name, Block block){
-	block.name = name;
-	return block;
-}	
 
 bool containLayoutAttributes(set[Attr] attributes){
 	filtered = [ attribute | attribute <- attributes, \bracket() := attribute || \tag("lineComment") := attribute || \tag("category"("Comment")) := attribute ];
