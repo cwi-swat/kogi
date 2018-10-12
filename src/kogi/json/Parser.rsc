@@ -22,7 +22,7 @@ str toJson(Block block) =
 '  <toJson("helpUrl", block.helpUrl)>
 '}";
 
-str toJson(str key, value valo) = "\"<key>\" : <toJson(valo)>";
+str toJson(str key, value valo) { return "\"<key>\" : <toJson(valo)>";}
 
 str toJson(str val) = "\"<val>\"";
 	
@@ -43,10 +43,13 @@ int toJson(hsv(int hsv)) = hsv;
 	
 int toJson(bky(str category)) = -3;
 
+int toJson(Colour col) = toJson(col);
+
 str toJson(Arg arg)
 	= "	{
 	  '	  <toJson(arg)>
-	  '	},";
+	  '	},
+	  ";
 
 str toJson(arg(str name, dummy()))
 	=	"<toJson("name", name)>,
