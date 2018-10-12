@@ -9,18 +9,18 @@ str toJson(list[Block] blocks) =
 	"[\n<("" | it + toJson(block) + ",\n"| block <- blocks, Block::none() !:= block)[..-2]>]";
 	
 str toJson(Block block) =
-"	{
-'		<toJson("type", block.\type)>,
-'		<toJson("message0", block.messages[0].format)>,
-'		<toJson("args0", block.messages[0].args)>,
-'		<if(Colour::none() !:= block.colour){><toJson("colour", block.colour) + ","><}>
-'		<if(Ref::none() !:= block.output){><toJson("output", block.output) + ","><}>
-'		<if(Ref::none() !:= block.previous){><toJson("previousStatement", block.previous) + ","><}>
-'		<if(Ref::none() !:= block.next){><toJson("nextStatement", block.next) + ","><}>
-'		<toJson("inputsInline", block.inputsInline)>,
-'		<toJson("tooltip", block.tooltip)>,
-'		<toJson("helpUrl", block.helpUrl)>
-'	}";
+"{
+'  <toJson("type", block.\type)>,
+'  <toJson("message0", block.messages[0].format)>,
+'  <toJson("args0", block.messages[0].args)>,
+'  <if(Colour::none() !:= block.colour){><toJson("colour", block.colour) + ","><}>
+'  <if(Ref::none() !:= block.output){><toJson("output", block.output) + ","><}>
+'  <if(Ref::none() !:= block.previous){><toJson("previousStatement", block.previous) + ","><}>
+'  <if(Ref::none() !:= block.next){><toJson("nextStatement", block.next) + ","><}>
+'  <toJson("inputsInline", block.inputsInline)>,
+'  <toJson("tooltip", block.tooltip)>,
+'  <toJson("helpUrl", block.helpUrl)>
+'}";
 
 str toJson(str key, value valo) =
 	"\"<key>\" : <toJson(valo)>";
@@ -54,43 +54,35 @@ int toJson(Colour val) {
 		return -3;
 	}
 }
+
+//arg(str name, Type \type, Arg alt = none())
+str toJson(arg(str name, dummy()))
+	=	" 	<toJson("name", name)>,
+		'  	<toJson("type", "input_dummy")>";
+		
+str toJson(arg(name, statement(check = c)))
+	=	" 	<toJson("name", name)>,
+		'	<toJson("type", "input_statement")>,
+		'	<if( c != ""){><toJson("check", c)><}else{><toJson("check", name)><}>";
+		
+str toJson(arg(name, \value(check=tipo)))
+	=	"	<toJson("name", name)>,
+		'	<toJson("type", "input_value")>,
+		'	<toJson("check", tipo)>";
 	
-str toJson(Arg val) {
-	result = "	{\n"; 
-	if(arg(name, dummy()) := val){
-		result +=
-		"		<toJson("name", name)>,
-		'		<toJson("type", "input_dummy")>";
-	}
-	else if(arg(name, statement(check = c)) := val){
-		result +=
-		"		<toJson("name", name)>,
-		'		<toJson("type", "input_statement")>,
-		'		<if( c != ""){><toJson("check", c)><}else{><toJson("check", name)><}>";
-		//'		<toJson("check", c)>";
-	}
-	else if(arg(name, \value(check=tipo)) := val){
-		result +=
-		"		<toJson("name", name)>,
-		'		<toJson("type", "input_value")>,
-		'		<toJson("check", tipo)>";
-	}
-	else if(arg(name, \value()) := val){
-		result +=
-		"		<toJson("name", name)>,
-		'		<toJson("type", "input_value")>";
-	}
-	// spellcheck is discarted
-	else if(arg(name, input(text)) := val){
-		result +=
-		"	<toJson("name", name)>,
+str toJson(arg(name, \value()))
+	=	"	<toJson("name", name)>,
+		'	<toJson("type", "input_value")>";
+
+str toJson(arg(name, input(text)))
+	=	"	<toJson("name", name)>,
 		'	<toJson("type", "field_input")>,
 		'	<toJson("text", "<text>")>";
-	}
-	else{
-		result +=
-		"	<toJson("name", val.name)>,
-		'	<toJson("type", val.\type)>,";
-	}
+		
+str toJson(Arg val) {
+	result = "{\n";
+	
+	result += toJson(val); 
+
 	return result + "\n	},\n";
 }
