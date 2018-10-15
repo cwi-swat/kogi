@@ -11,12 +11,11 @@ import kogi::Block;
 import kogi::Production2Block;
 
 
-set[Production] getAllProductions(type[&T <: Tree] grammar){
+set[Production] getAllProductions(type[&T <: Tree] grammar) {
      return { p | /p:prod(_,_,_) := 
      	( {} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions ), !isEmpty(p.symbols), layouts(_) !:= p.def };
 }
-
-list[Block] grammar2blocks(type[&T<:Tree] grammar){
+list[Block] grammar2blocks(type[&T<:Tree] grammar) {
     productions = getAllProductions(grammar);
 	multiplicityInfo = nonTerminalMultiplicity(productions);
 	//isSingleGrammar(productions);
