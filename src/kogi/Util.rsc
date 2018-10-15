@@ -6,8 +6,8 @@ import Type;
 import kogi::Block;
 
 
-map[str, bool] nonTerminalMultiplicity(set[Production] productions) =
-	( () | it + extractMultiplicity(symbol) | symbol <- ( [] | it + production.symbols | production <- productions, isEmpty(production.attributes) ) );
+map[str, bool] nonTerminalMultiplicity(set[Production] productions) 
+	= ( () | it + extractMultiplicity(symbol) | symbol <- ( [] | it + production.symbols | production <- productions, isEmpty(production.attributes) ) );
 
 map[str, bool] extractMultiplicity(\iter-star-seps(Symbol symbol, _))
 	= ( symbol.name : true );
@@ -30,7 +30,7 @@ list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
 int getAverageColor(list[Block] blocks)
 	= (0| it + block.colour.hsv | block <- blocks)/size(blocks);
 
-bool containLayoutAttributes(set[Attr] attributes){
+bool containLayoutAttributes(set[Attr] attributes) {
 	filtered = [ attribute | attribute <- attributes, \bracket() := attribute || \tag("lineComment") := attribute || \tag("category"("Comment")) := attribute ];
 	return isEmpty(filtered);
 }
