@@ -1,7 +1,7 @@
 module kogi::Util
 
-import List;
 import Set;
+import List;
 import Type;
 import kogi::Block;
 
@@ -34,3 +34,6 @@ bool containLayoutAttributes(set[Attr] attributes) {
 	filtered = [ attribute | attribute <- attributes, \bracket() := attribute || \tag("lineComment") := attribute || \tag("category"("Comment")) := attribute ];
 	return isEmpty(filtered);
 }
+
+list[Block] getBlocks(Toolbox toolbox)
+	= [ block | section <- toolbox.sections, block <- section.blocks];
