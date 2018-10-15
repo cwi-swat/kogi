@@ -37,3 +37,13 @@ bool containLayoutAttributes(set[Attr] attributes) {
 
 list[Block] getBlocks(Toolbox toolbox)
 	= [ block | section <- toolbox.sections, block <- section.blocks];
+	
+tuple[int,Block] getBlock(str name, list[Block] blocks){
+	int i = 0;
+	for(block <- blocks){
+		if(block.name == name)
+			return <i, block>;
+		i += 1;	
+	}
+	return < -1, Block::none() >;
+}
