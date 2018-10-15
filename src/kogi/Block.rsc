@@ -13,7 +13,7 @@ data Block
        Ref output = Ref::none(), 
        Ref previous = Ref::none(), 
        Ref next = Ref::none(),
-       Colour colour = none(), 
+       Colour colour = Colour::none(), 
        str tooltip = "",
        str helpUrl = "",
        list[str] extensions = [],
