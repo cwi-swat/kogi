@@ -5,22 +5,22 @@ import List;
 import String;
 import kogi::Block;
 
-str toJson(list[Block] blocks) =
-	"[\n<("" | it + toJson(block) + ",\n"| block <- blocks, Block::none() !:= block)[..-2]>]";
+str toJson(list[Block] blocks) 
+	= "[\n<( "" | it + toJson(block) + ",\n" | block <- blocks, Block::none() !:= block )[..-2]>]";
 	
-str toJson(Block block) =
-"{
-'  <toJson("type", block.\type)>,
-'  <toJson("message0", block.messages[0].format)>,
-'  <toJson("args0", block.messages[0].args)>,
-'  <if(Colour::none() !:= block.colour){><toJson("colour", block.colour) + ","><}>
-'  <if(Ref::none() !:= block.output){><toJson("output", block.output) + ","><}>
-'  <if(Ref::none() !:= block.previous){><toJson("previousStatement", block.previous) + ","><}>
-'  <if(Ref::none() !:= block.next){><toJson("nextStatement", block.next) + ","><}>
-'  <toJson("inputsInline", block.inputsInline)>,
-'  <toJson("tooltip", block.tooltip)>,
-'  <toJson("helpUrl", block.helpUrl)>
-'}";
+str toJson(Block block) 
+	= "{
+	'  <toJson("type", block.\type)>,
+	'  <toJson("message0", block.messages[0].format)>,
+	'  <toJson("args0", block.messages[0].args)>,
+	'  <if(Colour::none() !:= block.colour){><toJson("colour", block.colour) + ","><}>
+	'  <if(Ref::none() !:= block.output){><toJson("output", block.output) + ","><}>
+	'  <if(Ref::none() !:= block.previous){><toJson("previousStatement", block.previous) + ","><}>
+	'  <if(Ref::none() !:= block.next){><toJson("nextStatement", block.next) + ","><}>
+	'  <toJson("inputsInline", block.inputsInline)>,
+	'  <toJson("tooltip", block.tooltip)>,
+	'  <toJson("helpUrl", block.helpUrl)>
+	'}";
 
 str toJson(str key, value valo) { return "\"<key>\" : <toJson(valo)>";}
 
@@ -34,8 +34,8 @@ str toJson(kogi::Block::Message val) = "<val>";
 	
 str toJson(Ref val) = val.\type == "" ? "null" : "\"<val.\type>\"";
 	
-str toJson(list[&T] val) =
-	"[\n<("" | it + toJson(x)| x <- val, Arg::none() !:= x)[..-2]>\n]";
+str toJson(list[&T] val) 
+	= "[\n<("" | it + toJson(x)| x <- val, Arg::none() !:= x)[..-2]>\n]";
 
 int toJson(rgb(str rgb)) = -3;
 
