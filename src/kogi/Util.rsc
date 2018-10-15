@@ -21,8 +21,8 @@ map[str, bool] extractMultiplicity(\label(str name, Symbol symbol))
 default map[str, bool] extractMultiplicity(Symbol symbol)
 	= ( "" : false );
 
-list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) =
-	[ symbol |symbol <- symbols, layouts(_) !:= symbol];
+list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) 
+	= [ symbol |symbol <- symbols, layouts(_) !:= symbol];
 	
 @doc{
 	This function calculates the average HSV color of the list of blocks given as parameter.
