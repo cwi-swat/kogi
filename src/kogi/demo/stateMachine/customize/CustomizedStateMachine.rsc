@@ -15,3 +15,18 @@ Toolbox customBlocks() {
 	nonTerminals = section("NonTerminals", hsv(45), [machine, state, transitions]);
 	return toolbox([nonTerminals, terminals]);
 }
+
+Toolbox groupBlocks() {
+	// Blocks
+	machine = block("machine", "", []);
+	state = block("state", "", []);
+	transitions = block("transitions", "", []);
+	id = block("Id", "", []);
+	
+	// Sections
+	sectionMachine = section("Machine", hsv(0), [machine]);
+	sectioState = section("State", hsv(10), [state]);
+	sectionTransitions = section("Transitions", hsv(20), [transitions]);
+	sectionId = section("Id", hsv(30), [id]);
+	return toolbox([sectionMachine, sectioState, sectionTransitions, sectionId]);
+}
