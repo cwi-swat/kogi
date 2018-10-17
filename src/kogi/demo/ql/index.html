@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+    <script src="../../../../resources/blockly/blockly_compressed.js"></script>
+    <script src="../../../../resources/blockly/blocks_compressed.js"></script>
+    <!-- Messages for the user's language -->
+    <script src="../../../../resources/blockly/msg/js/en.js"></script>
+    <title>QL Language</title>
+</head>
+<body onload="loadBlockly()">
+    <h1> QL Language</h1>
+    <div id="blockDiv" style= "height: 600px; width: 800px;">
+    </div>
+</body>
+
+<!--TOOLBOX-->
+<xml id="toolbox" style="display: none">
+	<category name="Start" colour="90" >
+		<block type="start"></block> 
+	 </category><category name="Form" colour="229" >
+		<block type="form"></block> 
+	 </category><category name="Question" colour="225" >
+		<block type="ifThenElse"></block>
+		<block type="ifThen"></block>
+		<block type="computed"></block>
+		<block type="question"></block>
+		<block type="group"></block> 
+	 </category><category name="Expr" colour="214" >
+		<block type="true"></block>
+		<block type="money"></block>
+		<block type="div"></block>
+		<block type="or"></block>
+		<block type="integer"></block>
+		<block type="and"></block>
+		<block type="var"></block>
+		<block type="add"></block>
+		<block type="lt"></block>
+		<block type="false"></block>
+		<block type="eq"></block>
+		<block type="neq"></block>
+		<block type="geq"></block>
+		<block type="string"></block>
+		<block type="sub"></block>
+		<block type="gt"></block>
+		<block type="leq"></block>
+		<block type="mul"></block>
+		<block type="not"></block> 
+	 </category>
+</xml>
+
+<script src="blocks.js"></script>
+</html>
