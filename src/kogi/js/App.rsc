@@ -1,6 +1,7 @@
 module kogi::js::App
 
 import IO;
+import String;
 import kogi::Block;
 import kogi::json::Parser;
 
@@ -24,7 +25,7 @@ str blocklyApp(str divId, str tbId, str tbposition = "start", bool trashCan = tr
 	;
 
 str createBlocklyBlock(Block block) =
-	"Blockly.Blocks[\'<block.name>\'] = {
+	"Blockly.Blocks[\'<trim(blockName(block))>\'] = {
 	'    init: function() {
 	'        this.jsonInit(
 	'			<toJson(block)>
@@ -32,3 +33,6 @@ str createBlocklyBlock(Block block) =
 	'	}
 	'}
 	'";
+	
+str blockName(Block block) 
+	="<if(block.name!= ""){> <block.name> <}else{><block.\type><}>";

@@ -34,6 +34,9 @@ str toJson(kogi::Block::Message val) = "<val>";
 	
 str toJson(Ref val) = val.\type == "" ? "null" : "\"<val.\type>\"";
 	
+str toJson(list[str] val)
+	= "[<("" | it + toJson(x) + ", "| x <- val)[..-2]>]";
+
 str toJson(list[&T] val) 
 	= "[\n<("" | it + toJson(x)| x <- val, Arg::none() !:= x)[..-2]>\n]";
 
@@ -58,7 +61,10 @@ str toJson(arg(str name, dummy()))
 str toJson(arg(name, statement(check = c)))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "input_statement")>,
-		'<if( c != ""){><toJson("check", c)><}else{><toJson("check", name)><}>";
+		'<if( c != [""]){><toJson("check", c)><}else{><toJson("check", c)><}>";
+		
+str checks(list[str] t)
+	= "";		
 		
 str toJson(arg(name, \value(check=tipo)))
 	=	"<toJson("name", name)>,
