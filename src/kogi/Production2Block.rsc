@@ -12,7 +12,7 @@ import kogi::Symbol2Message;
 
 
 Block production2Block(prod(\start(sort(str name)), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity) {
-	kogi::Block::Message message = message( "%1", [ arg("start", statement(check = name)) ] );
+	kogi::Block::Message message = message( "%1", [ arg("start", statement(check = [name])) ] );
 	return block("start", name, [message], inputsInline = true, colour = hsv(90));
 }
 
