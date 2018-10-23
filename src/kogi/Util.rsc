@@ -3,6 +3,8 @@ module kogi::Util
 import Set;
 import List;
 import Type;
+import String;
+import util::Math;
 import kogi::Block;
 
 
@@ -12,8 +14,11 @@ map[str, bool] nonTerminalMultiplicity(set[Production] productions)
 map[str, bool] extractMultiplicity(\iter-star-seps(alt(set[Symbol] symbols), _))
 	= ("<symbols>" : true);
 	
+map[str, bool] extractMultiplicity(\iter-star-seps(lit(str name), _))
+	{ return (name : true);}
+
 map[str, bool] extractMultiplicity(\iter-star-seps(Symbol symbol, _))
-	{ return (symbol.name : true);}	
+	{ return (symbol.name : true);}
 	
 // TODO: Fix extract multiplicity
 map[str, bool] extractMultiplicity(\alt(set[Symbol] alternatives))
@@ -71,3 +76,9 @@ list[str] getSyntaxCheck(\alt(set[Symbol] alternatives))
 	
 list[str] getSyntaxCheck(\char-class(_))
 	= [""];
+	
+list[str] getSyntaxCheck(\lit(_))
+	= [""];
+	
+str setBlockName(str name, str typeName)
+	=  name == "" ? toLowerCase(typeName) + "<arbInt(400)>" : name;
