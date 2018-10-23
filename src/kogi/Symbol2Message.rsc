@@ -19,17 +19,16 @@ str symbols2format(list[Symbol] symbols){
 	str escape(str string){
 		if(string == "\"")
 			return "\\\"";
+		else if(string == "%")
+			return "%%";
 		else
 			return string;
 	}
 	
-	// TODO: some blocks are getting started on %2
 	str format(Symbol symbol){
 		counter += 1;
 		if(lit(string) := symbol)
 			return "<escape(string)> %<counter> ";
-		else if(conditional(_,_) := symbol)
-			return "";
 		else
 			return "%<counter> ";
 	}
@@ -43,22 +42,22 @@ Arg symbol2Arg(lex(str name), str labeledName = "lex", str lexicalName = "")
 	= arg(labeledName, kogi::Block::\value(check = [name]));
 
 Arg symbol2Arg(\sort(str name), str labeledName = "stmt", str lexicalName = "")
-	{return arg(name, statement(check = [name]));}
+	= arg(name, statement(check = [name]));
 
-Arg symbol2Arg(\iter(Symbol symbol), str labeledName = "", str lexicalName = "") =
-	symbol2Arg(symbol, lexicalName=lexicalName);
+Arg symbol2Arg(\iter(Symbol symbol), str labeledName = "", str lexicalName = "") 
+	= symbol2Arg(symbol, lexicalName=lexicalName);
 
 Arg symbol2Arg(\iter-star-seps(Symbol symbol, list[Symbol] separators), str labeledName = "stmt", str lexicalName = "") 
-	{return arg(labeledName, statement(check = getSyntaxCheck(symbol)));}
+	= arg(labeledName, statement(check = getSyntaxCheck(symbol)));
 
-Arg symbol2Arg(\iter-seps(Symbol symbol, list[Symbol] separators), str labeledName = "stmt", str lexicalName = "") =
-	arg(labeledName, statement(check = getSyntaxCheck(symbol)));
+Arg symbol2Arg(\iter-seps(Symbol symbol, list[Symbol] separators), str labeledName = "stmt", str lexicalName = "") 
+	= arg(labeledName, statement(check = getSyntaxCheck(symbol)));
 
-Arg symbol2Arg(\iter-star(Symbol symbol), str labeledName = "", str lexicalName = "") 
+Arg symbol2Arg(\iter-star(Symbol symbol), str labeledName = "stmt", str lexicalName = "") 
 	= symbol2Arg(symbol, labeledName = labeledName, lexicalName = lexicalName); //arg(labeledName, statement(check = symbol.name));}
 
 Arg symbol2Arg(\opt(Symbol symbol), str labeledName = "stmt", str lexicalName = "") 
-	{return arg(labeledName, statement(check = getSyntaxCheck(symbol)));}
+	= arg(labeledName, statement(check = getSyntaxCheck(symbol)));
 
 Arg symbol2Arg(\label(str name, Symbol s), str labeledName = "", str lexicalName = "")
 	= symbol2Arg(s, labeledName = name);
@@ -67,5 +66,12 @@ Arg symbol2Arg(\label(str name, Symbol s), str labeledName = "", str lexicalName
 Arg symbol2Arg(\char-class(list[CharRange] ranges), str lexicalName = "") 
 	= arg(lexicalName + "Name", input(lexicalName)); // TODO: This needs a name
 	
+Arg symbol2Arg(\conditional(Symbol symbol, set[Condition] conditions), str lexicalName = "") 
+	= symbol2Arg(symbol, lexicalName = lexicalName);
+
+//TODO: Not clear how to deal with this kind of symbol
+Arg symbol2Arg(alt(set[Symbol] alternatives), str labeledName = "", str lexicalName = "") 
+	= arg(labeledName, dummy());
+
 default Arg symbol2Arg(Symbol s, str labeledName = "", str lexicalName = "") 
 	= Arg::none();
