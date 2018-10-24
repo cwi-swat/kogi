@@ -15,8 +15,7 @@ import kogi::Block2Section;
 import kogi::BlocksCustomization;
 
 void createBlocklyApp(type[&T<:Tree] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|){
-	blocks = grammar2blocks(grammar);
-	// TODO: Verify that there aren't duplicated blocks
+	blocks = renameDuplicatedBlocks(grammar2blocks(grammar));
 	unorderedSections = createSections(blocks);
 	sections = unorderedSections[0] + sort(unorderedSections[1..], bool(Section a, Section b){ return toLowerCase(a.category[0]) < toLowerCase(b.category[0]); }); 
 	Toolbox toolbox = toolbox(sections);

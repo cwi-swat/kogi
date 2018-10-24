@@ -65,14 +65,27 @@ list[str] getSyntaxCheck(Symbol symbol)
 
 list[str] getSyntaxCheck(label(str lab, Symbol symbol))
 	= getSyntaxCheck(symbol);
+
+list[str] getSyntaxCheck(\opt(Symbol symbol))
+	= getSyntaxCheck(symbol);
+	
 list[str] getSyntaxCheck(sort(str name))
 	= [name];
 
 list[str] getSyntaxCheck(lex(str name))
-	= [name];	
+	= [name];
+	
+list[str] getSyntaxCheck(\parameterized-sort(str name, list[Symbol] parameters))
+	= [name] + getSyntaxCheck(parameters);
+
+list[str] getSyntaxCheck(list[Symbol] parameters)
+	= ([]| it + getSyntaxCheck(param)| param <- parameters);	
 
 list[str] getSyntaxCheck(\alt(set[Symbol] alternatives))
 	=  ([]|it + getSyntaxCheck(symbol) | symbol <- alternatives);
+	
+list[str] getSyntaxCheck(\seq(list[Symbol] alternatives))
+	=  ([]|it + getSyntaxCheck(symbol) | symbol <- alternatives);	
 	
 list[str] getSyntaxCheck(\char-class(_))
 	= [""];
@@ -82,3 +95,26 @@ list[str] getSyntaxCheck(\lit(_))
 	
 str setBlockName(str name, str typeName)
 	=  name == "" ? toLowerCase(typeName) + "<arbInt(400)>" : name;
+	
+Block renameBlock(Block block){
+	b = block;
+	b.name = "<block.name><arbInt(40)>";
+	return b;
+}
+
+list[Block] renameDuplicatedBlocks(list[Block] blocks){
+	set[str] names = {};
+	list[Block] updatedBlocks = [];
+	for(block <- blocks){
+		if(block.name notin names){
+			names += block.name;
+			updatedBlocks += block;
+		}
+		else{
+			newBlock = renameBlock(block);
+			names += newBlock.name;
+			updatedBlocks += newBlock;
+		}
+	}
+	return updatedBlocks;
+}
