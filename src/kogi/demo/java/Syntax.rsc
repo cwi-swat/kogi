@@ -110,10 +110,10 @@ syntax SwitchGroup =
   ;
 
 syntax ClassBodyDec =
-  InstanceInit 
-  | ClassMemberDec 
-  | StaticInit 
-  | ConstrDec 
+  instanceInit: InstanceInit 
+  | classMemberDec: ClassMemberDec 
+  | staticInit: StaticInit 
+  | constrDec: ConstrDec 
   ;
 
 
@@ -137,10 +137,10 @@ lexical HexaNumeral =
 
 syntax ClassMemberDec =
    semicolon: ";" 
-  | ClassDec 
-  | MethodDec 
-  | FieldDec 
-  | InterfaceDec 
+  | classDec: ClassDec 
+  | methodDec: MethodDec 
+  | fieldDec: FieldDec 
+  | interfaceDec: InterfaceDec 
   ;
 
 lexical LEX_CharLiteral =
@@ -286,13 +286,13 @@ syntax FieldDec =
   ;
 
 syntax FieldMod =
-  "public" 
-  | "static" 
-  | "transient" 
-  | "protected" 
-  | "volatile" 
-  | "final"
-  | "private" 
+  publi: "public" 
+  | static: "static" 
+  | transient: "transient" 
+  | protec: "protected" 
+  | volat: "volatile" 
+  | finn: "final"
+  | privv: "private" 
   ;
 
 lexical Comment =
