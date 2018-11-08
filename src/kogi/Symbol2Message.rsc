@@ -7,7 +7,7 @@ import kogi::Block;
 
 kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = ""){
 	format = symbols2format(symbols);
-	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols ];
+	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol ];
 	return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
 }
 
@@ -19,6 +19,8 @@ str symbols2format(list[Symbol] symbols){
 	str escape(str string){
 		if(string == "\"")
 			return "\\\"";
+		else if(string == "\n")
+			return "\\n";
 		else if(string == "%")
 			return "%%";
 		else
@@ -32,7 +34,8 @@ str symbols2format(list[Symbol] symbols){
 		else
 			return "%<counter> ";
 	}
-	return ( "" | it + format(symbol) | symbol <- symbols );
+	//TODO: layouts(_) !:= HERE
+	return ( "" | it + format(symbol) | symbol <- symbols, Symbol::\layouts(_) !:= symbol);
 }
 
 Arg symbol2Arg(lit(str string), str labeledName = "", str lexicalName = "")
@@ -69,9 +72,19 @@ Arg symbol2Arg(\char-class(list[CharRange] ranges), str lexicalName = "")
 Arg symbol2Arg(\conditional(Symbol symbol, set[Condition] conditions), str lexicalName = "") 
 	= symbol2Arg(symbol, lexicalName = lexicalName);
 
+Arg symbol2Arg(\empty(), str labeledName = "", str lexicalName = "") 
+	= arg(labeledName, dummy());
 //TODO: Not clear how to deal with this kind of symbol
 Arg symbol2Arg(alt(set[Symbol] alternatives), str labeledName = "", str lexicalName = "") 
 	= arg(labeledName, dummy());
+
+//TODO:	
+Arg symbol2Arg(\parameterized-sort(str name, list[Symbol] parameters), str labeledName = "", str lexicalName = "") 
+	= arg(labeledName, dummy());	
+
+//TODO:	
+Arg symbol2Arg(\seq(list[Symbol] symbols), str labeledName = "", str lexicalName = "") 
+	= arg(labeledName, dummy());	
 
 default Arg symbol2Arg(Symbol s, str labeledName = "", str lexicalName = "") 
 	= Arg::none();
