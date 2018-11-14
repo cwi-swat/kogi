@@ -20,7 +20,7 @@ Block production2Block(prod(\start(sort(str name)), list[Symbol] symbols, set[At
 	This function creates a block from a context-free non-terminal production rule.
 	It was assumed that, if the multiplicity is false this means the block will have ONLY a previous statement.
 }
-Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "") { 
+Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "") {
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
 	if(name in multiplicity && !multiplicity[name])
 		return block(setBlockName(labelName, name), name, [message], previous = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
