@@ -27,6 +27,8 @@ str toJson(str key, value valo) { return "\"<key>\" : <toJson(valo)>";}
 str toJson(str val) = "\"<val>\"";
 	
 str toJson(int val) = "<val>";
+
+str toJson(num val) = "<val>";
 	
 str toJson(bool val) = "<val>";
 	
@@ -79,3 +81,8 @@ str toJson(arg(name, input(text)))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "field_input")>,
 		'<toJson("text", "<text>")>";
+		
+str toJson(arg(name, number(number)))
+	=	"<toJson("name", name)>,
+		'<toJson("type", "field_number")>,
+		'<toJson("value", number)>";	
