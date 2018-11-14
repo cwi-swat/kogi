@@ -103,7 +103,7 @@ Block renameBlock(Block block){
 }
 
 list[Block] renameDuplicatedBlocks(list[Block] blocks){
-	// The set of names is initiallized with names that create conflict with Blockly.
+	// The set of names is initialized with names that create conflict with Blockly.
 	set[str] names = {"constructor"};
 	list[Block] updatedBlocks = [];
 	for(block <- blocks){
