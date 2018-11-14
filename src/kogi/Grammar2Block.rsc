@@ -19,7 +19,7 @@ list[Block] grammar2blocks(type[&T<:Tree] grammar) {
     productions = getAllProductions(grammar);
 	multiplicityInfo = nonTerminalMultiplicity(productions);
 	//isSingleGrammar(productions);
-    blocks = [ production2Block(production, multiplicityInfo) | production <- productions, containLayoutAttributes(production.attributes) ];
+    blocks = ([] | it + production2Block(production, multiplicityInfo) | production <- productions, containLayoutAttributes(production.attributes));
     return [ block | block <- blocks, Block::none() !:= block ];
 }
 
