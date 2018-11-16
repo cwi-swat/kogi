@@ -51,7 +51,7 @@ Arg symbol2Arg(\iter(Symbol symbol), str labeledName = "", str lexicalName = "")
 	= symbol2Arg(symbol, lexicalName=lexicalName);
 
 Arg symbol2Arg(\iter-star-seps(Symbol symbol, list[Symbol] separators), str labeledName = "stmt", str lexicalName = "") 
-	= arg(labeledName, statement(check = getSyntaxCheck(symbol)));
+	= arg(labeledName, statement(check = (getSyntaxCheck(symbol) + "epsilon")));
 
 Arg symbol2Arg(\iter-seps(Symbol symbol, list[Symbol] separators), str labeledName = "stmt", str lexicalName = "") 
 	= arg(labeledName, statement(check = getSyntaxCheck(symbol)));
@@ -63,7 +63,7 @@ Arg symbol2Arg(\iter-star(Symbol symbol), str labeledName = "stmt", str lexicalN
 	= symbol2Arg(symbol, labeledName = labeledName, lexicalName = lexicalName); //arg(labeledName, statement(check = symbol.name));}
 
 Arg symbol2Arg(\opt(Symbol symbol), str labeledName = "stmt", str lexicalName = "") 
-	= arg(labeledName, statement(check = getSyntaxCheck(symbol)));
+	= arg(labeledName, statement(check = (getSyntaxCheck(symbol) + "epsilon")));
 
 Arg symbol2Arg(\label(str name, Symbol s), str labeledName = "", str lexicalName = "")
 	= symbol2Arg(s, labeledName = name);
