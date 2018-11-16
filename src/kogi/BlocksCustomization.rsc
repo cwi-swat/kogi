@@ -42,6 +42,8 @@ Block mergeBlocksInformation(Block genBlock, Block userBlock) {
 		mergedBlock.helpUrl = userBlock.helpUrl;
 	if(userBlock.tooltip != "")
 		mergedBlock.tooltip = userBlock.tooltip;
+	if(userBlock.messages != [])
+		mergedBlock.messages = userBlock.messages;
 	if(userBlock.inputsInline != false)
 		mergedBlock.inputsInline = userBlock.inputsInline;
 	return mergedBlock;
