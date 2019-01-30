@@ -123,3 +123,18 @@ list[Block] renameDuplicatedBlocks(list[Block] blocks){
 	}
 	return updatedBlocks;
 }
+
+str getColour(Colour colour) {
+	switch(colour){
+		case hsv(hsv):
+			return "<hsv>";
+		case rgb(rgb):
+			return rgb;
+		case bky(bky):
+			return bky;
+		case none():
+			return "";
+		default:
+			throw "Unsupported Colour definition: <colour>";	
+	}
+}
