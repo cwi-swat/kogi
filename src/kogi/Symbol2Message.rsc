@@ -5,7 +5,7 @@ import ParseTree;
 import kogi::Util;
 import kogi::Block;
 
-kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = ""){
+kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = "") {
 	format = symbols2format(symbols);
 	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol ];
 	return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
@@ -13,7 +13,7 @@ kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = "")
 
 //FIX: If the last symbol is a lit, it shouldn't add  the last %n
 //FIX: Not sure, but it reduces the number of conditionals(e.g., lex(…), \iter-start(…)) 
-str symbols2format(list[Symbol] symbols){
+str symbols2format(list[Symbol] symbols) {
 	int counter = 0;
 	
 	str escape(str string){
@@ -27,7 +27,7 @@ str symbols2format(list[Symbol] symbols){
 			return string;
 	}
 	
-	str format(Symbol symbol){
+	str format(Symbol symbol) {
 		counter += 1;
 		if(lit(string) := symbol)
 			return "<escape(string)> %<counter> ";
@@ -35,7 +35,7 @@ str symbols2format(list[Symbol] symbols){
 			return "%<counter> ";
 	}
 	//TODO: layouts(_) !:= HERE
-	return ( "" | it + format(symbol) | symbol <- symbols, Symbol::\layouts(_) !:= symbol);
+	return ( "" | it + format(symbol) | symbol <- symbols, Symbol::\layouts(_) !:= symbol );
 }
 
 Arg symbol2Arg(lit(str string), str labeledName = "", str lexicalName = "")
