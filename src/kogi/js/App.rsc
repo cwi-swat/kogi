@@ -8,6 +8,7 @@ import kogi::json::Parser;
 void createJS(list[Block] blocks, str divId, str toolbarId, loc dstPath){
 	content = ( "" | it + createBlocklyBlock(block) | block <- blocks );
     content += blocklyApp(divId, toolbarId);
+    content += showXML();
     writeFile(dstPath + "blocks.js", content);
 }
 
@@ -20,14 +21,7 @@ str blocklyApp(str divId, str tbId, str tbposition = "start", bool trashCan = tr
 	'   trashcan: <trashCan>
 	'});
 	'workspace.addChangeListener(Blockly.Events.disableOrphans);
-	'
-	'
-	'
-	'function xmlText() {
-	'	var xml = Blockly.Xml.workspaceToDom(workspace);
-	'	var xml_text = Blockly.Xml.domToPrettyText(xml);
-	'	document.getElementById(\'textarea\').value = xml_text;
-	'}";
+	'";
 
 str createBlocklyBlock(Block block) =
 	"Blockly.Blocks[\'<trim(blockName(block))>\'] = {
@@ -40,4 +34,12 @@ str createBlocklyBlock(Block block) =
 	'";
 	
 str blockName(Block block) 
-	="<if(block.name!= ""){> <block.name> <}else{><block.\type><}>";
+	= block.name == "start" ? block.name : block.\type;
+	
+str showXML() =
+	"function xmlText() {
+	'	var xml = Blockly.Xml.workspaceToDom(workspace);
+	'	var xml_text = Blockly.Xml.domToPrettyText(xml);
+	'	document.getElementById(\'textarea\').value = xml_text;
+	'}
+	";
