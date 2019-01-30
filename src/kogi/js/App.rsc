@@ -12,24 +12,29 @@ void createJS(list[Block] blocks, str divId, str toolbarId, loc dstPath){
 }
 
 str blocklyApp(str divId, str tbId, str tbposition = "start", bool trashCan = true) = 
-	"function loadBlockly(){
-	'	 Blockly.BlockSvg.START_HAT = true;
-	'    var workspace = Blockly.inject(\'<divId>\', {
-	'            toolbox: document.getElementById(\'<tbId>\'),
-	'            collapse: true,
-	'            toolboxPosition: \'<tbposition>\', // end
-	'            trashcan: <trashCan>
-	'    });
-	'	 workspace.addChangeListener(Blockly.Events.disableOrphans);
-	'}"
-	;
+	"Blockly.BlockSvg.START_HAT = true;
+	'var workspace = Blockly.inject(\'<divId>\', {
+	'	toolbox: document.getElementById(\'<tbId>\'),
+	'	collapse: true,
+	'   toolboxPosition: \'<tbposition>\', // end
+	'   trashcan: <trashCan>
+	'});
+	'workspace.addChangeListener(Blockly.Events.disableOrphans);
+	'
+	'
+	'
+	'function xmlText() {
+	'	var xml = Blockly.Xml.workspaceToDom(workspace);
+	'	var xml_text = Blockly.Xml.domToPrettyText(xml);
+	'	document.getElementById(\'textarea\').value = xml_text;
+	'}";
 
 str createBlocklyBlock(Block block) =
 	"Blockly.Blocks[\'<trim(blockName(block))>\'] = {
-	'    init: function() {
-	'        this.jsonInit(
+	'	init: function() {
+	'		this.jsonInit(
 	'			<toJson(block)>
-	' 		);
+	'		);
 	'	}
 	'}
 	'";

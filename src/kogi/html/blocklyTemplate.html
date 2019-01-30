@@ -9,9 +9,14 @@
     <script src="../../../../resources/blockly/msg/js/en.js"></script>
     <title>{__TITLE__}</title>
 </head>
-<body onload="loadBlockly()">
+<body>
     <h1> {__TITLE__}</h1>
-    <div id="{__DIV__}" style= "height: 600px; width: 800px;">
+    <p>
+		<button onclick="xmlText()">Pretty print XML DOM</button>
+    </p>
+    <div style="width: 100%">
+    	<div id="{__DIV__}" style= "display: inline-block; height: 600px; width: 38%;"></div>
+    	<textarea id="textarea" disabled="disabled" style="display: inline-block; height: 600px; width: 38%;"></textarea>
     </div>
 </body>
 
