@@ -12,7 +12,7 @@ data Trans(loc src = |tmp:///|)
 	= transition(Id on, Id to)
 	;
 	
-data Id(loc src = |tmp:///|) 
+data Id(loc src = |tmp:///|)
 	= id(str name)
 	;
 	
