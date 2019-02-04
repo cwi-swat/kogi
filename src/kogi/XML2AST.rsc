@@ -113,13 +113,8 @@ str getTypeAttribute(list[Node] attributes)
 	return tmp(childre.attrs);
 }
 
-bool isStart(list[Node] attrs) {
-	for(attr <- attrs){
-		if(attribute(_, _, "start") := attr)
-			return true;
-	}
-	return false;
-}
+bool isStart(list[Node] attrs)
+	= !isEmpty([attr | attr <- attrs, attribute(_, _, "start") := attr ]);
 
 &T field2(list[Node] children) {
 	childre = getAttrsAndElems(children);
