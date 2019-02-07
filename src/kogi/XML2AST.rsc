@@ -1,6 +1,7 @@
 module kogi::XML2AST
 
 import IO;
+import Set;
 import List;
 import Type;
 import String;
@@ -20,8 +21,8 @@ void parseXML(){
 
 
 &T parseXML2(){
-	//file = readFile(|project://kogi/src/kogi/demo/blocklyXML/stateMachine2.xml|);
-	file = readFile(|project://kogi/src/kogi/demo/blocklyXML/smallStateMachine.xml|);
+	file = readFile(|project://kogi/src/kogi/demo/blocklyXML/stateMachine2.xml|);
+	//file = readFile(|project://kogi/src/kogi/demo/blocklyXML/smallStateMachine.xml|);
 	dom = parseXMLDOMTrim(file);
 	return doc2(dom);
 }
@@ -76,21 +77,107 @@ void parseXML(){
 
 &T block2ADT(list[Node] children) {
 	childre = getAttrsAndElems(children);
-	if (!isStart(childre.attrs)) {
-		blockType = getTypeAttribute(childre.attrs);
-		typeDef = getTypeDef(blockType);
-		return reify(typeDef.\type, typeDef.constructor, [ node2(element) | element <- childre.elems ]);
+	if (isStart(childre.attrs)) {
+		typeDef = getTypeDef(getTypeAttribute(childre.attrs));
+		nextElement = [ n | n <- childre.elems, element(_, "next", _) := n ];
+		stms = [ n | n <- childre.elems, element(_, "statement", _) := n ];
+		eles = childre.elems - nextElement - stms;
+		
+		params = getParams(eles);
+		
+		if(!isEmpty(stms)) {
+			bv = getParams(stms);
+			if(isListType(typeOf(bv[0])))
+				params = params + bv;
+			else{
+				params = params + [bv];
+				}	
+		}
+		
+		a = reify(typeDef.\type, typeDef.constructor, params );
+		if (!isEmpty(nextElement)){
+			params2 = node2(nextElement[0]);
+			//b = reify(typeDef.\type, typeDef.constructor,params2);
+			return [] + a + params2;
+		}
+		else
+			return a;	
+			
+		//return parameters(typeDef.\type, typeDef.constructor, childre.elems);
+		//return reify(typeDef.\type, typeDef.constructor, [ node2(element) | element <- childre.elems ]);
+															// if element is "next" take everything except element and keep the recursion.
 	}
 	else
 		return size(childre.elems) == 1 ? node2(childre.elems[0]) : tmp(childre.elems);
 }
 
-void parameters(list[Node] nodes){
-	for( n <- nodes){
-		rta = node2(n);
-		println(rta);
+//&T block2ADT(list[Node] children) {
+//	childre = getAttrsAndElems(children);
+//	if (isStart(childre.attrs)) {
+//		typeDef = getTypeDef(getTypeAttribute(childre.attrs));
+//		nextElement = [ n | n <- childre.elems, element(_, "next", _) := n ];
+//		stms = [ n | n <- childre.elems, element(_, "statement", _) := n ];
+//		eles = childre.elems - nextElement - stms;
+//		params = getParams(eles);
+//		if(!isEmpty(stms)) {
+//			bv = node2(stms[0]);
+//			
+//			if(!isListType(typeOf(bv)))
+//				bv = [bv];
+//			cp = bv;
+//			params = params + cp;
+//			println(bv);
+//		}
+//		a = reify(typeDef.\type, typeDef.constructor, params );
+//		if (!isEmpty(nextElement)){
+//			params2 = node2(nextElement[0]);
+//			return [] + a + params2;
+//		}
+//		else
+//			return a;	
+//	}
+//	else
+//		return size(childre.elems) == 1 ? node2(childre.elems[0]) : tmp(childre.elems);
+//}
+
+list[value] getParams(list[Node] nodes) {
+	list[value] params = [];
+	for (\node <- nodes) {
+			params += node2(\node);	
+		// Assuming the only option left is a statement
+		//else {
+		//	 childre = getAttrsAndElems(\node.children);
+		//	 cc = [ node2(child) | child <- childre[1] ];
+		//	 xx = cc + params;
+		//	 params += cc;
+		//}
 	}
+	return params;
 }
+
+//&T parameters(str \type, str constructor, list[Node] nodes) {
+//	n = getAttrsAndElems(nodes);
+//	// TODO: Next???
+//	//elems = [ elem | elem <- n[1], element(_, "statement", children) !:= elem ];
+//	elems = [ elem | elem <- n[1], element(_, "next", children) !:= elem ];
+//	next = n[1] - elems;
+//	if (isEmpty(next)) {
+//		x = [ node2(elem) | elem <- elems];
+//		return reify(\type, constructor, x);
+//	}
+//	else {
+//		e = [ node2(ele) | ele <- elems ];
+//		par = [ node2(next2) | next2 <- next ];
+//		rr = elems + [ par ];
+//		return reify(\type, constructor, par);
+//	}
+//	//rta = [ node2(n) | n <- (t[1] - next) ];
+//	
+//	
+//	// need to handle <next> in a different way since right now it is being used as additional params instead as a different object.
+//	// example: transition( [id("a"), id("b"), transition([id("c"), id("d")])])
+//	// Target: transition( [id("a"), id("b")], transition([id("c"), id("d")])])
+//}
 
 &T tmp(list[Node] elements){
 	&T n;
@@ -114,7 +201,7 @@ str getTypeAttribute(list[Node] attributes)
 }
 
 bool isStart(list[Node] attrs)
-	= !isEmpty([attr | attr <- attrs, attribute(_, _, "start") := attr ]);
+	= isEmpty([ attr | attr <- attrs, attribute(_, "type", "start") := attr ]);
 
 &T field2(list[Node] children) {
 	childre = getAttrsAndElems(children);
@@ -137,7 +224,7 @@ bool isStart(list[Node] attrs)
 	try
 		return make(lookupType(\type), constructor, params);
 	catch:
-		throw "Unsupported definition for: <\type>";
+		throw "Unsupported definition <constructor> for <\type> with params: <params>";
 }
 
 tuple[list[Node] attrs, list[Node] elems] getAttrsAndElems(list[Node] children)
