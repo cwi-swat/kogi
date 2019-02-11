@@ -17,11 +17,11 @@ str symbols2format(list[Symbol] symbols) {
 	int counter = 0;
 	
 	str escape(str string){
-		if(string == "\"")
+		if (string == "\"")
 			return "\\\"";
-		else if(string == "\n")
+		else if (string == "\n")
 			return "\\n";
-		else if(string == "%")
+		else if (string == "%")
 			return "%%";
 		else
 			return string;
@@ -29,7 +29,7 @@ str symbols2format(list[Symbol] symbols) {
 	
 	str format(Symbol symbol) {
 		counter += 1;
-		if(lit(string) := symbol)
+		if (lit(string) := symbol)
 			return "<escape(string)> %<counter> ";
 		else
 			return "%<counter> ";
