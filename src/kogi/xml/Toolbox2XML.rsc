@@ -10,9 +10,9 @@ str parseToolbox(Toolbox toolbox, str toolboxId = "toolbox", str display = "none
 	root  = document(element(none(), "xml", [ 
 												attribute(none(), "id", toolboxId),
 												attribute(none(), "style", "display: <display>")
-											  ] + section2Element(toolbox.sections) 
+											] + section2Element(toolbox.sections) 
 							  ));
-	return xmlPretty(root);
+	return xmlRaw(root);
 }
 
 list[Node] section2Element(list[Section] sections)
@@ -20,4 +20,4 @@ list[Node] section2Element(list[Section] sections)
 									 [ block2Element(block) | block <- section.blocks ]) | section <- sections ];
 
 Node block2Element(Block block) 
-	= element(none(), "block", [attribute(none(), "type", block.name == "start" ? block.name : block.\type)]);
+	= element(none(), "block", [attribute(none(), "type", block.name == "start" ? block.name : block.\type), charData("	")]);
