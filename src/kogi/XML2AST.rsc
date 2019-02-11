@@ -11,18 +11,13 @@ import lang::xml::DOM;
 import kogi::util::LookUp;
 import kogi::demo::stateMachine::StateMachineAST;
 
-void parseXML(){
-	//x = readXML(|project://kogi/src/kogi/demo/blocklyXML/stateMachine.xml|);
-	x = readXML(|project://kogi/src/kogi/demo/blocklyXML/smallStateMachine.xml|);
-	//root = x[0];
-	println(x.root);
-	writeFile(|project://kogi/src/kogi/demo/blocklyXML/res.xml|,x);
+void parseXML2(){
+	x = readXML(|project://kogi/src/kogi/demo/blocklyXML/stateMachine.xml|);
 }
 
 
-&T parseXML2(){
+&T parseXML1(){
 	file = readFile(|project://kogi/src/kogi/demo/blocklyXML/stateMachine2.xml|);
-	//file = readFile(|project://kogi/src/kogi/demo/blocklyXML/smallStateMachine.xml|);
 	dom = parseXMLDOMTrim(file);
 	return doc2(dom);
 }
@@ -31,7 +26,17 @@ void parseXML(){
 	switch (n) {
 		case document(element(_, "xml", children)):
 			// Assumed that the xml node only has one child
-			return node2(children[0]);
+			return doc2(children[0]);
+		case element(_, "block", children): {
+			block = getAttrsAndElems(children);
+			return doc2(block.elems[0]);
+		}
+		// Ignored this part of the document because it isn't domain-specific. 
+		// However, we keep the information available for further processing.
+		case element(_, "statement", children): {
+			block = getAttrsAndElems(children);
+			return node2(block.elems[0]);
+		}
 		default:
       		throw "Unsupported: <n>";
 	}	
@@ -44,7 +49,11 @@ void parseXML(){
 		}
 		case element(_, "statement", children): {
 			childre = getAttrsAndElems(children);
-			return size(childre.elems) == 1 ? node2(childre.elems[0]) : tmp(childre.elems);
+			a = size(childre.elems) == 1 ? node2(childre.elems[0]) : tmp(childre.elems);
+			if (isListType(typeOf(a)))
+				return a;
+			else
+				return [a];
 		}
 		case element(_, "value", children): {
 			return value2(children);
@@ -53,8 +62,7 @@ void parseXML(){
 			return field2(children);
 		}
 		case element(_, "next", children): {
-			childre = getAttrsAndElems(children);
-			return size(childre.elems) == 1 ? node2(childre.elems[0]) : tmp(childre.elems);
+			return node2(children[0]);
 		}
 		case element(_, _, children): {
 			return tmp(children);
@@ -75,109 +83,37 @@ void parseXML(){
 	}
 }
 
+list[&T] toList(list[&T] param, &T t)
+	= [ par | par <- param] + t;
+
 &T block2ADT(list[Node] children) {
 	childre = getAttrsAndElems(children);
-	if (isStart(childre.attrs)) {
-		typeDef = getTypeDef(getTypeAttribute(childre.attrs));
-		nextElement = [ n | n <- childre.elems, element(_, "next", _) := n ];
-		stms = [ n | n <- childre.elems, element(_, "statement", _) := n ];
-		eles = childre.elems - nextElement - stms;
-		
-		params = getParams(eles);
-		
-		if(!isEmpty(stms)) {
-			bv = getParams(stms);
-			if(isListType(typeOf(bv[0])))
-				params = params + bv;
-			else{
-				params = params + [bv];
-				}	
-		}
-		
-		a = reify(typeDef.\type, typeDef.constructor, params );
-		if (!isEmpty(nextElement)){
-			params2 = node2(nextElement[0]);
-			//b = reify(typeDef.\type, typeDef.constructor,params2);
-			return [] + a + params2;
-		}
+	typeDef = getTypeDef(getTypeAttribute(childre.attrs));
+	next = [ n | n <- childre.elems, element(_, "next", _) := n ];
+	parameters = [ node2(n) | n <- (childre.elems - next) ];
+	if (isEmpty(next))
+		return reify(typeDef.\type, typeDef.constructor, parameters );
+	else {
+		a = reify(typeDef.\type, typeDef.constructor, parameters );
+		b = node2(next[0]);
+		if (!isListType(typeOf(a)) && isListType(typeOf(b)))
+			return toList(b, a);
 		else
-			return a;	
-			
-		//return parameters(typeDef.\type, typeDef.constructor, childre.elems);
-		//return reify(typeDef.\type, typeDef.constructor, [ node2(element) | element <- childre.elems ]);
-															// if element is "next" take everything except element and keep the recursion.
+			return [a] + b;	
 	}
+}
+
+&T rei(Node \node) {
+	if(\node.name == "statement")
+		return getParams([ n |  n <- \node.children, attribute(_, _, _) !:= n]);
 	else
-		return size(childre.elems) == 1 ? node2(childre.elems[0]) : tmp(childre.elems);
+		return getParams([ n |  n <- \node.children, attribute(_, _, _) !:= n]);
 }
 
-//&T block2ADT(list[Node] children) {
-//	childre = getAttrsAndElems(children);
-//	if (isStart(childre.attrs)) {
-//		typeDef = getTypeDef(getTypeAttribute(childre.attrs));
-//		nextElement = [ n | n <- childre.elems, element(_, "next", _) := n ];
-//		stms = [ n | n <- childre.elems, element(_, "statement", _) := n ];
-//		eles = childre.elems - nextElement - stms;
-//		params = getParams(eles);
-//		if(!isEmpty(stms)) {
-//			bv = node2(stms[0]);
-//			
-//			if(!isListType(typeOf(bv)))
-//				bv = [bv];
-//			cp = bv;
-//			params = params + cp;
-//			println(bv);
-//		}
-//		a = reify(typeDef.\type, typeDef.constructor, params );
-//		if (!isEmpty(nextElement)){
-//			params2 = node2(nextElement[0]);
-//			return [] + a + params2;
-//		}
-//		else
-//			return a;	
-//	}
-//	else
-//		return size(childre.elems) == 1 ? node2(childre.elems[0]) : tmp(childre.elems);
-//}
-
-list[value] getParams(list[Node] nodes) {
-	list[value] params = [];
-	for (\node <- nodes) {
-			params += node2(\node);	
-		// Assuming the only option left is a statement
-		//else {
-		//	 childre = getAttrsAndElems(\node.children);
-		//	 cc = [ node2(child) | child <- childre[1] ];
-		//	 xx = cc + params;
-		//	 params += cc;
-		//}
-	}
-	return params;
+&T getParams(list[Node] nodes) {
+	 return node2(nodes[0]);//[ node2(\node) | \node <- nodes ];
 }
 
-//&T parameters(str \type, str constructor, list[Node] nodes) {
-//	n = getAttrsAndElems(nodes);
-//	// TODO: Next???
-//	//elems = [ elem | elem <- n[1], element(_, "statement", children) !:= elem ];
-//	elems = [ elem | elem <- n[1], element(_, "next", children) !:= elem ];
-//	next = n[1] - elems;
-//	if (isEmpty(next)) {
-//		x = [ node2(elem) | elem <- elems];
-//		return reify(\type, constructor, x);
-//	}
-//	else {
-//		e = [ node2(ele) | ele <- elems ];
-//		par = [ node2(next2) | next2 <- next ];
-//		rr = elems + [ par ];
-//		return reify(\type, constructor, par);
-//	}
-//	//rta = [ node2(n) | n <- (t[1] - next) ];
-//	
-//	
-//	// need to handle <next> in a different way since right now it is being used as additional params instead as a different object.
-//	// example: transition( [id("a"), id("b"), transition([id("c"), id("d")])])
-//	// Target: transition( [id("a"), id("b")], transition([id("c"), id("d")])])
-//}
 
 &T tmp(list[Node] elements){
 	&T n;
