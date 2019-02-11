@@ -16,8 +16,9 @@ void parseXML2(){
 }
 
 
-&T parseXML1(){
-	file = readFile(|project://kogi/src/kogi/demo/blocklyXML/stateMachine2.xml|);
+&T parseXML(){
+	//file = readFile(|project://kogi/src/kogi/demo/blocklyXML/stateMachine2.xml|);
+	file = readFile(|project://kogi/src/kogi/demo/blocklyXML/smallStateMachine.xml|);
 	dom = parseXMLDOMTrim(file);
 	return doc2(dom);
 }
