@@ -22,7 +22,7 @@ Block production2Block(prod(\start(sort(str name)), list[Symbol] symbols, set[At
 }
 Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "") {
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
-	if(name in multiplicity && !multiplicity[name])
+	if (name in multiplicity && !multiplicity[name])
 		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], previous = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
 	else
 		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], previous = Ref::block(name), next = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
@@ -39,7 +39,7 @@ Block production2Block(prod(lex("WhitespaceAndComment"), list[Symbol] symbols, s
 
 Block production2Block(prod(lex(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "") {
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
-	if(name in multiplicity && multiplicity[name])
+	if (name in multiplicity && multiplicity[name])
 		return block(name, setBlockType(name, labelName), [message], previous = Ref::block(name), next = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)));
 	else	
 		return block(name, setBlockType(name, labelName), [message], output = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)));
