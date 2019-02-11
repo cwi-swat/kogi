@@ -2,8 +2,8 @@ module kogi::Symbol2Message
 
 import Type;
 import ParseTree;
-import kogi::Util;
 import kogi::Block;
+import kogi::util::Util;
 
 kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = "") {
 	format = symbols2format(symbols);

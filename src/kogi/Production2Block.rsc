@@ -4,9 +4,9 @@ import IO;
 import List;
 import Type;
 import ParseTree;
-import kogi::Util;
 import util::Math;
 import kogi::Block;
+import kogi::util::Util;
 import kogi::Grammar2Block;
 import kogi::Symbol2Message;
 

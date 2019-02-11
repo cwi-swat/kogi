@@ -6,8 +6,8 @@ import Map;
 import Type;
 import String;
 import ParseTree;
-import kogi::Util;
 import kogi::Block;
+import kogi::util::Util;
 import kogi::Production2Block;
 
 

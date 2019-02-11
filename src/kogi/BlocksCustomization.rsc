@@ -1,8 +1,8 @@
 module kogi::BlocksCustomization
 
 import List;
-import kogi::Util;
 import kogi::Block;
+import kogi::util::Util;
 
 
 Toolbox updateBlocksDefinition(Toolbox toolbox, list[Block] blocks) {

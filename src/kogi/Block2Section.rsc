@@ -3,8 +3,8 @@ module kogi::Block2Section
 import IO;
 import List;
 import String;
-import kogi::Util;
 import kogi::Block;
+import kogi::util::Util;
 
 list[Section] createSections(list[Block] blocks) {
 	startBlock = getStartBlock(blocks);

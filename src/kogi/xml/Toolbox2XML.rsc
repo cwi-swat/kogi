@@ -1,9 +1,9 @@
 module kogi::xml::Toolbox2XML
 
 import IO;
-import kogi::Util;
 import kogi::Block;
 import lang::xml::DOM;
+import kogi::util::Util;
 import kogi::json::Parser;
 
 str parseToolbox(Toolbox toolbox, str toolboxId = "toolbox", str display = "none") {
