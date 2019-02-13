@@ -2,9 +2,9 @@ module kogi::demo::pico::Syntax
 
 import Prelude;
 
-lexical Id  = [a-z][a-z0-9]* !>> [a-z0-9];
-lexical Natural = [0-9]+ ;
-lexical String = "\"" ![\"]*  "\"";
+lexical Id  = id: [a-zA-Z]+;
+lexical Natural = natural: [0-9]+ ;
+lexical String = string: "\"" ![\"]*  "\"";
 
 layout Layout = WhitespaceAndComment* !>> [\ \t\n\r%];
 
@@ -20,9 +20,9 @@ start syntax Program
 syntax Declarations 
    = declarations: "declare" {Declaration ","}* decls ";" ;  
  
-syntax Declaration = decl: Id id ":" Type tp;
+syntax Declaration = decl: Id id ":" Ttype tp;
 
-syntax Type 
+syntax Ttype 
    = natural:"natural" 
    | string :"string" 
    ;
@@ -34,7 +34,7 @@ syntax Statement
   ;  
      
 syntax Expression 
-   = id: Id name
+   = idP: Id name
    | strCon: String string
    | natCon: Natural natcon
    | bracket "(" Expression e ")"
