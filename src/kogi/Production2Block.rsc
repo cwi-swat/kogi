@@ -8,7 +8,7 @@ import util::Math;
 import kogi::Block;
 import kogi::util::Util;
 import kogi::Grammar2Block;
-import kogi::Symbol2Message;
+import kogi::symbol2Message::Symbol2Message;
 
 
 Block production2Block(prod(\start(sort(str name)), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity) {

@@ -9,7 +9,8 @@ import Exception;
 import lang::xml::IO;
 import lang::xml::DOM;
 import kogi::util::LookUp;
-import kogi::demo::stateMachine::StateMachineAST;
+import kogi::demo::pico::AST;
+//import kogi::demo::stateMachine::StateMachineAST;
 
 void parseXML2(){
 	x = readXML(|project://kogi/src/kogi/demo/blocklyXML/stateMachine.xml|);
@@ -18,7 +19,7 @@ void parseXML2(){
 
 &T parseXML(){
 	//file = readFile(|project://kogi/src/kogi/demo/blocklyXML/stateMachine2.xml|);
-	file = readFile(|project://kogi/src/kogi/demo/blocklyXML/smallStateMachine.xml|);
+	file = readFile(|project://kogi/src/kogi/demo/blocklyXML/pico.xml|);
 	dom = parseXMLDOMTrim(file);
 	return doc2(dom);
 }
@@ -78,7 +79,7 @@ void parseXML2(){
 			return "";
 		}
 		case charData(text):
-			return "<text>";
+			return text;
 		default:
       		throw "Unsupported node: <n>";
 	}
@@ -92,8 +93,10 @@ list[&T] toList(list[&T] param, &T t)
 	typeDef = getTypeDef(getTypeAttribute(childre.attrs));
 	next = [ n | n <- childre.elems, element(_, "next", _) := n ];
 	parameters = [ node2(n) | n <- (childre.elems - next) ];
-	if (isEmpty(next))
-		return reify(typeDef.\type, typeDef.constructor, parameters );
+	if (isEmpty(parameters))
+		return reify(typeDef.\type, typeDef.constructor, []);
+	else if (isEmpty(next))
+		return reify(typeDef.\type, typeDef.constructor, parameters);
 	else {
 		a = reify(typeDef.\type, typeDef.constructor, parameters );
 		b = node2(next[0]);

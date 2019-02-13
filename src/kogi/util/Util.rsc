@@ -138,3 +138,14 @@ str getColour(Colour colour) {
 			throw "Unsupported Colour definition: <colour>";	
 	}
 }
+
+str escape(str string) {
+		if (string == "\"")
+			return "\\\"";
+		else if (string == "\n")
+			return "\\n";
+		else if (string == "%")
+			return "%%";
+		else
+			return string;
+}
