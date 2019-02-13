@@ -1,6 +1,7 @@
 module kogi::symbol2Message::Symbol2Message
 
 import Type;
+import String;
 import ParseTree;
 import kogi::Block;
 import kogi::util::Util;
@@ -8,7 +9,7 @@ import kogi::symbol2Message::Symbol2Arg;
 
 kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = "") {
 	format = symbols2format(symbols);
-	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol ];
+	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol, contains(format,"%") ];
 	return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
 }
 

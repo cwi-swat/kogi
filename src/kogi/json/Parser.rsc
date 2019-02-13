@@ -12,7 +12,7 @@ str toJson(Block block)
 	= "{
 	'  <toJson("type", block.\type)>,
 	'  <toJson("message0", block.messages[0].format)>,
-	'  <toJson("args0", block.messages[0].args)>,
+	'  <if (!isEmpty(block.messages[0].args)){><toJson("args0", block.messages[0].args)>,<}>
 	'  <if(Colour::none() !:= block.colour){><toJson("colour", block.colour) + ","><}>
 	'  <if(Ref::none() !:= block.output){><toJson("output", block.output) + ","><}>
 	'  <if(Ref::none() !:= block.previous){><toJson("previousStatement", block.previous) + ","><}>

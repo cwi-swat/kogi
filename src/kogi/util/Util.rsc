@@ -94,11 +94,10 @@ list[str] getSyntaxCheck(\lit(_))
 	= [""];
 	
 str setBlockName(str name, str typeName)
-	=  name == "" ? toLowerCase(typeName) + "<arbInt(400)>" : name;
+	= (name == "") ? toLowerCase(typeName) + "<arbInt(400)>" : name;
 
 str setBlockType(str name, str constructor)
 	= constructor != "" ? name + "/" + constructor: name;
-	
 	
 Block renameBlock(Block block){
 	b = block;
