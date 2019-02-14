@@ -24,7 +24,7 @@ str symbols2format(list[Symbol] symbols) {
 		else
 			return "%<counter> ";
 	}
-	if(size(symbols) == 1 && lit(string) := symbols[0])
+	if (size(symbols) == 1 && lit(string) := symbols[0])
 		return escape(string);
 	else
 		return ( "" | it + format(symbol) | symbol <- symbols, Symbol::\layouts(_) !:= symbol );	
