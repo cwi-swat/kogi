@@ -7,9 +7,9 @@ import kogi::Block;
 import kogi::util::Util;
 import kogi::symbol2Message::Symbol2Arg;
 
-kogi::Block::Message symbols2Message(list[Symbol] symbols, str lexicalName = "") {
+kogi::Block::Message symbols2Message(list[Symbol] symbols, map[str, bool] multiplicity, str lexicalName = "") {
 	format = symbols2format(symbols);
-	args = [ symbol2Arg(symbol, lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol, contains(format,"%") ];
+	args = [ symbol2Arg(symbol, getMultiplicity(symbol, multiplicity), lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol, contains(format,"%") ];
 	return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
 }
 
@@ -29,3 +29,6 @@ str symbols2format(list[Symbol] symbols) {
 	else
 		return ( "" | it + format(symbol) | symbol <- symbols, Symbol::\layouts(_) !:= symbol );	
 }
+
+bool getMultiplicity(Symbol s, map[str, bool] multiplicity)
+	= /sort(name) := s ? multiplicity[name] : false;

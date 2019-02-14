@@ -10,9 +10,8 @@ import kogi::util::Util;
 import kogi::Grammar2Block;
 import kogi::symbol2Message::Symbol2Message;
 
-
 Block production2Block(prod(\start(sort(str name)), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity) {
-	kogi::Block::Message message = message( "%1", [ arg("start", statement(check = [name])) ] );
+	kogi::Block::Message message = message( "%1", [ arg("start", kogi::Block::\value(check = [name])) ] );
 	return block("start", name, [message], inputsInline = true, colour = hsv(90));
 }
 
@@ -21,14 +20,17 @@ Block production2Block(prod(\start(sort(str name)), list[Symbol] symbols, set[At
 	It was assumed that, if the multiplicity is false this means the block will have ONLY a previous statement.
 }
 Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "") {
-	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
+	a = [nam | symb <- symbols, /sort(nam):= symb];
+	z = ( b : multiplicity[b] |b <- a, b in multiplicity);
+		
+	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), z, lexicalName = name);
 	if (name in multiplicity && !multiplicity[name])
 		if (isEmpty(message.args))
 			return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], output = Ref::block(name), colour = hsv(arbInt(360)), tooltip = labelName);
 		else	
-			return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], previous = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
+			return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], output = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
 	else 
-		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], previous = Ref::block(name), next = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
+		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], previous = Ref::block(name), next = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);	
 }
   
 Block production2Block(prod(lex("Whitespace"), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "")
@@ -41,7 +43,7 @@ Block production2Block(prod(lex("WhitespaceAndComment"), list[Symbol] symbols, s
 	= Block::none();
 
 Block production2Block(prod(lex(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "") {
-	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), lexicalName = name);
+	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), multiplicity, lexicalName = name);
 	if (name in multiplicity && multiplicity[name])
 		return block(name, setBlockType(name, labelName), [message], previous = Ref::block(name), next = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)));
 	else	
