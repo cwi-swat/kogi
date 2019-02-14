@@ -9,7 +9,7 @@ import kogi::js::App;
 import kogi::util::Util;
 import kogi::json::Parser;
 import kogi::html::WebPage;
-import kogi::Grammar2Block;
+import kogi::Grammar2Blockly;
 import kogi::Block2Section;
 import kogi::xml::Toolbox2XML;
 import kogi::BlocksCustomization;
