@@ -17,15 +17,15 @@ Block production2Block(prod(\start(sort(str name)), list[Symbol] symbols, set[At
 	return Block::none();
 }
 
+map[str, bool] getSymbolsMultiplicity(list[Symbol] symbols, map[str, bool] multiplicity)
+	= ( n : multiplicity[n] | n <- [ name | symbl <- symbols, /sort(name) := symbl ], n in multiplicity );
+	
 @doc{
 	This function creates a block from a context-free non-terminal production rule.
 	It was assumed that, if the multiplicity is false this means the block will have ONLY a previous statement.
 }
 Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "") {
-	a = [nam | symb <- symbols, /sort(nam):= symb];
-	z = ( b : multiplicity[b] |b <- a, b in multiplicity);
-		
-	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), z, lexicalName = name);
+	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), getSymbolsMultiplicity(symbols, multiplicity), lexicalName = name);
 	if(initialBlock == name)
 		return block("start", name, [message], colour = hsv(90));
 	else if (name in multiplicity && !multiplicity[name])
