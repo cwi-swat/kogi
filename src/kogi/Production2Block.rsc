@@ -1,20 +1,16 @@
 module kogi::Production2Block
 
-import IO;
-import List;
 import Type;
 import ParseTree;
 import util::Math;
 import kogi::Block;
 import kogi::util::Util;
-import kogi::Grammar2Block;
 import kogi::symbol2Message::Symbol2Message;
 
 str initialBlock = "";
 
-Block production2Block(prod(\start(sort(str name)), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity) {
+void production2Block(prod(\start(sort(str name)), _, _)) {
 	initialBlock = name;
-	return Block::none();
 }
 
 map[str, bool] getSymbolsMultiplicity(list[Symbol] symbols, map[str, bool] multiplicity)
@@ -29,10 +25,7 @@ Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Att
 	if(initialBlock == name)
 		return block("start", name, [message], colour = hsv(90));
 	else if (name in multiplicity && !multiplicity[name])
-		if (isEmpty(message.args))
-			return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], output = Ref::block(name), colour = hsv(arbInt(360)), tooltip = labelName);
-		else	
-			return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], output = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
+		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], output = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
 	else 
 		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], previous = Ref::block(name), next = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);	
 }

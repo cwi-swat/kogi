@@ -16,10 +16,17 @@ set[Production] getAllProductions(type[&T <: Tree] grammar) {
      	( {} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions ), !isEmpty(p.symbols), \layouts(_) !:= p.def };
 }
 list[Block] grammar2blocks(type[&T<:Tree] grammar) {
-    productions = getAllProductions(grammar);
+	set[Production] productions = getAllProductions(grammar);
 	multiplicityInfo = nonTerminalMultiplicity(productions);
+	
+	// TODO: extract start symbol and remove it from the productions list
+	//
+	startProd = getStartProduction(productions);
+	production2Block(startProd);
+	//production2Block(startProd[0]);
+	
 	//isSingleGrammar(productions);
-    blocks = [ production2Block(production, multiplicityInfo) | production <- productions, containLayoutAttributes(production.attributes) ];
+    blocks = [ production2Block(production, multiplicityInfo) | production <- (productions - startProd), containLayoutAttributes(production.attributes) ];
     blocks += createEpsilonBlock(productions);
     return [ block | block <- blocks, Block::none() !:= block ];
 }
@@ -30,6 +37,11 @@ Block createEpsilonBlock(set[Production] productions) {
 	else
 		return Block::none();
 }
+
+Production getStartProduction(set[Production] productions) 
+	= getOneFrom({ p | p <- productions, prod(\start(sort(str name)),_,_) := p });
+	
+
 //bool isSingleGrammar(set[Production] productions){
 //	nonTerminals = size( { symbol |/Symbol symbol <- productions, sort(name) := symbol } );
 //	if( nonTerminals > 1)
