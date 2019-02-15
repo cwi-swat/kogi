@@ -1,11 +1,9 @@
 module kogi::XML2AST
 
 import IO;
-import Set;
 import List;
 import Type;
 import String;
-import Exception;
 import lang::xml::IO;
 import lang::xml::DOM;
 import kogi::util::LookUp;
@@ -28,7 +26,7 @@ void parseXML2(){
 	switch (n) {
 		case document(element(_, "xml", children)):
 			// Assumed that the xml node only has one child
-			return doc2(children[0]);
+			return node2(children[0]);    
 		case element(_, "block", children): {
 			block = getAttrsAndElems(children);
 			return doc2(block.elems[0]);
@@ -69,17 +67,14 @@ void parseXML2(){
 		case element(_, _, children): {
 			return tmp(children);
 		}
-		case attribute(_, "type", "start"): {
-			return "";
-		}
 		case attribute(_, "type", text): {
 			return text + " ";
 		}
-		case attribute(_, name, text): {
-			return "";
-		}
 		case charData(text):
-			return text;
+			try
+				return toInt(text);
+			catch:	
+				return text;
 		default:
       		throw "Unsupported node: <n>";
 	}
