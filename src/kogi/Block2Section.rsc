@@ -1,16 +1,13 @@
 module kogi::Block2Section
 
-import IO;
 import List;
 import String;
 import kogi::Block;
 import kogi::util::Util;
 
 list[Section] createSections(list[Block] blocks) {
-	startBlock = getStartBlock(blocks);
-	blocks = blocks - startBlock;
 	categories = getCategories(blocks);
-	return createSortedSections(startBlock, categories, blocks);
+	return createSortedSections(categories, blocks);
 }
 
 Section groupBlocksByCategory(str category, list[Block] blocks) {
@@ -21,10 +18,10 @@ Section groupBlocksByCategory(str category, list[Block] blocks) {
 bool matches(str \type, str cat) 
 	= getCategory(\type) == cat ? true : false;
 
-list[Section] createSortedSections(list[Block] startBlock, set[str] categories, list[Block] blocks) {
-	first = section( "Start" , hsv(90) , startBlock);
+list[Section] createSortedSections(set[str] categories, list[Block] blocks) {
+	//first = section( "Start" , hsv(90) , startBlock);
 	sections = [ groupBlocksByCategory(category, blocks) | category <- categories ];
-	return first + sortSections(sections);
+	return sortSections(sections);
 }
 	
 list[Block] getStartBlock(list[Block] blocks)

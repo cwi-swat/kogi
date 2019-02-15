@@ -23,7 +23,7 @@ map[str, bool] getSymbolsMultiplicity(list[Symbol] symbols, map[str, bool] multi
 Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str labelName = "") {
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), getSymbolsMultiplicity(symbols, multiplicity), lexicalName = name);
 	if(initialBlock == name)
-		return block("start", name, [message], colour = hsv(90));
+		return block(setBlockName(labelName, name), name, [message], colour = hsv(90));
 	else if (name in multiplicity && !multiplicity[name])
 		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], output = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
 	else 
