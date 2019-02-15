@@ -1,10 +1,7 @@
 module kogi::Grammar2Blockly
 
-import IO;
 import Set;
-import Map;
 import Type;
-import String;
 import ParseTree;
 import kogi::Block;
 import kogi::util::Util;
@@ -18,13 +15,8 @@ set[Production] getAllProductions(type[&T <: Tree] grammar) {
 list[Block] grammar2blocks(type[&T<:Tree] grammar) {
 	set[Production] productions = getAllProductions(grammar);
 	multiplicityInfo = nonTerminalMultiplicity(productions);
-	
-	// TODO: extract start symbol and remove it from the productions list
-	//
 	startProd = getStartProduction(productions);
 	production2Block(startProd);
-	//production2Block(startProd[0]);
-	
 	//isSingleGrammar(productions);
     blocks = [ production2Block(production, multiplicityInfo) | production <- (productions - startProd), containLayoutAttributes(production.attributes) ];
     blocks += createEpsilonBlock(productions);
@@ -39,7 +31,7 @@ Block createEpsilonBlock(set[Production] productions) {
 }
 
 Production getStartProduction(set[Production] productions) 
-	= getOneFrom({ p | p <- productions, prod(\start(sort(str name)),_,_) := p });
+	= getOneFrom({ p | p <- productions, prod(\start(sort(_)),_,_) := p });
 	
 
 //bool isSingleGrammar(set[Production] productions){
