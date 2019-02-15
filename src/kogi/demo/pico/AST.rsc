@@ -31,8 +31,8 @@ data Statement
 	
 data Expression
 	= idp(Id id)
-	| strCon(str t)
-	| natcon(int n)
+	| strCon(String t)
+	| natCon(Natural n)
 	| conc(Expression lhs, Expression rhs)
 	| add(Expression lhs, Expression rhs)
 	| sub(Expression lhs, Expression rhs)
