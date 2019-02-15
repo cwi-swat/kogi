@@ -34,7 +34,7 @@ str createBlocklyBlock(Block block) =
 	'";
 	
 str blockName(Block block) 
-	= block.name == "start" ? block.name : block.\type;
+	= block.\type;
 	
 str showXML() =
 	"function xmlText() {
