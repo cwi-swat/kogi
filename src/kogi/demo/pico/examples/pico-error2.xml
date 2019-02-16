@@ -1,0 +1,38 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="Program/program" id="CSs)]C$RKo5h@6Fp/t/@" x="88" y="110">
+    <value name="Declarations">
+      <block type="Declarations/declarations" id="zvMZwO9JM9-KZpNsW1S#" collapsed="true">
+        <statement name="decls">
+          <block type="Declaration/decl" id="o.P=.XyoYBkfIP]+4M1:">
+            <value name="id">
+              <block type="Id/id" id="tjuYG~8@X(a@U.h(aj~)">
+                <field name="IdName">x</field>
+              </block>
+            </value>
+            <value name="Ttype">
+              <block type="Ttype/natural" id="(ss.Pp!nWROgfBJ4Yu2!"></block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </value>
+    <statement name="body">
+      <block type="Statement/asgStat" id="Zz%~rk1wbKGdI6U4;bH_">
+        <value name="var">
+          <block type="Id/id" id="PyqSyTA`M~ewb4D7cy?f">
+            <field name="IdName">y</field>
+          </block>
+        </value>
+        <value name="Expression">
+          <block type="Expression/strCon" id="_a?6C17Y~xKmO[Jn49f.">
+            <value name="string">
+              <block type="String/string" id="TNXZZX;|s/#?:LNZSv)P">
+                <field name="StringName">hello</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>
