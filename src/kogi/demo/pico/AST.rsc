@@ -37,3 +37,9 @@ data Expression
 	| add(Expression lhs, Expression rhs)
 	| sub(Expression lhs, Expression rhs)
 	;
+	
+anno loc Expression@location;
+anno loc Program@location;
+anno loc Ttype@location;
+anno loc Statement@location;
+anno loc Declaration@location;
