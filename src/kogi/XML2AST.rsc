@@ -15,9 +15,8 @@ void parseXML2(){
 }
 
 
-&T parseXML(){
-	//file = readFile(|project://kogi/src/kogi/demo/blocklyXML/stateMachine2.xml|);
-	file = readFile(|project://kogi/src/kogi/demo/blocklyXML/pico.xml|);
+&T parseXML(loc input){
+	file = readFile(input);
 	dom = parseXMLDOMTrim(file);
 	return doc2(dom);
 }
