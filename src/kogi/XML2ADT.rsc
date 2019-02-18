@@ -83,8 +83,7 @@ list[&T] toList(list[&T] param, &T t)
 		a = reify(typeDef.\type, typeDef.constructor, parameters );
 		b = node2(next[0]);
 		if (!isListType(typeOf(a)) && isListType(typeOf(b)))
-			//return toList(b, a);
-			return b + a;
+			return toList(b, a);
 		else
 			return [a] + b;	
 	}
