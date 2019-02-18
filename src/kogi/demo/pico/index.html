@@ -7,46 +7,23 @@
     <script src="../../../../resources/blockly/blocks_compressed.js"></script>
     <!-- Messages for the user's language -->
     <script src="../../../../resources/blockly/msg/js/en.js"></script>
-    <title>Block Language for the Pico language</title>
+    <title>Block Language</title>
 </head>
-<body onload="loadBlockly()">
-    <h1> Block Language for the Pico language</h1>
-    <div id="blockDiv" style= "height: 600px; width: 800px;">
+<body>
+    <h1> Block Language</h1>
+    <p>
+		<button onclick="xmlText()">Pretty print XML DOM</button>
+    </p>
+    <div style="width: 100%">
+    	<div id="blockDiv" style= "display: inline-block; height: 600px; width: 38%;"></div>
+    	<textarea id="textarea" disabled="disabled" style="display: inline-block; height: 600px; width: 38%;"></textarea>
     </div>
 </body>
 
 <!--TOOLBOX-->
-<xml id="toolbox" style="display: none">
-	<category name="Start" colour="90" >
-		<block type="start"></block> 
-	 </category><category name="Program" colour="157" >
-		<block type="program"></block> 
-	 </category><category name="Natural" colour="333" >
-		<block type="Natural"></block> 
-	 </category><category name="Statement" colour="130" >
-		<block type="asgStat"></block>
-		<block type="whileStat"></block>
-		<block type="ifElseStat"></block> 
-	 </category><category name="String" colour="1" >
-		<block type="String"></block> 
-	 </category><category name="Expression" colour="157" >
-		<block type="conc"></block>
-		<block type="strCon"></block>
-		<block type="add"></block>
-		<block type="id"></block>
-		<block type="natCon"></block>
-		<block type="sub"></block> 
-	 </category><category name="Declarations" colour="147" >
-		<block type="declarations"></block> 
-	 </category><category name="Id" colour="29" >
-		<block type="Id"></block> 
-	 </category><category name="Declaration" colour="105" >
-		<block type="decl"></block> 
-	 </category><category name="Type" colour="222" >
-		<block type="natural"></block>
-		<block type="string"></block> 
-	 </category>
-</xml>
+<?xml version="1.0" encoding="UTF-8"?>
+<xml id="toolbox" style="display: none"><category name="Declaration" colour="198"><block type="Declaration/decl">	</block></category><category name="Declarations" colour="186"><block type="Declarations/declarations">	</block></category><category name="Expression" colour="119"><block type="Expression/conc">	</block><block type="Expression/add">	</block><block type="Expression/sub">	</block><block type="Expression/idP">	</block><block type="Expression/strCon">	</block><block type="Expression/natCon">	</block></category><category name="epsilon" colour="90"><block type="epsilon">	</block></category><category name="Id" colour="202"><block type="Id/id">	</block></category><category name="Natural" colour="251"><block type="Natural/natural">	</block></category><category name="Program" colour="90"><block type="Program/program">	</block></category><category name="Statement" colour="148"><block type="Statement/asgStat">	</block><block type="Statement/whileStat">	</block><block type="Statement/ifElseStat">	</block></category><category name="String" colour="311"><block type="String/string">	</block></category><category name="Ttype" colour="222"><block type="Ttype/string">	</block><block type="Ttype/natural">	</block></category></xml>
+
 
 <script src="blocks.js"></script>
 </html>

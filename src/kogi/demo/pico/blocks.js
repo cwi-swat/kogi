@@ -1,524 +1,413 @@
-Blockly.Blocks['declarations'] = {
-    init: function() {
-        this.jsonInit(
+Blockly.Blocks['Declarations/declarations'] = {
+	init: function() {
+		this.jsonInit(
 			{
-			  "type" : "Declarations",
+			  "type" : "Declarations/declarations",
 			  "message0" : "declare %1 %2 ; %3 ",
 			  "args0" : [
-			  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "decls",
-			  	  "type" : "input_statement",
-			  	  "check" : "Declaration"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	
-			  ],
-			  "colour" : 147,
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "decls",
+				  "type" : "input_statement",
+				  "check" : ["Declaration", "epsilon"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 186,
+			  "output" : "Declarations",
 			  
-			  "previousStatement" : "Declarations",
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "declarations",
 			  "helpUrl" : ""
 			}
- 		);
+		);
 	}
 }
-Blockly.Blocks['natural'] = {
-    init: function() {
-        this.jsonInit(
+Blockly.Blocks['Expression/conc'] = {
+	init: function() {
+		this.jsonInit(
 			{
-			  "type" : "Type",
-			  "message0" : "natural %1 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	
-			  ],
-			  "colour" : 208,
-			  
-			  "previousStatement" : "Type",
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "natural",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['conc'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Expression",
+			  "type" : "Expression/conc",
 			  "message0" : "%1 || %2 %3 ",
 			  "args0" : [
-			  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	
-			  ],
-			  "colour" : 76,
+				{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				
+			],
+			  "colour" : 101,
+			  "output" : "Expression",
 			  
-			  "previousStatement" : "Expression",
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "conc",
 			  "helpUrl" : ""
 			}
- 		);
+		);
 	}
 }
-Blockly.Blocks['start'] = {
-    init: function() {
-        this.jsonInit(
+Blockly.Blocks['Ttype/string'] = {
+	init: function() {
+		this.jsonInit(
 			{
-			  "type" : "Program",
-			  "message0" : "%1",
-			  "args0" : [
-			  	{
-			  	  "name" : "start",
-			  	  "type" : "input_statement",
-			  	  "check" : "Program"
-			  	},
-			  	
-			  ],
-			  "colour" : 90,
+			  "type" : "Ttype/string",
+			  "message0" : "string",
 			  
+			  "colour" : 249,
+			  "output" : "Ttype",
 			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['Natural'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Natural",
-			  "message0" : "%1 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "NaturalName",
-			  	  "type" : "field_input",
-			  	  "text" : "Natural"
-			  	},
-			  	
-			  ],
-			  "colour" : 333,
-			  "output" : "Natural",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['decl'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Declaration",
-			  "message0" : "%1 : %2 %3 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "id",
-			  	  "type" : "input_value",
-			  	  "check" : "Id"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "Type",
-			  	  "type" : "input_statement",
-			  	  "check" : "Type"
-			  	},
-			  	
-			  ],
-			  "colour" : 105,
-			  
-			  "previousStatement" : "Declaration",
-			  "nextStatement" : "Declaration",
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['String'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "String",
-			  "message0" : "\" %1 %2 \" %3 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "StringName",
-			  	  "type" : "field_input",
-			  	  "text" : "String"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	
-			  ],
-			  "colour" : 1,
-			  "output" : "String",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['asgStat'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Statement",
-			  "message0" : "%1 := %2 %3 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "var",
-			  	  "type" : "input_value",
-			  	  "check" : "Id"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	
-			  ],
-			  "colour" : 122,
-			  
-			  "previousStatement" : "Statement",
-			  "nextStatement" : "Statement",
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['whileStat'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Statement",
-			  "message0" : "while %1 %2 do %3 %4 od %5 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "body",
-			  	  "type" : "input_statement",
-			  	  "check" : "Statement"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	
-			  ],
-			  "colour" : 178,
-			  
-			  "previousStatement" : "Statement",
-			  "nextStatement" : "Statement",
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['strCon'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Expression",
-			  "message0" : "%1 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "string",
-			  	  "type" : "input_value",
-			  	  "check" : "String"
-			  	},
-			  	
-			  ],
-			  "colour" : 66,
-			  
-			  "previousStatement" : "Expression",
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "strCon",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['add'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Expression",
-			  "message0" : "%1 + %2 %3 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	
-			  ],
-			  "colour" : 33,
-			  
-			  "previousStatement" : "Expression",
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "add",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['id'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Expression",
-			  "message0" : "%1 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "name",
-			  	  "type" : "input_value",
-			  	  "check" : "Id"
-			  	},
-			  	
-			  ],
-			  "colour" : 191,
-			  
-			  "previousStatement" : "Expression",
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "id",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['string'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Type",
-			  "message0" : "string %1 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	
-			  ],
-			  "colour" : 236,
-			  
-			  "previousStatement" : "Type",
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "string",
 			  "helpUrl" : ""
 			}
- 		);
+		);
 	}
 }
-Blockly.Blocks['natCon'] = {
-    init: function() {
-        this.jsonInit(
+Blockly.Blocks['Statement/asgStat'] = {
+	init: function() {
+		this.jsonInit(
 			{
-			  "type" : "Expression",
-			  "message0" : "%1 ",
+			  "type" : "Statement/asgStat",
+			  "message0" : "%1 := %2 %3 ",
 			  "args0" : [
-			  	{
-			  	  "name" : "natcon",
-			  	  "type" : "input_value",
-			  	  "check" : "Natural"
-			  	},
-			  	
-			  ],
-			  "colour" : 356,
-			  
-			  "previousStatement" : "Expression",
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "natCon",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['program'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Program",
-			  "message0" : "begin %1 %2 %3 end %4 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "Declarations",
-			  	  "type" : "input_statement",
-			  	  "check" : "Declarations"
-			  	},
-			  	  	{
-			  	  "name" : "body",
-			  	  "type" : "input_statement",
-			  	  "check" : "Statement"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	
-			  ],
-			  "colour" : 157,
-			  
-			  "previousStatement" : "Program",
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "program",
-			  "helpUrl" : ""
-			}
- 		);
-	}
-}
-Blockly.Blocks['ifElseStat'] = {
-    init: function() {
-        this.jsonInit(
-			{
-			  "type" : "Statement",
-			  "message0" : "if %1 %2 then %3 %4 else %5 %6 fi %7 ",
-			  "args0" : [
-			  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "thenPart",
-			  	  "type" : "input_statement",
-			  	  "check" : "Statement"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "elsePart",
-			  	  "type" : "input_statement",
-			  	  "check" : "Statement"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	
-			  ],
-			  "colour" : 92,
+				{
+				  "name" : "var",
+				  "type" : "input_value",
+				  "check" : ["Id"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				
+			],
+			  "colour" : 159,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
 			  "inputsInline" : true,
+			  "tooltip" : "asgStat",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Statement/whileStat'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Statement/whileStat",
+			  "message0" : "while %1 %2 do %3 %4 od %5 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "body",
+				  "type" : "input_statement",
+				  "check" : ["Statement", "epsilon"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 156,
+			  
+			  "previousStatement" : "Statement",
+			  "nextStatement" : "Statement",
+			  "inputsInline" : true,
+			  "tooltip" : "whileStat",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Expression/add'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Expression/add",
+			  "message0" : "%1 + %2 %3 ",
+			  "args0" : [
+				{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				
+			],
+			  "colour" : 181,
+			  "output" : "Expression",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "add",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Expression/sub'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Expression/sub",
+			  "message0" : "%1 - %2 %3 ",
+			  "args0" : [
+				{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				
+			],
+			  "colour" : 68,
+			  "output" : "Expression",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "sub",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Declaration/decl'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Declaration/decl",
+			  "message0" : "%1 : %2 %3 ",
+			  "args0" : [
+				{
+				  "name" : "id",
+				  "type" : "input_value",
+				  "check" : ["Id"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Ttype",
+				  "type" : "input_value",
+				  "check" : ["Ttype"]
+				},
+				
+			],
+			  "colour" : 198,
+			  
+			  "previousStatement" : "Declaration",
+			  "nextStatement" : "Declaration",
+			  "inputsInline" : true,
+			  "tooltip" : "decl",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Program/program'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Program/program",
+			  "message0" : "begin %1 %2 %3 end %4 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Declarations",
+				  "type" : "input_value",
+				  "check" : ["Declarations"]
+				},
+				  	{
+				  "name" : "body",
+				  "type" : "input_statement",
+				  "check" : ["Statement", "epsilon"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 90,
+			  
+			  
+			  
+			  "inputsInline" : false,
 			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
- 		);
+		);
 	}
 }
-Blockly.Blocks['Id'] = {
-    init: function() {
-        this.jsonInit(
+Blockly.Blocks['Statement/ifElseStat'] = {
+	init: function() {
+		this.jsonInit(
 			{
-			  "type" : "Id",
+			  "type" : "Statement/ifElseStat",
+			  "message0" : "if %1 %2 then %3 %4 else %5 %6 fi %7 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "thenPart",
+				  "type" : "input_statement",
+				  "check" : ["Statement", "epsilon"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "elsePart",
+				  "type" : "input_statement",
+				  "check" : ["Statement", "epsilon"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 129,
+			  
+			  "previousStatement" : "Statement",
+			  "nextStatement" : "Statement",
+			  "inputsInline" : true,
+			  "tooltip" : "ifElseStat",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Ttype/natural'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Ttype/natural",
+			  "message0" : "natural",
+			  
+			  "colour" : 195,
+			  "output" : "Ttype",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "natural",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Expression/idP'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Expression/idP",
 			  "message0" : "%1 ",
 			  "args0" : [
-			  	{
-			  	  "name" : "IdName",
-			  	  "type" : "field_input",
-			  	  "text" : "Id"
-			  	},
-			  	
-			  ],
-			  "colour" : 29,
+				{
+				  "name" : "name",
+				  "type" : "input_value",
+				  "check" : ["Id"]
+				},
+				
+			],
+			  "colour" : 51,
+			  "output" : "Expression",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "idP",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Id/id'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Id/id",
+			  "message0" : "%1 ",
+			  "args0" : [
+				{
+				  "name" : "IdName",
+				  "type" : "field_input",
+				  "text" : "Id"
+				},
+				
+			],
+			  "colour" : 202,
 			  "output" : "Id",
 			  
 			  
@@ -526,50 +415,148 @@ Blockly.Blocks['Id'] = {
 			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
- 		);
+		);
 	}
 }
-Blockly.Blocks['sub'] = {
-    init: function() {
-        this.jsonInit(
+Blockly.Blocks['String/string'] = {
+	init: function() {
+		this.jsonInit(
 			{
-			  "type" : "Expression",
-			  "message0" : "%1 - %2 %3 ",
+			  "type" : "String/string",
+			  "message0" : "\" %1 %2 \" %3 ",
 			  "args0" : [
-			  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	  	{
-			  	  "name" : "",
-			  	  "type" : "input_dummy"
-			  	},
-			  	  	{
-			  	  "name" : "Expression",
-			  	  "type" : "input_statement",
-			  	  "check" : "Expression"
-			  	},
-			  	
-			  ],
-			  "colour" : 224,
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "StringName",
+				  "type" : "field_input",
+				  "text" : "String"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 311,
+			  "output" : "String",
 			  
-			  "previousStatement" : "Expression",
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "sub",
+			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
- 		);
+		);
 	}
 }
-function loadBlockly(){
-	 Blockly.BlockSvg.START_HAT = true;
-    var workspace = Blockly.inject('blockDiv', {
-            toolbox: document.getElementById('toolbox'),
-            collapse: true,
-            toolboxPosition: 'start', // end
-            trashcan: true
-    });
-	 workspace.addChangeListener(Blockly.Events.disableOrphans);
+Blockly.Blocks['Expression/strCon'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Expression/strCon",
+			  "message0" : "%1 ",
+			  "args0" : [
+				{
+				  "name" : "string",
+				  "type" : "input_value",
+				  "check" : ["String"]
+				},
+				
+			],
+			  "colour" : 85,
+			  "output" : "Expression",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "strCon",
+			  "helpUrl" : ""
+			}
+		);
+	}
 }
+Blockly.Blocks['Expression/natCon'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Expression/natCon",
+			  "message0" : "%1 ",
+			  "args0" : [
+				{
+				  "name" : "natcon",
+				  "type" : "input_value",
+				  "check" : ["Natural"]
+				},
+				
+			],
+			  "colour" : 232,
+			  "output" : "Expression",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "natCon",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Natural/natural'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Natural/natural",
+			  "message0" : "%1 ",
+			  "args0" : [
+				{
+				  "name" : "NaturalName",
+				  "type" : "field_input",
+				  "text" : "Natural"
+				},
+				
+			],
+			  "colour" : 251,
+			  "output" : "Natural",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['epsilon'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "epsilon",
+			  "message0" : "epsilon",
+			  "args0" : [
+			
+			],
+			  "colour" : 90,
+			  
+			  "previousStatement" : null,
+			  
+			  "inputsInline" : false,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.BlockSvg.START_HAT = true;
+var workspace = Blockly.inject('blockDiv', {
+	toolbox: document.getElementById('toolbox'),
+	collapse: true,
+   toolboxPosition: 'start', // end
+   trashcan: true
+});
+workspace.addChangeListener(Blockly.Events.disableOrphans);
+function xmlText() {
+	var xml = Blockly.Xml.workspaceToDom(workspace);
+	var xml_text = Blockly.Xml.domToPrettyText(xml);
+	document.getElementById('textarea').value = xml_text;
+}
+	
