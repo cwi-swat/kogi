@@ -1,7 +1,7 @@
 module kogi::demo::pico::Typecheck
 
 import Prelude;
-import kogi::XML2AST;
+import kogi::Load;
 import kogi::demo::pico::AST;
 
 alias TENV = tuple[ map[Id, Ttype] symbols, list[tuple[loc l, str msg]] errors]; // <1>
@@ -89,4 +89,4 @@ public TENV checkProgram(Program P) {
     	throw "Cannot happen";
 }
 
-public list[tuple[loc l, str msg]] checkProgram(loc input) = checkProgram(parseXML(input)).errors;
+public list[tuple[loc l, str msg]] checkProgram(loc input) = checkProgram(loadXML(input)).errors;
