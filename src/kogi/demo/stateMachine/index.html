@@ -7,28 +7,23 @@
     <script src="../../../../resources/blockly/blocks_compressed.js"></script>
     <!-- Messages for the user's language -->
     <script src="../../../../resources/blockly/msg/js/en.js"></script>
-    <title>Block Language for State Machines</title>
+    <title>Block Language</title>
 </head>
-<body onload="loadBlockly()">
-    <h1> Block Language for State Machines</h1>
-    <div id="blockDiv" style= "height: 600px; width: 800px;">
+<body>
+    <h1> Block Language</h1>
+    <p>
+		<button onclick="xmlText()">Pretty print XML DOM</button>
+    </p>
+    <div style="width: 100%">
+    	<div id="blockDiv" style= "display: inline-block; height: 600px; width: 38%;"></div>
+    	<textarea id="textarea" disabled="disabled" style="display: inline-block; height: 600px; width: 38%;"></textarea>
     </div>
 </body>
 
 <!--TOOLBOX-->
-<xml id="toolbox" style="display: none">
-	<category name="Start" colour="90" >
-		<block type="start"></block> 
-	 </category><category name="Machine" colour="246" >
-		<block type="machine"></block> 
-	 </category><category name="Trans" colour="171" >
-		<block type="transitions"></block> 
-	 </category><category name="State" colour="5" >
-		<block type="state"></block> 
-	 </category><category name="Id" colour="127" >
-		<block type="Id"></block> 
-	 </category>
-</xml>
+<?xml version="1.0" encoding="UTF-8"?>
+<xml id="toolbox" style="display: none"><category name="epsilon" colour="90"><block type="epsilon">	</block></category><category name="Id" colour="189"><block type="Id/id">	</block></category><category name="Machine" colour="90"><block type="Machine/machine">	</block></category><category name="State" colour="237"><block type="State/state">	</block></category><category name="Trans" colour="353"><block type="Trans/transition">	</block></category></xml>
+
 
 <script src="blocks.js"></script>
 </html>
