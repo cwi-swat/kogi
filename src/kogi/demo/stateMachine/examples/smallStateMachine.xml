@@ -1,0 +1,36 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="start" id="7ESw)0kt$i:_P.z}Mw`^" x="126" y="75">
+    <statement name="start">
+      <block type="Machine/machine" id="SwmS/{eQXiiF}Qag@%/:">
+        <value name="id">
+          <block type="Id/id" id="16-(@EqlKve:12/mxpBV">
+            <field name="IdName">Machine</field>
+          </block>
+        </value>
+        <statement name="states">
+          <block type="State/state" id="!!j9eMXtxB,~z(O[#C0n">
+            <value name="id">
+              <block type="Id/id" id="Z[S=!5zlA^xGzZkFyDcx">
+                <field name="IdName">idle</field>
+              </block>
+            </value>
+            <statement name="transitions">
+              <block type="Trans/transition" id="}Y|`-X-ooDTkI@3XXz[[">
+                <value name="on">
+                  <block type="Id/id" id=":9$c*c=Y1AAXwk^6!*w{">
+                    <field name="IdName">a</field>
+                  </block>
+                </value>
+                <value name="to">
+                  <block type="Id/id" id="|zg#?8Jc*~YgP[SDb@+K">
+                    <field name="IdName">b</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

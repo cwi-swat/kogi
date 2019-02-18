@@ -1,0 +1,96 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="start" id="!XaOVq|f8f@@6KQg3;UB" x="107" y="46">
+    <statement name="start">
+      <block type="Machine" id="^^j7woB9ud_X^sop?Zw,">
+        <value name="identificador">
+          <block type="Id" id="fg.9Zg#QDyQx]e@ZE]$w">
+            <field name="IdName">doors</field>
+          </block>
+        </value>
+        <statement name="states">
+          <block type="State" id="Z1:fj(6^:vQvPe.t-8:1">
+            <value name="ide">
+              <block type="Id" id="{O%=o1Q,e3x*y.MhfLG^">
+                <field name="IdName">closed</field>
+              </block>
+            </value>
+            <statement name="transitions">
+              <block type="Transition" id="By38$|=DW{O@zq5NSR!c">
+                <value name="on">
+                  <block type="Id" id="iF`ak;y=f89-44HVn-~+">
+                    <field name="IdName">open</field>
+                  </block>
+                </value>
+                <value name="to">
+                  <block type="Id" id=";!ft_+wk|89{f091zc`I">
+                    <field name="IdName">opened</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="Transition" id="JE|Y038Cv4abBn3o=]nK">
+                    <value name="on">
+                      <block type="Id" id="/vCIj5D?g901C39=8W3$">
+                        <field name="IdName">lock</field>
+                      </block>
+                    </value>
+                    <value name="to">
+                      <block type="Id" id="?_UxXQILF(.X/0VAvQK`">
+                        <field name="IdName">locked</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="State" id="b64NqS!vzIdLRaHdSL?=">
+                <value name="ide">
+                  <block type="Id" id="nmO3yJvI))Y*DDzx`^S:">
+                    <field name="IdName">opened</field>
+                  </block>
+                </value>
+                <statement name="transitions">
+                  <block type="Transition" id="qk[Vsr~fgTli]xb30TQ~">
+                    <value name="on">
+                      <block type="Id" id="4[yy0,P04{T;j^Mgy(xY">
+                        <field name="IdName">close</field>
+                      </block>
+                    </value>
+                    <value name="to">
+                      <block type="Id" id="ddsC^#GL!2B,/7#b~$i4">
+                        <field name="IdName">closed</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="State" id="}[kRf)00u_5yhJ,Ii?RD">
+                    <value name="ide">
+                      <block type="Id" id="k:@k|gty~%irT!w`LuPj">
+                        <field name="IdName">locked</field>
+                      </block>
+                    </value>
+                    <statement name="transitions">
+                      <block type="Transition" id="M-vuryrL[TW4o`)E.{8j">
+                        <value name="on">
+                          <block type="Id" id="ax(fFUxFF_S~KU/jL0aZ">
+                            <field name="IdName">unlock</field>
+                          </block>
+                        </value>
+                        <value name="to">
+                          <block type="Id" id="9sd6W#IK.R9yk@],a]Yy">
+                            <field name="IdName">closed</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
