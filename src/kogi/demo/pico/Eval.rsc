@@ -1,7 +1,7 @@
 module kogi::demo::pico::Eval
 
 import Prelude;
-import kogi::XML2AST;
+import kogi::Load;
 import kogi::demo::pico::AST;
 
 
@@ -80,6 +80,4 @@ public VENV evalProgram(Program P){
     throw "Cannot happen";
 }
 
-public VENV evalProgram(loc input) = evalProgram(parseXML(input));
-// end::module[]
-    
+public VENV evalProgram(loc input) = evalProgram(loadXML(input));
