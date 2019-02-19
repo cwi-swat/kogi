@@ -89,4 +89,4 @@ public TENV checkProgram(Program P) {
     	throw "Cannot happen";
 }
 
-public list[tuple[loc l, str msg]] checkProgram(loc input) = checkProgram(loadXML(input)).errors;
+public list[tuple[loc l, str msg]] checkProgram(type[&T<:node] grammar, loc input) = checkProgram(loadXML(grammar, input)).errors;

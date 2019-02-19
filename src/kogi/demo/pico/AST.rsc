@@ -9,7 +9,7 @@ data Natural
 data String
 	= string(str val);
 	
-data Program
+data Program(loc blockLocation = |tmp:///|)
 	= program (Declarations decls, list[Statement] body);
 	
 data Declarations

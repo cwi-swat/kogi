@@ -80,4 +80,4 @@ public VENV evalProgram(Program P){
     throw "Cannot happen";
 }
 
-public VENV evalProgram(loc input) = evalProgram(loadXML(input));
+public VENV evalProgram(type[&T<:node] grammar, loc input) = evalProgram(loadXML(grammar, input));
