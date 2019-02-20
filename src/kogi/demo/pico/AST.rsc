@@ -1,35 +1,35 @@
 module kogi::demo::pico::AST
 
-data Id
+data Id(loc blockLocation = |tmp:///|)
 	= id(str t);
 
-data Natural
+data Natural(loc blockLocation = |tmp:///|)
 	= natural(int n);
 
-data String
+data String(loc blockLocation = |tmp:///|)
 	= string(str val);
 	
 data Program(loc blockLocation = |tmp:///|)
 	= program (Declarations decls, list[Statement] body);
 	
-data Declarations
+data Declarations(loc blockLocation = |tmp:///|)
 	= declarations(list[Declaration] decls);
 
-data Declaration
+data Declaration(loc blockLocation = |tmp:///|)
 	= decl(Id id, \Ttype tp);
 	
-data Ttype
+data Ttype(loc blockLocation = |tmp:///|)
 	= natural()
 	| string()
 	;	 		 	
 
-data Statement
+data Statement(loc blockLocation = |tmp:///|)
 	= asgStat(Id id, Expression val)
 	| ifElseStat(Expression cond, list[Statement] thenPart, list[Statement] elsePart)
 	| whileStat(Expression cond, list[Statement] body)
 	;
 	
-data Expression
+data Expression(loc blockLocation = |tmp:///|)
 	= idp(Id id)
 	| strCon(String t)
 	| natCon(Natural n)
