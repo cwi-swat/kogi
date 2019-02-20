@@ -77,8 +77,7 @@ list[&T] toList(list[&T] param, &T t)
 	next = [ n | n <- childre.elems, element(_, "next", _) := n ];
 	parameters = [ node2(typ, n) | n <- (childre.elems - next) ];
 	if (isEmpty(next))
-		//return reify(typeDef.\type, typeDef.constructor, parameters);
-		return startBlock ? reify(typ, typeDef.\type, typeDef.constructor, parameters, location = createBlockLocation(childre.attrs)) : reify(typ, typeDef.\type, typeDef.constructor, parameters);
+		return reify(typ, typeDef.\type, typeDef.constructor, parameters, location = createBlockLocation(childre.attrs));
 	else {
 		// First instantiate the current Node and then evaluate the Next Node.
 		a = reify(typ, typeDef.\type, typeDef.constructor, parameters );
@@ -146,19 +145,14 @@ tuple[str \type, str constructor] getTypeDef(str blockDef) {
 	return <typeDef[0], typeDef[1]>;
 }	
 
-loc createLocation(str id, int x, int y)
-	= |block:///|(x, y) + id;
+loc createLocation(str id)
+	= |block:///| + id;
 
 map[str,value] createBlockLocation(list[Node] attrs) {
 	str id;
-	int x, y;
 	for (attr <- attrs) {
-		if (attribute(_, "x", xCoord ) := attr)
-			x = toInt(xCoord);
-		else if (attribute(_, "y", yCoord ) := attr)
-			y = toInt(yCoord);
-		else if (attribute(_, "id", idd ) := attr)	
+		if (attribute(_, "id", idd ) := attr)	
 			id = idd;
 	}
-	return ("blockLocation" :createLocation(id, x, y));
+	return ("blockLocation" :createLocation(id));
 }
