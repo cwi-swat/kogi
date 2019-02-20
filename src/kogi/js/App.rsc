@@ -21,6 +21,10 @@ str blocklyApp(str divId, str tbId, str tbposition = "start", bool trashCan = tr
 	'   trashcan: <trashCan>
 	'});
 	'workspace.addChangeListener(Blockly.Events.disableOrphans);
+	'
+	' //Storage options
+	'BlocklyStorage.backupOnUnload();	
+	'window.setTimeout(BlocklyStorage.restoreBlocks, 0);
 	'";
 
 str createBlocklyBlock(Block block) =
