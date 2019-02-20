@@ -559,4 +559,5 @@ function xmlText() {
 	var xml_text = Blockly.Xml.domToPrettyText(xml);
 	document.getElementById('textarea').value = xml_text;
 }
-	
+BlocklyStorage.backupOnUnload();	
+window.setTimeout(BlocklyStorage.restoreBlocks, 0);
