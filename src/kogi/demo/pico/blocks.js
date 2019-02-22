@@ -554,10 +554,18 @@ var workspace = Blockly.inject('blockDiv', {
    trashcan: true
 });
 workspace.addChangeListener(Blockly.Events.disableOrphans);
+
 function xmlText() {
 	var xml = Blockly.Xml.workspaceToDom(workspace);
 	var xml_text = Blockly.Xml.domToPrettyText(xml);
 	document.getElementById('textarea').value = xml_text;
 }
+
 BlocklyStorage.backupOnUnload();	
 window.setTimeout(BlocklyStorage.restoreBlocks, 0);
+
+function highlightBlock() {
+	block = workspace.getAllBlocks()[0];
+	console.info(block.id);
+	workspace.highlightBlock(block.id);
+}
