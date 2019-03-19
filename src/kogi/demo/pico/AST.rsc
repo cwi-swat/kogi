@@ -30,7 +30,7 @@ data Statement(loc blockLocation = |tmp:///|)
 	;
 	
 data Expression(loc blockLocation = |tmp:///|)
-	= idp(Id id)
+	= idP(Id id)
 	| strCon(String t)
 	| natCon(Natural n)
 	| conc(Expression lhs, Expression rhs)
