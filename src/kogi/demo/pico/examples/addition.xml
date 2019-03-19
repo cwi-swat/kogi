@@ -1,0 +1,81 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="Program/program" id="C0=1iIpBJUC8AnP)[_X(" x="115" y="78">
+    <value name="Declarations">
+      <block type="Declarations/declarations" id="8|UqnCIn^UTd`c@g9olW">
+        <statement name="decls">
+          <block type="Declaration/decl" id="2x+^jifG_,-uY|+e1VJO">
+            <value name="id">
+              <block type="Id/id" id="UJeX8]DIR+4xN)7yVu,9">
+                <field name="IdName">x</field>
+              </block>
+            </value>
+            <value name="Ttype">
+              <block type="Ttype/natural" id="|2dbcOr!8q!LI974E*S*"></block>
+            </value>
+            <next>
+              <block type="Declaration/decl" id="RD(xQ)TwT;w65jq?81K~">
+                <value name="id">
+                  <block type="Id/id" id="`Pw`WxM^HL[mD+YTs-]K">
+                    <field name="IdName">y</field>
+                  </block>
+                </value>
+                <value name="Ttype">
+                  <block type="Ttype/natural" id="[O]RDy-+G{TF5PlW{~wP"></block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </value>
+    <statement name="body">
+      <block type="Statement/asgStat" id="$U@(F6]DadrL7#Jf%l5R">
+        <value name="var">
+          <block type="Id/id" id="Gy4fnl}N$Dc/a6TGm?t7">
+            <field name="IdName">x</field>
+          </block>
+        </value>
+        <value name="Expression">
+          <block type="Expression/natCon" id="q1x}X/vkoVf64^Q{2|@|">
+            <value name="natcon">
+              <block type="Natural/natural" id="2q|_dM62mwp48.-2%2M]">
+                <field name="NaturalName">5</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="Statement/asgStat" id="udr@19wi,#%Hk7OX_%3j">
+            <value name="var">
+              <block type="Id/id" id="4|u]_$?iP64.G}C]t[{Z">
+                <field name="IdName">y</field>
+              </block>
+            </value>
+            <value name="Expression">
+              <block type="Expression/add" id="9Y6lMbtHg3jci!y~Zn|*">
+                <value name="Expression">
+                  <block type="Expression/idP" id="mgcV3w~HN*E(C,-pRDKf">
+                    <value name="name">
+                      <block type="Id/id" id="z~?v6Og!TCRItS!p_#^P">
+                        <field name="IdName">x</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="Expression">
+                  <block type="Expression/natCon" id="ld}a`q0IS9pyWtxzARQV">
+                    <value name="natcon">
+                      <block type="Natural/natural" id="t/;pi-`0FFT^SWI^B=T$">
+                        <field name="NaturalName">2</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
