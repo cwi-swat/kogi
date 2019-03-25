@@ -7,9 +7,13 @@ import kogi::demo::pico::AST;
 REPL myRepl() {
 	// Blockly AST (XML)
 	CommandResult myHandler(str line) {
-	//Eval program using kogi
-	rest = evalProgram(#Program, line);
-	return commandResult("<rest>", messages = []);
+		//Eval program using kogi
+		try {
+			rest = evalProgram(#Program, line);
+			return commandResult("<rest>", messages = []);
+		}
+		catch: 
+		 return commandResult("Incomplete program definition: <line>", messages = []);
 	}
 	
 	Completion myCompletor(str prefix, int offset)
