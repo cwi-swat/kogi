@@ -4,13 +4,14 @@ import List;
 import Type;
 import String;
 import lang::xml::DOM;
-import kogi::util::LookUp;
+//import kogi::util::LookUp;
+import bacata::kogi::LookUp;
 
 
-&T doc2ast(type[&T<:node] grammar, Node n)
+&T doc2ast(type[&T<:node] grammar, Node n) throws Exception
 	= doc2node(grammar, n);
 
-&T doc2node(type[&T<:node] typ, Node n) {
+&T doc2node(type[&T<:node] typ, Node n) throws Exception {
 	switch (n) {
 		case document(element(_, "xml", children)):
 			// Assumed that the xml node only has one child
@@ -30,7 +31,7 @@ import kogi::util::LookUp;
 	}	
 }
 
-&T node2(type[&T<:node] typ, Node n, bool startBlock = false) {
+&T node2(type[&T<:node] typ, Node n, bool startBlock = false) throws Exception {
 	switch (n) {
 		case element(_, "block", children): {
 			return block2ADT(typ, children, startBlock = startBlock);
@@ -71,7 +72,7 @@ import kogi::util::LookUp;
 list[&T] toList(list[&T] param, &T t)
 	= [ par | par <- param] + t;
 
-&T block2ADT(type[&T<:node] typ, list[Node] children, bool startBlock = false) {
+&T block2ADT(type[&T<:node] typ, list[Node] children, bool startBlock = false) throws Exception {
 	childre = getAttrsAndElems(children);
 	typeDef = getTypeDef(getTypeAttribute(childre.attrs));
 	next = [ n | n <- childre.elems, element(_, "next", _) := n ];
@@ -80,12 +81,12 @@ list[&T] toList(list[&T] param, &T t)
 		return reify(typ, typeDef.\type, typeDef.constructor, parameters, location = createBlockLocation(childre.attrs));
 	else {
 		// First instantiate the current Node and then evaluate the Next Node.
-		a = reify(typ, typeDef.\type, typeDef.constructor, parameters );
-		b = node2(typ, next[0]);
-		if (!isListType(typeOf(a)) && isListType(typeOf(b)))
-			return toList(b, a);
+		currentNode = reify(typ, typeDef.\type, typeDef.constructor, parameters );
+		nextNode = node2(typ, next[0]);
+		if (!isListType(typeOf(currentNode)) && isListType(typeOf(nextNode)))
+			return toList(nextNode, currentNode);
 		else
-			return [a] + b;	
+			return [currentNode] + nextNode;	
 	}
 }
 
@@ -130,7 +131,7 @@ bool isStart(list[Node] attrs)
 	return size(elements) == 1 ? node2(typ, elements[0]) : tmp(typ, elements);
 }
 	
-&T reify(type[&T<:node] typ, str \type, str constructor, list[value] params, map[str,value] location = ()) {
+&T reify(type[&T<:node] typ, str \type, str constructor, list[value] params, map[str,value] location = ()) throws Exception {
 	try
 		return location == () ? make(reifyADT(\type, typ), constructor, params) : make(reifyADT(\type, typ), constructor, params, location);
 	catch:
