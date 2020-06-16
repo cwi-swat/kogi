@@ -10,7 +10,10 @@ Arg symbol2Arg(lit(str string), bool mult, str labeledName = "", str lexicalName
 Arg symbol2Arg(lex(str name), bool mult, str labeledName = "lex", str lexicalName = "")
 	= arg(labeledName, kogi::Block::\value(check = [name]));
 
-Arg symbol2Arg(\sort(str name), bool mult, str labeledName = "stmt", str lexicalName = "")
+Arg symbol2Arg(\sort(str name), true, str labeledName = "stmt", str lexicalName = "")
+	{return arg(name, statement(check = [name]));}
+
+Arg symbol2Arg(\sort(str name), false, str labeledName = "stmt", str lexicalName = "")
 	{return arg(name, kogi::Block::\value(check = [name]));}
 
 Arg symbol2Arg(\iter(Symbol symbol), bool mult, str labeledName = "", str lexicalName = "") 
@@ -34,12 +37,15 @@ Arg symbol2Arg(\opt(Symbol symbol), bool mult, str labeledName = "stmt", str lex
 Arg symbol2Arg(\label(str name, Symbol s), bool mult, str labeledName = "", str lexicalName = "")
 	= symbol2Arg(s, mult, labeledName = name);
 
+Arg symbol2Arg(\char-class([range(48,57)]), bool mult, str lexicalName = "") 
+	= arg(lexicalName + "Name", number(0)); //TODO add more info 
+
 // CharRange = range(int begin, int end);
 Arg symbol2Arg(\char-class(list[CharRange] ranges), bool mult, str lexicalName = "") 
 	= arg(lexicalName + "Name", input(lexicalName)); // TODO: This needs a name
 	
 Arg symbol2Arg(\conditional(Symbol symbol, set[Condition] conditions), bool mult, str lexicalName = "") 
-	= symbol2Arg(symbol, lexicalName = lexicalName);
+	= symbol2Arg(symbol, mult, lexicalName = lexicalName);
 
 Arg symbol2Arg(\empty(), bool mult, str labeledName = "", str lexicalName = "") 
 	= arg(labeledName, dummy());
@@ -76,3 +82,19 @@ Arg symbol2Arg(\seq(list[Symbol] symbols), bool mult, str labeledName = "", str 
 
 default Arg symbol2Arg(Symbol s, bool mult, str labeledName = "", str lexicalName = "") 
 	= Arg::none();
+	
+	
+Arg symbol2Arg("IntegerValue")
+  = arg("IntegerValue", number(0));
+  
+Arg symbol2Arg("FloatValue")
+  = arg("FloatValue", number(0, range = Range::range(-1, 100000, 0.01)));
+  
+Arg symbol2Arg("BooleanValue")
+  = arg("StringValue", checkbox());
+  
+Arg symbol2Arg("AngleValue")
+  = arg("AngleValue", angle(90));
+  
+default Arg symbol2Arg(str _)
+  = arg("NN", input("string"));

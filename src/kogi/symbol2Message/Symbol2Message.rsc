@@ -7,10 +7,19 @@ import kogi::Block;
 import kogi::util::Util;
 import kogi::symbol2Message::Symbol2Arg;
 
+list[str] defaultValues = ["FloatValue", "IntegerValue", "AngleValue", "BooleanValue"];
+
 kogi::Block::Message symbols2Message(list[Symbol] symbols, map[str, bool] multiplicity, str lexicalName = "") {
-	format = symbols2format(symbols);
-	args = [ symbol2Arg(symbol, getMultiplicity(symbol, multiplicity), lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol, contains(format,"%") ];
-	return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
+	if (lexicalName in defaultValues) {
+		format = "%1";
+		args = [symbol2Arg(lexicalName)];
+		return message(format, args);
+	}
+	else {
+		format = symbols2format(symbols);
+		args = [ symbol2Arg(symbol, getMultiplicity(symbol, multiplicity), lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol, contains(format,"%") ];
+		return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
+	}
 }
 
 //FIX: If the last symbol is a lit, it shouldn't add  the last %n

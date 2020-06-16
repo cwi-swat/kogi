@@ -4,34 +4,47 @@ import Set;
 import List;
 import Type;
 import String;
+import ParseTree;
 import util::Math;
 import kogi::Block;
 
 
-map[str, bool] nonTerminalMultiplicity(set[Production] productions) 
-	= ( () | it + extractMultiplicity(symbol) | symbol <- ( [] | it + production.symbols | production <- productions, isEmpty(production.attributes) ) );
+map[str, bool] nonTerminalMultiplicity(set[Production] productions) {
+	map[str, bool] rta = ();
+	list[Symbol] symbols = ( [] | it + production.symbols | production <- productions, isEmpty(production.attributes) );
+	for (s <- symbols) {
+		tuple[str name, bool val] tmp = extractMultiplicity(s);
+		
+		// If there's a production with * or + we keep that with higher priority
+		if (tmp.name notin rta || rta[tmp.name] != true) {
+			rta += (tmp.name : tmp.val);
+		}
+	}
+	return rta;
+	//return ( () | it + extractMultiplicity(s) | s <- symbols );
+}
 
-map[str, bool] extractMultiplicity(\iter-star-seps(alt(set[Symbol] symbols), _))
-	= ("<symbols>" : true);
+tuple[str name, bool val] extractMultiplicity(\iter-star-seps(alt(set[Symbol] symbols), _))
+	= <"<symbols>", true>;
 	
-map[str, bool] extractMultiplicity(\iter-star-seps(lit(str name), _))
-	{ return (name : true);}
+tuple[str name, bool val] extractMultiplicity(\iter-star-seps(lit(str name), _))
+	= <name, true>;
 
-map[str, bool] extractMultiplicity(\iter-star-seps(Symbol symbol, _))
-	{ return (symbol.name : true);}
+tuple[str name, bool val] extractMultiplicity(\iter-star-seps(Symbol symbol, _))
+	= <symbol.name, true>;
 	
 // TODO: Fix extract multiplicity
-map[str, bool] extractMultiplicity(\alt(set[Symbol] alternatives))
-	= ( "alternative" : false );
+tuple[str name, bool val] extractMultiplicity(\alt(set[Symbol] alternatives))
+	= <"alternative", false>;
 	
-map[str, bool] extractMultiplicity(\sort(str name))
-	= ( name : false );
+tuple[str name, bool val] extractMultiplicity(\sort(str name))
+	= <name, false>;
 	
-map[str, bool] extractMultiplicity(\label(str name, Symbol symbol))
+tuple[str name, bool val] extractMultiplicity(\label(str name, Symbol symbol))
 	= extractMultiplicity(symbol);
 	
-default map[str, bool] extractMultiplicity(Symbol symbol)
-	= ( "" : false );
+default tuple[str name, bool val] extractMultiplicity(Symbol symbol)
+	= <"" , false>;
 
 list[Symbol] ignoreLayoutSymbols(list[Symbol] symbols) 
 	= [ symbol |symbol <- symbols, layouts(_) !:= symbol];
