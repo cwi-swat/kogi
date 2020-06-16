@@ -1,6 +1,5 @@
 module kogi::json::Parser
 
-import IO;
 import List;
 import String;
 import kogi::Block;
@@ -9,7 +8,8 @@ str toJson(list[Block] blocks)
 	= "[\n<( "" | it + toJson(block) + ",\n" | block <- blocks, Block::none() !:= block )[..-2]>]";
 	
 str toJson(Block block) 
-	= "{
+	{
+	return "{
 	'  <toJson("type", block.\type)>,
 	'  <toJson("message0", block.messages[0].format)>,
 	'  <if (!isEmpty(block.messages[0].args)){><toJson("args0", block.messages[0].args)>,<}>
@@ -21,6 +21,7 @@ str toJson(Block block)
 	'  <toJson("tooltip", block.tooltip)>,
 	'  <toJson("helpUrl", block.helpUrl)>
 	'}";
+	}
 
 str toJson(str key, value valo) { return "\"<key>\" : <toJson(valo)>";}
 
@@ -52,15 +53,15 @@ int toJson(Colour col) = toJson(col);
 
 str toJson(Arg arg)
 	= "	{
-	  '	  <toJson(arg)>
+	  '	  <toJsonArg(arg)>
 	  '	},
 	  ";
 
-str toJson(arg(str name, dummy()))
+str toJsonArg(arg(str name, dummy()))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "input_dummy")>";
 		
-str toJson(arg(name, statement(check = c)))
+str toJsonArg(arg(name, statement(check = c)))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "input_statement")>,
 		'<if( c != [""]){><toJson("check", c)><}else{><toJson("check", c)><}>";
@@ -68,21 +69,41 @@ str toJson(arg(name, statement(check = c)))
 str checks(list[str] t)
 	= "";		
 		
-str toJson(arg(name, \value(check=tipo)))
+str toJsonArg(arg(name, \value(check=tipo)))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "input_value")>,
 		'<toJson("check", tipo)>";
 	
-str toJson(arg(name, \value()))
+str toJsonArg(arg(name, \value()))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "input_value")>";
 
-str toJson(arg(name, input(text)))
+str toJsonArg(arg(name, input(text)))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "field_input")>,
 		'<toJson("text", "<text>")>";
-		
-str toJson(arg(name, number(number)))
+
+str toJsonArg(arg(name, number(number, range=Range::range(_,_, precision))))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "field_number")>,
-		'<toJson("value", number)>";	
+		'<toJson("value", number)>,
+		'<toJson("precision", precision)>";		
+
+str toJsonArg(arg(name, number(number)))
+	=	"<toJson("name", name)>,
+		'<toJson("type", "field_number")>,
+		'<toJson("value", number)>";
+
+str toJsonArg(arg(name, checkbox(checked=val)))
+	=	"<toJson("name", name)>,
+		'<toJson("type", "field_checkbox")>,
+		'<toJson("checked", val)>";		
+
+str toJsonArg(arg(name, checkbox()))
+	=	"<toJson("name", name)>,
+		'<toJson("type", "field_checkbox")>";
+		
+str toJsonArg(arg(name, angle(num angle)))
+	=	"<toJson("name", name)>,
+		'<toJson("type", "field_angle")>,
+		'<toJson("angle", angle)>";
