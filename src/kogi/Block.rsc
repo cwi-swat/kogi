@@ -50,7 +50,7 @@ data Type
   | dropdown(lrel[str, str] options)
   | checkbox(bool checked = false)
   | colour(str colour)
-  | number(num \value, Range range = none())
+  | number(num \value, Range range = Range::none())
   | angle(num angle)
   | variable(str variable, list[str] variableTypes = [])
   | date(datetime date)
