@@ -11,6 +11,13 @@ import kogi::Block2Section;
 import kogi::xml::Toolbox2XML;
 import kogi::BlocksCustomization;
 
+void createBlocklyApp(set[Production] productions, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|) {
+	blocks = renameDuplicatedBlocks(grammar2blocks(productions));
+	Toolbox tb = toolbox(createSections(blocks));
+	createJS(blocks, divName, toolboxName, targetPath);
+	createHTML(parseToolbox(tb), title, divName, targetPath);
+}
+
 void createBlocklyApp(type[&T<:Tree] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|) {
 	blocks = renameDuplicatedBlocks(grammar2blocks(grammar));
 	Toolbox tb = toolbox(createSections(blocks));
