@@ -23,6 +23,16 @@ list[Block] grammar2blocks(type[&T<:Tree] grammar) {
     return [ block | block <- blocks, Block::none() !:= block ];
 }
 
+list[Block] grammar2blocks(set[Production] productions) {
+	multiplicityInfo = nonTerminalMultiplicity(productions);
+	startProd = getStartProduction(productions);
+	production2Block(startProd);
+
+    blocks = [ production2Block(production, multiplicityInfo) | production <- (productions - startProd), containLayoutAttributes(production.attributes) ];
+    blocks += createEpsilonBlock(productions);
+    return [ block | block <- blocks, Block::none() !:= block ];
+}
+
 Block createEpsilonBlock(set[Production] productions) {
 	if(/\iter-star-seps(_,_) := productions)
 		return block("epsilon", "epsilon", [message("epsilon",[Arg::none()])], previous = Ref::block(""), colour = hsv(90));
