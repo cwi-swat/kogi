@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+    <script src="../../../../resources/blockly/blockly_compressed.js"></script>
+    <script src="../../../../resources/blockly/blocks_compressed.js"></script>
+    <!-- Messages for the user's language -->
+    <script src="../../../../resources/blockly/msg/js/en.js"></script>
+    <script src="../../../../resources/blockly/appengine/storage.js"></script>
+    <title>Block Language</title>
+</head>
+<body>
+    <h1> Block Language</h1>
+    <p>
+		<button onclick="xmlText()">Pretty print XML DOM</button>
+    </p>
+    <div style="width: 100%">
+    	<div id="blockDiv" style= "display: inline-block; height: 600px; width: 38%;"></div>
+    	<textarea id="textarea" disabled="disabled" style="display: inline-block; height: 600px; width: 38%;"></textarea>
+    </div>
+</body>
+
+<!--TOOLBOX-->
+<?xml version="1.0" encoding="UTF-8"?>
+<xml id="toolbox" style="display: none"><category name="NP" colour="90"><block type="NP/n">	</block><block type="NP/d">	</block></category><category name="PP" colour="314"><block type="PP/p">	</block></category><category name="P" colour="127"><block type="P/i">	</block></category></xml>
+
+
+<script src="blocks.js"></script>
+</html>
