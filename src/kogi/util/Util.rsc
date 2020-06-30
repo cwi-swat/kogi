@@ -9,6 +9,21 @@ import util::Math;
 import kogi::Block;
 
 
+map[str, bool] newnonTerminalMultiplicity(set[Production] productions) {
+	map[str, bool] rta = ();
+	list[Symbol] symbols = ( [] | it + production.symbols | production <- productions, isEmpty(production.attributes) );
+	for (s <- symbols) {
+		tuple[str name, bool val] tmp = extractMultiplicity(s);
+		
+		// If there's a production with * or + we keep that with higher priority
+		if (tmp.name notin rta || rta[tmp.name] != true) {
+			rta += (tmp.name : tmp.val);
+		}
+	}
+	return rta;
+	//return ( () | it + extractMultiplicity(s) | s <- symbols );
+}
+
 map[str, bool] nonTerminalMultiplicity(set[Production] productions) {
 	map[str, bool] rta = ();
 	list[Symbol] symbols = ( [] | it + production.symbols | production <- productions, isEmpty(production.attributes) );
