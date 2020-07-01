@@ -29,11 +29,11 @@ syntax C
   ;
   
 void createBlockGUI(type[&T <: Tree] grammar) {
-  createBlocklyApp(removeUnitProductions(grammar), targetPath = |project://kogi/src/kogi/demo2/withoutUnits|);
+  createBlocklyApp(simplifyGrammar(grammar), targetPath = |project://kogi/src/kogi/demo2/withoutUnits|);
 }
 
 void createBlockGUI() {
-  createBlocklyApp(removeUnitProductions(#S), targetPath = |project://kogi/src/kogi/Example2/withoutChains|);
+  createBlocklyApp(simplifyGrammar(#S), targetPath = |project://kogi/src/kogi/Example2/withoutChains|);
 }
 
 void createBlockGUIWithChainRules() {

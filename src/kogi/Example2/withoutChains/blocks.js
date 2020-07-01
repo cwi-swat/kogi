@@ -35,7 +35,7 @@ Blockly.Blocks['A/b2'] = {
 			  "type" : "A/b2",
 			  "message0" : "b",
 			  
-			  "colour" : 14,
+			  "colour" : 118,
 			  "output" : "A",
 			  
 			  
@@ -53,7 +53,7 @@ Blockly.Blocks['B/b2'] = {
 			  "type" : "B/b2",
 			  "message0" : "b",
 			  
-			  "colour" : 148,
+			  "colour" : 354,
 			  "output" : "B",
 			  
 			  
@@ -71,7 +71,7 @@ Blockly.Blocks['C/b2'] = {
 			  "type" : "C/b2",
 			  "message0" : "b",
 			  
-			  "colour" : 141,
+			  "colour" : 194,
 			  "output" : "C",
 			  
 			  
@@ -89,93 +89,6 @@ Blockly.Blocks['S/b2'] = {
 			  "type" : "S/b2",
 			  "message0" : "b",
 			  
-			  "colour" : 90,
-			  
-			  
-			  
-			  "inputsInline" : false,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['B/b1'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "B/b1",
-			  "message0" : "b %1 %2 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "B",
-				  "type" : "input_value",
-				  "check" : ["B"]
-				},
-				
-			],
-			  "colour" : 70,
-			  "output" : "B",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "b1",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['A/b1'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "A/b1",
-			  "message0" : "b %1 %2 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "B",
-				  "type" : "input_value",
-				  "check" : ["B"]
-				},
-				
-			],
-			  "colour" : 202,
-			  "output" : "A",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "b1",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['S/b1'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "S/b1",
-			  "message0" : "b %1 %2 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "B",
-				  "type" : "input_value",
-				  "check" : ["B"]
-				},
-				
-			],
 			  "colour" : 90,
 			  
 			  
@@ -205,12 +118,99 @@ Blockly.Blocks['C/b1'] = {
 				},
 				
 			],
-			  "colour" : 264,
+			  "colour" : 105,
 			  "output" : "C",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "b1",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['B/b1'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "B/b1",
+			  "message0" : "b %1 %2 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "B",
+				  "type" : "input_value",
+				  "check" : ["B"]
+				},
+				
+			],
+			  "colour" : 96,
+			  "output" : "B",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "b1",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['A/a'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "A/a",
+			  "message0" : "a %1 %2 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "A",
+				  "type" : "input_value",
+				  "check" : ["A"]
+				},
+				
+			],
+			  "colour" : 68,
+			  "output" : "A",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "a",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['S/a'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "S/a",
+			  "message0" : "a %1 %2 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "A",
+				  "type" : "input_value",
+				  "check" : ["A"]
+				},
+				
+			],
+			  "colour" : 90,
+			  
+			  
+			  
+			  "inputsInline" : false,
+			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
 		);
@@ -234,7 +234,7 @@ Blockly.Blocks['A/c'] = {
 				},
 				
 			],
-			  "colour" : 332,
+			  "colour" : 298,
 			  "output" : "A",
 			  
 			  
@@ -263,7 +263,7 @@ Blockly.Blocks['C/c'] = {
 				},
 				
 			],
-			  "colour" : 148,
+			  "colour" : 174,
 			  "output" : "C",
 			  
 			  
@@ -303,35 +303,6 @@ Blockly.Blocks['S/c'] = {
 		);
 	}
 }
-Blockly.Blocks['A/b'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "A/b",
-			  "message0" : "b %1 %2 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "B",
-				  "type" : "input_value",
-				  "check" : ["B"]
-				},
-				
-			],
-			  "colour" : 196,
-			  "output" : "A",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "b",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
 Blockly.Blocks['S/b'] = {
 	init: function() {
 		this.jsonInit(
@@ -361,59 +332,30 @@ Blockly.Blocks['S/b'] = {
 		);
 	}
 }
-Blockly.Blocks['A/a'] = {
+Blockly.Blocks['A/b'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "A/a",
-			  "message0" : "a %1 %2 ",
+			  "type" : "A/b",
+			  "message0" : "b %1 %2 ",
 			  "args0" : [
 				{
 				  "name" : "",
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "A",
+				  "name" : "B",
 				  "type" : "input_value",
-				  "check" : ["A"]
+				  "check" : ["B"]
 				},
 				
 			],
-			  "colour" : 15,
+			  "colour" : 339,
 			  "output" : "A",
 			  
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "a",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['S/a'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "S/a",
-			  "message0" : "a %1 %2 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "A",
-				  "type" : "input_value",
-				  "check" : ["A"]
-				},
-				
-			],
-			  "colour" : 90,
-			  
-			  
-			  
-			  "inputsInline" : false,
-			  "tooltip" : "",
+			  "tooltip" : "b",
 			  "helpUrl" : ""
 			}
 		);

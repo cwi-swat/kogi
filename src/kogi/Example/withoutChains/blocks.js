@@ -35,7 +35,7 @@ Blockly.Blocks['Y/b'] = {
 			  "type" : "Y/b",
 			  "message0" : "b",
 			  
-			  "colour" : 105,
+			  "colour" : 337,
 			  "output" : "Y",
 			  
 			  
@@ -53,7 +53,7 @@ Blockly.Blocks['Y/a'] = {
 			  "type" : "Y/a",
 			  "message0" : "a",
 			  
-			  "colour" : 91,
+			  "colour" : 146,
 			  "output" : "Y",
 			  
 			  
@@ -71,7 +71,7 @@ Blockly.Blocks['X/a'] = {
 			  "type" : "X/a",
 			  "message0" : "a",
 			  
-			  "colour" : 241,
+			  "colour" : 171,
 			  "output" : "X",
 			  
 			  
