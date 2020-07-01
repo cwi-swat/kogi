@@ -35,84 +35,12 @@ Blockly.Blocks['Y/b'] = {
 			  "type" : "Y/b",
 			  "message0" : "b",
 			  
-			  "colour" : 297,
+			  "colour" : 105,
 			  "output" : "Y",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "b",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['X/a'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "X/a",
-			  "message0" : "a",
-			  
-			  "colour" : 167,
-			  "output" : "X",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "a",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['N/a'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "N/a",
-			  "message0" : "a",
-			  
-			  "colour" : 274,
-			  
-			  "previousStatement" : "N",
-			  "nextStatement" : "N",
-			  "inputsInline" : true,
-			  "tooltip" : "a",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Z/a'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Z/a",
-			  "message0" : "a",
-			  
-			  "colour" : 351,
-			  
-			  "previousStatement" : "Z",
-			  "nextStatement" : "Z",
-			  "inputsInline" : true,
-			  "tooltip" : "a",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['M/a'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "M/a",
-			  "message0" : "a",
-			  
-			  "colour" : 107,
-			  
-			  "previousStatement" : "M",
-			  "nextStatement" : "M",
-			  "inputsInline" : true,
-			  "tooltip" : "a",
 			  "helpUrl" : ""
 			}
 		);
@@ -125,8 +53,26 @@ Blockly.Blocks['Y/a'] = {
 			  "type" : "Y/a",
 			  "message0" : "a",
 			  
-			  "colour" : 308,
+			  "colour" : 91,
 			  "output" : "Y",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "a",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['X/a'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "X/a",
+			  "message0" : "a",
+			  
+			  "colour" : 241,
+			  "output" : "X",
 			  
 			  
 			  "inputsInline" : true,

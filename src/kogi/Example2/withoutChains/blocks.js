@@ -35,7 +35,7 @@ Blockly.Blocks['A/b2'] = {
 			  "type" : "A/b2",
 			  "message0" : "b",
 			  
-			  "colour" : 183,
+			  "colour" : 14,
 			  "output" : "A",
 			  
 			  
@@ -53,7 +53,7 @@ Blockly.Blocks['B/b2'] = {
 			  "type" : "B/b2",
 			  "message0" : "b",
 			  
-			  "colour" : 285,
+			  "colour" : 148,
 			  "output" : "B",
 			  
 			  
@@ -71,7 +71,7 @@ Blockly.Blocks['C/b2'] = {
 			  "type" : "C/b2",
 			  "message0" : "b",
 			  
-			  "colour" : 153,
+			  "colour" : 141,
 			  "output" : "C",
 			  
 			  
@@ -118,7 +118,7 @@ Blockly.Blocks['B/b1'] = {
 				},
 				
 			],
-			  "colour" : 42,
+			  "colour" : 70,
 			  "output" : "B",
 			  
 			  
@@ -147,7 +147,7 @@ Blockly.Blocks['A/b1'] = {
 				},
 				
 			],
-			  "colour" : 305,
+			  "colour" : 202,
 			  "output" : "A",
 			  
 			  
@@ -205,7 +205,7 @@ Blockly.Blocks['C/b1'] = {
 				},
 				
 			],
-			  "colour" : 31,
+			  "colour" : 264,
 			  "output" : "C",
 			  
 			  
@@ -234,7 +234,7 @@ Blockly.Blocks['A/c'] = {
 				},
 				
 			],
-			  "colour" : 90,
+			  "colour" : 332,
 			  "output" : "A",
 			  
 			  
@@ -321,7 +321,7 @@ Blockly.Blocks['A/b'] = {
 				},
 				
 			],
-			  "colour" : 29,
+			  "colour" : 196,
 			  "output" : "A",
 			  
 			  
@@ -379,7 +379,7 @@ Blockly.Blocks['A/a'] = {
 				},
 				
 			],
-			  "colour" : 156,
+			  "colour" : 15,
 			  "output" : "A",
 			  
 			  
