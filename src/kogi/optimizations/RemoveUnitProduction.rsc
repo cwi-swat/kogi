@@ -11,9 +11,10 @@ set[Production] removeUnitProductions(type[&T <: Tree] grammar) {
 	// Filter the grammar to get only non-terminals and start symbol. We exclude layout or other stuff
 	map[Symbol, Production] nonTerminals = filterGrammar(grammar.definitions);
 	
-	
 	map[Symbol, Production] grammarWChainRules = fooRemoverUnitProductions(nonTerminals);
 	
+	// remove useless productions
+	grammarWChainRules = removeUselessProductions(grammarWChainRules);
 	
 	// Filter unit productions
 	//set[Production] unitProductions = getUnitProductions(nonTerminals);
@@ -24,6 +25,41 @@ set[Production] removeUnitProductions(type[&T <: Tree] grammar) {
 	
 	return ({} | it + grammarWChainRules[p].alternatives | p <- grammarWChainRules );
 }
+
+map[Symbol, Production] removeUselessProductions(map[Symbol, Production] grammar ) {
+	map[Symbol, Production] uselessProds = ();
+	
+	for (Symbol s <- grammar) {	
+		Production p = grammar[s];
+		Symbol def = p.def;
+		
+		bool found = false;
+		for (Symbol s2 <- grammar, found == false && s != s2) {
+			Production p2 = grammar[s2];
+			
+			for (Production p2 <- p2.alternatives) {
+				for (Symbol x <- p2.symbols) {
+					if (label(_, Symbol ss) := x && ss == def) {
+						found  = true;
+						break;
+					}
+					// TODO: if x is not a labeled symbol
+				}
+			}	
+		}
+		
+		//if found ==  false means the production p is not used within the grammar. Therefore, it is a useless production
+		if (!found && choice(\start(_),_) !:= p) {
+			uselessProds += (s : p);
+		}
+	}
+	
+	// get the difference between the maps
+	return grammar - uselessProds;
+}
+
+bool symbolIn(Symbol s, list[Symbol] symbols)
+  = s in symbols;
 
 map[Symbol, Production] fooRemoverUnitProductions(map[Symbol, Production] grammar) {
 	set[Production] units = getUnitProductions(grammar);
@@ -74,17 +110,19 @@ Production addNewAlternatives(Production p, Production p2Include) {
 	return tmp;
 }
 
-// TODO: use comprenhension
-set[Production] getUnitProductions(map[Symbol, Production] grammar) {
-	set[Production] ans = {};
-	for (Symbol s <- grammar) {
-		Production p = grammar[s];
-		if (!isStartSymbol(p)) {
-			ans += containsUnitProduction(p);
-		}
-	}
-	return ans;
-}
+set[Production] getUnitProductions(map[Symbol, Production] grammar) 
+  = ( {} | it + containsUnitProduction(grammar[s]) | s <- grammar, !isStartSymbol(grammar[s]));
+  
+//{
+//	set[Production] ans = {};
+//	for (Symbol s <- grammar) {
+//		Production p = grammar[s];
+//		if (!isStartSymbol(p)) {
+//			ans += containsUnitProduction(p);
+//		}
+//	}
+//	return ans;
+//}
 
 set[Production] getAlternativeWithChainRule(choice(_, set[Production] alternatives))
   = { a | a <- alternatives, hasChainRule(a) };
@@ -104,6 +142,8 @@ bool isStartSymbol(choice(_,_))
 set[Production] containsUnitProduction(choice(_, set[Production] alternatives))	
   = { p | p <- alternatives, hasChainRule(p) };
   
+default set[Production] containsUnitProduction(Production p)
+  = {};
 
 bool isNonterminal(label(_, sort(_)))
   = true;
@@ -124,9 +164,6 @@ bool hasChainRule(prod(_, list[Symbol] symbols, _)) {
 default bool hasChainRule(Production p)
   = true;
 
-default bool containsUnitProduction(Production p) {
-	return true;
-}
 
 //////////////////////---------------------------
 //
