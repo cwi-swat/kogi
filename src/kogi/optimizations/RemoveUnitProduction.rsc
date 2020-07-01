@@ -16,6 +16,8 @@ set[Production] removeUnitProductions(type[&T <: Tree] grammar) {
 	// remove useless productions
 	grammarWChainRules = removeUselessProductions(grammarWChainRules);
 	
+	// TODO: disable duplicate productions. (Exampl2 A -> b []
+	
 	// Filter unit productions
 	//set[Production] unitProductions = getUnitProductions(nonTerminals);
 	//
@@ -97,9 +99,11 @@ Production removeChainRuleAlternative(Production p, Production unitProduction) {
 }
 
 Production addNewAlternatives(Production p, Production p2Include) {
+	// make a copy of the production we are going to update
 	Production tmp = p;
 	
-	for (Production p1 <- p2Include.alternatives) {
+	// This is needed to update the def field of the alternatives to include
+	for (Production p1 <- p2Include.alternatives, !duplicateAlternative(tmp, p1)) {
 		if (label(str a, _) := p1.def) {
 			// TODO: fix the label
 			p1.def = label(a, p.def);
@@ -108,6 +112,15 @@ Production addNewAlternatives(Production p, Production p2Include) {
 		}
 	}
 	return tmp;
+}
+
+// returns true if the alternatives are the same, meaning the symbols are the same.
+bool duplicateAlternative(Production old, Production alternative2Include) {
+	for (Production p <- old.alternatives) {
+		if (p.symbols == alternative2Include.symbols)
+			return true;
+	}
+	return false;
 }
 
 set[Production] getUnitProductions(map[Symbol, Production] grammar) 
@@ -218,11 +231,33 @@ default bool hasChainRule(Production p)
 //set[Production] filterUnitProductions(set[Production] prods)
 //  {return { p | p <- prods, isNonTerminal(p) };}
 //
+
 /**
-*	Retrieve only the nonterminals. We skip all layout stuff.
+*	Retrieve only the nonterminals. We skip layout stuff, also from alternatives and symbols.
 */
 map[Symbol, Production] filterGrammar(map[Symbol, Production] prods)
-  {return ( p : prods[p] | p <- prods, sort(_) := p || \start(_) := p);}
+  = ( p : filterProduction(prods[p]) | p <- prods, sort(_) := p || \start(_) := p );
+
+/*
+* Remove layout symbols
+*/
+Production filterProduction(Production p) {
+	Production updatedP = p;	
+	updatedP.alternatives = filterAlternatives(p.alternatives);
+	return updatedP;
+}
+
+set[Production] filterAlternatives(set[Production] alts)
+ = { filterAlternative(a) | a <- alts };
+
+Production filterAlternative(Production p) {
+	p.symbols = filterLayoutSymbols(p.symbols); 
+	return p;
+}
+
+list[Symbol] filterLayoutSymbols(list[Symbol] symbols)
+  = [ s | s <- symbols, layouts(_) !:= s ];
+
 //
 //
 //list[Production] sortUnitProductions(map[Symbol, Production] dfs, set[Production] unitProds) {
