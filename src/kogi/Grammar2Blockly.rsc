@@ -25,10 +25,10 @@ list[Block] grammar2blocks(type[&T<:Tree] grammar) {
 
 list[Block] grammar2blocks(set[Production] productions) {
 	multiplicityInfo = nonTerminalMultiplicity(productions);
-	startProd = getStartProduction(productions);
-	production2Block(startProd);
+	//startProd = getStartProduction(productions);
+	//production2Block(startProd);
 
-    blocks = [ production2Block(production, multiplicityInfo) | production <- (productions - startProd), containLayoutAttributes(production.attributes) ];
+    blocks = [ production2Block(production, multiplicityInfo) | production <- (productions), containLayoutAttributes(production.attributes) ];
     blocks += createEpsilonBlock(productions);
     return [ block | block <- blocks, Block::none() !:= block ];
 }

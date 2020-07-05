@@ -25,13 +25,23 @@ map[Symbol, Production] removeUselessProductions(map[Symbol, Production] grammar
 		Symbol def = p.def;
 		
 		bool found = false;
+		// Compare againts all the productions except itself
 		for (Symbol s2 <- grammar, found == false && s != s2) {
 			Production p2 = grammar[s2];
-			
-			for (Production p2 <- p2.alternatives) {
-				for (Symbol x <- p2.symbols) {
-					if (label(_, Symbol ss) := x && ss == def) {
-						found  = true;
+			// Check all p2 alternatives
+			for (Production p2 <- p2.alternatives, found == false) {
+				// Iterate over p2 symbols
+				for (Symbol x <- p2.symbols, found == false) {
+					//Check if p is used within an alternative
+					if (label(_, Symbol ss) := x) {
+						// TODO: Check whether there's a nested structure like stars
+						if (ss == def || areEqual(ss, def)) {
+							found  = true;
+							break;
+						}
+					}
+					else if (x == def) {
+						found = true;
 						break;
 					}
 					// TODO: if x is not a labeled symbol
@@ -45,8 +55,24 @@ map[Symbol, Production] removeUselessProductions(map[Symbol, Production] grammar
 		}
 	}
 	// get the difference between the maps
-	return grammar - uselessProds;
+	diff = grammar - uselessProds;
+	return diff;
 }
+
+bool areEqual(\iter-star(Symbol s), Symbol def)
+  = s == def ? true : false;
+  
+bool areEqual(\iter-seps(Symbol s, _), Symbol def)
+  = s == def ? true : false;
+  
+bool areEqual(\iter-star-seps(Symbol s, _), Symbol def)
+  = s == def ? true : false;
+  
+bool areEqual(\opt(Symbol s	), Symbol def)
+  = s == def ? true : false;
+  
+bool areEqual(Symbol s, Symbol def)
+  = s == def ? true : false;  
 
 bool symbolIn(Symbol s, list[Symbol] symbols)
   = s in symbols;
@@ -62,25 +88,24 @@ map[Symbol, Production] removeChainRules(map[Symbol, Production] grammar) {
 		
 		Symbol s =  label(_, Symbol s) := chainRule.def ? s : chainRule.def;
 		
+		// Symbol of the nonterminal we want to include
 		Symbol toInclude = label(_, Symbol s) := chainRule.symbols[0] ? s : chainRule.def;
-		
 		
 		// Retrieve the alternatives to include
 		Production alt2Include = grammar[toInclude];
 		
-		// Get the nonterminal to update its productions
-		Production zzz = removeChainRuleAlternative(grammar[s], chainRule);
+		// Production we want to update
+		Production p = removeAlternative(grammar[s], chainRule);
 		
-		// Update the production from the grammar 
-		grammar[zzz.def] = mergeAlternatives(zzz, alt2Include);
-		
+		// Update the production from the grammar with the removal of the chainrule 
+		grammar[p.def] = mergeAlternatives(p, alt2Include);
 		
 		// replace grammar with the update current grammar and launch recursion
 		return removeChainRules(grammar);
 	}
 }
 
-Production removeChainRuleAlternative(Production p, Production chainRule) {
+Production removeAlternative(Production p, Production chainRule) {
 	Production tmp = p;
 	tmp.alternatives = { pp | pp <- p.alternatives, pp != chainRule };
 	return tmp;
@@ -112,7 +137,7 @@ bool duplicateAlternative(Production old, Production alternative2Include) {
 }
 
 set[Production] getChainRules(map[Symbol, Production] grammar) 
-  = ( {} | it + containsChainRule(grammar[s]) | s <- grammar, !isStartSymbol(grammar[s]));
+  = ( {} | it + containsChainRule(grammar[s]) | s <- grammar, !isStartSymbol(grammar[s]) && isNonterminal(s) );
   
 set[Production] getAlternativeWithChainRule(choice(_, set[Production] alternatives))
   = { a | a <- alternatives, hasChainRule(a) };
@@ -143,7 +168,8 @@ bool hasChainRule(prod(_, list[Symbol] symbols, _)) {
 	// remove layout symbols
 	list[Symbol] symbs = [ smb | Symbol smb <- symbols, layouts(_) !:= smb ];
 	// check if the alternative contains ONLY 1 non-terminal. If so, it is a chain rule
-	return size(symbs) == 1 && lit(_) !:= symbs[0] ? true : false;
+	return size(symbs) == 1 && isNonterminal(symbs[0]) ? true : false;
+	//return size(symbs) == 1 && lit(_) !:= symbs[0] ? true : false;
 }
 
 default bool hasChainRule(Production p)
@@ -153,8 +179,31 @@ default bool hasChainRule(Production p)
 *	Retrieve only the nonterminals. We skip layout stuff, also from alternatives and symbols.
 */
 map[Symbol, Production] filterGrammar(map[Symbol, Production] prods)
-  = ( p : filterProduction(prods[p]) | p <- prods, sort(_) := p || \start(_) := p );
+	{return ( s : filterProduction(prods[s]) | Symbol s <- prods, includeProduction(s) );}
+  //{return ( p : filterProduction(prods[p]) | p <- prods, sort(_) := p || \start(_) := p || lex(_) := p );}
 
+bool includeProduction(sort(_))
+  = true;
+
+bool includeProduction(\start(_))
+  = true;
+
+bool includeProduction(lex("Comment"))
+  = false;
+  
+bool includeProduction(lex("Whitespace"))
+  = false;
+  
+bool includeProduction(lex("WhitespaceOrComment"))
+  = false;      
+
+bool includeProduction(lex(_))
+  = true;  
+
+default bool includeProduction(Symbol _)
+  = false;
+  
+  
 /*
 * Remove layout symbols
 */

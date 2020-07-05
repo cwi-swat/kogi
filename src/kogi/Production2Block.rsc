@@ -9,8 +9,12 @@ import kogi::symbol2Message::Symbol2Message;
 
 str initialBlock = "";
 
-void production2Block(prod(\start(sort(str name)), _, _)) {
-	initialBlock = name;
+// TODO: this works for now.
+Block production2Block(prod(\start(sort(str name)), _, _), map[str, bool] multiplicity, str labelName = "") {
+	//initialBlock = name;
+	
+	kogi::Block::Message message = message( "%1", [ arg("start", kogi::Block::\value(check = [name])) ] );
+ 	return block("start", name, [message], colour = hsv(90));
 }
 
 map[str, bool] getSymbolsMultiplicity(list[Symbol] symbols, map[str, bool] multiplicity)
