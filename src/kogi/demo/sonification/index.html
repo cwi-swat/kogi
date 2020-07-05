@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+    <script src="../../../../resources/blockly/blockly_compressed.js"></script>
+    <script src="../../../../resources/blockly/blocks_compressed.js"></script>
+    <!-- Messages for the user's language -->
+    <script src="../../../../resources/blockly/msg/js/en.js"></script>
+    <script src="../../../../resources/blockly/appengine/storage.js"></script>
+    <title>Block Language</title>
+</head>
+<body>
+    <h1> Block Language</h1>
+    <p>
+		<button onclick="xmlText()">Pretty print XML DOM</button>
+    </p>
+    <div style="width: 100%">
+    	<div id="blockDiv" style= "display: inline-block; height: 600px; width: 38%;"></div>
+    	<textarea id="textarea" disabled="disabled" style="display: inline-block; height: 600px; width: 38%;"></textarea>
+    </div>
+</body>
+
+<!--TOOLBOX-->
+<?xml version="1.0" encoding="UTF-8"?>
+<xml id="toolbox" style="display: none"><category name="Connection" colour="227"><block type="Connection/wait">	</block><block type="Connection/params">	</block><block type="Connection/sound">	</block></category><category name="DataProcessing" colour="159"><block type="DataProcessing/range">	</block><block type="DataProcessing/processor">	</block><block type="DataProcessing/dataSource">	</block></category><category name="DataSource" colour="172"><block type="DataSource/movement">	</block><block type="DataSource/rotation">	</block><block type="DataSource/position">	</block><block type="DataSource/slider">	</block><block type="DataSource/speaker">	</block></category><category name="DataProcessor" colour="126"><block type="DataProcessor/fast">	</block><block type="DataProcessor/medium">	</block><block type="DataProcessor/slow">	</block><block type="DataProcessor/reverse">	</block><block type="DataProcessor/rotate">	</block><block type="DataProcessor/nothing">	</block><block type="DataProcessor/hump">	</block><block type="DataProcessor/hard">	</block></category><category name="epsilon" colour="90"><block type="epsilon">	</block></category><category name="Filter" colour="260"><block type="Filter/band">	</block><block type="Filter/high">	</block><block type="Filter/low">	</block></category><category name="IntegerValue" colour="14"><block type="IntegerValue/intf">	</block></category><category name="Id" colour="185"><block type="Id">	</block></category><category name="Program" colour="84"><block type="Program">	</block><block type="Program/a">	</block></category><category name="StringValue" colour="156"><block type="StringValue">	</block></category><category name="SoundSource" colour="83"><block type="SoundSource/wave">	</block><block type="SoundSource/filtr">	</block></category><category name="ToBe" colour="190"><block type="ToBe/processor">	</block><block type="ToBe/filtr">	</block><block type="ToBe/wave">	</block><block type="ToBe/dataSource">	</block><block type="ToBe/range">	</block><block type="ToBe/number">	</block></category><category name="Wave" colour="161"><block type="Wave/sine">	</block><block type="Wave/square">	</block><block type="Wave/triangle">	</block><block type="Wave/sawtooth">	</block></category></xml>
+
+
+<script src="blocks.js"></script>
+</html>
