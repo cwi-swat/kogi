@@ -33,7 +33,7 @@ void createBlockGUI(type[&T <: Tree] grammar) {
 }
 
 void createBlockGUI() {
-  createBlocklyApp(simplifyGrammar(#S), targetPath = |project://kogi/src/kogi/Example2/withoutChains|);
+  createBlocklyApp(simplifyGrammar(#S), targetPath = |project://kogi/src/kogi/Example2/withoutChains-test|);
 }
 
 void createBlockGUIWithChainRules() {

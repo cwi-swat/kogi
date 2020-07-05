@@ -15,11 +15,11 @@ syntax PP
   = p: P p NP n
   ;
   
-lexical D
+syntax	 D
   = the: "the"
   ;
   
-lexical N
+syntax N
   = cat: "cat"
   | hat: "hat"
   ;
@@ -29,5 +29,5 @@ syntax P
   ;
   
 void createBlockGUI() {
-  createBlocklyApp(removeUnitProductions(#NP), targetPath = |project://kogi/src/kogi/demo/withoutUnits|);
+  createBlocklyApp(simplifyGrammar(#NP), targetPath = |project://kogi/src/kogi/cat/withoutUnits|);
 }
