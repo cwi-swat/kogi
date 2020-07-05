@@ -1,6 +1,5 @@
 module kogi::xml::Toolbox2XML
 
-import IO;
 import kogi::Block;
 import lang::xml::DOM;
 import kogi::util::Util;
@@ -19,5 +18,6 @@ list[Node] section2Element(list[Section] sections)
 	= [ element( none(), "category", [ attribute(none(), "name", section.category), attribute(none(), "colour", getColour(section.colour))] + 
 									 [ block2Element(block) | block <- section.blocks ]) | section <- sections ];
 
-Node block2Element(Block block) 
-	= element(none(), "block", [attribute(none(), "type", block.name == "start" ? block.name : block.\type), charData("	")]);
+Node block2Element(Block block)
+  = element(none(), "block", [attribute(none(), "type", block.\type), charData("	")]); 
+	//= element(none(), "block", [attribute(none(), "type", block.name == "start" ? block.name : block.\type), charData("	")]);
