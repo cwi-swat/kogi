@@ -7,7 +7,7 @@ import kogi::Block;
 import kogi::util::Util;
 import kogi::symbol2Message::Symbol2Arg;
 
-list[str] defaultValues = ["FloatValue", "IntegerValue", "AngleValue", "BooleanValue"];
+list[str] defaultValues = ["Id", "FloatValue", "IntegerValue", "AngleValue", "BooleanValue"];
 
 kogi::Block::Message symbols2Message(list[Symbol] symbols, map[str, bool] multiplicity, str lexicalName = "") {
 	if (lexicalName in defaultValues) {

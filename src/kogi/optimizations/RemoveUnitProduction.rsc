@@ -203,7 +203,6 @@ bool includeProduction(lex(_))
 default bool includeProduction(Symbol _)
   = false;
   
-  
 /*
 * Remove layout symbols
 */

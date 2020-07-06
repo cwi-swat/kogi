@@ -82,7 +82,10 @@ Arg symbol2Arg(\seq(list[Symbol] symbols), bool mult, str labeledName = "", str 
 
 default Arg symbol2Arg(Symbol s, bool mult, str labeledName = "", str lexicalName = "") 
 	= Arg::none();
-	
+
+// TODO: Fix
+Arg symbol2Arg("Id")
+  = arg("IntegerValue", input("variable"));	
 	
 Arg symbol2Arg("IntegerValue")
   = arg("IntegerValue", number(0));
