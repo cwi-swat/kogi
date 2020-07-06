@@ -25,7 +25,7 @@ Blockly.Blocks['DataProcessing/range'] = {
 				},
 				
 			],
-			  "colour" : 201,
+			  "colour" : 278,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -43,7 +43,7 @@ Blockly.Blocks['DataProcessor/fast'] = {
 			  "type" : "DataProcessor/fast",
 			  "message0" : "fast_ramp",
 			  
-			  "colour" : 101,
+			  "colour" : 242,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -107,7 +107,7 @@ Blockly.Blocks['SoundSource/wave'] = {
 				},
 				
 			],
-			  "colour" : 60,
+			  "colour" : 292,
 			  "output" : "SoundSource",
 			  
 			  
@@ -125,7 +125,7 @@ Blockly.Blocks['Filter/band'] = {
 			  "type" : "Filter/band",
 			  "message0" : "bandpass",
 			  
-			  "colour" : 194,
+			  "colour" : 53,
 			  "output" : "Filter",
 			  
 			  
@@ -154,7 +154,7 @@ Blockly.Blocks['ToBe/processor'] = {
 				},
 				
 			],
-			  "colour" : 226,
+			  "colour" : 206,
 			  "output" : "ToBe",
 			  
 			  
@@ -172,7 +172,7 @@ Blockly.Blocks['Filter/high'] = {
 			  "type" : "Filter/high",
 			  "message0" : "highpass",
 			  
-			  "colour" : 341,
+			  "colour" : 249,
 			  "output" : "Filter",
 			  
 			  
@@ -213,7 +213,7 @@ Blockly.Blocks['DataSource/movement'] = {
 				},
 				
 			],
-			  "colour" : 49,
+			  "colour" : 127,
 			  "output" : "DataSource",
 			  
 			  
@@ -231,7 +231,7 @@ Blockly.Blocks['DataProcessor/medium'] = {
 			  "type" : "DataProcessor/medium",
 			  "message0" : "medium_ramp",
 			  
-			  "colour" : 234,
+			  "colour" : 185,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -249,7 +249,7 @@ Blockly.Blocks['Wave/sine'] = {
 			  "type" : "Wave/sine",
 			  "message0" : "sine",
 			  
-			  "colour" : 21,
+			  "colour" : 191,
 			  "output" : "Wave",
 			  
 			  
@@ -267,7 +267,7 @@ Blockly.Blocks['DataProcessor/slow'] = {
 			  "type" : "DataProcessor/slow",
 			  "message0" : "slow_ramp",
 			  
-			  "colour" : 294,
+			  "colour" : 16,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -292,7 +292,7 @@ Blockly.Blocks['IntegerValue/intf'] = {
 				},
 				
 			],
-			  "colour" : 14,
+			  "colour" : 221,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -351,7 +351,7 @@ Blockly.Blocks['ToBe/filtr'] = {
 				},
 				
 			],
-			  "colour" : 325,
+			  "colour" : 252,
 			  "output" : "ToBe",
 			  
 			  
@@ -410,7 +410,7 @@ Blockly.Blocks['SoundSource/filtr'] = {
 				},
 				
 			],
-			  "colour" : 107,
+			  "colour" : 279,
 			  "output" : "SoundSource",
 			  
 			  
@@ -443,7 +443,7 @@ Blockly.Blocks['Connection/wait'] = {
 				},
 				
 			],
-			  "colour" : 286,
+			  "colour" : 17,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -461,7 +461,7 @@ Blockly.Blocks['DataProcessor/reverse'] = {
 			  "type" : "DataProcessor/reverse",
 			  "message0" : "reverse",
 			  
-			  "colour" : 11,
+			  "colour" : 165,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -490,7 +490,7 @@ Blockly.Blocks['DataProcessing/processor'] = {
 				},
 				
 			],
-			  "colour" : 244,
+			  "colour" : 125,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -506,21 +506,16 @@ Blockly.Blocks['Id'] = {
 		this.jsonInit(
 			{
 			  "type" : "Id",
-			  "message0" : "%1 %2 ",
+			  "message0" : "%1",
 			  "args0" : [
 				{
-				  "name" : "IdName",
+				  "name" : "IntegerValue",
 				  "type" : "field_input",
-				  "text" : "Id"
-				},
-				  	{
-				  "name" : "IdName",
-				  "type" : "field_input",
-				  "text" : "Id"
+				  "text" : "variable"
 				},
 				
 			],
-			  "colour" : 185,
+			  "colour" : 230,
 			  "output" : "Id",
 			  
 			  
@@ -538,7 +533,7 @@ Blockly.Blocks['Wave/square'] = {
 			  "type" : "Wave/square",
 			  "message0" : "square",
 			  
-			  "colour" : 331,
+			  "colour" : 123,
 			  "output" : "Wave",
 			  
 			  
@@ -556,7 +551,7 @@ Blockly.Blocks['DataProcessor/rotate'] = {
 			  "type" : "DataProcessor/rotate",
 			  "message0" : "rotate",
 			  
-			  "colour" : 67,
+			  "colour" : 88,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -589,7 +584,7 @@ Blockly.Blocks['StringValue'] = {
 				},
 				
 			],
-			  "colour" : 156,
+			  "colour" : 131,
 			  "output" : "StringValue",
 			  
 			  
@@ -652,7 +647,7 @@ Blockly.Blocks['DataProcessing/dataSource'] = {
 				},
 				
 			],
-			  "colour" : 34,
+			  "colour" : 118,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -670,7 +665,7 @@ Blockly.Blocks['DataProcessor/nothing'] = {
 			  "type" : "DataProcessor/nothing",
 			  "message0" : "do_nothing",
 			  
-			  "colour" : 43,
+			  "colour" : 67,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -688,7 +683,7 @@ Blockly.Blocks['DataProcessor/hump'] = {
 			  "type" : "DataProcessor/hump",
 			  "message0" : "hump",
 			  
-			  "colour" : 164,
+			  "colour" : 149,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -777,7 +772,7 @@ Blockly.Blocks['ToBe/wave'] = {
 				},
 				
 			],
-			  "colour" : 8,
+			  "colour" : 145,
 			  "output" : "ToBe",
 			  
 			  
@@ -818,7 +813,7 @@ Blockly.Blocks['DataSource/rotation'] = {
 				},
 				
 			],
-			  "colour" : 6,
+			  "colour" : 301,
 			  "output" : "DataSource",
 			  
 			  
@@ -859,7 +854,7 @@ Blockly.Blocks['DataSource/position'] = {
 				},
 				
 			],
-			  "colour" : 271,
+			  "colour" : 116,
 			  "output" : "DataSource",
 			  
 			  
@@ -877,7 +872,7 @@ Blockly.Blocks['DataProcessor/hard'] = {
 			  "type" : "DataProcessor/hard",
 			  "message0" : "hard_cutoff",
 			  
-			  "colour" : 94,
+			  "colour" : 348,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -895,7 +890,7 @@ Blockly.Blocks['Wave/triangle'] = {
 			  "type" : "Wave/triangle",
 			  "message0" : "triangle",
 			  
-			  "colour" : 150,
+			  "colour" : 93,
 			  "output" : "Wave",
 			  
 			  
@@ -958,7 +953,7 @@ Blockly.Blocks['ToBe/dataSource'] = {
 				},
 				
 			],
-			  "colour" : 252,
+			  "colour" : 265,
 			  "output" : "ToBe",
 			  
 			  
@@ -976,7 +971,7 @@ Blockly.Blocks['Filter/low'] = {
 			  "type" : "Filter/low",
 			  "message0" : "lowpass",
 			  
-			  "colour" : 246,
+			  "colour" : 159,
 			  "output" : "Filter",
 			  
 			  
@@ -1014,7 +1009,7 @@ Blockly.Blocks['ToBe/range'] = {
 				},
 				
 			],
-			  "colour" : 305,
+			  "colour" : 41,
 			  "output" : "ToBe",
 			  
 			  
@@ -1043,7 +1038,7 @@ Blockly.Blocks['DataSource/slider'] = {
 				},
 				
 			],
-			  "colour" : 226,
+			  "colour" : 287,
 			  "output" : "DataSource",
 			  
 			  
@@ -1102,7 +1097,7 @@ Blockly.Blocks['Connection/params'] = {
 				},
 				
 			],
-			  "colour" : 207,
+			  "colour" : 303,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -1140,7 +1135,7 @@ Blockly.Blocks['Connection/sound'] = {
 				},
 				
 			],
-			  "colour" : 190,
+			  "colour" : 318,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -1169,7 +1164,7 @@ Blockly.Blocks['Program/a'] = {
 				},
 				
 			],
-			  "colour" : 79,
+			  "colour" : 320,
 			  "output" : "Program",
 			  
 			  
@@ -1187,7 +1182,7 @@ Blockly.Blocks['Wave/sawtooth'] = {
 			  "type" : "Wave/sawtooth",
 			  "message0" : "sawtooth",
 			  
-			  "colour" : 142,
+			  "colour" : 135,
 			  "output" : "Wave",
 			  
 			  
@@ -1205,7 +1200,7 @@ Blockly.Blocks['DataSource/speaker'] = {
 			  "type" : "DataSource/speaker",
 			  "message0" : "speaker",
 			  
-			  "colour" : 312,
+			  "colour" : 240,
 			  "output" : "DataSource",
 			  
 			  
@@ -1230,7 +1225,7 @@ Blockly.Blocks['ToBe/number'] = {
 				},
 				
 			],
-			  "colour" : 29,
+			  "colour" : 34,
 			  "output" : "ToBe",
 			  
 			  
