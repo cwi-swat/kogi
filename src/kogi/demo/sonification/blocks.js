@@ -25,7 +25,7 @@ Blockly.Blocks['DataProcessing/range'] = {
 				},
 				
 			],
-			  "colour" : 278,
+			  "colour" : 182,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -43,7 +43,7 @@ Blockly.Blocks['DataProcessor/fast'] = {
 			  "type" : "DataProcessor/fast",
 			  "message0" : "fast_ramp",
 			  
-			  "colour" : 242,
+			  "colour" : 344,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -54,130 +54,19 @@ Blockly.Blocks['DataProcessor/fast'] = {
 		);
 	}
 }
-Blockly.Blocks['SoundSource/wave'] = {
+Blockly.Blocks['DataProcessor/hard'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "SoundSource/wave",
-			  "message0" : "%1 wave %2 %3 ( %4 spectrum %5 : %6 %7 ) %8 named %9 %10 ",
-			  "args0" : [
-				{
-				  "name" : "Wave",
-				  "type" : "input_value",
-				  "check" : ["Wave"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "imgWave",
-				  "type" : "input_value",
-				  "check" : ["StringValue"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "imgSpect",
-				  "type" : "input_value",
-				  "check" : ["StringValue"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "sound",
-				  "type" : "input_value",
-				  "check" : ["Id"]
-				},
-				
-			],
-			  "colour" : 292,
-			  "output" : "SoundSource",
+			  "type" : "DataProcessor/hard",
+			  "message0" : "hard_cutoff",
+			  
+			  "colour" : 222,
+			  "output" : "DataProcessor",
 			  
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "wave",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Filter/band'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Filter/band",
-			  "message0" : "bandpass",
-			  
-			  "colour" : 53,
-			  "output" : "Filter",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "band",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['ToBe/processor'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "ToBe/processor",
-			  "message0" : "%1 image %2 ",
-			  "args0" : [
-				{
-				  "name" : "DataProcessor",
-				  "type" : "input_value",
-				  "check" : ["DataProcessor"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				
-			],
-			  "colour" : 206,
-			  "output" : "ToBe",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "processor",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Filter/high'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Filter/high",
-			  "message0" : "highpass",
-			  
-			  "colour" : 249,
-			  "output" : "Filter",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "high",
+			  "tooltip" : "hard",
 			  "helpUrl" : ""
 			}
 		);
@@ -188,17 +77,9 @@ Blockly.Blocks['DataSource/movement'] = {
 		this.jsonInit(
 			{
 			  "type" : "DataSource/movement",
-			  "message0" : "device %1 movement %2 along %3 %4 axis %5 ",
+			  "message0" : "device movement along %1 %2 axis %3 ",
 			  "args0" : [
 				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
 				  "name" : "",
 				  "type" : "input_dummy"
 				},
@@ -213,7 +94,7 @@ Blockly.Blocks['DataSource/movement'] = {
 				},
 				
 			],
-			  "colour" : 127,
+			  "colour" : 0,
 			  "output" : "DataSource",
 			  
 			  
@@ -231,12 +112,30 @@ Blockly.Blocks['DataProcessor/medium'] = {
 			  "type" : "DataProcessor/medium",
 			  "message0" : "medium_ramp",
 			  
-			  "colour" : 185,
+			  "colour" : 256,
 			  "output" : "DataProcessor",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "medium",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Wave/triangle'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Wave/triangle",
+			  "message0" : "triangle",
+			  
+			  "colour" : 32,
+			  "output" : "Wave",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "triangle",
 			  "helpUrl" : ""
 			}
 		);
@@ -249,7 +148,7 @@ Blockly.Blocks['Wave/sine'] = {
 			  "type" : "Wave/sine",
 			  "message0" : "sine",
 			  
-			  "colour" : 191,
+			  "colour" : 190,
 			  "output" : "Wave",
 			  
 			  
@@ -260,162 +159,48 @@ Blockly.Blocks['Wave/sine'] = {
 		);
 	}
 }
-Blockly.Blocks['DataProcessor/slow'] = {
+Blockly.Blocks['Connection/params'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "DataProcessor/slow",
-			  "message0" : "slow_ramp",
-			  
-			  "colour" : 16,
-			  "output" : "DataProcessor",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "slow",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['IntegerValue/intf'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "IntegerValue/intf",
-			  "message0" : "%1",
+			  "type" : "Connection/params",
+			  "message0" : "set parameters %1 %2 of sound %3 %4 to be %5 %6 ",
 			  "args0" : [
 				{
-				  "name" : "IntegerValue",
-				  "type" : "field_number",
-				  "value" : 0
-				},
-				
-			],
-			  "colour" : 221,
-			  "output" : "IntegerValue",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['ToBe/filtr'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "ToBe/filtr",
-			  "message0" : "%1 filter %2 ( %3 spectrum %4 : %5 %6 ) %7 named %8 %9 ",
-			  "args0" : [
-				{
-				  "name" : "Filter",
-				  "type" : "input_value",
-				  "check" : ["Filter"]
-				},
-				  	{
 				  "name" : "",
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "imgSpect",
-				  "type" : "input_value",
-				  "check" : ["StringValue"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "sound",
+				  "name" : "text",
 				  "type" : "input_value",
 				  "check" : ["Id"]
 				},
-				
-			],
-			  "colour" : 252,
-			  "output" : "ToBe",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "filtr",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['SoundSource/filtr'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "SoundSource/filtr",
-			  "message0" : "%1 filter %2 ( %3 spectrum %4 : %5 %6 ) %7 named %8 %9 ",
-			  "args0" : [
-				{
-				  "name" : "Filter",
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "SoundSource",
 				  "type" : "input_value",
-				  "check" : ["Filter"]
+				  "check" : ["SoundSource"]
 				},
 				  	{
 				  "name" : "",
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "imgSpect",
+				  "name" : "ToBe",
 				  "type" : "input_value",
-				  "check" : ["StringValue"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "sound",
-				  "type" : "input_value",
-				  "check" : ["Id"]
+				  "check" : ["ToBe"]
 				},
 				
 			],
-			  "colour" : 279,
-			  "output" : "SoundSource",
+			  "colour" : 308,
 			  
-			  
+			  "previousStatement" : "Connection",
+			  "nextStatement" : "Connection",
 			  "inputsInline" : true,
-			  "tooltip" : "filtr",
+			  "tooltip" : "params",
 			  "helpUrl" : ""
 			}
 		);
@@ -443,7 +228,7 @@ Blockly.Blocks['Connection/wait'] = {
 				},
 				
 			],
-			  "colour" : 17,
+			  "colour" : 48,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -461,66 +246,12 @@ Blockly.Blocks['DataProcessor/reverse'] = {
 			  "type" : "DataProcessor/reverse",
 			  "message0" : "reverse",
 			  
-			  "colour" : 165,
+			  "colour" : 217,
 			  "output" : "DataProcessor",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "reverse",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['DataProcessing/processor'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "DataProcessing/processor",
-			  "message0" : "%1 image %2 ",
-			  "args0" : [
-				{
-				  "name" : "DataProcessor",
-				  "type" : "input_value",
-				  "check" : ["DataProcessor"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				
-			],
-			  "colour" : 125,
-			  
-			  "previousStatement" : "DataProcessing",
-			  "nextStatement" : "DataProcessing",
-			  "inputsInline" : true,
-			  "tooltip" : "processor",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Id'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Id",
-			  "message0" : "%1",
-			  "args0" : [
-				{
-				  "name" : "IntegerValue",
-				  "type" : "field_input",
-				  "text" : "variable"
-				},
-				
-			],
-			  "colour" : 230,
-			  "output" : "Id",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
 		);
@@ -533,7 +264,7 @@ Blockly.Blocks['Wave/square'] = {
 			  "type" : "Wave/square",
 			  "message0" : "square",
 			  
-			  "colour" : 123,
+			  "colour" : 14,
 			  "output" : "Wave",
 			  
 			  
@@ -551,7 +282,7 @@ Blockly.Blocks['DataProcessor/rotate'] = {
 			  "type" : "DataProcessor/rotate",
 			  "message0" : "rotate",
 			  
-			  "colour" : 88,
+			  "colour" : 320,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -562,97 +293,34 @@ Blockly.Blocks['DataProcessor/rotate'] = {
 		);
 	}
 }
-Blockly.Blocks['StringValue'] = {
+Blockly.Blocks['DataSource/rotation'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "StringValue",
-			  "message0" : "\" %1 %2 \" %3 ",
+			  "type" : "DataSource/rotation",
+			  "message0" : "device rotation along %1 %2 axis %3 ",
 			  "args0" : [
 				{
 				  "name" : "",
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "StringValueName",
-				  "type" : "field_input",
-				  "text" : "StringValue"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				
-			],
-			  "colour" : 131,
-			  "output" : "StringValue",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['DataProcessing/dataSource'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "DataProcessing/dataSource",
-			  "message0" : "data %1 source %2 %3 processed %4 with %5 %6 then %7 scaled %8 to %9 %10 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "DataSource",
+				  "name" : "text",
 				  "type" : "input_value",
-				  "check" : ["DataSource"]
+				  "check" : ["Id"]
 				},
 				  	{
 				  "name" : "",
 				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "processing",
-				  "type" : "input_statement",
-				  "check" : ["DataProcessing", "epsilon"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "DataProcessing",
-				  "type" : "input_statement",
-				  "check" : ["DataProcessing"]
 				},
 				
 			],
-			  "colour" : 118,
+			  "colour" : 146,
+			  "output" : "DataSource",
 			  
-			  "previousStatement" : "DataProcessing",
-			  "nextStatement" : "DataProcessing",
+			  
 			  "inputsInline" : true,
-			  "tooltip" : "dataSource",
+			  "tooltip" : "rotation",
 			  "helpUrl" : ""
 			}
 		);
@@ -665,7 +333,7 @@ Blockly.Blocks['DataProcessor/nothing'] = {
 			  "type" : "DataProcessor/nothing",
 			  "message0" : "do_nothing",
 			  
-			  "colour" : 67,
+			  "colour" : 147,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -683,7 +351,7 @@ Blockly.Blocks['DataProcessor/hump'] = {
 			  "type" : "DataProcessor/hump",
 			  "message0" : "hump",
 			  
-			  "colour" : 149,
+			  "colour" : 285,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -719,30 +387,208 @@ Blockly.Blocks['Program'] = {
 		);
 	}
 }
-Blockly.Blocks['ToBe/wave'] = {
+Blockly.Blocks['ToBe/dataSource'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "ToBe/wave",
-			  "message0" : "%1 wave %2 %3 ( %4 spectrum %5 : %6 %7 ) %8 named %9 %10 ",
+			  "type" : "ToBe/dataSource",
+			  "message0" : "data source %1 %2 processed with %3 %4 then scaled to %5 %6 ",
 			  "args0" : [
 				{
-				  "name" : "Wave",
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "DataSource",
 				  "type" : "input_value",
-				  "check" : ["Wave"]
+				  "check" : ["DataSource"]
 				},
 				  	{
 				  "name" : "",
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "imgWave",
-				  "type" : "input_value",
-				  "check" : ["StringValue"]
+				  "name" : "processing",
+				  "type" : "input_statement",
+				  "check" : ["DataProcessing", "epsilon"]
 				},
 				  	{
 				  "name" : "",
 				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "DataProcessing",
+				  "type" : "input_statement",
+				  "check" : ["DataProcessing"]
+				},
+				
+			],
+			  "colour" : 267,
+			  "output" : "ToBe",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "dataSource",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Filter/band'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Filter/band",
+			  "message0" : "bandpass",
+			  
+			  "colour" : 268,
+			  "output" : "Filter",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "band",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ImageValue'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ImageValue",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "type" : "field_image",
+				  "src" : "https://maveme.s3.amazonaws.com/Kogi/static/sine.svg",
+				  "width" : 50,
+				  "height" : 30,
+				  "alt" : "",
+				  "flipRtl" : false
+				},
+				
+			],
+			  "colour" : 232,
+			  "output" : "ImageValue",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ToBe/processor'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ToBe/processor",
+			  "message0" : "%1 image %2 ",
+			  "args0" : [
+				{
+				  "name" : "DataProcessor",
+				  "type" : "input_value",
+				  "check" : ["DataProcessor"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 44,
+			  "output" : "ToBe",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "processor",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['DataSource/position'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "DataSource/position",
+			  "message0" : "device position along %1 %2 axis %3 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "text",
+				  "type" : "input_value",
+				  "check" : ["Id"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 106,
+			  "output" : "DataSource",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "position",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Filter/high'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Filter/high",
+			  "message0" : "highpass",
+			  
+			  "colour" : 6,
+			  "output" : "Filter",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "high",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['DataProcessor/slow'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "DataProcessor/slow",
+			  "message0" : "slow_ramp",
+			  
+			  "colour" : 235,
+			  "output" : "DataProcessor",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "slow",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ToBe/filtr'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ToBe/filtr",
+			  "message0" : "%1 filter %2  (spectrum: %3 %4 ) %5 named %6 %7 ",
+			  "args0" : [
+				{
+				  "name" : "Filter",
+				  "type" : "input_value",
+				  "check" : ["Filter"]
 				},
 				  	{
 				  "name" : "",
@@ -755,7 +601,7 @@ Blockly.Blocks['ToBe/wave'] = {
 				  	{
 				  "name" : "imgSpect",
 				  "type" : "input_value",
-				  "check" : ["StringValue"]
+				  "check" : ["ImageValue"]
 				},
 				  	{
 				  "name" : "",
@@ -772,193 +618,12 @@ Blockly.Blocks['ToBe/wave'] = {
 				},
 				
 			],
-			  "colour" : 145,
+			  "colour" : 108,
 			  "output" : "ToBe",
 			  
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "wave",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['DataSource/rotation'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "DataSource/rotation",
-			  "message0" : "device %1 rotation %2 along %3 %4 axis %5 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "text",
-				  "type" : "input_value",
-				  "check" : ["Id"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				
-			],
-			  "colour" : 301,
-			  "output" : "DataSource",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "rotation",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['DataSource/position'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "DataSource/position",
-			  "message0" : "device %1 position %2 along %3 %4 axis %5 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "text",
-				  "type" : "input_value",
-				  "check" : ["Id"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				
-			],
-			  "colour" : 116,
-			  "output" : "DataSource",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "position",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['DataProcessor/hard'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "DataProcessor/hard",
-			  "message0" : "hard_cutoff",
-			  
-			  "colour" : 348,
-			  "output" : "DataProcessor",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "hard",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Wave/triangle'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Wave/triangle",
-			  "message0" : "triangle",
-			  
-			  "colour" : 93,
-			  "output" : "Wave",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "triangle",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['ToBe/dataSource'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "ToBe/dataSource",
-			  "message0" : "data %1 source %2 %3 processed %4 with %5 %6 then %7 scaled %8 to %9 %10 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "DataSource",
-				  "type" : "input_value",
-				  "check" : ["DataSource"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "processing",
-				  "type" : "input_statement",
-				  "check" : ["DataProcessing", "epsilon"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "DataProcessing",
-				  "type" : "input_statement",
-				  "check" : ["DataProcessing"]
-				},
-				
-			],
-			  "colour" : 265,
-			  "output" : "ToBe",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "dataSource",
+			  "tooltip" : "filtr",
 			  "helpUrl" : ""
 			}
 		);
@@ -971,7 +636,7 @@ Blockly.Blocks['Filter/low'] = {
 			  "type" : "Filter/low",
 			  "message0" : "lowpass",
 			  
-			  "colour" : 159,
+			  "colour" : 297,
 			  "output" : "Filter",
 			  
 			  
@@ -1009,7 +674,7 @@ Blockly.Blocks['ToBe/range'] = {
 				},
 				
 			],
-			  "colour" : 41,
+			  "colour" : 34,
 			  "output" : "ToBe",
 			  
 			  
@@ -1038,71 +703,12 @@ Blockly.Blocks['DataSource/slider'] = {
 				},
 				
 			],
-			  "colour" : 287,
+			  "colour" : 356,
 			  "output" : "DataSource",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "slider",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Connection/params'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Connection/params",
-			  "message0" : "set %1 parameters %2 %3 of %4 sound %5 %6 to %7 be %8 %9 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "text",
-				  "type" : "input_value",
-				  "check" : ["Id"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "SoundSource",
-				  "type" : "input_value",
-				  "check" : ["SoundSource"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "ToBe",
-				  "type" : "input_value",
-				  "check" : ["ToBe"]
-				},
-				
-			],
-			  "colour" : 303,
-			  
-			  "previousStatement" : "Connection",
-			  "nextStatement" : "Connection",
-			  "inputsInline" : true,
-			  "tooltip" : "params",
 			  "helpUrl" : ""
 			}
 		);
@@ -1135,7 +741,7 @@ Blockly.Blocks['Connection/sound'] = {
 				},
 				
 			],
-			  "colour" : 318,
+			  "colour" : 37,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -1164,7 +770,7 @@ Blockly.Blocks['Program/a'] = {
 				},
 				
 			],
-			  "colour" : 320,
+			  "colour" : 87,
 			  "output" : "Program",
 			  
 			  
@@ -1182,7 +788,7 @@ Blockly.Blocks['Wave/sawtooth'] = {
 			  "type" : "Wave/sawtooth",
 			  "message0" : "sawtooth",
 			  
-			  "colour" : 135,
+			  "colour" : 246,
 			  "output" : "Wave",
 			  
 			  
@@ -1200,7 +806,7 @@ Blockly.Blocks['DataSource/speaker'] = {
 			  "type" : "DataSource/speaker",
 			  "message0" : "speaker",
 			  
-			  "colour" : 240,
+			  "colour" : 226,
 			  "output" : "DataSource",
 			  
 			  
@@ -1225,12 +831,301 @@ Blockly.Blocks['ToBe/number'] = {
 				},
 				
 			],
-			  "colour" : 34,
+			  "colour" : 57,
 			  "output" : "ToBe",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "number",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ToBe/wave'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ToBe/wave",
+			  "message0" : "%1 wave %2 %3 (spectrum: %4 %5 ) %6 named %7 %8 ",
+			  "args0" : [
+				{
+				  "name" : "Wave",
+				  "type" : "input_value",
+				  "check" : ["Wave"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "imgWave",
+				  "type" : "input_value",
+				  "check" : ["ImageValue"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "imgSpect",
+				  "type" : "input_value",
+				  "check" : ["ImageValue"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "sound",
+				  "type" : "input_value",
+				  "check" : ["Id"]
+				},
+				
+			],
+			  "colour" : 173,
+			  "output" : "ToBe",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "wave",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['DataProcessing/dataSource'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "DataProcessing/dataSource",
+			  "message0" : "data source %1 %2 processed with %3 %4 then scaled to %5 %6 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "DataSource",
+				  "type" : "input_value",
+				  "check" : ["DataSource"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "processing",
+				  "type" : "input_statement",
+				  "check" : ["DataProcessing", "epsilon"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "DataProcessing",
+				  "type" : "input_statement",
+				  "check" : ["DataProcessing"]
+				},
+				
+			],
+			  "colour" : 176,
+			  
+			  "previousStatement" : "DataProcessing",
+			  "nextStatement" : "DataProcessing",
+			  "inputsInline" : true,
+			  "tooltip" : "dataSource",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['IntegerValue/intf'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "IntegerValue/intf",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "IntegerValue",
+				  "type" : "field_number",
+				  "value" : 0
+				},
+				
+			],
+			  "colour" : 203,
+			  "output" : "IntegerValue",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['DataProcessing/processor'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "DataProcessing/processor",
+			  "message0" : "%1 image %2 ",
+			  "args0" : [
+				{
+				  "name" : "DataProcessor",
+				  "type" : "input_value",
+				  "check" : ["DataProcessor"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 224,
+			  
+			  "previousStatement" : "DataProcessing",
+			  "nextStatement" : "DataProcessing",
+			  "inputsInline" : true,
+			  "tooltip" : "processor",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['SoundSource/wave'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "SoundSource/wave",
+			  "message0" : "%1 wave %2 %3 (spectrum: %4 %5 ) %6 named %7 %8 ",
+			  "args0" : [
+				{
+				  "name" : "Wave",
+				  "type" : "input_value",
+				  "check" : ["Wave"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "imgWave",
+				  "type" : "input_value",
+				  "check" : ["ImageValue"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "imgSpect",
+				  "type" : "input_value",
+				  "check" : ["ImageValue"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "sound",
+				  "type" : "input_value",
+				  "check" : ["Id"]
+				},
+				
+			],
+			  "colour" : 332,
+			  "output" : "SoundSource",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "wave",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['SoundSource/filtr'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "SoundSource/filtr",
+			  "message0" : "%1 filter %2  (spectrum: %3 %4 ) %5 named %6 %7 ",
+			  "args0" : [
+				{
+				  "name" : "Filter",
+				  "type" : "input_value",
+				  "check" : ["Filter"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "imgSpect",
+				  "type" : "input_value",
+				  "check" : ["ImageValue"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "sound",
+				  "type" : "input_value",
+				  "check" : ["Id"]
+				},
+				
+			],
+			  "colour" : 49,
+			  "output" : "SoundSource",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "filtr",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Id'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Id",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Id",
+				  "type" : "field_input",
+				  "text" : "variable"
+				},
+				
+			],
+			  "colour" : 187,
+			  "output" : "Id",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
 		);

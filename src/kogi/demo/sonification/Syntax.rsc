@@ -5,7 +5,7 @@ extend lang::std::Id;
 
 import ParseTree;
 import kogi::Compile;
-import kogi::optimizations::RemoveUnitProduction;
+import kogi::simplification::RemoveUnitProduction;
 
 
 start syntax Program
@@ -20,7 +20,7 @@ syntax Connection
   ;
   
 syntax ControllingParameters
-  = params: "set" "parameters" Id text "of" "sound" SoundSource source "to" "be" ToBe source
+  = params: "set parameters" Id text "of sound" SoundSource source "to be" ToBe source
   ;
   
 syntax ToBe
@@ -30,7 +30,7 @@ syntax ToBe
   ;    
   
 syntax DataProcessing
-  = dataSource: "data" "source" DataSource source "processed" "with" DataProcessing* processing "then" "scaled" "to" DataProcessing
+  = dataSource: "data source" DataSource source "processed with" DataProcessing* processing "then scaled to" DataProcessing
   | processor: DataProcessor process "image"
   | range: "range" IntegerValue min "to" IntegerValue max 
   ;
@@ -55,8 +55,8 @@ syntax SoundConnection
   ;
   
 syntax SoundSource
-  = wave: Wave wave "wave" StringValue imgWave "(" "spectrum"":" StringValue imgSpect ")" "named" Id sound
-  | filtr: Filter filter "filter" "(" "spectrum"":" StringValue imgSpect")" "named" Id sound
+  = wave: Wave wave "wave" ImageValue imgWave "(spectrum:" ImageValue imgSpect ")" "named" Id sound
+  | filtr: Filter filter "filter" " (spectrum:" ImageValue imgSpect")" "named" Id sound
   ;
   
 syntax Filter
@@ -75,9 +75,9 @@ syntax Wave
 syntax DataSource
   = speaker: "speaker"
   | slider: "slider_with_label" Id text
-  | position: "device" "position" "along" Id text "axis"
-  | movement: "device"  "movement" "along" Id text "axis"
-  | rotation: "device"  "rotation" "along" Id text "axis"
+  | position: "device position along" Id text "axis"
+  | movement: "device movement along" Id text "axis"
+  | rotation: "device rotation along" Id text "axis"
   ;
   
 //lexical Int
@@ -87,7 +87,7 @@ lexical IntegerValue
  = intf: [0-9]+; 
   
 // TODO: add support to images. For now I will leave it as a string.
-lexical StringValue 
+lexical ImageValue 
   = "\"" ![\"]*  "\"";
   
   
