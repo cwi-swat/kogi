@@ -83,9 +83,11 @@ Arg symbol2Arg(\seq(list[Symbol] symbols), bool mult, str labeledName = "", str 
 default Arg symbol2Arg(Symbol s, bool mult, str labeledName = "", str lexicalName = "") 
 	= Arg::none();
 
-// TODO: Fix
+Arg symbol2Arg("ImageValue")
+  = arg("IntegerValue", image("https://maveme.s3.amazonaws.com/Kogi/static/sine.svg", 50, 30));	
+
 Arg symbol2Arg("Id")
-  = arg("IntegerValue", input("variable"));	
+  = arg("Id", input("variable"));	
 	
 Arg symbol2Arg("IntegerValue")
   = arg("IntegerValue", number(0));

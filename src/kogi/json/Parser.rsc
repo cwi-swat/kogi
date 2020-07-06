@@ -107,3 +107,12 @@ str toJsonArg(arg(name, angle(num angle)))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "field_angle")>,
 		'<toJson("angle", angle)>";
+		
+str toJsonArg(arg(name, image(str src, int width, int height)))
+	=	"<toJson("type", "field_image")>,
+		'<toJson("src", src)>,
+		'<toJson("width", width)>,
+		'<toJson("height", height)>,
+		'<toJson("alt", "")>,
+		'<toJson("flipRtl", false)>";
+			
