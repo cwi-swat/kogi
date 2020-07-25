@@ -8,28 +8,28 @@ import kogi::util::Util;
 import kogi::Production2Block;
 
 
-set[Production] getAllProductions(type[&T <: Tree] grammar) {
-     return { p | /p:prod(_,_,_) := 
-     	( {} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions ), !isEmpty(p.symbols), \layouts(_) !:= p.def };
-}
-list[Block] grammar2blocks(type[&T<:Tree] grammar) {
-	set[Production] productions = getAllProductions(grammar);
-	multiplicityInfo = nonTerminalMultiplicity(productions);
-	startProd = getStartProduction(productions);
-	production2Block(startProd);
-	//isSingleGrammar(productions);
-    blocks = [ production2Block(production, multiplicityInfo) | production <- (productions - startProd), containLayoutAttributes(production.attributes) ];
-    blocks += createEpsilonBlock(productions);
-    return [ block | block <- blocks, Block::none() !:= block ];
+//set[Production] getAllProductions(type[&T <: Tree] grammar) {
+//     return { p | /p:prod(_,_,_) := 
+//     	( {} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions ), !isEmpty(p.symbols), \layouts(_) !:= p.def };
+//}
+//list[Block] grammar2blocks(type[&T<:Tree] grammar, bool epsilon = false)
+//  = grammar2blocks(getAllProductions(grammar), epsilon = epsilon);
+
+tuple[set[Production], str] getProductionsAndStart(set[Production] productions) {
+	Production startProd = getStartProduction(productions);
+	str startP = startProd.def.symbol.name;
+	return <productions - startProd, startP>;
 }
 
-list[Block] grammar2blocks(set[Production] productions) {
+list[Block] grammar2blocks(set[Production] productions, bool epsilon = false) {
 	multiplicityInfo = nonTerminalMultiplicity(productions);
-	//startProd = getStartProduction(productions);
-	//production2Block(startProd);
+	// Remove the start production from the productions and retrieve the start symbol name to set the 'hat' block
+	tuple[set[Production] prods, str name] p = getProductionsAndStart(productions);
 
-    blocks = [ production2Block(production, multiplicityInfo) | production <- (productions), containLayoutAttributes(production.attributes) ];
-    blocks += createEpsilonBlock(productions);
+    blocks = [ production2Block(production, multiplicityInfo, p.name) | production <- p.prods, containLayoutAttributes(production.attributes) ];
+    if (epsilon)
+    	blocks += createEpsilonBlock(productions);
+    // remove empty blocks
     return [ block | block <- blocks, Block::none() !:= block ];
 }
 
@@ -42,7 +42,7 @@ Block createEpsilonBlock(set[Production] productions) {
 
 Production getStartProduction(set[Production] productions) 
 	= getOneFrom({ p | p <- productions, prod(\start(sort(_)),_,_) := p });
-	
+
 
 //bool isSingleGrammar(set[Production] productions){
 //	nonTerminals = size( { symbol |/Symbol symbol <- productions, sort(name) := symbol } );
