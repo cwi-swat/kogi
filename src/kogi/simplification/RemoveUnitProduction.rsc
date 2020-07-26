@@ -8,6 +8,7 @@ import kogi::simplification::UselessProductions;
 
 
 set[Production] simplifyGrammar(type[&T <: Tree] grammar) {
+//map[Symbol, Production] simplifyGrammar(type[&T <: Tree] grammar) {
 	// Filter the grammar to get only non-terminals and start symbol. We exclude layout or other stuff
 	map[Symbol, Production] nonTerminals = filterGrammar(grammar.definitions);
 	
@@ -16,6 +17,7 @@ set[Production] simplifyGrammar(type[&T <: Tree] grammar) {
 	// remove useless productions
 	grammarWChainRules = removeUselessProductions(grammarWChainRules);
 	
+	//return grammarWChainRules;
 	return ({} | it + grammarWChainRules[p].alternatives | p <- grammarWChainRules );
 }
 
@@ -93,7 +95,7 @@ bool isStartSymbol(choice(\start(_),_))
 bool isStartSymbol(choice(_,_))
   = false;  
 
-// A unit production is a production that has 1 non-terminal
+// A unit production is a production that has ONLY 1 non-terminal
 set[Production] containsChainRule(choice(_, set[Production] alternatives))	
   = { p | p <- alternatives, hasChainRule(p) };
   
@@ -104,7 +106,7 @@ bool hasChainRule(prod(_, list[Symbol] symbols, _)) {
 	// remove layout symbols
 	list[Symbol] symbs = [ smb | Symbol smb <- symbols, layouts(_) !:= smb ];
 	// check if the alternative contains ONLY 1 non-terminal. If so, it is a chain rule
-	return size(symbs) == 1 && isNonterminal(symbs[0]) ? true : false;
+	return size(symbs) == 1 && (isNonterminal(symbs[0]) || isLexical(symbs[0])) ? true : false;
 	//return size(symbs) == 1 && lit(_) !:= symbs[0] ? true : false;
 }
 
@@ -129,6 +131,15 @@ Production filterProduction(Production p) {
 
 set[Production] filterAlternatives(set[Production] alts)
  = { filterAlternative(a) | a <- alts };
+
+Production filterAlternative(prod(def, symbols, attrs)) {
+	return prod(def, filterLayoutSymbols(symbols), attrs);
+}
+
+// TODO: Fix this. it does not filter anything.
+Production filterAlternative(\priority(def, choices)) {
+	return \priority(def, choices);
+}
 
 Production filterAlternative(Production p) {
 	p.symbols = filterLayoutSymbols(p.symbols); 
