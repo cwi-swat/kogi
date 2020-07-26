@@ -93,7 +93,7 @@ Arg symbol2Arg("IntegerValue")
   = arg("IntegerValue", number(0));
   
 Arg symbol2Arg("FloatValue")
-  = arg("FloatValue", number(0, range = Range::range(-1, 100000, 0.01)));
+  = arg("FloatValue", number(0, range = Range::range(-1, 100000, .01)));
   
 Arg symbol2Arg("BooleanValue")
   = arg("StringValue", checkbox());
