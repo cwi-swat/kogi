@@ -26,6 +26,15 @@ bool isNonterminal(sort(_))
 default bool isNonterminal(_)
   = false;  
   
+bool isLexical(lex(_))
+  = true;
+
+bool isLexical(label(_, lex(_)))
+  = true;
+  
+default bool isLexical(_)
+  = false;  
+  
 bool includeProduction(sort(_))
   = true;
 
@@ -45,4 +54,13 @@ bool includeProduction(lex(_))
   = true;  
 
 default bool includeProduction(Symbol _)
+  = false;
+  
+bool isLiteral(lit(_))
+  = true;
+  
+bool isLiteral(label(_, lit(_)))
+  = true;  
+  
+bool isLiteral(Symbol s)
   = false;  
