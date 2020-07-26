@@ -7,14 +7,6 @@ import kogi::Block;
 import kogi::util::Util;
 import kogi::Production2Block;
 
-
-//set[Production] getAllProductions(type[&T <: Tree] grammar) {
-//     return { p | /p:prod(_,_,_) := 
-//     	( {} | it + grammar.definitions[s].alternatives | Symbol s <- grammar.definitions ), !isEmpty(p.symbols), \layouts(_) !:= p.def };
-//}
-//list[Block] grammar2blocks(type[&T<:Tree] grammar, bool epsilon = false)
-//  = grammar2blocks(getAllProductions(grammar), epsilon = epsilon);
-
 tuple[set[Production], str] getProductionsAndStart(set[Production] productions) {
 	Production startProd = getStartProduction(productions);
 	str startP = startProd.def.symbol.name;
