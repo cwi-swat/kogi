@@ -1,5 +1,10 @@
 module kogi::demo::ql::Syntax
 
+extend lang::std::Layout;
+extend lang::std::Id;
+
+import kogi::demo::ql::Lexical;
+
 start syntax Form
   = form: "form" Id name "{" Question* questions "}"
   ;
@@ -14,9 +19,9 @@ syntax Question
 
 syntax Expr
   = var: Id name
-  | integer: Integer
-  | string: String
-  | money: Money
+  | integer: IntegerValue
+  | string: StringValue
+  | money: FloatValue
   | \true: "true"
   | \false: "false"
   | bracket "(" Expr ")"
