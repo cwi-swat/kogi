@@ -17,21 +17,31 @@ kogi::Block::Message symbols2Message(list[Symbol] symbols, map[str, bool] multip
 	}
 	else {
 		format = symbols2format(symbols);
+		// removes the literals.
+		//symbols = removeLiterals(symbols);
 		args = [ symbol2Arg(symbol, getMultiplicity(symbol, multiplicity), lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol, contains(format,"%") ];
 		return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
 	}
 }
 
+list[Symbol] removeLiterals(list[Symbol] smbls)
+  = [ s | s <- smbls, lit(_) !:= s ];
+  
+
 //FIX: If the last symbol is a lit, it shouldn't add  the last %n
 //FIX: Not sure about this, but it reduces the number of conditionals(e.g., lex(…), \iter-start(…)) 
 str symbols2format(list[Symbol] symbols) {
-	int counter = 0;
+	int counter = 1;
 	str format(Symbol symbol) {
-		counter += 1;
+		str msg = "";
 		if (lit(string) := symbol || label(_, lit(string)) := symbol)
-			return "<escape(string)> %<counter> ";
-		else
-			return "%<counter> ";
+			//msg =  "<escape(string)> ";
+			msg = "<escape(string)> %<counter> ";
+		else {
+			msg = "%<counter> ";
+		}
+		counter += 1;
+		return msg;
 	}
 	if (size(symbols) == 1 && lit(string) := symbols[0])
 		return escape(string);

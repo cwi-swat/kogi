@@ -7,6 +7,25 @@ import kogi::util::Util;
 Arg symbol2Arg(lit(str string), bool mult, str labeledName = "", str lexicalName = "")
 	= arg(labeledName, dummy());
 
+Arg symbol2Arg(lex("Id"), bool mult, str labeledName = "lex", str lexicalName = "")
+	= arg(labeledName, input(lexicalName));
+
+// FIX: src and sizes ... 
+Arg symbol2Arg(lex("ImageValue"), bool mult, str labeledName = "lex", str lexicalName = "")
+	= arg(labeledName, image("https://maveme.s3.amazonaws.com/Kogi/static/sine.svg", 50, 30));
+	
+Arg symbol2Arg(lex("IntegerValue"), bool mult, str labeledName = "lex", str lexicalName = "")
+	= arg(labeledName, number(0));
+
+Arg symbol2Arg(lex("FloatValue"), bool mult, str labeledName = "lex", str lexicalName = "")
+	= arg(labeledName, number(0, range = Range::range(-1, 100000, .01)));
+	
+Arg symbol2Arg(lex("BooleanValue"), bool mult, str labeledName = "lex", str lexicalName = "")
+	= arg(labeledName, checkbox());
+
+Arg symbol2Arg(lex("AngleValue"), bool mult, str labeledName = "lex", str lexicalName = "")
+	= arg(labeledName, angle(90));
+
 Arg symbol2Arg(lex(str name), bool mult, str labeledName = "lex", str lexicalName = "")
 	= arg(labeledName, kogi::Block::\value(check = [name]));
 
@@ -84,7 +103,7 @@ default Arg symbol2Arg(Symbol s, bool mult, str labeledName = "", str lexicalNam
 	= Arg::none();
 
 Arg symbol2Arg("ImageValue")
-  = arg("IntegerValue", image("https://maveme.s3.amazonaws.com/Kogi/static/sine.svg", 50, 30));	
+  = arg("IntegerValue", image("https://maveme.s3.amazonaws.com/Kogi/static/sine.svg", 50, 30));
 
 Arg symbol2Arg("Id")
   = arg("Id", input("variable"));	
