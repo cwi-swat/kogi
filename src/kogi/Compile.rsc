@@ -17,30 +17,30 @@ import kogi::BlocksCustomization;
 
 import kogi::simplification::Util;
 
-void createBlocklyApp(set[Production] productions, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|) {
+void createBlocklyApp(set[Production] productions, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly") {
 	blocks = renameDuplicatedBlocks(grammar2blocks(productions));
 	Toolbox tb = toolbox(createSections(blocks));
 	createJS(blocks, divName, toolboxName, targetPath);
-	createHTML(parseToolbox(tb), title, divName, targetPath);
+	createHTML(parseToolbox(tb), title, divName, targetPath, blockly);
 }
 
-void createBlocklyApp(type[&T<:Tree] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|)
-  = createBlocklyApp(getAllProductions(grammar), divName = divName, title = title, toolboxName = toolboxName, targetPath = targetPath);
+void createBlocklyApp(type[&T<:Tree] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly")
+  = createBlocklyApp(getAllProductions(grammar), divName = divName, title = title, toolboxName = toolboxName, targetPath = targetPath, blockly = blockly);
 
-void createBlocklyApp(list[Block] blocks, Toolbox toolbox, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|) {
+void createBlocklyApp(list[Block] blocks, Toolbox toolbox, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly") {
 	createJS(blocks, divName, toolboxName, targetPath);
-	createHTML(parseToolbox(toolbox), title, divName, targetPath);
+	createHTML(parseToolbox(toolbox), title, divName, targetPath, blockly);
 }
 
-void createBlocklyApp(type[&T<:Tree] grammar, Toolbox tool, str divName = "kogiDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|) {
+void createBlocklyApp(type[&T<:Tree] grammar, Toolbox tool, str divName = "kogiDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly") {
 	initialBlocks = grammar2blocks(grammar);
 	Toolbox toolbox = updateBlocksDefinition(tool, initialBlocks);
 	createJS(getBlocks(toolbox), divName, toolboxName, targetPath);
-	createHTML(parseToolbox(toolbox), title, divName, targetPath);
+	createHTML(parseToolbox(toolbox), title, divName, targetPat, blockly);
 }
 
 // Work in progress. To have a different mechanism for creating blocks. One relies on the assumption that each production rule produces a single block, yet this is limited. So we also want to be able to produce one block from a nonterminal
-void createBlocklyApp(map[Symbol, Production] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|) {
+void createBlocklyApp(map[Symbol, Production] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly") {
 	
 	//non-terminals -> to a single block
 	// An example of this is when you have a non-terminal and all the productions are literals. Therefore, we produce a dropdown field
@@ -60,7 +60,7 @@ void createBlocklyApp(map[Symbol, Production] grammar, str divName = "blockDiv",
 	// Create the rest of the app
 	Toolbox tb = toolbox(createSections(blocks));
 	createJS(blocks, divName, toolboxName, targetPath);
-	createHTML(parseToolbox(tb), title, divName, targetPath);
+	createHTML(parseToolbox(tb), title, divName, targetPath, blockly);
 	// productions2 block
 	//grammar2Blocks();
 }
