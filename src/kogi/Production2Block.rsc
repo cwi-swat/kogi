@@ -14,7 +14,7 @@ Block production2Block(prod(\start(sort(str name)), _, _), map[str, bool] multip
 	//initialBlock = name;
 	
 	kogi::Block::Message message = Message::message( "%1", [ arg("start", kogi::Block::\value(check = [name])) ] );
- 	return block("start", name, [message], colour = hsv(90));
+ 	return block("start", name, [message], colour = hsv(120));
 }
 // FIX: The java grammar returns this as empty
 map[str, bool] getSymbolsMultiplicity(list[Symbol] symbols, map[str, bool] multiplicity)
@@ -27,7 +27,7 @@ map[str, bool] getSymbolsMultiplicity(list[Symbol] symbols, map[str, bool] multi
 Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str startProduction, str labelName = "") {
 	kogi::Block::Message message = symbols2Message(ignoreLayoutSymbols(symbols), getSymbolsMultiplicity(symbols, multiplicity), lexicalName = name);
 	if(startProduction == name)
-		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], colour = hsv(90));
+		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], colour = hsv(120));
 	else if (name in multiplicity && !multiplicity[name])
 		return block(setBlockName(labelName, name), setBlockType(name, labelName), [message], output = Ref::block(name), inputsInline = true, colour = hsv(arbInt(360)), tooltip = labelName);
 	else 
