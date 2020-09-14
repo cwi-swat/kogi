@@ -28,7 +28,7 @@ str symbols2format(list[Symbol] symbols) {
 	int counter = 0;
 	str format(Symbol symbol) {
 		counter += 1;
-		if (lit(string) := symbol)
+		if (lit(string) := symbol || label(_, lit(string)) := symbol)
 			return "<escape(string)> %<counter> ";
 		else
 			return "%<counter> ";
