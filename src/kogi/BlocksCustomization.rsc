@@ -10,26 +10,25 @@ Toolbox updateBlocksDefinition(Toolbox toolbox, list[Block] blocks) {
 	for (section <- toolbox.sections) {
 		list[Block] updatedBlocks = [];
 		for (block <- section.blocks) {
-			tmp = getBlock(block.name, blocks);
-			if (tmp[0] != -1) { 
-				blocks = delete(blocks, tmp[0]);
-				updatedBlocks += mergeBlocksInformation(tmp[1], block);
+			Block tmp = getBlock(block.name, blocks);
+			if (Block::none() !:= tmp) { 
+				blocks = delete(blocks, indexOf(blocks, tmp));
+				updatedBlocks += mergeBlocksInformation(tmp, block);
 			}
 			else
 				updatedBlocks += block;
 		}
 		sections += Section::section(section.category, section.colour, updatedBlocks);
 	}
+	// Update sections of the toolbar
 	toolbox.sections = completeSections(sections, blocks);
 	return toolbox;
 }
 
 list[Section] completeSections(list[Section] sections, list[Block] blocks) {
-	startBlock = getBlock("start", blocks);
-	blocks = delete(blocks, startBlock[0]);
-	sections += [section("Start", hsv(90), [startBlock[1]])];
+	// Place non-assigned blocks into a separate category
 	if (!isEmpty(blocks))
-		sections += section("Unassigned", hsv(45), blocks);
+		return sections + section("Unassigned", hsv(0), blocks);
 	return sections;	
 }
 

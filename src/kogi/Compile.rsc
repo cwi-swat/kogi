@@ -33,11 +33,22 @@ void createBlocklyApp(list[Block] blocks, Toolbox toolbox, str divName = "blockD
 }
 
 void createBlocklyApp(type[&T<:Tree] grammar, Toolbox tool, str divName = "kogiDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly") {
-	initialBlocks = grammar2blocks(grammar);
+	list[Block] initialBlocks = getBlocksFromGrammar(grammar);
 	Toolbox toolbox = updateBlocksDefinition(tool, initialBlocks);
 	createJS(getBlocks(toolbox), divName, toolboxName, targetPath);
-	createHTML(parseToolbox(toolbox), title, divName, targetPat, blockly);
+	createHTML(parseToolbox(toolbox), title, divName, targetPath, blockly);
 }
+
+void createBlocklyApp(set[Production] productions, Toolbox tool, str divName = "kogiDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly") {
+	list[Block] initialBlocks = renameDuplicatedBlocks(grammar2blocks(productions));
+	Toolbox toolbox = updateBlocksDefinition(tool, initialBlocks);
+	createJS(getBlocks(toolbox), divName, toolboxName, targetPath);
+	createHTML(parseToolbox(toolbox), title, divName, targetPath, blockly);
+}
+
+list[Block] getBlocksFromGrammar(type[&T<:Tree] grammar)
+  = grammar2blocks(getAllProductions(grammar));
+  
 
 // Work in progress. To have a different mechanism for creating blocks. One relies on the assumption that each production rule produces a single block, yet this is limited. So we also want to be able to produce one block from a nonterminal
 void createBlocklyApp(map[Symbol, Production] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly") {
