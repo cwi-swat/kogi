@@ -80,11 +80,11 @@ list[Block] getBlocks(Toolbox toolbox)
 	
 
 Block getBlock(str name, list[Block] blocks)
-  = ( Block::none() | block | block <- blocks, block.name == name );
+	= ( Block::none() | block | block <- blocks, block.name == name );
 
 
 list[str] getSyntaxCheck(Symbol symbol)
-	{return  getSyntaxCheck(symbol);}
+	=  getSyntaxCheck(symbol);
 
 list[str] getSyntaxCheck(label(str lab, Symbol symbol))
 	= getSyntaxCheck(symbol);
@@ -102,13 +102,13 @@ list[str] getSyntaxCheck(\parameterized-sort(str name, list[Symbol] parameters))
 	= [name] + getSyntaxCheck(parameters);
 
 list[str] getSyntaxCheck(list[Symbol] parameters)
-	= ([]| it + getSyntaxCheck(param)| param <- parameters);	
+	= ( [] | it + getSyntaxCheck(param) | param <- parameters );	
 
 list[str] getSyntaxCheck(\alt(set[Symbol] alternatives))
-	=  ([]|it + getSyntaxCheck(symbol) | symbol <- alternatives);
+	=  ( [] | it + getSyntaxCheck(symbol) | symbol <- alternatives );
 	
 list[str] getSyntaxCheck(\seq(list[Symbol] alternatives))
-	=  ([]|it + getSyntaxCheck(symbol) | symbol <- alternatives);	
+	=  ( [] | it + getSyntaxCheck(symbol) | symbol <- alternatives );	
 	
 list[str] getSyntaxCheck(\char-class(_))
 	= [""];
@@ -122,22 +122,24 @@ str setBlockName(str name, str typeName)
 str setBlockType(str name, str constructor)
 	= constructor != "" ? name + "/" + constructor: name;
 	
-Block renameBlock(Block block){
-	b = block;
-	b.name = "<block.name><arbInt(40)>";
+Block renameBlock(Block block, str name = "<arbInt(40)>") {
+	Block b = block;
+	b.name = "<block.name><name>";
 	return b;
 }
 
+@doc{Blocks names must be unique. Therefore this function checks that. 
+If there are duplicates, the first occurrence remains and the others are renamed}
 list[Block] renameDuplicatedBlocks(list[Block] blocks){
 	// The set of names is initialized with names that create conflict with Blockly.
 	set[str] names = {"constructor"};
 	list[Block] updatedBlocks = [];
-	for(block <- blocks){
-		if(block.name notin names){
+	for (block <- blocks) {
+		if (block.name notin names) {
 			names += block.name;
 			updatedBlocks += block;
 		}
-		else{
+		else {
 			newBlock = renameBlock(block);
 			names += newBlock.name;
 			updatedBlocks += newBlock;
@@ -147,7 +149,7 @@ list[Block] renameDuplicatedBlocks(list[Block] blocks){
 }
 
 str getColour(Colour colour) {
-	switch(colour){
+	switch (colour) {
 		case hsv(hsv):
 			return "<hsv>";
 		case rgb(rgb):
