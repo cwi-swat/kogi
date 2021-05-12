@@ -7,7 +7,7 @@ extend lang::std::Id;
 extend lang::std::Layout;
 
 start syntax Resources
-  = resources: "resources" "{" Instance* resource "}"
+  = resources: "resources" a "{" "{" "{" Instance* resource "}"
   ;
 
 syntax Instance
