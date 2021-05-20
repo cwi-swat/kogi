@@ -1,5 +1,5 @@
 //module Syntax
-module kogi::demo::cloudlang::Syntax
+module kogi::demo::ccl::Syntax
 
 import Lexicals;
 

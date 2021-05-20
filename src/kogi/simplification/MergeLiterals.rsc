@@ -1,6 +1,6 @@
 module kogi::simplification::MergeLiterals
 
-import kogi::demo::cloudlang::Syntax;
+//import kogi::demo::cloudlang::Syntax;
 import ParseTree;
 import IO;
 import List;
@@ -11,18 +11,20 @@ set[Production] mergeLiterals(type[&T <: Tree] grammar) {
 	map[Symbol, Production] e = skipLayoutElements(grammar.definitions);
 	map[Symbol, Production] mergedLiterals = mergeLiteral(e);
 	
-	return {};
+	return ({} | it + mergedLiterals[p].alternatives | p <- mergedLiterals );
 }
 
 map[Symbol, Production] skipLayoutElements(map[Symbol, Production] prods) 
 	= (s: prods[s] | Symbol s <- prods, \layouts(_) !:= s);
 
-void mergeLiteral(map[Symbol, Production] productions) {
+map[Symbol, Production] mergeLiteral(map[Symbol, Production] productions) {
+	map[Symbol, Production] merged = productions;
 	
 	for (Symbol s <- productions) {
-		alternatives = productions[s].alternatives;
+		Production prod = productions[s];
 		
-		for (a <- alternatives) {
+		newAlts = {};
+		for (a <- prod.alternatives) {
 			origSymbs = a.symbols;
 			symbs = [ ss | ss <- origSymbs, \layouts(_) !:= ss]; 
 			symbs = [ \label(_, _) := ss ? ss.symbol : ss | ss <- symbs]; 
@@ -59,8 +61,12 @@ void mergeLiteral(map[Symbol, Production] productions) {
 				}
 			}
 			a.symbols = newSymbs;
+			newAlts += a;
 		}
+		prod.alternatives = newAlts;
+		merged[s] = prod;
 	}
+	return merged;
 }
 
 
