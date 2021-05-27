@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+    <script src="../../../../resources/blockly/blockly_compressed.js"></script>
+	<script src="../../../../resources/blockly/blocks_compressed.js"></script>
+	<script src="../../../../resources/blockly/generators/rascal.js"></script>
+    <!-- Messages for the user's language -->
+    <script src="../../../../resources/blockly/msg/js/en.js"></script>
+    <title>Block Language for State Machines</title>
+</head>
+<body>
+	<h1> Block Language for State Machines</h1>
+	<p>
+		<button onclick="toJson()">JSON representation</button>
+		<button onclick="xmlText()">Pretty print XML DOM</button>
+		<button onclick="plainXmlText()">XML DOM</button>
+		<button onclick="showCode()">Prefix Notation</button>
+		<button onclick="highlight()">Highlight Block</button>
+		<!-- <button onclick="runCode()">Run JavaScript</button> -->
+	</p>
+	<div style="width: 100%">
+		<div id="blockDiv" style= "display: inline-block; height: 480px; width: 800px;"></div>
+		<textarea id="textarea" disabled="disabled" style="display: inline-block; height: 480px; width: 38%;"></textarea>
+	</div>
+</body>
+
+<!--TOOLBOX-->
+<xml id="toolbox" style="display: none">
+	<category name="Start" colour="90" >
+		<block type="start"></block> 
+	 </category><category name="Machine" colour="246" >
+		<block type="Machine/machine"></block> 
+	 </category><category name="Trans" colour="171" >
+		<block type="transitions"></block> 
+	 </category><category name="State" colour="5" >
+		<block type="state"></block> 
+	 </category><category name="Id" colour="127" >
+		<block type="Id"></block> 
+	 </category>
+</xml>
+
+<script src="blocks.js"></script>
+</html>
