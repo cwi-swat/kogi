@@ -5,6 +5,9 @@ import IO;
 import List;
 import kogi::simplification::Util;
 
+import IO;
+import kogi::simplification::RemoveUnitProduction;
+
 
 
 map[Symbol, Production] mergeLiterals(map[Symbol, Production] productions) {
@@ -14,7 +17,10 @@ map[Symbol, Production] mergeLiterals(map[Symbol, Production] productions) {
 		Production prod = productions[s];
 		
 		newAlts = {};
+		// FIX ME: Not all productions have alternatives. Some have choices (e.g., minijava -> Expression).
 		for (a <- prod.alternatives) {
+			println(a);
+			println("-----------");
 			origSymbs = a.symbols;
 			symbs = [ ss | ss <- origSymbs, \layouts(_) !:= ss]; 
 			symbs = [ \label(_, _) := ss ? ss.symbol : ss | ss <- symbs]; 

@@ -2,6 +2,7 @@ module kogi::simplification::Main
 
 import ParseTree;
 import kogi::simplification::MergeLiterals;
+import kogi::simplification::RemoveUnitProduction;
 
 
 
@@ -13,9 +14,15 @@ set[Production] kogification(type[&T <: Tree] grammar) {
 	// S1: merge literals
 	map[Symbol, Production] s1 = mergeLiterals(s0);
 	
-	// bla
+	// remove chain rules
+	map[Symbol, Production] s2 = removeChainRules(s1);
 	
-	return ({} | it + s1[p].alternatives | p <- s1 );
+	
+	
+	
+	map[Symbol, Production] result = s2;
+	
+	return ({} | it + result[p].alternatives | p <- result );
 }
 
 map[Symbol, Production] skipLayoutElements(map[Symbol, Production] prods) 

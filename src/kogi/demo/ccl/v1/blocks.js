@@ -5,7 +5,7 @@ Blockly.Blocks['Image/ubuntu'] = {
 			  "type" : "Image/ubuntu",
 			  "message0" : "Ubuntu Server",
 			  
-			  "colour" : 284,
+			  "colour" : 207,
 			  "output" : "Image",
 			  
 			  
@@ -30,7 +30,7 @@ Blockly.Blocks['IntegerValue/number'] = {
 				},
 				
 			],
-			  "colour" : 320,
+			  "colour" : 251,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -59,7 +59,7 @@ Blockly.Blocks['IPV6/ipv6'] = {
 				},
 				
 			],
-			  "colour" : 196,
+			  "colour" : 169,
 			  "output" : "IPV6",
 			  
 			  
@@ -77,7 +77,7 @@ Blockly.Blocks['Image/awsLinux'] = {
 			  "type" : "Image/awsLinux",
 			  "message0" : "Amazon Linux",
 			  
-			  "colour" : 193,
+			  "colour" : 121,
 			  "output" : "Image",
 			  
 			  
@@ -126,7 +126,7 @@ Blockly.Blocks['Instance/instance'] = {
 				},
 				
 			],
-			  "colour" : 205,
+			  "colour" : 306,
 			  
 			  "previousStatement" : "Instance",
 			  "nextStatement" : "Instance",
@@ -159,7 +159,7 @@ Blockly.Blocks['Memory/memory'] = {
 				},
 				
 			],
-			  "colour" : 197,
+			  "colour" : 269,
 			  "output" : "Memory",
 			  
 			  
@@ -184,7 +184,7 @@ Blockly.Blocks['BooleanValue/true'] = {
 				},
 				
 			],
-			  "colour" : 42,
+			  "colour" : 119,
 			  "output" : "BooleanValue",
 			  
 			  
@@ -209,7 +209,7 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 188,
+			  "colour" : 104,
 			  "output" : "Id",
 			  
 			  
@@ -288,7 +288,7 @@ Blockly.Blocks['Storage/storage'] = {
 				},
 				
 			],
-			  "colour" : 163,
+			  "colour" : 99,
 			  "output" : "Storage",
 			  
 			  
@@ -317,7 +317,7 @@ Blockly.Blocks['CPU/vcpus'] = {
 				},
 				
 			],
-			  "colour" : 129,
+			  "colour" : 337,
 			  "output" : "CPU",
 			  
 			  
@@ -335,7 +335,7 @@ Blockly.Blocks['StorageType/ssd'] = {
 			  "type" : "StorageType/ssd",
 			  "message0" : "SSD",
 			  
-			  "colour" : 194,
+			  "colour" : 309,
 			  "output" : "StorageType",
 			  
 			  
@@ -353,7 +353,7 @@ Blockly.Blocks['StorageType/ebs'] = {
 			  "type" : "StorageType/ebs",
 			  "message0" : "EBS",
 			  
-			  "colour" : 182,
+			  "colour" : 70,
 			  "output" : "StorageType",
 			  
 			  
@@ -371,7 +371,7 @@ Blockly.Blocks['Image/redHat'] = {
 			  "type" : "Image/redHat",
 			  "message0" : "Red Hat Enterprise",
 			  
-			  "colour" : 27,
+			  "colour" : 108,
 			  "output" : "Image",
 			  
 			  
@@ -389,7 +389,7 @@ Blockly.Blocks['Image/windows'] = {
 			  "type" : "Image/windows",
 			  "message0" : "Windows Server2019",
 			  
-			  "colour" : 214,
+			  "colour" : 283,
 			  "output" : "Image",
 			  
 			  
@@ -414,7 +414,7 @@ Blockly.Blocks['BooleanValue/false'] = {
 				},
 				
 			],
-			  "colour" : 331,
+			  "colour" : 231,
 			  "output" : "BooleanValue",
 			  
 			  
