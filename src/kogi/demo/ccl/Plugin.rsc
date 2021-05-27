@@ -4,7 +4,7 @@ import ParseTree;
 import kogi::Compile;
 import kogi::demo::ccl::Syntax;
 
-import kogi::simplification::MergeLiterals;
+import kogi::simplification::Main;
 
 
 /**
@@ -18,6 +18,7 @@ void createBBE() {
 * This version uses the simplification
 */
 void createBBE2() {
-  set[Production] prods = mergeLiterals(#Resources); 
+  set[Production] prods = kogification(#Resources); 
   createBlocklyApp(prods, targetPath = |project://kogi/src/kogi/demo/ccl/v1|, blockly = "../../lib");
 }
+
