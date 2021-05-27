@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="google" value="notranslate">
-    <script src="../../../../../resources/blockly/blockly_compressed.js"></script>
-    <script src="../../../../../resources/blockly/blocks_compressed.js"></script>
+    <!--<script src="../../lib/blockly_compressed.js"></script>
+    <script src="../../lib/blocks_compressed.js"></script>
     <!-- Messages for the user's language -->
-    <script src="../../../../../resources/blockly/msg/js/en.js"></script>
-    <script src="../../../../../resources/blockly/appengine/storage.js"></script>
+    <!-- <script src="../../lib/msg/js/en.js"></script>
+    <script src="../../lib/appengine/storage.js"></script> -->
+    
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly/msg/en.js"></script>
     <title>Block Language</title>
 </head>
 <body>
@@ -23,7 +26,7 @@
 
 <!--TOOLBOX-->
 <?xml version="1.0" encoding="UTF-8"?>
-<xml id="toolbox" style="display: none"><category name="BooleanValue" colour="176"><block type="BooleanValue/true">	</block><block type="BooleanValue/false">	</block></category><category name="CPU" colour="162"><block type="CPU/vcpus">	</block></category><category name="IntegerValue" colour="250"><block type="IntegerValue/number">	</block></category><category name="Image" colour="148"><block type="Image/ubuntu">	</block><block type="Image/awsLinux">	</block><block type="Image/redHat">	</block><block type="Image/windows">	</block></category><category name="Instance" colour="177"><block type="Instance/instance">	</block></category><category name="IPV6" colour="110"><block type="IPV6/ipv6">	</block></category><category name="Id" colour="154"><block type="Id">	</block></category><category name="Memory" colour="17"><block type="Memory/memory">	</block></category><category name="Resources" colour="120"><block type="Resources/resources">	</block></category><category name="StorageType" colour="78"><block type="StorageType/ssd">	</block><block type="StorageType/ebs">	</block></category><category name="Storage" colour="100"><block type="Storage/storage">	</block></category></xml>
+<xml id="toolbox" style="display: none"><category name="BooleanValue" colour="246"><block type="BooleanValue/true">	</block><block type="BooleanValue/false">	</block></category><category name="CPU" colour="199"><block type="CPU/vcpus">	</block></category><category name="IPV6" colour="289"><block type="IPV6/ipv6">	</block></category><category name="Id" colour="196"><block type="Id">	</block></category><category name="Image" colour="140"><block type="Image/ubuntu">	</block><block type="Image/awsLinux">	</block><block type="Image/redHat">	</block><block type="Image/windows">	</block></category><category name="Instance" colour="199"><block type="Instance/instance">	</block></category><category name="IntegerValue" colour="310"><block type="IntegerValue/number">	</block></category><category name="Memory" colour="289"><block type="Memory/memory">	</block></category><category name="Resources" colour="120"><block type="Resources/resources">	</block></category><category name="Storage" colour="84"><block type="Storage/storage">	</block></category><category name="StorageType" colour="206"><block type="StorageType/ssd">	</block><block type="StorageType/ebs">	</block></category></xml>
 
 
 <script src="blocks.js"></script>
