@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" value="notranslate">
+    <!--<script src="../../lib/blockly_compressed.js"></script>
+    <script src="../../lib/blocks_compressed.js"></script>
+    <!-- Messages for the user's language -->
+    <!-- <script src="../../lib/msg/js/en.js"></script>
+    <script src="../../lib/appengine/storage.js"></script> -->
+    
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <title>Block Language</title>
+</head>
+<body>
+    <h1> Block Language</h1>
+    <p>
+		<button onclick="xmlText()">Pretty print XML DOM</button>
+    </p>
+    <div style="width: 100%">
+    	<div id="blockDiv" style= "display: inline-block; height: 600px; width: 38%;"></div>
+    	<textarea id="textarea" disabled="disabled" style="display: inline-block; height: 600px; width: 38%;"></textarea>
+    </div>
+</body>
+
+<!--TOOLBOX-->
+<?xml version="1.0" encoding="UTF-8"?>
+<xml id="toolbox" style="display: none"><category name="Expr" colour="200"><block type="Expr/leq">	</block><block type="Expr/mul">	</block><block type="Expr/eq">	</block><block type="Expr/div">	</block><block type="Expr/true">	</block><block type="Expr/lt">	</block><block type="Expr/and">	</block><block type="Expr/var">	</block><block type="Expr/gt">	</block><block type="Expr/geq">	</block><block type="Expr/add">	</block><block type="Expr/sub">	</block><block type="Expr/false">	</block><block type="Expr/integer">	</block><block type="Expr/money">	</block><block type="Expr/neq">	</block><block type="Expr/not">	</block><block type="Expr/string">	</block><block type="Expr/or">	</block></category><category name="Form" colour="120"><block type="Form/form">	</block></category><category name="Id" colour="328"><block type="Id">	</block></category><category name="Question" colour="107"><block type="Question/ifThenElse">	</block><block type="Question/ifThen">	</block><block type="Question/question">	</block><block type="Question/computed">	</block><block type="Question/group">	</block></category></xml>
+
+
+<script src="blocks.js"></script>
+</html>
