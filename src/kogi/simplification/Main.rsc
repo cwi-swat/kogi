@@ -15,12 +15,12 @@ set[Production] kogification(type[&T <: Tree] grammar) {
 	map[Symbol, Production] s1 = mergeLiterals(s0);
 	
 	// remove chain rules
-	map[Symbol, Production] s2 = removeChainRules(s1);
+	//map[Symbol, Production] s2 = removeChainRules(s1);
 	
 	
 	
 	
-	map[Symbol, Production] result = s2;
+	map[Symbol, Production] result = s1;
 	
 	return ({} | it + result[p].alternatives | p <- result );
 }
