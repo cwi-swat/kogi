@@ -38,7 +38,7 @@ syntax Expression
 	| ne2: "new" Identifier b "(" ")"
 	| bracket "(" Expression x ")"
 	| a: Expression "[" Expression v "]" 
-           | v: Expression a "." Identifier v "(" ExpressionList? opt ")"
+    | v: Expression a "." Identifier v "(" ExpressionList? opt ")"
 	>  d: "!" Expression e
 	> a: Expression e "*" Expression e
 	> b: Expression e "+" Expression e

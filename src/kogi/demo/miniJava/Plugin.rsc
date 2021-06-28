@@ -8,10 +8,10 @@ import kogi::demo::miniJava::Syntax;
 
 
 void createBBE() {
-  createBlocklyApp(#Program, targetPath = |project://kogi/src/kogi/demo/minijava/v0|, blockly = "../../lib");
+  createBlocklyApp(#Program, targetPath = |project://kogi/src/kogi/demo/miniJava/v0|, blockly = "../../lib");
 }
 
 void createSimplifiedBBE() {
   set[Production] prods = kogification(#Program); 
-  createBlocklyApp(prods, targetPath = |project://kogi/src/kogi/demo/minijava/v1|, blockly = "../../lib");
+  createBlocklyApp(prods, targetPath = |project://kogi/src/kogi/demo/miniJava/v1|, blockly = "../../lib");
 }
