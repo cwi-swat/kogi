@@ -11,7 +11,7 @@ import kogi::simplification::Main;
 * Raw version
 */
 void createBBE() {
-  createBlocklyApp(#Resources, targetPath = |project://kogi/src/kogi/demo/ccl/v0|, blockly = "../../lib");
+  createBlocklyApp(#Resources, targetPath = |project://kogi/src/kogi/demo/ccl/v3|, blockly = "../../lib");
 }
 
 /**
@@ -19,6 +19,6 @@ void createBBE() {
 */
 void createBBE2() {
   set[Production] prods = kogification(#Resources); 
-  createBlocklyApp(prods, targetPath = |project://kogi/src/kogi/demo/ccl/v1|, blockly = "../../lib");
+  createBlocklyApp(prods, targetPath = |project://kogi/src/kogi/demo/ccl/v4|, blockly = "../../lib");
 }
 
