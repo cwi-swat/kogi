@@ -39,10 +39,17 @@ map[str, bool] nonTerminalMultiplicity(set[Production] productions) {
 	//return ( () | it + extractMultiplicity(s) | s <- symbols );
 }
 
+// FIX ME: Fix the way the multiplicity is handled. There must be a better way for doing this.
 tuple[str name, bool val] extractMultiplicity(\iter-star-seps(alt(set[Symbol] symbols), _))
 	= <"<symbols>", true>;
 	
 tuple[str name, bool val] extractMultiplicity(\iter-star-seps(lit(str name), _))
+	= <name, true>;
+
+tuple[str name, bool val] extractMultiplicity(\iter-seps(lit(str name), _))
+	= <name, true>;	
+
+tuple[str name, bool val] extractMultiplicity(\iter-seps(sort(str name), _))
 	= <name, true>;
 
 tuple[str name, bool val] extractMultiplicity(\iter-star-seps(Symbol symbol, _))
