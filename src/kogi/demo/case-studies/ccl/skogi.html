@@ -3,19 +3,21 @@
 <div id="blocklyDiv" style="height: 480px; width: 800px;"></div>
 
 <xml id="toolbox">
-	<category name="Resources">
+	<category name="Resources" colour="250">
 	<block type="Resources1"><value name="arg1"><shadow type="Instance1"></shadow></value></block>
 </category>
-<category name="Instance">
+<category name="Instance" colour="55">
 	<block type="Instance1"></block>
 </category>
+
+	
 </xml>
 <script>
 	Blockly.Blocks['Resources1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Resources1');
-	this.jsonInit({"colour":"342","message0":"resources { %1 }","args0":[{"check":"Instance","type":"input_statement","name":"arg1"}]})
+	this.jsonInit({"colour":"250","message0":"resources { %1 }","args0":[{"check":"Instance","type":"input_statement","name":"arg1"}]})
 	
   }
 }
@@ -23,7 +25,7 @@ Blockly.Blocks['Instance1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Instance1');
-	this.jsonInit({"colour":"311","message0":"Instance %1 CPU: %2 memory: %3 GB Storage: %4 size: %5 GB IPV6: %6","args0":[{"type":"field_dropdown","options":[["AWS","AWS"],["Ubuntu","Ubuntu"],["RHEL","RHEL"]],"name":"arg1"},{"type":"field_input","name":"arg2"},{"type":"field_input","name":"arg3"},{"type":"field_dropdown","options":[["ECS","ECS"],["SSD","SSD"]],"name":"arg4"},{"type":"field_input","name":"arg5"},{"type":"field_dropdown","options":[["true","true"],["false","false"]],"name":"arg6"}]})
+	this.jsonInit({"colour":"55","message0":"Instance %1 CPU: %2 memory: %3 GB Storage: %4 size: %5 GB IPV6: %6","args0":[{"type":"field_dropdown","options":[["AWS","AWS"],["Ubuntu","Ubuntu"],["RHEL","RHEL"]],"name":"arg1"},{"type":"field_input","name":"arg2"},{"type":"field_input","name":"arg3"},{"type":"field_dropdown","options":[["ECS","ECS"],["SSD","SSD"]],"name":"arg4"},{"type":"field_input","name":"arg5"},{"type":"field_dropdown","options":[["true","true"],["false","false"]],"name":"arg6"}]})
 	this.setPreviousStatement(true, 'Instance');
 this.setNextStatement(true, 'Instance');
   }

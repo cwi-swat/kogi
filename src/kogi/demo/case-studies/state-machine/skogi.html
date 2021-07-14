@@ -3,26 +3,24 @@
 <div id="blocklyDiv" style="height: 480px; width: 800px;"></div>
 
 <xml id="toolbox">
-	<category name="Machine">
+	<category name="Machine" colour="211">
 	<block type="Machine1"><value name="arg2"><shadow type="State1"></shadow></value></block>
 </category>
-<category name="State">
+<category name="State" colour="342">
 	<block type="State1"><value name="arg2"><shadow type="Trans1"></shadow></value></block>
 </category>
-<category name="Trans">
+<category name="Trans" colour="67">
 	<block type="Trans1"></block>
 </category>
 
-<category name="Stmt to Expr">
-	<block type="rubber"></block>
-</category>
+	
 </xml>
 <script>
 	Blockly.Blocks['Machine1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Machine1');
-	this.jsonInit({"colour":"217","message0":"machine %1 %2","args0":[{"type":"field_input","name":"arg1"},{"check":"State","type":"input_statement","name":"arg2"}]})
+	this.jsonInit({"colour":"211","message0":"machine %1 %2","args0":[{"type":"field_input","name":"arg1"},{"check":"State","type":"input_statement","name":"arg2"}]})
 	
   }
 }
@@ -30,7 +28,7 @@ Blockly.Blocks['State1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('State1');
-	this.jsonInit({"colour":"57","message0":"state %1 { %2 }","args0":[{"type":"field_input","name":"arg1"},{"check":"Trans","type":"input_statement","name":"arg2"}]})
+	this.jsonInit({"colour":"342","message0":"state %1 { %2 }","args0":[{"type":"field_input","name":"arg1"},{"check":"Trans","type":"input_statement","name":"arg2"}]})
 	this.setPreviousStatement(true, 'State');
 this.setNextStatement(true, 'State');
   }
@@ -39,7 +37,7 @@ Blockly.Blocks['Trans1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Trans1');
-	this.jsonInit({"colour":"340","message0":"on %1 to %2","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"}]})
+	this.jsonInit({"colour":"67","message0":"on %1 to %2","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"}]})
 	this.setPreviousStatement(true, 'Trans');
 this.setNextStatement(true, 'Trans');
   }

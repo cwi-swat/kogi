@@ -3,39 +3,36 @@
 <div id="blocklyDiv" style="height: 480px; width: 800px;"></div>
 
 <xml id="toolbox">
-	<category name="Form">
-	<block type="Form1"><value name="arg2"><block type="rubber"><value name="NAME"><shadow type="Question1"></shadow></value></block></value></block>
+	<category name="Form" colour="119">
+	<block type="Form1"><value name="arg2"><shadow type="Question1"></shadow></value></block>
 </category>
-<category name="Question">
+<category name="Question" colour="224">
 	<block type="Question1"></block>
 <block type="Question2"><value name="arg4"><shadow type="Expr1"></shadow></value></block>
 <block type="Question3"><value name="arg1"><shadow type="Expr1"></shadow></value><value name="arg2"><shadow type="Question1"></shadow></value></block>
 <block type="Question4"><value name="arg1"><shadow type="Expr1"></shadow></value><value name="arg2"><shadow type="Question1"></shadow></value><value name="arg3"><shadow type="Question1"></shadow></value></block>
-<block type="Question5"><value name="arg1"><block type="rubber"><value name="NAME"><shadow type="Question1"></shadow></value></block></value></block>
+<block type="Question5"><value name="arg1"><shadow type="Question1"></shadow></value></block>
 </category>
-<category name="Expr">
+<category name="Expr" colour="98">
 	<block type="Expr1"></block>
 <block type="Expr2"></block>
 <block type="Expr3"></block>
 <block type="Expr4"></block>
-<block type="Expr5"></block>
-<block type="Expr6"></block>
-<block type="Expr7"><value name="arg1"><shadow type="Expr1"></shadow></value></block>
-<block type="Expr8"><value name="arg1"><shadow type="Expr1"></shadow></value></block>
-<block type="Expr9"><value name="arg1"><shadow type="Expr1"></shadow></value><value name="arg3"><shadow type="Expr1"></shadow></value></block>
+<block type="Expr5"><value name="arg1"><shadow type="Expr1"></shadow></value></block>
+<block type="Expr6"><value name="arg1"><shadow type="Expr1"></shadow></value></block>
+<block type="Expr7"><value name="arg1"><shadow type="Expr1"></shadow></value><value name="arg3"><shadow type="Expr1"></shadow></value></block>
+<block type="Expr8"></block>
 </category>
 
 
-<category name="Stmt to Expr">
-	<block type="rubber"></block>
-</category>
+	
 </xml>
 <script>
 	Blockly.Blocks['Form1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Form1');
-	this.jsonInit({"colour":"193","message0":"form %1 { %2 }","args0":[{"type":"field_input","name":"arg1"},{"check":"Question","type":"input_statement","name":"arg2"}]})
+	this.jsonInit({"colour":"119","message0":"form %1 { %2 }","args0":[{"type":"field_input","name":"arg1"},{"check":"Question","type":"input_statement","name":"arg2"}]})
 	
   }
 }
@@ -43,8 +40,9 @@ Blockly.Blocks['Question1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Question1');
-	this.jsonInit({"colour":"34","message0":"%1 %2 : %3","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"},{"type":"field_dropdown","options":[["boolean","boolean"],["string","string"],["integer","integer"],["money","money"]],"name":"arg3"}]})
-	this.setOutput(true, 'Question');
+	this.jsonInit({"colour":"224","message0":"%1 %2 : %3","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"},{"type":"field_dropdown","options":[["boolean","boolean"],["string","string"],["integer","integer"],["money","money"]],"name":"arg3"}]})
+	this.setPreviousStatement(true, 'Question');
+this.setNextStatement(true, 'Question');
   }
 }
 
@@ -52,8 +50,9 @@ Blockly.Blocks['Question2'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Question2');
-	this.jsonInit({"colour":"34","message0":"%1 %2 : %3 = %4","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"},{"type":"field_dropdown","options":[["boolean","boolean"],["string","string"],["integer","integer"],["money","money"]],"name":"arg3"},{"check":"Expr","type":"input_value","name":"arg4"}]})
-	this.setOutput(true, 'Question');
+	this.jsonInit({"colour":"224","message0":"%1 %2 : %3 = %4","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"},{"type":"field_dropdown","options":[["boolean","boolean"],["string","string"],["integer","integer"],["money","money"]],"name":"arg3"},{"check":"Expr","type":"input_value","name":"arg4"}]})
+	this.setPreviousStatement(true, 'Question');
+this.setNextStatement(true, 'Question');
   }
 }
 
@@ -61,8 +60,9 @@ Blockly.Blocks['Question3'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Question3');
-	this.jsonInit({"colour":"34","message0":"if ( %1 ) %2","args0":[{"check":"Expr","type":"input_value","name":"arg1"},{"check":"Question","type":"input_value","name":"arg2"}]})
-	this.setOutput(true, 'Question');
+	this.jsonInit({"colour":"224","message0":"if ( %1 ) %2","args0":[{"check":"Expr","type":"input_value","name":"arg1"},{"check":"Question","type":"input_statement","name":"arg2"}]})
+	this.setPreviousStatement(true, 'Question');
+this.setNextStatement(true, 'Question');
   }
 }
 
@@ -70,8 +70,9 @@ Blockly.Blocks['Question4'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Question4');
-	this.jsonInit({"colour":"34","message0":"if ( %1 ) %2 else %3","args0":[{"check":"Expr","type":"input_value","name":"arg1"},{"check":"Question","type":"input_value","name":"arg2"},{"check":"Question","type":"input_value","name":"arg3"}]})
-	this.setOutput(true, 'Question');
+	this.jsonInit({"colour":"224","message0":"if ( %1 ) %2 else %3","args0":[{"check":"Expr","type":"input_value","name":"arg1"},{"check":"Question","type":"input_statement","name":"arg2"},{"check":"Question","type":"input_statement","name":"arg3"}]})
+	this.setPreviousStatement(true, 'Question');
+this.setNextStatement(true, 'Question');
   }
 }
 
@@ -79,15 +80,16 @@ Blockly.Blocks['Question5'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Question5');
-	this.jsonInit({"colour":"34","message0":"{ %1 }","args0":[{"check":"Question","type":"input_statement","name":"arg1"}]})
-	this.setOutput(true, 'Question');
+	this.jsonInit({"colour":"224","message0":"{ %1 }","args0":[{"check":"Question","type":"input_statement","name":"arg1"}]})
+	this.setPreviousStatement(true, 'Question');
+this.setNextStatement(true, 'Question');
   }
 }
 Blockly.Blocks['Expr1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expr1');
-	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "201"})
+	this.jsonInit({message0: "%1", args0: [{type: "field_input", name: "arg1"}], colour: "98"})
 	this.setOutput(true, 'Expr');
   }
 }
@@ -96,7 +98,7 @@ Blockly.Blocks['Expr2'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expr2');
-	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "201"})
+	this.jsonInit({message0: "%1", args0: [{type: "field_input", name: "arg1"}], colour: "98"})
 	this.setOutput(true, 'Expr');
   }
 }
@@ -105,7 +107,7 @@ Blockly.Blocks['Expr3'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expr3');
-	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "201"})
+	this.jsonInit({message0: "%1", args0: [{type: "field_input", name: "arg1"}], colour: "98"})
 	this.setOutput(true, 'Expr');
   }
 }
@@ -114,7 +116,7 @@ Blockly.Blocks['Expr4'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expr4');
-	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "201"})
+	this.jsonInit({message0: "%1.", args0: [{type: "field_input", name: "arg1"}], colour: "98"})
 	this.setOutput(true, 'Expr');
   }
 }
@@ -123,7 +125,7 @@ Blockly.Blocks['Expr5'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expr5');
-	this.jsonInit({"colour":"201","message0":"true","args0":[]})
+	this.jsonInit({"colour":"98","message0":"( %1 )","args0":[{"check":"Expr","type":"input_value","name":"arg1"}]})
 	this.setOutput(true, 'Expr');
   }
 }
@@ -132,7 +134,7 @@ Blockly.Blocks['Expr6'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expr6');
-	this.jsonInit({"colour":"201","message0":"false","args0":[]})
+	this.jsonInit({"colour":"98","message0":"! %1","args0":[{"check":"Expr","type":"input_value","name":"arg1"}]})
 	this.setOutput(true, 'Expr');
   }
 }
@@ -141,7 +143,7 @@ Blockly.Blocks['Expr7'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expr7');
-	this.jsonInit({"colour":"201","message0":"( %1 )","args0":[{"check":"Expr","type":"input_value","name":"arg1"}]})
+	this.jsonInit({"colour":"98","message0":"%1 %2 %3","args0":[{"check":"Expr","type":"input_value","name":"arg1"},{"type":"field_dropdown","options":[["*","*"],["/","/"],["+","+"],["-","-"],["<","<"],["<=","<="],[">",">"],[">=",">="],["==","=="],["!=","!="],["&&","&&"],["||","||"]],"name":"arg2"},{"check":"Expr","type":"input_value","name":"arg3"}]})
 	this.setOutput(true, 'Expr');
   }
 }
@@ -150,16 +152,7 @@ Blockly.Blocks['Expr8'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expr8');
-	this.jsonInit({"colour":"201","message0":"! %1","args0":[{"check":"Expr","type":"input_value","name":"arg1"}]})
-	this.setOutput(true, 'Expr');
-  }
-}
-
-Blockly.Blocks['Expr9'] = {
-  init: function() {
-	this.setInputsInline(true);
-	this.setTooltip('Expr9');
-	this.jsonInit({"colour":"201","message0":"%1 %2 %3","args0":[{"check":"Expr","type":"input_value","name":"arg1"},{"type":"field_dropdown","options":[["*","*"],["/","/"],["+","+"],["-","-"],["<","<"],["<=","<="],[">",">"],[">=",">="],["==","=="],["!=","!="],["&&","&&"],["||","||"]],"name":"arg2"},{"check":"Expr","type":"input_value","name":"arg3"}]})
+	this.jsonInit({"colour":"98","message0":"%1","args0":[{"type":"field_dropdown","options":[["true","true"],["false","false"]],"name":"arg1"}]})
 	this.setOutput(true, 'Expr');
   }
 }

@@ -3,10 +3,10 @@
 <div id="blocklyDiv" style="height: 480px; width: 800px;"></div>
 
 <xml id="toolbox">
-	<category name="Program">
+	<category name="Program" colour="27">
 	<block type="Program1"><value name="arg1"><shadow type="Connection1"></shadow></value></block>
 </category>
-<category name="Connection">
+<category name="Connection" colour="20">
 	<block type="Connection1"><value name="arg1"><shadow type="SoundSource1"></shadow></value><value name="arg2"><shadow type="DataSource1"></shadow></value></block>
 <block type="Connection2"><value name="arg2"><shadow type="SoundSource1"></shadow></value></block>
 <block type="Connection3"><value name="arg2"><shadow type="SoundSource1"></shadow></value><value name="arg3"><shadow type="SoundSource1"></shadow></value></block>
@@ -14,35 +14,33 @@
 <block type="Connection5"><value name="arg2"><shadow type="SoundSource1"></shadow></value><value name="arg3"><shadow type="SoundSource1"></shadow></value></block>
 <block type="Connection6"></block>
 </category>
-<category name="DataProcessing">
+<category name="DataProcessing" colour="147">
 	<block type="DataProcessing1"><value name="arg1"><shadow type="DataSource1"></shadow></value><value name="arg2"><block type="rubber"><value name="NAME"><shadow type="DataProcessing1"></shadow></value></block></value><value name="arg3"><shadow type="DataProcessing1"></shadow></value></block>
 <block type="DataProcessing2"></block>
 <block type="DataProcessing3"></block>
 </category>
-<category name="SoundSource">
+<category name="SoundSource" colour="50">
 	<block type="SoundSource1"><value name="arg2"><shadow type="imageValue1"></shadow></value><value name="arg3"><shadow type="imageValue1"></shadow></value></block>
 <block type="SoundSource2"><value name="arg2"><shadow type="imageValue1"></shadow></value></block>
 </category>
-<category name="DataSource">
+<category name="DataSource" colour="265">
 	<block type="DataSource1"></block>
 <block type="DataSource2"></block>
 <block type="DataSource3"></block>
 </category>
 
 
-<category name="imageValue">
+<category name="imageValue" colour="154">
 	<block type="imageValue1"></block>
 </category>
-<category name="Stmt to Expr">
-	<block type="rubber"></block>
-</category>
+	<category name="Stmt to Expr"><block type="rubber"></block></category>
 </xml>
 <script>
 	Blockly.Blocks['Program1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Program1');
-	this.jsonInit({"colour":"128","message0":"run program %1","args0":[{"check":"Connection","type":"input_statement","name":"arg1"}]})
+	this.jsonInit({"colour":"27","message0":"run program %1","args0":[{"check":"Connection","type":"input_statement","name":"arg1"}]})
 	
   }
 }
@@ -50,7 +48,7 @@ Blockly.Blocks['Connection1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Connection1');
-	this.jsonInit({"colour":"99","message0":"connect %1 to %2","args0":[{"check":"SoundSource","type":"input_value","name":"arg1"},{"check":"DataSource","type":"input_value","name":"arg2"}]})
+	this.jsonInit({"colour":"20","message0":"connect %1 to %2","args0":[{"check":"SoundSource","type":"input_value","name":"arg1"},{"check":"DataSource","type":"input_value","name":"arg2"}]})
 	this.setPreviousStatement(true, 'Connection');
 this.setNextStatement(true, 'Connection');
   }
@@ -60,7 +58,7 @@ Blockly.Blocks['Connection2'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Connection2');
-	this.jsonInit({"colour":"99","message0":"set parameters %1 of sound %2 to be %3","args0":[{"type":"field_input","name":"arg1"},{"check":"SoundSource","type":"input_value","name":"arg2"},{"type":"field_input","name":"arg3"}]})
+	this.jsonInit({"colour":"20","message0":"set parameters %1 of sound %2 to be %3","args0":[{"type":"field_input","name":"arg1"},{"check":"SoundSource","type":"input_value","name":"arg2"},{"type":"field_input","name":"arg3"}]})
 	this.setPreviousStatement(true, 'Connection');
 this.setNextStatement(true, 'Connection');
   }
@@ -70,7 +68,7 @@ Blockly.Blocks['Connection3'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Connection3');
-	this.jsonInit({"colour":"99","message0":"set parameters %1 of sound %2 to be %3","args0":[{"type":"field_input","name":"arg1"},{"check":"SoundSource","type":"input_value","name":"arg2"},{"check":"SoundSource","type":"input_value","name":"arg3"}]})
+	this.jsonInit({"colour":"20","message0":"set parameters %1 of sound %2 to be %3","args0":[{"type":"field_input","name":"arg1"},{"check":"SoundSource","type":"input_value","name":"arg2"},{"check":"SoundSource","type":"input_value","name":"arg3"}]})
 	this.setPreviousStatement(true, 'Connection');
 this.setNextStatement(true, 'Connection');
   }
@@ -80,7 +78,7 @@ Blockly.Blocks['Connection4'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Connection4');
-	this.jsonInit({"colour":"99","message0":"set parameters %1 of sound %2 to be %3","args0":[{"type":"field_input","name":"arg1"},{"check":"SoundSource","type":"input_value","name":"arg2"},{"check":"DataProcessing","type":"input_value","name":"arg3"}]})
+	this.jsonInit({"colour":"20","message0":"set parameters %1 of sound %2 to be %3","args0":[{"type":"field_input","name":"arg1"},{"check":"SoundSource","type":"input_value","name":"arg2"},{"check":"DataProcessing","type":"input_value","name":"arg3"}]})
 	this.setPreviousStatement(true, 'Connection');
 this.setNextStatement(true, 'Connection');
   }
@@ -90,7 +88,7 @@ Blockly.Blocks['Connection5'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Connection5');
-	this.jsonInit({"colour":"99","message0":"set parameters %1 of sound %2 to be %3","args0":[{"type":"field_input","name":"arg1"},{"check":"SoundSource","type":"input_value","name":"arg2"},{"check":"SoundSource","type":"input_value","name":"arg3"}]})
+	this.jsonInit({"colour":"20","message0":"set parameters %1 of sound %2 to be %3","args0":[{"type":"field_input","name":"arg1"},{"check":"SoundSource","type":"input_value","name":"arg2"},{"check":"SoundSource","type":"input_value","name":"arg3"}]})
 	this.setPreviousStatement(true, 'Connection');
 this.setNextStatement(true, 'Connection');
   }
@@ -100,7 +98,7 @@ Blockly.Blocks['Connection6'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Connection6');
-	this.jsonInit({"colour":"99","message0":"wait %1 seconds","args0":[{"type":"field_input","name":"arg1"}]})
+	this.jsonInit({"colour":"20","message0":"wait %1 seconds","args0":[{"type":"field_input","name":"arg1"}]})
 	this.setPreviousStatement(true, 'Connection');
 this.setNextStatement(true, 'Connection');
   }
@@ -109,7 +107,7 @@ Blockly.Blocks['DataProcessing1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('DataProcessing1');
-	this.jsonInit({"colour":"198","message0":"data source %1 processed with %2 then scaled to %3","args0":[{"check":"DataSource","type":"input_value","name":"arg1"},{"check":"DataProcessing","type":"input_statement","name":"arg2"},{"check":"DataProcessing","type":"input_value","name":"arg3"}]})
+	this.jsonInit({"colour":"147","message0":"data source %1 processed with %2 then scaled to %3","args0":[{"check":"DataSource","type":"input_value","name":"arg1"},{"check":"DataProcessing","type":"input_statement","name":"arg2"},{"check":"DataProcessing","type":"input_value","name":"arg3"}]})
 	this.setOutput(true, 'DataProcessing');
   }
 }
@@ -118,7 +116,7 @@ Blockly.Blocks['DataProcessing2'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('DataProcessing2');
-	this.jsonInit({"colour":"198","message0":"%1 image","args0":[{"type":"field_dropdown","options":[["reverse","reverse"],["do_nothing","do_nothing"],["slow_ramp","slow_ramp"],["medium_ramp","medium_ramp"],["fast_ramp","fast_ramp"],["hard_cutoff","hard_cutoff"],["hump","hump"],["rotate","rotate"]],"name":"arg1"}]})
+	this.jsonInit({"colour":"147","message0":"%1 image","args0":[{"type":"field_dropdown","options":[["reverse","reverse"],["do_nothing","do_nothing"],["slow_ramp","slow_ramp"],["medium_ramp","medium_ramp"],["fast_ramp","fast_ramp"],["hard_cutoff","hard_cutoff"],["hump","hump"],["rotate","rotate"]],"name":"arg1"}]})
 	this.setOutput(true, 'DataProcessing');
   }
 }
@@ -127,7 +125,7 @@ Blockly.Blocks['DataProcessing3'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('DataProcessing3');
-	this.jsonInit({"colour":"198","message0":"range %1 to %2","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"}]})
+	this.jsonInit({"colour":"147","message0":"range %1 to %2","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"}]})
 	this.setOutput(true, 'DataProcessing');
   }
 }
@@ -135,7 +133,7 @@ Blockly.Blocks['SoundSource1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('SoundSource1');
-	this.jsonInit({"colour":"333","message0":"%1 wave %2 (spectrum: %3 ) named %4","args0":[{"type":"field_dropdown","options":[["sine","sine"],["triangle","triangle"],["square","square"],["sawtooth","sawtooth"]],"name":"arg1"},{"check":"imageValue","type":"input_value","name":"arg2"},{"check":"imageValue","type":"input_value","name":"arg3"},{"type":"field_input","name":"arg4"}]})
+	this.jsonInit({"colour":"50","message0":"%1 wave %2 (spectrum: %3 ) named %4","args0":[{"type":"field_dropdown","options":[["sine","sine"],["triangle","triangle"],["square","square"],["sawtooth","sawtooth"]],"name":"arg1"},{"check":"imageValue","type":"input_value","name":"arg2"},{"check":"imageValue","type":"input_value","name":"arg3"},{"type":"field_input","name":"arg4"}]})
 	this.setOutput(true, 'SoundSource');
   }
 }
@@ -144,7 +142,7 @@ Blockly.Blocks['SoundSource2'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('SoundSource2');
-	this.jsonInit({"colour":"333","message0":"%1 filter  (spectrum: %2 ) named %3","args0":[{"type":"field_dropdown","options":[["lowpass","lowpass"],["highpass","highpass"],["bandpass","bandpass"]],"name":"arg1"},{"check":"imageValue","type":"input_value","name":"arg2"},{"type":"field_input","name":"arg3"}]})
+	this.jsonInit({"colour":"50","message0":"%1 filter  (spectrum: %2 ) named %3","args0":[{"type":"field_dropdown","options":[["lowpass","lowpass"],["highpass","highpass"],["bandpass","bandpass"]],"name":"arg1"},{"check":"imageValue","type":"input_value","name":"arg2"},{"type":"field_input","name":"arg3"}]})
 	this.setOutput(true, 'SoundSource');
   }
 }
@@ -152,7 +150,7 @@ Blockly.Blocks['DataSource1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('DataSource1');
-	this.jsonInit({"colour":"182","message0":"speaker","args0":[]})
+	this.jsonInit({"colour":"265","message0":"speaker","args0":[]})
 	this.setOutput(true, 'DataSource');
   }
 }
@@ -161,7 +159,7 @@ Blockly.Blocks['DataSource2'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('DataSource2');
-	this.jsonInit({"colour":"182","message0":"slider_with_label %1","args0":[{"type":"field_input","name":"arg1"}]})
+	this.jsonInit({"colour":"265","message0":"slider_with_label %1","args0":[{"type":"field_input","name":"arg1"}]})
 	this.setOutput(true, 'DataSource');
   }
 }
@@ -170,7 +168,7 @@ Blockly.Blocks['DataSource3'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('DataSource3');
-	this.jsonInit({"colour":"182","message0":"%1 %2 axis","args0":[{"type":"field_dropdown","options":[["device position along","device position along"],["device movement along","device movement along"],["device rotation along","device rotation along"]],"name":"arg1"},{"type":"field_input","name":"arg2"}]})
+	this.jsonInit({"colour":"265","message0":"%1 %2 axis","args0":[{"type":"field_dropdown","options":[["device position along","device position along"],["device movement along","device movement along"],["device rotation along","device rotation along"]],"name":"arg1"},{"type":"field_input","name":"arg2"}]})
 	this.setOutput(true, 'DataSource');
   }
 }
@@ -180,7 +178,7 @@ Blockly.Blocks['imageValue1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('imageValue1');
-	this.jsonInit({message0: "\"\" %1", args0: [{type: "field_input", name: "arg1"}], colour: "295"})
+	this.jsonInit({message0: "\"%1\"", args0: [{type: "field_input", name: "arg1"}], colour: "154"})
 	this.setOutput(true, 'imageValue');
   }
 }
