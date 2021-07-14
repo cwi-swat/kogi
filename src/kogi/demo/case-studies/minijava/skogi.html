@@ -8,15 +8,14 @@
 	<block type="Expression1"><value name="arg1"><shadow type="Expression2"></shadow></value></block>
 <block type="Expression2"></block>
 <block type="Expression3"></block>
-<block type="Expression4"></block>
+<block type="Expression4"><value name="arg1"><shadow type="Expression2"></shadow></value></block>
 <block type="Expression5"></block>
 <block type="Expression6"><value name="arg1"><shadow type="Expression2"></shadow></value></block>
-<block type="Expression7"></block>
-<block type="Expression8"><value name="arg1"><shadow type="Expression2"></shadow></value></block>
-<block type="Expression9"><value name="arg1"><shadow type="Expression2"></shadow></value><value name="arg2"><shadow type="Expression2"></shadow></value></block>
-<block type="Expression10"><value name="arg1"><shadow type="Expression2"></shadow></value><value name="arg3"><block type="rubber"><value name="NAME"><shadow type="Expression2"></shadow></value></block></value></block>
-<block type="Expression11"><value name="arg1"><shadow type="Expression2"></shadow></value></block>
-<block type="Expression12"><value name="arg1"><shadow type="Expression2"></shadow></value><value name="arg3"><shadow type="Expression2"></shadow></value></block>
+<block type="Expression7"><value name="arg1"><shadow type="Expression2"></shadow></value><value name="arg2"><shadow type="Expression2"></shadow></value></block>
+<block type="Expression8"><value name="arg1"><shadow type="Expression2"></shadow></value><value name="arg3"><block type="rubber"><value name="NAME"><shadow type="Expression2"></shadow></value></block></value></block>
+<block type="Expression9"><value name="arg1"><shadow type="Expression2"></shadow></value></block>
+<block type="Expression10"><value name="arg1"><shadow type="Expression2"></shadow></value><value name="arg3"><shadow type="Expression2"></shadow></value></block>
+<block type="Expression11"></block>
 </category>
 <category name="Statement">
 	<block type="Statement1"><value name="arg1"><shadow type="Statement1"></shadow></value></block>
@@ -26,18 +25,18 @@
 <block type="Statement5"><value name="arg2"><shadow type="Expression2"></shadow></value></block>
 <block type="Statement6"><value name="arg2"><shadow type="Expression2"></shadow></value><value name="arg3"><shadow type="Expression2"></shadow></value></block>
 </category>
+<category name="Type">
+	<block type="Type1"></block>
+<block type="Type2"></block>
+</category>
 <category name="MethodDecl">
-	<block type="MethodDecl1"><value name="arg4"><shadow type="VarDecl2"></shadow></value><value name="arg5"><shadow type="Statement1"></shadow></value><value name="arg6"><shadow type="Expression2"></shadow></value></block>
-<block type="MethodDecl2"><value name="arg4"><shadow type="VarDecl2"></shadow></value><value name="arg5"><shadow type="Statement1"></shadow></value><value name="arg6"><shadow type="Expression2"></shadow></value></block>
-<block type="MethodDecl3"><value name="arg4"><shadow type="VarDecl2"></shadow></value><value name="arg5"><shadow type="Statement1"></shadow></value><value name="arg6"><shadow type="Expression2"></shadow></value></block>
-<block type="MethodDecl4"><value name="arg4"><shadow type="VarDecl2"></shadow></value><value name="arg5"><shadow type="Statement1"></shadow></value><value name="arg6"><shadow type="Expression2"></shadow></value></block>
+	<block type="MethodDecl1"><value name="arg1"><shadow type="Type1"></shadow></value><value name="arg4"><shadow type="VarDecl1"></shadow></value><value name="arg5"><shadow type="Statement1"></shadow></value><value name="arg6"><shadow type="Expression2"></shadow></value></block>
 </category>
 <category name="VarDecl">
-	<block type="VarDecl1"></block>
-<block type="VarDecl2"></block>
+	<block type="VarDecl1"><value name="arg1"><shadow type="Type1"></shadow></value></block>
 </category>
 <category name="ClassDecl">
-	<block type="ClassDecl1"><value name="arg3"><shadow type="VarDecl2"></shadow></value><value name="arg4"><shadow type="MethodDecl1"></shadow></value></block>
+	<block type="ClassDecl1"><value name="arg3"><shadow type="VarDecl1"></shadow></value><value name="arg4"><shadow type="MethodDecl1"></shadow></value></block>
 </category>
 <category name="MainClass">
 	<block type="MainClass1"><value name="arg3"><shadow type="Statement1"></shadow></value></block>
@@ -52,7 +51,7 @@ Blockly.Blocks['Expression1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression1');
-	this.jsonInit({"colour":"236","message0":"%1 . length","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
+	this.jsonInit({"colour":"210","message0":"%1 . length","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -61,7 +60,7 @@ Blockly.Blocks['Expression2'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression2');
-	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "236"})
+	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "210"})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -70,7 +69,7 @@ Blockly.Blocks['Expression3'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression3');
-	this.jsonInit({"colour":"236","message0":"true","args0":[]})
+	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "210"})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -79,7 +78,7 @@ Blockly.Blocks['Expression4'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression4');
-	this.jsonInit({"colour":"236","message0":"false","args0":[]})
+	this.jsonInit({"colour":"210","message0":"new int [ %1 ]","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -88,7 +87,7 @@ Blockly.Blocks['Expression5'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression5');
-	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "236"})
+	this.jsonInit({"colour":"210","message0":"new %1 ( )","args0":[{"type":"field_input","name":"arg1"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -97,7 +96,7 @@ Blockly.Blocks['Expression6'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression6');
-	this.jsonInit({"colour":"236","message0":"new int [ %1 ]","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
+	this.jsonInit({"colour":"210","message0":"( %1 )","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -106,7 +105,7 @@ Blockly.Blocks['Expression7'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression7');
-	this.jsonInit({"colour":"236","message0":"new %1 ( )","args0":[{"type":"field_input","name":"arg1"}]})
+	this.jsonInit({"colour":"210","message0":"%1 [ %2 ]","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"check":"Expression","type":"input_value","name":"arg2"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -115,7 +114,7 @@ Blockly.Blocks['Expression8'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression8');
-	this.jsonInit({"colour":"236","message0":"( %1 )","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
+	this.jsonInit({"colour":"210","message0":"%1 . %2 ( %3 )","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"type":"field_input","name":"arg2"},{"check":"Expression","type":"input_statement","name":"arg3"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -124,7 +123,7 @@ Blockly.Blocks['Expression9'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression9');
-	this.jsonInit({"colour":"236","message0":"%1 [ %2 ]","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"check":"Expression","type":"input_value","name":"arg2"}]})
+	this.jsonInit({"colour":"210","message0":"! %1","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -133,7 +132,7 @@ Blockly.Blocks['Expression10'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression10');
-	this.jsonInit({"colour":"236","message0":"%1 . %2 ( %3 )","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"type":"field_input","name":"arg2"},{"check":"Expression","type":"input_statement","name":"arg3"}]})
+	this.jsonInit({"colour":"210","message0":"%1 %2 %3","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"type":"field_dropdown","options":[["*","*"],["+","+"],["-","-"],["<","<"],["&&","&&"]],"name":"arg2"},{"check":"Expression","type":"input_value","name":"arg3"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -142,16 +141,7 @@ Blockly.Blocks['Expression11'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Expression11');
-	this.jsonInit({"colour":"236","message0":"! %1","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
-	this.setOutput(true, 'Expression');
-  }
-}
-
-Blockly.Blocks['Expression12'] = {
-  init: function() {
-	this.setInputsInline(true);
-	this.setTooltip('Expression12');
-	this.jsonInit({"colour":"236","message0":"%1 %2 %3","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"type":"field_dropdown","options":[["*","*"],["+","+"],["-","-"],["<","<"],["&&","&&"]],"name":"arg2"},{"check":"Expression","type":"input_value","name":"arg3"}]})
+	this.jsonInit({"colour":"210","message0":"%1","args0":[{"type":"field_dropdown","options":[["true","true"],["false","false"]],"name":"arg1"}]})
 	this.setOutput(true, 'Expression');
   }
 }
@@ -159,7 +149,7 @@ Blockly.Blocks['Statement1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Statement1');
-	this.jsonInit({"colour":"164","message0":"{ %1 }","args0":[{"check":"Statement","type":"input_statement","name":"arg1"}]})
+	this.jsonInit({"colour":"34","message0":"{ %1 }","args0":[{"check":"Statement","type":"input_statement","name":"arg1"}]})
 	this.setPreviousStatement(true, 'Statement');
 this.setNextStatement(true, 'Statement');
   }
@@ -169,7 +159,7 @@ Blockly.Blocks['Statement2'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Statement2');
-	this.jsonInit({"colour":"164","message0":"if ( %1 ) %2 else %3","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"check":"Statement","type":"input_statement","name":"arg2"},{"check":"Statement","type":"input_statement","name":"arg3"}]})
+	this.jsonInit({"colour":"34","message0":"if ( %1 ) %2 else %3","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"check":"Statement","type":"input_statement","name":"arg2"},{"check":"Statement","type":"input_statement","name":"arg3"}]})
 	this.setPreviousStatement(true, 'Statement');
 this.setNextStatement(true, 'Statement');
   }
@@ -179,7 +169,7 @@ Blockly.Blocks['Statement3'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Statement3');
-	this.jsonInit({"colour":"164","message0":"while ( %1 ) %2","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"check":"Statement","type":"input_statement","name":"arg2"}]})
+	this.jsonInit({"colour":"34","message0":"while ( %1 ) %2","args0":[{"check":"Expression","type":"input_value","name":"arg1"},{"check":"Statement","type":"input_statement","name":"arg2"}]})
 	this.setPreviousStatement(true, 'Statement');
 this.setNextStatement(true, 'Statement');
   }
@@ -189,7 +179,7 @@ Blockly.Blocks['Statement4'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Statement4');
-	this.jsonInit({"colour":"164","message0":"System . out . println ( %1 ) ;","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
+	this.jsonInit({"colour":"34","message0":"System . out . println ( %1 ) ;","args0":[{"check":"Expression","type":"input_value","name":"arg1"}]})
 	this.setPreviousStatement(true, 'Statement');
 this.setNextStatement(true, 'Statement');
   }
@@ -199,7 +189,7 @@ Blockly.Blocks['Statement5'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Statement5');
-	this.jsonInit({"colour":"164","message0":"%1 = %2 ;","args0":[{"type":"field_input","name":"arg1"},{"check":"Expression","type":"input_value","name":"arg2"}]})
+	this.jsonInit({"colour":"34","message0":"%1 = %2 ;","args0":[{"type":"field_input","name":"arg1"},{"check":"Expression","type":"input_value","name":"arg2"}]})
 	this.setPreviousStatement(true, 'Statement');
 this.setNextStatement(true, 'Statement');
   }
@@ -209,46 +199,33 @@ Blockly.Blocks['Statement6'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('Statement6');
-	this.jsonInit({"colour":"164","message0":"%1 [ %2 ] = %3 ;","args0":[{"type":"field_input","name":"arg1"},{"check":"Expression","type":"input_value","name":"arg2"},{"check":"Expression","type":"input_value","name":"arg3"}]})
+	this.jsonInit({"colour":"34","message0":"%1 [ %2 ] = %3 ;","args0":[{"type":"field_input","name":"arg1"},{"check":"Expression","type":"input_value","name":"arg2"},{"check":"Expression","type":"input_value","name":"arg3"}]})
 	this.setPreviousStatement(true, 'Statement');
 this.setNextStatement(true, 'Statement');
+  }
+}
+Blockly.Blocks['Type1'] = {
+  init: function() {
+	this.setInputsInline(true);
+	this.setTooltip('Type1');
+	this.jsonInit({message0: " %1", args0: [{type: "field_input", name: "arg1"}], colour: "271"})
+	this.setOutput(true, 'Type');
+  }
+}
+
+Blockly.Blocks['Type2'] = {
+  init: function() {
+	this.setInputsInline(true);
+	this.setTooltip('Type2');
+	this.jsonInit({"colour":"271","message0":"%1","args0":[{"type":"field_dropdown","options":[["int [ ]","int [ ]"],["boolean","boolean"],["int","int"]],"name":"arg1"}]})
+	this.setOutput(true, 'Type');
   }
 }
 Blockly.Blocks['MethodDecl1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('MethodDecl1');
-	this.jsonInit({"colour":"50","message0":"public %1 %2 ( %3 ) { %4 %5 return %6 ; }","args0":[{"type":"field_dropdown","options":[["int [ ]","int [ ]"],["boolean","boolean"],["int","int"]],"name":"arg1"},{"type":"field_input","name":"arg2"},{"min":0,"name":"arg3","type":"field_toggle","args":[{"type":"field_dropdown","options":[["int [ ]","int [ ]"],["boolean","boolean"],["int","int"]],"name":"arg1"},{"type":"field_input","name":"arg2"}],"max":900000000,"message":"%1 %2"},{"check":"VarDecl","type":"input_statement","name":"arg4"},{"check":"Statement","type":"input_statement","name":"arg5"},{"check":"Expression","type":"input_value","name":"arg6"}],"mutator":"optional_mutator"})
-	this.setPreviousStatement(true, 'MethodDecl');
-this.setNextStatement(true, 'MethodDecl');
-  }
-}
-
-Blockly.Blocks['MethodDecl2'] = {
-  init: function() {
-	this.setInputsInline(true);
-	this.setTooltip('MethodDecl2');
-	this.jsonInit({"colour":"50","message0":"public %1 %2 ( %3 ) { %4 %5 return %6 ; }","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"},{"min":0,"name":"arg3","type":"field_toggle","args":[{"type":"field_dropdown","options":[["int [ ]","int [ ]"],["boolean","boolean"],["int","int"],["identifier","identifier"]],"name":"arg1"},{"type":"field_input","name":"arg2"}],"max":900000000,"message":"%1 %2"},{"check":"VarDecl","type":"input_statement","name":"arg4"},{"check":"Statement","type":"input_statement","name":"arg5"},{"check":"Expression","type":"input_value","name":"arg6"}],"mutator":"optional_mutator"})
-	this.setPreviousStatement(true, 'MethodDecl');
-this.setNextStatement(true, 'MethodDecl');
-  }
-}
-
-Blockly.Blocks['MethodDecl3'] = {
-  init: function() {
-	this.setInputsInline(true);
-	this.setTooltip('MethodDecl3');
-	this.jsonInit({"colour":"50","message0":"public %1 %2 ( %3 ) { %4 %5 return %6 ; }","args0":[{"type":"field_dropdown","options":[["int [ ]","int [ ]"],["boolean","boolean"],["int","int"]],"name":"arg1"},{"type":"field_input","name":"arg2"},{"min":0,"name":"arg3","type":"field_toggle","args":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"}],"max":900000000,"message":"%1 %2"},{"check":"VarDecl","type":"input_statement","name":"arg4"},{"check":"Statement","type":"input_statement","name":"arg5"},{"check":"Expression","type":"input_value","name":"arg6"}],"mutator":"optional_mutator"})
-	this.setPreviousStatement(true, 'MethodDecl');
-this.setNextStatement(true, 'MethodDecl');
-  }
-}
-
-Blockly.Blocks['MethodDecl4'] = {
-  init: function() {
-	this.setInputsInline(true);
-	this.setTooltip('MethodDecl4');
-	this.jsonInit({"colour":"50","message0":"public %1 %2 ( %3 ) { %4 %5 return %6 ; }","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"},{"min":0,"name":"arg3","type":"field_toggle","args":[{"type":"field_dropdown","options":[["int [ ]","int [ ]"],["boolean","boolean"],["int","int"],["identifier","identifier"]],"name":"arg1"},{"type":"field_input","name":"arg2"}],"max":900000000,"message":"%1 %2"},{"check":"VarDecl","type":"input_statement","name":"arg4"},{"check":"Statement","type":"input_statement","name":"arg5"},{"check":"Expression","type":"input_value","name":"arg6"}],"mutator":"optional_mutator"})
+	this.jsonInit({"colour":"358","message0":"public %1 %2 ( %3 ) { %4 %5 return %6 ; }","args0":[{"check":"Type","type":"input_value","name":"arg1"},{"type":"field_input","name":"arg2"},{"min":0,"name":"arg3","type":"field_toggle","args":[{"check":"Type","type":"input_value","name":"arg1"},{"type":"field_input","name":"arg2"}],"max":900000000,"message":"%1 %2"},{"check":"VarDecl","type":"input_statement","name":"arg4"},{"check":"Statement","type":"input_statement","name":"arg5"},{"check":"Expression","type":"input_value","name":"arg6"}],"mutator":"optional_mutator"})
 	this.setPreviousStatement(true, 'MethodDecl');
 this.setNextStatement(true, 'MethodDecl');
   }
@@ -257,17 +234,7 @@ Blockly.Blocks['VarDecl1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('VarDecl1');
-	this.jsonInit({"colour":"315","message0":"%1 %2 ;","args0":[{"type":"field_dropdown","options":[["int [ ]","int [ ]"],["boolean","boolean"],["int","int"]],"name":"arg1"},{"type":"field_input","name":"arg2"}]})
-	this.setPreviousStatement(true, 'VarDecl');
-this.setNextStatement(true, 'VarDecl');
-  }
-}
-
-Blockly.Blocks['VarDecl2'] = {
-  init: function() {
-	this.setInputsInline(true);
-	this.setTooltip('VarDecl2');
-	this.jsonInit({"colour":"315","message0":"%1 %2 ;","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"}]})
+	this.jsonInit({"colour":"104","message0":"%1 %2 ;","args0":[{"check":"Type","type":"input_value","name":"arg1"},{"type":"field_input","name":"arg2"}]})
 	this.setPreviousStatement(true, 'VarDecl');
 this.setNextStatement(true, 'VarDecl');
   }
@@ -276,7 +243,7 @@ Blockly.Blocks['ClassDecl1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('ClassDecl1');
-	this.jsonInit({"colour":"2","message0":"class %1 %2 { %3 %4 }","args0":[{"type":"field_input","name":"arg1"},{"min":0,"name":"arg2","type":"field_toggle","args":[{"type":"field_input","name":"arg1"}],"max":1,"message":"extends %1"},{"check":"VarDecl","type":"input_statement","name":"arg3"},{"check":"MethodDecl","type":"input_statement","name":"arg4"}],"mutator":"optional_mutator"})
+	this.jsonInit({"colour":"287","message0":"class %1 %2 { %3 %4 }","args0":[{"type":"field_input","name":"arg1"},{"min":0,"name":"arg2","type":"field_toggle","args":[{"type":"field_input","name":"arg1"}],"max":1,"message":"extends %1"},{"check":"VarDecl","type":"input_statement","name":"arg3"},{"check":"MethodDecl","type":"input_statement","name":"arg4"}],"mutator":"optional_mutator"})
 	
   }
 }
@@ -284,7 +251,7 @@ Blockly.Blocks['MainClass1'] = {
   init: function() {
 	this.setInputsInline(true);
 	this.setTooltip('MainClass1');
-	this.jsonInit({"colour":"130","message0":"class %1 { public static void main ( String [ ] %2 ) { %3 } }","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"},{"check":"Statement","type":"input_statement","name":"arg3"}]})
+	this.jsonInit({"colour":"92","message0":"class %1 { public static void main ( String [ ] %2 ) { %3 } }","args0":[{"type":"field_input","name":"arg1"},{"type":"field_input","name":"arg2"},{"check":"Statement","type":"input_statement","name":"arg3"}]})
 	
   }
 }
