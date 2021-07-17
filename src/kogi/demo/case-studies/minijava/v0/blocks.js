@@ -351,11 +351,11 @@ Blockly.Blocks['Type/i2'] = {
 		);
 	}
 }
-Blockly.Blocks['Expression/i'] = {
+Blockly.Blocks['Expression/id'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "Expression/i",
+			  "type" : "Expression/id",
 			  "message0" : "%1 ",
 			  "args0" : [
 				{
