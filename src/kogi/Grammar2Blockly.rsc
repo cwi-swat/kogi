@@ -1,7 +1,9 @@
 module kogi::Grammar2Blockly
 
+import List;
 import Set;
 import Type;
+import String;
 import ParseTree;
 import kogi::Block;
 import kogi::util::Util;
@@ -11,6 +13,24 @@ tuple[set[Production], str] getProductionsAndStart(set[Production] productions) 
 	Production startProd = getStartProduction(productions);
 	str startP = startProd.def.symbol.name;
 	return <productions - startProd, startP>;
+}
+
+list[str] getStartBlocks(set[Production] productions) {
+	list[Production] startProds = toList({ p | p <- productions, prod(\start(sort(_)),_,_) := p });
+	list[str] content = [];
+	
+	for (Production x <- startProds) {
+		for (Production y <- productions) {
+			try { 
+				if (y.def.symbol.name == x.def.symbol.name) {
+				 	str startBlock = "<y.def.symbol.name>/<y.def.name>";
+					content += startBlock;
+				}
+			} catch: content = content;
+		}
+	}
+	
+	return content;
 }
 
 list[Block] grammar2blocks(set[Production] productions, bool epsilon = false) {
