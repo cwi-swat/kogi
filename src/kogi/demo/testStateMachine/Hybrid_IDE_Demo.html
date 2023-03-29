@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Test page</title>
+		<title>Hybrid editor</title>
 		<meta charset="UTF-8">
 		<meta name="google" value="notranslate">
 		
@@ -23,6 +23,10 @@
 		<h1>Hybrid Editor</h1>
 		<p>Below there are 2 editing environments for a <b>State Machine</b>: a Block Based Environment (BBE) and a Text Based Environment (TBE). Any change in the BBE will automatically  update the TBE, but changes in the TBE will only be visible in the BBE if
 			the TBE is selected and the 'End' button is pressed. Only syntactically correct updates are executed.
+		</p>
+		<p>
+			<a href="#" onclick="loadDocTest();">Test</a><br />
+			<a href="#" onclick="loadDocParse();">Parse</a>
 		</p>
 		<div style="width: 100%">
 			<div id="blockDiv" style="height: 600px; width: 720px; position: absolute; left: 8px;"></div>
@@ -234,7 +238,6 @@
 		});
 
 		const langGen = new Blockly.Generator('LangGen');
-
 			
 		workspace.addChangeListener(Blockly.Events.disableOrphans);
 
@@ -269,10 +272,6 @@
 		}
 
 		langGen['Trans/transition'] = function (block) {
-			return '';
-		}
-
-		langGen['Trans/transition2'] = function (block) {
 			return '';
 		}
 
@@ -366,28 +365,6 @@
 						var latestBlock = getLast(lastStateBlock.inputs.transitions.block);
 						latestBlock.next.block = block;
 					}
-					i += 3;
-				}
-				
-				if (editorInput[i] == "on2") {
-					var block = {
-						"type": "Trans/transition2",
-						"id": i,
-						"fields": {
-							"on2": editorInput[i+1],
-							"to2": editorInput[i+3]
-						},
-						"inputs": {},
-						"next": {}
-					}
-					
-					if (lastStateBlock.inputs.transitions == null) {
-						lastStateBlock.inputs.transitions = {};
-						lastStateBlock.inputs.transitions.block = block;
-					} else {
-						var latestBlock = getLast(lastStateBlock.inputs.transitions.block);
-						latestBlock.next.block = block;
-					}
 					
 					i += 3;
 				}
@@ -400,16 +377,12 @@
 			console.log(json);
 		});
 
-		function loadDoc() {
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("demo").innerHTML =
-					this.responseText;
-			   }
-			};
-			xhttp.open("GET", "/hello", true);
-			xhttp.send();
+		function loadDocTest() {
+			fetch('/test').then(x => x.text()).then(y => console.log(y));
+		}
+		
+		function loadDocParse() {
+			fetch('/parse?' + new URLSearchParams({code: editor.getValue()})).then(x => x.text()).then(y => console.log(y));
 		}
 	
 	</script>
