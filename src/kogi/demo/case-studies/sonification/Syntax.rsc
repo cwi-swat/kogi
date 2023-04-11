@@ -1,4 +1,5 @@
 module kogi::demo::sonification::Syntax
+//module kogi::demo::casestudies::sonification::Syntax
 
 extend lang::std::Layout;
 extend lang::std::Id;
