@@ -5,7 +5,9 @@ import Exception;
 import IO;
 import ParseTree;
 import util::IDEServices;
+import vis::Text;
 import kogi::demo::stateMachine::StateMachine;
+import kogi::demo::testStateMachine::TestVisit;
 
 Response (Request) webServer() {
     Response reply(get("/test")) {
@@ -15,14 +17,15 @@ Response (Request) webServer() {
     Response reply(get(/^\/parse/, parameters = pms)) {
         str hasError = "false";
         str code = pms["code"];
+        Tree parseResult;
 
         try {
-            Tree parseResult = parse(#Machine, code);
+            parseResult = parse(#Machine, code);
         } catch ParseError(l): {
-            return response("Parse error found at line <l.begin.line> and column <l.begin.column>.");
+            return response("Error: Parse error found at line <l.begin.line> and column <l.begin.column + 1>.");
         }
 
-        return response("Code is correct!");
+        return response(treeToRes(parseResult));
     }
 
     default Response reply(get(_)) {

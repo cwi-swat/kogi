@@ -5,8 +5,8 @@
 		<meta charset="UTF-8">
 		<meta name="google" value="notranslate">
 		
-		<script src="https://unpkg.com/blockly/blockly.min.js"></script>
-		<script src="https://unpkg.com/blockly/msg/en.js"></script>
+		<script src="https://unpkg.com/blockly@9.2.1/blockly.min.js"></script>
+		<script src="https://unpkg.com/blockly@9.2.1/msg/en.js"></script>
 		
 		<link
 			rel="stylesheet"
@@ -243,24 +243,25 @@
 
 		langGen['Machine/machine'] = function(block) {
 			function getBlockValues(a) {
-					const returnBlock = a.getDescendants(true);
-						if (returnBlock.length > 0) {
-							var counter = 0;
-							var returnString = '';
-							
-							if (typeof returnBlock[counter] !== 'undefined') {
-								returnString += returnBlock[counter] + '\n';
-							}
-							
-							return returnString;
-						} else {
-							return '';
-						}
-				}
+				const returnBlock = a.getDescendants(true);
 
-				result = getBlockValues(block)
+				if (returnBlock.length > 0) {
+					var counter = 0;
+					var returnString = '';
 					
-				return result;
+					if (typeof returnBlock[counter] !== 'undefined') {
+						returnString += returnBlock[counter] + '';
+					}
+					
+					return returnString;
+				} else {
+					return '';
+				}
+			}
+
+			result = getBlockValues(block);
+					
+			return result;
 		}
 
 		langGen['Id/id'] = function (block) {
@@ -382,7 +383,19 @@
 		}
 		
 		function loadDocParse() {
-			fetch('/parse?' + new URLSearchParams({code: editor.getValue()})).then(x => x.text()).then(y => console.log(y));
+			fetch('/parse?' + new URLSearchParams({code: editor.getValue()})).then(
+				x => x.text()
+			).then( y => {
+				if (y.charAt(0) === "E" ) {
+					alert(y);
+				} else {
+					var response1 = JSON.parse(y);
+					console.log(response1);
+
+					Blockly.serialization.workspaces.load(response1, workspace);
+				}
+			});
+
 		}
 	
 	</script>
