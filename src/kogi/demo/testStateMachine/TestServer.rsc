@@ -10,10 +10,6 @@ import kogi::demo::stateMachine::StateMachine;
 import kogi::demo::testStateMachine::TestVisit;
 
 Response (Request) webServer() {
-    Response reply(get("/test")) {
-        return plain("Test!");
-    }
-
     Response reply(get(/^\/parse/, parameters = pms)) {
         str hasError = "false";
         str code = pms["code"];
@@ -22,7 +18,7 @@ Response (Request) webServer() {
         try {
             parseResult = parse(#Machine, code);
         } catch ParseError(l): {
-            return response("Error: Parse error found at line <l.begin.line> and column <l.begin.column + 1>.");
+            return response("Error: Parse error found at line <l.begin.line> and character <l.begin.column + 1>.");
         }
 
         return response(treeToRes(parseResult));

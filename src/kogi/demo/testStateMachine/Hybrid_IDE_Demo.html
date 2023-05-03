@@ -21,11 +21,13 @@
 	
 	<body>
 		<h1>Hybrid Editor</h1>
-		<p>Below there are 2 editing environments for a <b>State Machine</b>: a Block Based Environment (BBE) and a Text Based Environment (TBE). Any change in the BBE will automatically  update the TBE, but changes in the TBE will only be visible in the BBE if
-			the TBE is selected and the 'End' button is pressed. Only syntactically correct updates are executed.
+		<p>Below there are 2 editing environments for a <b>State Machine</b>: a Block Based Environment (BBE) and a Text Based Environment (TBE). 
+			Any change in the BBE will automatically update the TBE, but changes in the TBE will only be visible in the BBE if
+			the TBE is selected and the 'End' button is pressed (for block generation <i>without</i> parsing), 
+			or if 'Parse' is clicked (for block generation <i>with</i> parsing, which only works if there's a client-server connection with Rascal). 
+			Only syntactically correct updates are executed.
 		</p>
 		<p>
-			<a href="#" onclick="loadDocTest();">Test</a><br />
 			<a href="#" onclick="loadDocParse();">Parse</a>
 		</p>
 		<div style="width: 100%">
@@ -377,10 +379,6 @@
 			var json = Blockly.serialization.workspaces.save(workspace);
 			console.log(json);
 		});
-
-		function loadDocTest() {
-			fetch('/test').then(x => x.text()).then(y => console.log(y));
-		}
 		
 		function loadDocParse() {
 			fetch('/parse?' + new URLSearchParams({code: editor.getValue()})).then(
