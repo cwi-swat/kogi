@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="google" value="notranslate">
-    <!--<script src="{__BLOCKLY__}/blockly_compressed.js"></script>
-    <script src="{__BLOCKLY__}/blocks_compressed.js"></script> -->
-    <!-- Messages for the user's language -->
-    <!-- <script src="{__BLOCKLY__}/msg/js/en.js"></script>
-    <script src="{__BLOCKLY__}/appengine/storage.js"></script> -->
     
-    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
-    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <script src="https://unpkg.com/blockly@9.2.1/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly@9.2.1/msg/en.js"></script>
     <title>{__TITLE__}</title>
 
     <link
@@ -18,12 +13,19 @@
 			data-name="vs/editor/editor.main"
 			href="https://unpkg.com/monaco-editor/min/vs/editor/editor.main.css"
 	  />
+
+    <style>
+      body {background-color: #fdfdfd; color: #333; font-family: Helvetica, Arial}
+      .bar {padding: 10px; margin: 10px; color: #333; background: #fafafa; border: 1px solid #ccc;} 
+			.error {color: #ba3939; background: #ffe0e0; border: 1px solid #a33a3a; opacity: 0; transition: opacity 0.5s ease;}
+    </style>
 </head>
 <body>
     <h1> {__TITLE__}</h1>
+    <div id="error_bar" class="bar error"></div>
     <div style="width: 100%">
-    	<div id="{__DIV__}" style="height: 600px; width: 720px; position: absolute; left: 8px;"></div>
-    	<div id="container2" style="height: 600px; width: 720px; position: absolute; left: 736px; border: 1px solid grey;"></div>
+    	<div id="{__DIV__}" style="height: 600px; width: 49%; position: absolute; left: 8px;"></div>
+    	<div id="monaco_container" style="height: 600px; width: 49%; position: absolute; left: 50%; border: 1px solid grey;"></div>
     </div>
 
     <script>var require = { paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } };</script>
@@ -31,15 +33,12 @@
   	<script src="https://unpkg.com/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
 	  <script src="https://unpkg.com/monaco-editor/min/vs/editor/editor.main.js"></script>
   	<script>
-      var editor = monaco.editor.create(document.getElementById('container2'), {
+      var editor = monaco.editor.create(document.getElementById('monaco_container'), {
         value: "",
         language: 'javascript'
       });
     </script>
 </body>
-
-<!--TOOLBOX-->
-{__TOOLBOX__}
 
 <script src="blocks.js"></script>
 </html>

@@ -4,12 +4,14 @@ import IO;
 import String;
 import List;
 import kogi::Block;
-import kogi::json::Parser;
 import kogi::Block2Section;
+import kogi::json::Parser;
+import kogi::util::Util;
 
-void createJS(list[Block] blocks, str divId, str toolbarId, loc dstPath, list[str] startingBlocks, str tbposition = "start", bool trashCan = true, bool disableOrphans = true, bool isStartingBlock = false){
+void createJS(list[Block] blocks, str divId, Toolbox toolbox, loc dstPath, list[str] startingBlocks, str tbposition = "start", bool trashCan = true, bool disableOrphans = true, bool isStartingBlock = false){
 	content = ( "" | it + createBlocklyBlock(block) | block <- blocks );
-    content += blocklyApp(divId, toolbarId, tbposition, trashCan, disableOrphans);
+	content += createToolbox(toolbox);
+    content += blocklyApp(divId, tbposition, trashCan, disableOrphans);
     
     for (Block block <- blocks) {
     	for (str startingBlock <- startingBlocks) {
@@ -26,32 +28,12 @@ void createJS(list[Block] blocks, str divId, str toolbarId, loc dstPath, list[st
     	isStartingBlock = false;
     }
     
-    content += createChangeListener();
-    content += showXML();
+	content += createDebounce();
+    content += createBlockChangeListener();
+	content += createTextChangeListener();
     
     writeFile(dstPath + "blocks.js", content);
 }
-
-str blocklyApp(str divId, str tbId, str tbposition, bool trashCan, bool disableOrphans) = 
-	"Blockly.BlockSvg.START_HAT = true;
-	'var workspace = Blockly.inject(\'<divId>\', {
-	'	toolbox: document.getElementById(\'<tbId>\'),
-	'	collapse: true,
-	'   toolboxPosition: \'<tbposition>\', // end
-	'   trashcan: <trashCan>
-	'});
-	'
-	'const langGen = new Blockly.Generator(\'LangGen\');
-	'
-	< if (disableOrphans) { >
-	'workspace.addChangeListener(Blockly.Events.disableOrphans);
-	< } >
-	'
-	' //Storage options
-	'//BlocklyStorage.backupOnUnload();	
-	'//window.setTimeout(BlocklyStorage.restoreBlocks, 0);
-	'
-	'";
 
 str createBlocklyBlock(Block block) =
 	"Blockly.Blocks[\'<trim(blockName(block))>\'] = {
@@ -61,6 +43,7 @@ str createBlocklyBlock(Block block) =
 	'		);
 	'	}
 	'}
+	'
 	'";
 	
 str createDefaultBlockCode(str block) = 
@@ -77,10 +60,6 @@ str createStartingBlockCode(str block) =
 	'				if (returnBlock.length \> 0) {
 	'					var counter = 0;
 	'					var returnString = \'\';
-	'					//while (typeof returnBlock[counter] !== \'undefined\') {
-	'					//	returnString += returnBlock[counter] + \'\\n\';
-	'					//	counter += 1;
-	'					//}
 	'					
 	'					if (typeof returnBlock[counter] !== \'undefined\') {
 	'						returnString += returnBlock[counter] + \'\\n\';
@@ -99,23 +78,111 @@ str createStartingBlockCode(str block) =
 	'
 	'";
 
-str createChangeListener() = 
-	"function myUpdateFunction(event) {
-	'	var code = langGen.workspaceToCode(workspace);
-	'	editor.setValue(code);
+str createToolbox(Toolbox toolbox) = 
+	"var toolbox = {
+	'	\'kind\': \'categoryToolbox\',
+	'	\'contents\': [
+	'		<tbSection2Elements(toolbox.sections)[..-2]>
+	'	]
 	'}
-	'	
-	'workspace.addChangeListener(myUpdateFunction);
 	'
+	'";
+
+str tbSection2Elements(list[Section] sections) = 
+	"<for (section <- sections) {>{
+	'	\'kind\': \'category\',
+	'	\'name\': \'<section.category>\',
+	'	\'colour\': \'<getColour(section.colour)>\',
+	'	\'contents\': [
+	'		<tbBlocks2Elements(section.blocks)[..-2]>
+	'	]
+	'}, <}>";
+
+str tbBlocks2Elements(list[Block] blocks) = 
+	"<for (block <- blocks) {>{
+	'	\'kind\': \'block\',
+	'	\'type\': \'<block.\type>\'
+	'}, <}>";
+
+str blocklyApp(str divId, str tbposition, bool trashCan, bool disableOrphans) = 
+	"var workspace = Blockly.inject(\'<divId>\', {
+	'	toolbox: toolbox,
+	'	collapse: true,
+	'	toolboxPosition: \'<tbposition>\',
+	'	trashcan: <trashCan>,
+	'	theme: {\'startHats\': true}
+	'});
+	'
+	'const langGen = new Blockly.Generator(\'LangGen\');
+	'< if (disableOrphans) { >
+	'workspace.addChangeListener(Blockly.Events.disableOrphans);< } >
+	'
+	'";
+
+str createDebounce() = 
+	"function debounce(func, wait) {
+    '	var timeout;
+	'
+    '	return function() {
+    '	    clearTimeout(timeout);
+	'
+    '	    timeout = setTimeout(() =\> {
+    '	        func.apply(this, arguments);
+    '	    }, wait);
+    '	}
+	'}
+	'
+	'var isUpdating = false;
+	'
+	'";
+
+str createBlockChangeListener() = 
+	"function blockToTextUpdate() {
+	'	if (isUpdating) {
+	'		isUpdating = false;
+	'	} else {
+	'		isUpdating = true;
+	'		var code = langGen.workspaceToCode(workspace);
+	'		editor.setValue(code);
+	'	}
+	'}
+	'
+	'var debouncedB2TUpdate = debounce(blockToTextUpdate, 1000);
+	'	
+	'workspace.addChangeListener(debouncedB2TUpdate);
+	'
+	'";
+
+str createTextChangeListener() = 
+	"function textToBlockUpdate() {
+	'	if (isUpdating) {
+	'		isUpdating = false;
+	'	} else {
+	'		isUpdating = true;
+	'		fetch(\'/parse?\' + new URLSearchParams({code: editor.getValue()})).then(
+	'			x =\> x.text()
+	'		).then( y =\> {
+	'			if (y.charAt(0) === \"E\" ) {
+	'				error_bar = document.getElementById(\'error_bar\');
+	'				error_bar.innerHTML = y;
+	'				error_bar.style.opacity = 1;
+	'				isUpdating = false;
+	'			} else {
+	'				var response1 = JSON.parse(y);
+	'				error_bar.style.opacity = 0;
+	'				error_bar.value = \"\";
+	'				
+	'				Blockly.serialization.workspaces.load(response1, workspace);
+	'			}
+	'		});
+	'	}
+	'}
+	'
+	'var debouncedT2BUpdate = debounce(textToBlockUpdate, 1000);
+	'
+	'editor.getModel().onDidChangeContent(debouncedT2BUpdate);
 	'";
 	
 str blockName(Block block) 
 	= block.\type;
 	
-str showXML() =
-	"function xmlText() {
-	'	var xml = Blockly.Xml.workspaceToDom(workspace);
-	'	var xml_text = Blockly.Xml.domToPrettyText(xml);
-	'	document.getElementById(\'textarea\').value = xml_text;
-	'}
-	";

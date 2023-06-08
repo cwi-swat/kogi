@@ -24,8 +24,8 @@ void createBlocklyApp(set[Production] productions, str divName = "blockDiv", str
 }
 
 void createWebApp(list[Block] blocks, Toolbox tb, str title, str divName, str toolboxName, loc targetPath, str blockly, list[str] startBlocks) {
-	createJS(blocks, divName, toolboxName, targetPath, startBlocks);
-	createHTML(parseToolbox(tb), title, divName, targetPath, blockly);
+	createJS(blocks, divName, tb, targetPath, startBlocks);
+	createHTML(title, divName, targetPath, blockly);
 }
 
 void createBlocklyApp(type[&T<:Tree] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly")
@@ -71,8 +71,8 @@ void createBlocklyApp(map[Symbol, Production] grammar, str divName = "blockDiv",
 	
 	// Create the rest of the app
 	Toolbox tb = toolbox(createSections(blocks));
-	createJS(blocks, divName, toolboxName, targetPath, getStartBlocks(remainingProductions + ntProductions));
-	createHTML(parseToolbox(tb), title, divName, targetPath, blockly);
+	createJS(blocks, divName, tb, targetPath, getStartBlocks(remainingProductions + ntProductions));
+	createHTML(title, divName, targetPath, blockly);
 	// productions2 block
 	//grammar2Blocks();
 }
