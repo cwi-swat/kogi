@@ -173,3 +173,34 @@ str escape(str string) {
 		else
 			return string;
 }
+
+// searches all options<X, Y> if X == T
+bool listContains(lrel[str, str] options, T) {
+    for (option <- options) {
+		if (option[0] == T) return true;
+	};
+	return false;
+}
+
+str randomString(int max_) {
+	list[str] allowedChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+	 						  "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D",
+	 						  "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+	charLength = size(allowedChars);
+	str final = "";
+	for (int i <- [0 .. max_]) {
+		final += allowedChars[arbInt(charLength)];	
+	};
+
+	return final;
+} 
+
+list[str] checkLexical(lrel[str, str] lexRules, str name) {
+	list[str] final = [name];
+    for (R <- lexRules) {
+      if (name == R[0]) {
+        final += R[1];
+      }
+    }
+	return final;
+}

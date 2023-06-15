@@ -32,6 +32,16 @@ str toJson(int val) = "<val>";
 str toJson(num val) = "<val>";
 	
 str toJson(bool val) = "<val>";
+
+str toJson(lrel[str, str] options) { //for a dropdown field
+	str res = "[";
+	for(tuple[str,str] option <- options) {
+		res += "[ \"<option[0]>\", ";
+		res += "\"<option[1]>\" ],";
+	};
+	res += "]";
+	return res;
+}
 	
 str toJson(kogi::Block::Message val) = "<val>";
 	
@@ -82,6 +92,12 @@ str toJsonArg(arg(name, input(text)))
 	=	"<toJson("name", name)>,
 		'<toJson("type", "field_input")>,
 		'<toJson("text", "<text>")>";
+
+//added dropdown
+str toJsonArg(arg(name, dropdown(options)))
+	=	"<toJson("name", name)>,
+		'<toJson("type", "field_dropdown")>,
+		'<toJson("options", options)>";
 
 str toJsonArg(arg(name, number(number, range=Range::range(_,_, precision))))
 	=	"<toJson("name", name)>,

@@ -9,7 +9,7 @@ import kogi::symbol2Message::Symbol2Arg;
 
 list[str] defaultValues = ["Id", "FloatValue", "IntegerValue", "AngleValue", "BooleanValue", "ImageValue"];
 
-kogi::Block::Message symbols2Message(list[Symbol] symbols, map[str, bool] multiplicity, str lexicalName = "") {
+kogi::Block::Message symbols2Message(list[Symbol] symbols, map[str, bool] multiplicity, lrel[str, str] lexRules, str lexicalName = "") {
 	if (lexicalName in defaultValues) {
 		format = "%1";
 		args = [symbol2Arg(lexicalName)];
@@ -19,7 +19,7 @@ kogi::Block::Message symbols2Message(list[Symbol] symbols, map[str, bool] multip
 		format = symbols2format(symbols);
 		// removes the literals.
 		//symbols = removeLiterals(symbols);
-		args = [ symbol2Arg(symbol, getMultiplicity(symbol, multiplicity), lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol, contains(format,"%") ];
+		args = [ symbol2Arg(symbol, getMultiplicity(symbol, multiplicity), lexRules, lexicalName = lexicalName) | symbol <- symbols, Symbol::\layouts(_) !:= symbol, contains(format,"%") ];
 		return message(format, [ arg | arg <- args, Arg::none() !:= arg ]);
 	}
 }

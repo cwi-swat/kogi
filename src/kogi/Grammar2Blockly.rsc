@@ -1,11 +1,15 @@
 module kogi::Grammar2Blockly
 
 import Set;
+import String;
 import Type;
+import IO;
 import ParseTree;
 import kogi::Block;
 import kogi::util::Util;
 import kogi::Production2Block;
+import kogi::Production2BinaryBlock;
+import kogi::GetLexicalRules;
 
 tuple[set[Production], str] getProductionsAndStart(set[Production] productions) {
 	Production startProd = getStartProduction(productions);
@@ -14,15 +18,20 @@ tuple[set[Production], str] getProductionsAndStart(set[Production] productions) 
 }
 
 list[Block] grammar2blocks(set[Production] productions, bool epsilon = false) {
+	
 	multiplicityInfo = nonTerminalMultiplicity(productions);
 	// Remove the start production from the productions and retrieve the start symbol name to set the 'hat' block
 	tuple[set[Production] prods, str name] p = getProductionsAndStart(productions);
+	
+	binSimpBlock = production2BinaryBlock(p.prods);
+	lrel[str, str] lexicalRules = getLexicalRules(p.prods);
 
-    blocks = [ production2Block(production, multiplicityInfo, p.name) | production <- p.prods, containLayoutAttributes(production.attributes) ];
-    if (epsilon)
-    	blocks += createEpsilonBlock(productions);
-    // remove empty blocks
-    return [ block | block <- blocks, Block::none() !:= block ];
+    blocks = [ production2Block(production, multiplicityInfo, p.name, binSimpBlock[1], lexicalRules) | production <- p.prods, containLayoutAttributes(production.attributes)];
+    if (epsilon) blocks += createEpsilonBlock(productions);
+	blocks += binSimpBlock[0];
+	
+	//binary operator simplification
+	return [ block | block <- blocks, Block::none() !:= block ];
 }
 
 Block createEpsilonBlock(set[Production] productions) {

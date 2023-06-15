@@ -5,6 +5,7 @@ import Set;
 
 
 import ParseTree;
+import IO;
 import kogi::Block;
 import kogi::js::App;
 import kogi::util::Util;
@@ -20,8 +21,12 @@ import kogi::simplification::Util;
 void createBlocklyApp(set[Production] productions, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly") {
 	blocks = renameDuplicatedBlocks(grammar2blocks(productions));
 	Toolbox tb = toolbox(createSections(blocks));
+	createWebApp(productions, blocks, tb, title, divName, toolboxName, targetPath, blockly);
+}
+
+void createWebApp(set[Production] productions, list[Block] blocks, Toolbox tb, str title, str divName, str toolboxName, loc targetPath, str blockly) {
 	createJS(blocks, divName, toolboxName, targetPath);
-	createHTML(parseToolbox(tb), title, divName, targetPath, blockly);
+	createHTML(parseToolbox(tb, productions), title, divName, targetPath, blockly);
 }
 
 void createBlocklyApp(type[&T<:Tree] grammar, str divName = "blockDiv", str title = "Block Language", str toolboxName = "toolbox", loc targetPath = |project://kogi/src/kogi/demo/result|, str blockly = "../../../../resources/blockly")
@@ -71,7 +76,7 @@ void createBlocklyApp(map[Symbol, Production] grammar, str divName = "blockDiv",
 	// Create the rest of the app
 	Toolbox tb = toolbox(createSections(blocks));
 	createJS(blocks, divName, toolboxName, targetPath);
-	createHTML(parseToolbox(tb), title, divName, targetPath, blockly);
+	createHTML(parseToolbox(tb, remainingProductions), title, divName, targetPath, blockly);
 	// productions2 block
 	//grammar2Blocks();
 }
