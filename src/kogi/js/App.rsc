@@ -8,7 +8,7 @@ import kogi::json::Parser;
 
 void createJS(list[Block] blocks, str divId, str toolbarId, loc dstPath){
 	content = ( "" | it + createBlocklyBlock(block) | block <- blocks );
-    content += blocklyApp(divId, toolbarId, tbposition, trashCan, disableOrphans);
+    content += blocklyApp(divId, toolbarId);
 	content += createHighlighter();
 	content += addMutator();
     content += showXML();
