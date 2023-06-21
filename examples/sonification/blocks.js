@@ -20,7 +20,7 @@ Blockly.Blocks['DataSource/position'] = {
 				},
 				
 			],
-			  "colour" : 174,
+			  "colour" : 206,
 			  "output" : "DataSource",
 			  
 			  
@@ -48,7 +48,7 @@ Blockly.Blocks['ImageValue'] = {
 				},
 				
 			],
-			  "colour" : 225,
+			  "colour" : 10,
 			  "output" : "ImageValue",
 			  
 			  
@@ -73,7 +73,7 @@ Blockly.Blocks['ToBe/sound'] = {
 				},
 				
 			],
-			  "colour" : 39,
+			  "colour" : 245,
 			  "output" : "ToBe",
 			  
 			  
@@ -91,7 +91,7 @@ Blockly.Blocks['DataProcessor/medium'] = {
 			  "type" : "DataProcessor/medium",
 			  "message0" : "medium_ramp",
 			  
-			  "colour" : 155,
+			  "colour" : 332,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -109,7 +109,7 @@ Blockly.Blocks['Wave/triangle'] = {
 			  "type" : "Wave/triangle",
 			  "message0" : "triangle",
 			  
-			  "colour" : 291,
+			  "colour" : 127,
 			  "output" : "Wave",
 			  
 			  
@@ -127,7 +127,7 @@ Blockly.Blocks['DataProcessor/slow'] = {
 			  "type" : "DataProcessor/slow",
 			  "message0" : "slow_ramp",
 			  
-			  "colour" : 247,
+			  "colour" : 9,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -152,7 +152,7 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 165,
+			  "colour" : 107,
 			  "output" : "Id",
 			  
 			  
@@ -228,7 +228,7 @@ Blockly.Blocks['DataProcessing/dataSource'] = {
 				},
 				
 			],
-			  "colour" : 359,
+			  "colour" : 217,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -246,7 +246,7 @@ Blockly.Blocks['DataProcessor/nothing'] = {
 			  "type" : "DataProcessor/nothing",
 			  "message0" : "do_nothing",
 			  
-			  "colour" : 141,
+			  "colour" : 182,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -279,7 +279,7 @@ Blockly.Blocks['DataSource/movement'] = {
 				},
 				
 			],
-			  "colour" : 103,
+			  "colour" : 63,
 			  "output" : "DataSource",
 			  
 			  
@@ -297,7 +297,7 @@ Blockly.Blocks['DataProcessor/fast'] = {
 			  "type" : "DataProcessor/fast",
 			  "message0" : "fast_ramp",
 			  
-			  "colour" : 260,
+			  "colour" : 94,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -322,7 +322,7 @@ Blockly.Blocks['Connection/sound'] = {
 				},
 				
 			],
-			  "colour" : 244,
+			  "colour" : 161,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -369,7 +369,7 @@ Blockly.Blocks['ControllingParameters/params'] = {
 				},
 				
 			],
-			  "colour" : 112,
+			  "colour" : 65,
 			  "output" : "ControllingParameters",
 			  
 			  
@@ -387,7 +387,7 @@ Blockly.Blocks['DataProcessor/hump'] = {
 			  "type" : "DataProcessor/hump",
 			  "message0" : "hump",
 			  
-			  "colour" : 209,
+			  "colour" : 277,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -449,7 +449,7 @@ Blockly.Blocks['SoundSource/wave'] = {
 				},
 				
 			],
-			  "colour" : 332,
+			  "colour" : 28,
 			  "output" : "SoundSource",
 			  
 			  
@@ -467,7 +467,7 @@ Blockly.Blocks['Filter/band'] = {
 			  "type" : "Filter/band",
 			  "message0" : "bandpass",
 			  
-			  "colour" : 15,
+			  "colour" : 58,
 			  "output" : "Filter",
 			  
 			  
@@ -500,7 +500,7 @@ Blockly.Blocks['PassingTime/wait'] = {
 				},
 				
 			],
-			  "colour" : 10,
+			  "colour" : 14,
 			  "output" : "PassingTime",
 			  
 			  
@@ -518,7 +518,7 @@ Blockly.Blocks['DataProcessor/hard'] = {
 			  "type" : "DataProcessor/hard",
 			  "message0" : "hard_cutoff",
 			  
-			  "colour" : 311,
+			  "colour" : 248,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -543,7 +543,7 @@ Blockly.Blocks['Connection/control'] = {
 				},
 				
 			],
-			  "colour" : 63,
+			  "colour" : 324,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -581,7 +581,7 @@ Blockly.Blocks['DataProcessing/range'] = {
 				},
 				
 			],
-			  "colour" : 186,
+			  "colour" : 193,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -619,7 +619,7 @@ Blockly.Blocks['SoundConnection/sound'] = {
 				},
 				
 			],
-			  "colour" : 271,
+			  "colour" : 6,
 			  "output" : "SoundConnection",
 			  
 			  
@@ -652,7 +652,7 @@ Blockly.Blocks['DataSource/rotation'] = {
 				},
 				
 			],
-			  "colour" : 79,
+			  "colour" : 126,
 			  "output" : "DataSource",
 			  
 			  
@@ -670,7 +670,7 @@ Blockly.Blocks['Filter/high'] = {
 			  "type" : "Filter/high",
 			  "message0" : "highpass",
 			  
-			  "colour" : 32,
+			  "colour" : 0,
 			  "output" : "Filter",
 			  
 			  
@@ -695,7 +695,7 @@ Blockly.Blocks['ToBe/dat'] = {
 				},
 				
 			],
-			  "colour" : 305,
+			  "colour" : 146,
 			  "output" : "ToBe",
 			  
 			  
@@ -713,7 +713,7 @@ Blockly.Blocks['Wave/sine'] = {
 			  "type" : "Wave/sine",
 			  "message0" : "sine",
 			  
-			  "colour" : 91,
+			  "colour" : 93,
 			  "output" : "Wave",
 			  
 			  
@@ -731,7 +731,7 @@ Blockly.Blocks['Filter/low'] = {
 			  "type" : "Filter/low",
 			  "message0" : "lowpass",
 			  
-			  "colour" : 134,
+			  "colour" : 103,
 			  "output" : "Filter",
 			  
 			  
@@ -756,7 +756,7 @@ Blockly.Blocks['Connection/passing'] = {
 				},
 				
 			],
-			  "colour" : 193,
+			  "colour" : 103,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -774,7 +774,7 @@ Blockly.Blocks['Wave/sawtooth'] = {
 			  "type" : "Wave/sawtooth",
 			  "message0" : "sawtooth",
 			  
-			  "colour" : 26,
+			  "colour" : 286,
 			  "output" : "Wave",
 			  
 			  
@@ -792,7 +792,7 @@ Blockly.Blocks['DataSource/speaker'] = {
 			  "type" : "DataSource/speaker",
 			  "message0" : "speaker",
 			  
-			  "colour" : 278,
+			  "colour" : 6,
 			  "output" : "DataSource",
 			  
 			  
@@ -817,7 +817,7 @@ Blockly.Blocks['IntegerValue/intf'] = {
 				},
 				
 			],
-			  "colour" : 171,
+			  "colour" : 70,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -846,7 +846,7 @@ Blockly.Blocks['DataSource/slider'] = {
 				},
 				
 			],
-			  "colour" : 322,
+			  "colour" : 248,
 			  "output" : "DataSource",
 			  
 			  
@@ -900,7 +900,7 @@ Blockly.Blocks['SoundSource/filtr'] = {
 				},
 				
 			],
-			  "colour" : 47,
+			  "colour" : 65,
 			  "output" : "SoundSource",
 			  
 			  
@@ -918,7 +918,7 @@ Blockly.Blocks['DataProcessor/reverse'] = {
 			  "type" : "DataProcessor/reverse",
 			  "message0" : "reverse",
 			  
-			  "colour" : 353,
+			  "colour" : 340,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -936,7 +936,7 @@ Blockly.Blocks['Wave/square'] = {
 			  "type" : "Wave/square",
 			  "message0" : "square",
 			  
-			  "colour" : 335,
+			  "colour" : 42,
 			  "output" : "Wave",
 			  
 			  
@@ -965,7 +965,7 @@ Blockly.Blocks['DataProcessing/processor'] = {
 				},
 				
 			],
-			  "colour" : 333,
+			  "colour" : 2,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -983,7 +983,7 @@ Blockly.Blocks['DataProcessor/rotate'] = {
 			  "type" : "DataProcessor/rotate",
 			  "message0" : "rotate",
 			  
-			  "colour" : 288,
+			  "colour" : 134,
 			  "output" : "DataProcessor",
 			  
 			  
@@ -1001,7 +1001,7 @@ var workspace = Blockly.inject('blockDiv', {
    toolboxPosition: 'start', // end
    trashcan: true
 });
-	
+workspace.addChangeListener(Blockly.Events.disableOrphans);
 
  //Storage options
 //BlocklyStorage.backupOnUnload();	
@@ -1010,53 +1010,80 @@ var workspace = Blockly.inject('blockDiv', {
 var blockId;
 function categoryHighlighter(event) {
    categories = workspace.getToolbox().getToolboxItems();
-   lightgreen = "#AFD98B";
-   lightgrey = "#DDDDDD";
-	
+   green = "#AFD98B";
+   grey = "#DDDDDD";
+   orange = "#EDC174";
+   
    if (event.type == Blockly.Events.SELECTED) {
 	    blockId = event.newElementId;
 	    if (blockId != undefined) {
 		    var fieldTypes = extractFieldTypes(blockId);
-           resetCategories(categories, lightgrey);
-		    colourCategories(blockId, fieldTypes, categories, lightgreen);
+           var greenTypes = fieldTypes[0];
+		    var orangeTypes = fieldTypes[1];
+           resetCategories(categories, grey);
+		    colourCategories(greenTypes, orangeTypes, categories, green, orange);
 	    } else {
-		    resetCategories(categories, lightgrey);
+		    resetCategories(categories, grey);
 	    }
    } else if (event.type == Blockly.Events.TOOLBOX_ITEM_SELECT) {
 	    if (blockId != undefined) {
-		    var fieldTypes = extractFieldTypes(blockId);
-		    selectedCategory = workspace.getToolbox().getSelectedItem();
-		    if (selectedCategory != null) colourCategories(blockId, fieldTypes, categories, lightgreen);
-	    }
+	        selectedCategory = workspace.getToolbox().getSelectedItem();
+	        if (selectedCategory != null) {
+			    var fieldTypes = extractFieldTypes(blockId);
+			    var greenTypes = fieldTypes[0];
+			    var orangeTypes = fieldTypes[1];
+			    colourCategories(greenTypes, orangeTypes, categories, green, orange);
+		    }
+       }
    }
 };
 
-function colourCategories(blockid, fieldTypes, categories, colour) {
-   for (var i = 0; i < fieldTypes.length; i++) {
-       for (var j = 0; j < categories.length; j++) {
-            if (fieldTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = colour;
-        }
-    }
-};
+function colourCategories(greenTypes, orangeTypes, categories, green, orange) {
 
+   //draw orange categories
+   for (var i = 0; i < orangeTypes.length; i++) {
+       for (var j = 0; j < categories.length; j++) {
+           if (orangeTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = orange;
+      }
+   }
+    
+   //then green
+   for (var i = 0; i < greenTypes.length; i++) {
+   for (var j = 0; j < categories.length; j++) {
+           if (greenTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = green;
+      }
+   }
+};
 function resetCategories(categories, colour) {
    for (var i = 0; i < categories.length; i++) categories[i].rowDiv_.style.backgroundColor = colour;
 };
 
     
 function extractFieldTypes(blockid) {
-    var block = workspace.getBlockById(blockid);
-    var args = block.inputList;
-    var types = [];
-    for (var i = 0; i < args.length; i++) {
-        var conn = args[i].connection;
-        if (conn != null) {
+   var block = workspace.getBlockById(blockid);
+   var args = block.inputList;
+   var types = [];
+   var greentypes = [];
+   var orangetypes = [];
+
+   for (var i = 0; i < args.length; i++) {
+      var conn = args[i].connection;
+         if (conn != null) {
             var check = conn.check_;
-            for (var j = 0; j < check.length; j++) {
-               if (!types.includes(check[j])) types.push(check[j]);
-            }
+            if (conn.targetConnection != null) {
+			    for (var j = 0; j < check.length; j++) {
+				   if (!orangetypes.includes(check[j])) orangetypes.push(check[j]);
+			    }
+		    } 
+           else {
+              for (var j = 0; j < check.length; j++) {
+                 if (!greentypes.includes(check[j])) greentypes.push(check[j]);
+              }
+           }
         }
     }
+    types.push(greentypes);
+    types.push(orangetypes);
     return types;
 };
 

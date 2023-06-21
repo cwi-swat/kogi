@@ -29,7 +29,7 @@ Blockly.Blocks['Statement/s3'] = {
 				},
 				
 			],
-			  "colour" : 61,
+			  "colour" : 106,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -62,7 +62,7 @@ Blockly.Blocks['Expression/len'] = {
 				},
 				
 			],
-			  "colour" : 114,
+			  "colour" : 122,
 			  "output" : "Expression",
 			  
 			  
@@ -87,7 +87,7 @@ Blockly.Blocks['Integer/natural'] = {
 				},
 				
 			],
-			  "colour" : 1,
+			  "colour" : 327,
 			  "output" : "Integer",
 			  
 			  
@@ -138,7 +138,7 @@ Blockly.Blocks['Statement/s2'] = {
 				},
 				
 			],
-			  "colour" : 104,
+			  "colour" : 190,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -162,7 +162,7 @@ Blockly.Blocks['VarDecl/var'] = {
 				  "check" : ["Type", "Identifier"]
 				},
 				  	{
-				  "name" : "lex/EQTQkbPgGv",
+				  "name" : "lex/QoqrtfZtRm",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -172,7 +172,7 @@ Blockly.Blocks['VarDecl/var'] = {
 				},
 				
 			],
-			  "colour" : 304,
+			  "colour" : 317,
 			  
 			  "previousStatement" : "VarDecl",
 			  "nextStatement" : "VarDecl",
@@ -229,7 +229,7 @@ Blockly.Blocks['Statement/s4'] = {
 				},
 				
 			],
-			  "colour" : 314,
+			  "colour" : 245,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -254,7 +254,7 @@ Blockly.Blocks['Identifier/id'] = {
 				},
 				
 			],
-			  "colour" : 130,
+			  "colour" : 153,
 			  "output" : "Identifier",
 			  
 			  
@@ -272,7 +272,7 @@ Blockly.Blocks['Type/i2'] = {
 			  "type" : "Type/i2",
 			  "message0" : "int",
 			  
-			  "colour" : 350,
+			  "colour" : 180,
 			  "output" : "Type",
 			  
 			  
@@ -295,7 +295,7 @@ Blockly.Blocks['MainClass/main'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "lex/SUlbVNrtlM",
+				  "name" : "lex/MFjpPJXPaU",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -336,7 +336,7 @@ Blockly.Blocks['MainClass/main'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "lex/zJNoKHaKYV",
+				  "name" : "lex/XNVPCNTLuU",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -363,7 +363,7 @@ Blockly.Blocks['MainClass/main'] = {
 				},
 				
 			],
-			  "colour" : 262,
+			  "colour" : 346,
 			  "output" : "MainClass",
 			  
 			  
@@ -395,7 +395,7 @@ Blockly.Blocks['Type/i'] = {
 				},
 				
 			],
-			  "colour" : 273,
+			  "colour" : 323,
 			  "output" : "Type",
 			  
 			  
@@ -428,7 +428,7 @@ Blockly.Blocks['Statement/s1'] = {
 				},
 				
 			],
-			  "colour" : 218,
+			  "colour" : 124,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -446,7 +446,7 @@ Blockly.Blocks['Type/b'] = {
 			  "type" : "Type/b",
 			  "message0" : "boolean",
 			  
-			  "colour" : 189,
+			  "colour" : 148,
 			  "output" : "Type",
 			  
 			  
@@ -470,13 +470,13 @@ Blockly.Blocks['FormalList/lst'] = {
 				  "check" : ["Type", "Identifier"]
 				},
 				  	{
-				  "name" : "i/FoYYUlRLQu",
+				  "name" : "i/KaPoHMIrdk",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
 				
 			],
-			  "colour" : 85,
+			  "colour" : 242,
 			  "output" : "FormalList",
 			  
 			  
@@ -500,7 +500,7 @@ Blockly.Blocks['Expression/this'] = {
 				},
 				
 			],
-			  "colour" : 50,
+			  "colour" : 302,
 			  "output" : "Expression",
 			  
 			  
@@ -528,7 +528,7 @@ Blockly.Blocks['MethodDecl/mtd'] = {
 				  "check" : ["Type", "Identifier"]
 				},
 				  	{
-				  "name" : "lex/solJTNzRIQ",
+				  "name" : "lex/VYnoCDeMGP",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -578,7 +578,7 @@ Blockly.Blocks['MethodDecl/mtd'] = {
 				},
 				
 			],
-			  "colour" : 47,
+			  "colour" : 261,
 			  
 			  "previousStatement" : "MethodDecl",
 			  "nextStatement" : "MethodDecl",
@@ -607,7 +607,7 @@ Blockly.Blocks['Expression/d'] = {
 				},
 				
 			],
-			  "colour" : 247,
+			  "colour" : 337,
 			  "output" : "Expression",
 			  
 			  
@@ -626,7 +626,7 @@ Blockly.Blocks['Statement/s6'] = {
 			  "message0" : "%1 [ %2 %3 ] %4 = %5 %6 ; %7 ",
 			  "args0" : [
 				{
-				  "name" : "i/MsdQtneQLi",
+				  "name" : "i/zaEMQSHGTE",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -658,7 +658,7 @@ Blockly.Blocks['Statement/s6'] = {
 				},
 				
 			],
-			  "colour" : 26,
+			  "colour" : 241,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -699,7 +699,7 @@ Blockly.Blocks['Expression/ne'] = {
 				},
 				
 			],
-			  "colour" : 310,
+			  "colour" : 140,
 			  "output" : "Expression",
 			  
 			  
@@ -728,7 +728,7 @@ Blockly.Blocks['Statement/s67'] = {
 				},
 				
 			],
-			  "colour" : 304,
+			  "colour" : 57,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -752,7 +752,7 @@ Blockly.Blocks['Expression/f'] = {
 				},
 				
 			],
-			  "colour" : 326,
+			  "colour" : 74,
 			  "output" : "Expression",
 			  
 			  
@@ -775,7 +775,7 @@ Blockly.Blocks['Expression/ne2'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "b/flDcXycxTM",
+				  "name" : "b/fETQEppumx",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -789,7 +789,7 @@ Blockly.Blocks['Expression/ne2'] = {
 				},
 				
 			],
-			  "colour" : 136,
+			  "colour" : 227,
 			  "output" : "Expression",
 			  
 			  
@@ -819,7 +819,7 @@ Blockly.Blocks['ExpressionList/e'] = {
 				},
 				
 			],
-			  "colour" : 148,
+			  "colour" : 214,
 			  
 			  "previousStatement" : "ExpressionList",
 			  "nextStatement" : "ExpressionList",
@@ -873,7 +873,7 @@ Blockly.Blocks['Expression/t'] = {
 				},
 				
 			],
-			  "colour" : 341,
+			  "colour" : 265,
 			  "output" : "Expression",
 			  
 			  
@@ -901,7 +901,7 @@ Blockly.Blocks['Expression/v'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "v/SrDMaRbKFK",
+				  "name" : "v/ueHEXbQJvc",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -920,7 +920,7 @@ Blockly.Blocks['Expression/v'] = {
 				},
 				
 			],
-			  "colour" : 192,
+			  "colour" : 190,
 			  "output" : "Expression",
 			  
 			  
@@ -958,7 +958,7 @@ Blockly.Blocks['Expression/a'] = {
 				},
 				
 			],
-			  "colour" : 151,
+			  "colour" : 266,
 			  "output" : "Expression",
 			  
 			  
@@ -981,7 +981,7 @@ Blockly.Blocks['ClassDecl/clsdcl'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "lex/edXIzukwHv",
+				  "name" : "lex/dMuMIffjfN",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -1005,7 +1005,7 @@ Blockly.Blocks['ClassDecl/clsdcl'] = {
 				},
 				
 			],
-			  "colour" : 200,
+			  "colour" : 303,
 			  
 			  "previousStatement" : "ClassDecl",
 			  "nextStatement" : "ClassDecl",
@@ -1024,7 +1024,7 @@ Blockly.Blocks['Statement/s5'] = {
 			  "message0" : "%1 = %2 %3 ; %4 ",
 			  "args0" : [
 				{
-				  "name" : "i/aECRkdlPeY",
+				  "name" : "i/ZoWFTmZMkS",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -1043,7 +1043,7 @@ Blockly.Blocks['Statement/s5'] = {
 				},
 				
 			],
-			  "colour" : 18,
+			  "colour" : 125,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -1096,7 +1096,7 @@ var workspace = Blockly.inject('blockDiv', {
    toolboxPosition: 'start', // end
    trashcan: true
 });
-	
+workspace.addChangeListener(Blockly.Events.disableOrphans);
 
  //Storage options
 //BlocklyStorage.backupOnUnload();	
@@ -1105,53 +1105,80 @@ var workspace = Blockly.inject('blockDiv', {
 var blockId;
 function categoryHighlighter(event) {
    categories = workspace.getToolbox().getToolboxItems();
-   lightgreen = "#AFD98B";
-   lightgrey = "#DDDDDD";
-	
+   green = "#AFD98B";
+   grey = "#DDDDDD";
+   orange = "#EDC174";
+   
    if (event.type == Blockly.Events.SELECTED) {
 	    blockId = event.newElementId;
 	    if (blockId != undefined) {
 		    var fieldTypes = extractFieldTypes(blockId);
-           resetCategories(categories, lightgrey);
-		    colourCategories(blockId, fieldTypes, categories, lightgreen);
+           var greenTypes = fieldTypes[0];
+		    var orangeTypes = fieldTypes[1];
+           resetCategories(categories, grey);
+		    colourCategories(greenTypes, orangeTypes, categories, green, orange);
 	    } else {
-		    resetCategories(categories, lightgrey);
+		    resetCategories(categories, grey);
 	    }
    } else if (event.type == Blockly.Events.TOOLBOX_ITEM_SELECT) {
 	    if (blockId != undefined) {
-		    var fieldTypes = extractFieldTypes(blockId);
-		    selectedCategory = workspace.getToolbox().getSelectedItem();
-		    if (selectedCategory != null) colourCategories(blockId, fieldTypes, categories, lightgreen);
-	    }
+	        selectedCategory = workspace.getToolbox().getSelectedItem();
+	        if (selectedCategory != null) {
+			    var fieldTypes = extractFieldTypes(blockId);
+			    var greenTypes = fieldTypes[0];
+			    var orangeTypes = fieldTypes[1];
+			    colourCategories(greenTypes, orangeTypes, categories, green, orange);
+		    }
+       }
    }
 };
 
-function colourCategories(blockid, fieldTypes, categories, colour) {
-   for (var i = 0; i < fieldTypes.length; i++) {
-       for (var j = 0; j < categories.length; j++) {
-            if (fieldTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = colour;
-        }
-    }
-};
+function colourCategories(greenTypes, orangeTypes, categories, green, orange) {
 
+   //draw orange categories
+   for (var i = 0; i < orangeTypes.length; i++) {
+       for (var j = 0; j < categories.length; j++) {
+           if (orangeTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = orange;
+      }
+   }
+    
+   //then green
+   for (var i = 0; i < greenTypes.length; i++) {
+   for (var j = 0; j < categories.length; j++) {
+           if (greenTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = green;
+      }
+   }
+};
 function resetCategories(categories, colour) {
    for (var i = 0; i < categories.length; i++) categories[i].rowDiv_.style.backgroundColor = colour;
 };
 
     
 function extractFieldTypes(blockid) {
-    var block = workspace.getBlockById(blockid);
-    var args = block.inputList;
-    var types = [];
-    for (var i = 0; i < args.length; i++) {
-        var conn = args[i].connection;
-        if (conn != null) {
+   var block = workspace.getBlockById(blockid);
+   var args = block.inputList;
+   var types = [];
+   var greentypes = [];
+   var orangetypes = [];
+
+   for (var i = 0; i < args.length; i++) {
+      var conn = args[i].connection;
+         if (conn != null) {
             var check = conn.check_;
-            for (var j = 0; j < check.length; j++) {
-               if (!types.includes(check[j])) types.push(check[j]);
-            }
+            if (conn.targetConnection != null) {
+			    for (var j = 0; j < check.length; j++) {
+				   if (!orangetypes.includes(check[j])) orangetypes.push(check[j]);
+			    }
+		    } 
+           else {
+              for (var j = 0; j < check.length; j++) {
+                 if (!greentypes.includes(check[j])) greentypes.push(check[j]);
+              }
+           }
         }
     }
+    types.push(greentypes);
+    types.push(orangetypes);
     return types;
 };
 

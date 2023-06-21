@@ -16,7 +16,7 @@ Blockly.Blocks['CPU/vcpus'] = {
 				},
 				
 			],
-			  "colour" : 68,
+			  "colour" : 248,
 			  "output" : "CPU",
 			  
 			  
@@ -34,7 +34,7 @@ Blockly.Blocks['Image/ubuntu'] = {
 			  "type" : "Image/ubuntu",
 			  "message0" : "Ubuntu Server",
 			  
-			  "colour" : 338,
+			  "colour" : 341,
 			  "output" : "Image",
 			  
 			  
@@ -83,7 +83,7 @@ Blockly.Blocks['Instance/instance'] = {
 				},
 				
 			],
-			  "colour" : 200,
+			  "colour" : 165,
 			  
 			  "previousStatement" : "Instance",
 			  "nextStatement" : "Instance",
@@ -112,7 +112,7 @@ Blockly.Blocks['IPV6/ipv6'] = {
 				},
 				
 			],
-			  "colour" : 175,
+			  "colour" : 132,
 			  "output" : "IPV6",
 			  
 			  
@@ -137,7 +137,7 @@ Blockly.Blocks['BooleanValue/true'] = {
 				},
 				
 			],
-			  "colour" : 310,
+			  "colour" : 116,
 			  "output" : "BooleanValue",
 			  
 			  
@@ -162,7 +162,7 @@ Blockly.Blocks['BooleanValue/false'] = {
 				},
 				
 			],
-			  "colour" : 193,
+			  "colour" : 286,
 			  "output" : "BooleanValue",
 			  
 			  
@@ -180,7 +180,7 @@ Blockly.Blocks['StorageType/ssd'] = {
 			  "type" : "StorageType/ssd",
 			  "message0" : "SSD",
 			  
-			  "colour" : 17,
+			  "colour" : 289,
 			  "output" : "StorageType",
 			  
 			  
@@ -205,7 +205,7 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 237,
+			  "colour" : 308,
 			  "output" : "Id",
 			  
 			  
@@ -223,7 +223,7 @@ Blockly.Blocks['Image/awsLinux'] = {
 			  "type" : "Image/awsLinux",
 			  "message0" : "Amazon Linux",
 			  
-			  "colour" : 23,
+			  "colour" : 65,
 			  "output" : "Image",
 			  
 			  
@@ -256,7 +256,7 @@ Blockly.Blocks['Memory/memory'] = {
 				},
 				
 			],
-			  "colour" : 275,
+			  "colour" : 159,
 			  "output" : "Memory",
 			  
 			  
@@ -281,7 +281,7 @@ Blockly.Blocks['IntegerValue/number'] = {
 				},
 				
 			],
-			  "colour" : 218,
+			  "colour" : 200,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -344,7 +344,7 @@ Blockly.Blocks['StorageType/ebs'] = {
 			  "type" : "StorageType/ebs",
 			  "message0" : "EBS",
 			  
-			  "colour" : 266,
+			  "colour" : 56,
 			  "output" : "StorageType",
 			  
 			  
@@ -362,7 +362,7 @@ Blockly.Blocks['Image/redHat'] = {
 			  "type" : "Image/redHat",
 			  "message0" : "Red Hat Enterprise",
 			  
-			  "colour" : 110,
+			  "colour" : 304,
 			  "output" : "Image",
 			  
 			  
@@ -404,7 +404,7 @@ Blockly.Blocks['Storage/storage'] = {
 				},
 				
 			],
-			  "colour" : 133,
+			  "colour" : 5,
 			  "output" : "Storage",
 			  
 			  
@@ -422,7 +422,7 @@ Blockly.Blocks['Image/windows'] = {
 			  "type" : "Image/windows",
 			  "message0" : "Windows Server2019",
 			  
-			  "colour" : 144,
+			  "colour" : 350,
 			  "output" : "Image",
 			  
 			  
@@ -449,53 +449,80 @@ workspace.addChangeListener(Blockly.Events.disableOrphans);
 var blockId;
 function categoryHighlighter(event) {
    categories = workspace.getToolbox().getToolboxItems();
-   lightgreen = "#AFD98B";
-   lightgrey = "#DDDDDD";
-	
+   green = "#AFD98B";
+   grey = "#DDDDDD";
+   orange = "#EDC174";
+   
    if (event.type == Blockly.Events.SELECTED) {
 	    blockId = event.newElementId;
 	    if (blockId != undefined) {
 		    var fieldTypes = extractFieldTypes(blockId);
-           resetCategories(categories, lightgrey);
-		    colourCategories(blockId, fieldTypes, categories, lightgreen);
+           var greenTypes = fieldTypes[0];
+		    var orangeTypes = fieldTypes[1];
+           resetCategories(categories, grey);
+		    colourCategories(greenTypes, orangeTypes, categories, green, orange);
 	    } else {
-		    resetCategories(categories, lightgrey);
+		    resetCategories(categories, grey);
 	    }
    } else if (event.type == Blockly.Events.TOOLBOX_ITEM_SELECT) {
 	    if (blockId != undefined) {
-		    var fieldTypes = extractFieldTypes(blockId);
-		    selectedCategory = workspace.getToolbox().getSelectedItem();
-		    if (selectedCategory != null) colourCategories(blockId, fieldTypes, categories, lightgreen);
-	    }
+	        selectedCategory = workspace.getToolbox().getSelectedItem();
+	        if (selectedCategory != null) {
+			    var fieldTypes = extractFieldTypes(blockId);
+			    var greenTypes = fieldTypes[0];
+			    var orangeTypes = fieldTypes[1];
+			    colourCategories(greenTypes, orangeTypes, categories, green, orange);
+		    }
+       }
    }
 };
 
-function colourCategories(blockid, fieldTypes, categories, colour) {
-   for (var i = 0; i < fieldTypes.length; i++) {
-       for (var j = 0; j < categories.length; j++) {
-            if (fieldTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = colour;
-        }
-    }
-};
+function colourCategories(greenTypes, orangeTypes, categories, green, orange) {
 
+   //draw orange categories
+   for (var i = 0; i < orangeTypes.length; i++) {
+       for (var j = 0; j < categories.length; j++) {
+           if (orangeTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = orange;
+      }
+   }
+    
+   //then green
+   for (var i = 0; i < greenTypes.length; i++) {
+   for (var j = 0; j < categories.length; j++) {
+           if (greenTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = green;
+      }
+   }
+};
 function resetCategories(categories, colour) {
    for (var i = 0; i < categories.length; i++) categories[i].rowDiv_.style.backgroundColor = colour;
 };
 
     
 function extractFieldTypes(blockid) {
-    var block = workspace.getBlockById(blockid);
-    var args = block.inputList;
-    var types = [];
-    for (var i = 0; i < args.length; i++) {
-        var conn = args[i].connection;
-        if (conn != null) {
+   var block = workspace.getBlockById(blockid);
+   var args = block.inputList;
+   var types = [];
+   var greentypes = [];
+   var orangetypes = [];
+
+   for (var i = 0; i < args.length; i++) {
+      var conn = args[i].connection;
+         if (conn != null) {
             var check = conn.check_;
-            for (var j = 0; j < check.length; j++) {
-               if (!types.includes(check[j])) types.push(check[j]);
-            }
+            if (conn.targetConnection != null) {
+			    for (var j = 0; j < check.length; j++) {
+				   if (!orangetypes.includes(check[j])) orangetypes.push(check[j]);
+			    }
+		    } 
+           else {
+              for (var j = 0; j < check.length; j++) {
+                 if (!greentypes.includes(check[j])) greentypes.push(check[j]);
+              }
+           }
         }
     }
+    types.push(greentypes);
+    types.push(orangetypes);
     return types;
 };
 

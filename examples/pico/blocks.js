@@ -20,7 +20,7 @@ Blockly.Blocks['Declarations/declarations'] = {
 				},
 				
 			],
-			  "colour" : 278,
+			  "colour" : 261,
 			  "output" : "Declarations",
 			  
 			  
@@ -38,7 +38,7 @@ Blockly.Blocks['Ttype/string'] = {
 			  "type" : "Ttype/string",
 			  "message0" : "string",
 			  
-			  "colour" : 238,
+			  "colour" : 308,
 			  "output" : "Ttype",
 			  
 			  
@@ -80,7 +80,7 @@ Blockly.Blocks['Statement/whileStat'] = {
 				},
 				
 			],
-			  "colour" : 345,
+			  "colour" : 326,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -169,7 +169,7 @@ Blockly.Blocks['Statement/ifElseStat'] = {
 				},
 				
 			],
-			  "colour" : 257,
+			  "colour" : 297,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -187,7 +187,7 @@ Blockly.Blocks['Ttype/natural'] = {
 			  "type" : "Ttype/natural",
 			  "message0" : "natural",
 			  
-			  "colour" : 2,
+			  "colour" : 115,
 			  "output" : "Ttype",
 			  
 			  
@@ -212,7 +212,7 @@ Blockly.Blocks['Id/id'] = {
 				},
 				
 			],
-			  "colour" : 226,
+			  "colour" : 241,
 			  "output" : "Id",
 			  
 			  
@@ -245,7 +245,7 @@ Blockly.Blocks['String/string'] = {
 				},
 				
 			],
-			  "colour" : 176,
+			  "colour" : 47,
 			  "output" : "String",
 			  
 			  
@@ -270,7 +270,7 @@ Blockly.Blocks['Natural/natural'] = {
 				},
 				
 			],
-			  "colour" : 140,
+			  "colour" : 292,
 			  "output" : "Natural",
 			  
 			  
@@ -323,7 +323,7 @@ var workspace = Blockly.inject('blockDiv', {
    toolboxPosition: 'start', // end
    trashcan: true
 });
-	
+workspace.addChangeListener(Blockly.Events.disableOrphans);
 
  //Storage options
 //BlocklyStorage.backupOnUnload();	
@@ -332,53 +332,80 @@ var workspace = Blockly.inject('blockDiv', {
 var blockId;
 function categoryHighlighter(event) {
    categories = workspace.getToolbox().getToolboxItems();
-   lightgreen = "#AFD98B";
-   lightgrey = "#DDDDDD";
-	
+   green = "#AFD98B";
+   grey = "#DDDDDD";
+   orange = "#EDC174";
+   
    if (event.type == Blockly.Events.SELECTED) {
 	    blockId = event.newElementId;
 	    if (blockId != undefined) {
 		    var fieldTypes = extractFieldTypes(blockId);
-           resetCategories(categories, lightgrey);
-		    colourCategories(blockId, fieldTypes, categories, lightgreen);
+           var greenTypes = fieldTypes[0];
+		    var orangeTypes = fieldTypes[1];
+           resetCategories(categories, grey);
+		    colourCategories(greenTypes, orangeTypes, categories, green, orange);
 	    } else {
-		    resetCategories(categories, lightgrey);
+		    resetCategories(categories, grey);
 	    }
    } else if (event.type == Blockly.Events.TOOLBOX_ITEM_SELECT) {
 	    if (blockId != undefined) {
-		    var fieldTypes = extractFieldTypes(blockId);
-		    selectedCategory = workspace.getToolbox().getSelectedItem();
-		    if (selectedCategory != null) colourCategories(blockId, fieldTypes, categories, lightgreen);
-	    }
+	        selectedCategory = workspace.getToolbox().getSelectedItem();
+	        if (selectedCategory != null) {
+			    var fieldTypes = extractFieldTypes(blockId);
+			    var greenTypes = fieldTypes[0];
+			    var orangeTypes = fieldTypes[1];
+			    colourCategories(greenTypes, orangeTypes, categories, green, orange);
+		    }
+       }
    }
 };
 
-function colourCategories(blockid, fieldTypes, categories, colour) {
-   for (var i = 0; i < fieldTypes.length; i++) {
-       for (var j = 0; j < categories.length; j++) {
-            if (fieldTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = colour;
-        }
-    }
-};
+function colourCategories(greenTypes, orangeTypes, categories, green, orange) {
 
+   //draw orange categories
+   for (var i = 0; i < orangeTypes.length; i++) {
+       for (var j = 0; j < categories.length; j++) {
+           if (orangeTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = orange;
+      }
+   }
+    
+   //then green
+   for (var i = 0; i < greenTypes.length; i++) {
+   for (var j = 0; j < categories.length; j++) {
+           if (greenTypes[i] == categories[j].name_) categories[j].rowDiv_.style.backgroundColor = green;
+      }
+   }
+};
 function resetCategories(categories, colour) {
    for (var i = 0; i < categories.length; i++) categories[i].rowDiv_.style.backgroundColor = colour;
 };
 
     
 function extractFieldTypes(blockid) {
-    var block = workspace.getBlockById(blockid);
-    var args = block.inputList;
-    var types = [];
-    for (var i = 0; i < args.length; i++) {
-        var conn = args[i].connection;
-        if (conn != null) {
+   var block = workspace.getBlockById(blockid);
+   var args = block.inputList;
+   var types = [];
+   var greentypes = [];
+   var orangetypes = [];
+
+   for (var i = 0; i < args.length; i++) {
+      var conn = args[i].connection;
+         if (conn != null) {
             var check = conn.check_;
-            for (var j = 0; j < check.length; j++) {
-               if (!types.includes(check[j])) types.push(check[j]);
-            }
+            if (conn.targetConnection != null) {
+			    for (var j = 0; j < check.length; j++) {
+				   if (!orangetypes.includes(check[j])) orangetypes.push(check[j]);
+			    }
+		    } 
+           else {
+              for (var j = 0; j < check.length; j++) {
+                 if (!greentypes.includes(check[j])) greentypes.push(check[j]);
+              }
+           }
         }
     }
+    types.push(greentypes);
+    types.push(orangetypes);
     return types;
 };
 
