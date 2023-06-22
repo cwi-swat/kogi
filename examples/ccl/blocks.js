@@ -16,7 +16,7 @@ Blockly.Blocks['CPU/vcpus'] = {
 				},
 				
 			],
-			  "colour" : 248,
+			  "colour" : 122,
 			  "output" : "CPU",
 			  
 			  
@@ -34,12 +34,49 @@ Blockly.Blocks['Image/ubuntu'] = {
 			  "type" : "Image/ubuntu",
 			  "message0" : "Ubuntu Server",
 			  
-			  "colour" : 341,
+			  "colour" : 96,
 			  "output" : "Image",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "ubuntu",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Resources/resources'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Resources/resources",
+			  "message0" : "resources %1 { %2 %3 } %4 ",
+			  "args0" : [
+				{
+				  "name" : "a",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "resource",
+				  "type" : "input_statement",
+				  "check" : ["Instance", "epsilon"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 120,
+			  
+			  
+			  
+			  "inputsInline" : false,
+			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
 		);
@@ -83,7 +120,7 @@ Blockly.Blocks['Instance/instance'] = {
 				},
 				
 			],
-			  "colour" : 165,
+			  "colour" : 146,
 			  
 			  "previousStatement" : "Instance",
 			  "nextStatement" : "Instance",
@@ -112,7 +149,7 @@ Blockly.Blocks['IPV6/ipv6'] = {
 				},
 				
 			],
-			  "colour" : 132,
+			  "colour" : 337,
 			  "output" : "IPV6",
 			  
 			  
@@ -137,7 +174,7 @@ Blockly.Blocks['BooleanValue/true'] = {
 				},
 				
 			],
-			  "colour" : 116,
+			  "colour" : 187,
 			  "output" : "BooleanValue",
 			  
 			  
@@ -162,7 +199,7 @@ Blockly.Blocks['BooleanValue/false'] = {
 				},
 				
 			],
-			  "colour" : 286,
+			  "colour" : 225,
 			  "output" : "BooleanValue",
 			  
 			  
@@ -180,7 +217,7 @@ Blockly.Blocks['StorageType/ssd'] = {
 			  "type" : "StorageType/ssd",
 			  "message0" : "SSD",
 			  
-			  "colour" : 289,
+			  "colour" : 171,
 			  "output" : "StorageType",
 			  
 			  
@@ -205,7 +242,7 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 308,
+			  "colour" : 303,
 			  "output" : "Id",
 			  
 			  
@@ -223,7 +260,7 @@ Blockly.Blocks['Image/awsLinux'] = {
 			  "type" : "Image/awsLinux",
 			  "message0" : "Amazon Linux",
 			  
-			  "colour" : 65,
+			  "colour" : 38,
 			  "output" : "Image",
 			  
 			  
@@ -256,7 +293,7 @@ Blockly.Blocks['Memory/memory'] = {
 				},
 				
 			],
-			  "colour" : 159,
+			  "colour" : 237,
 			  "output" : "Memory",
 			  
 			  
@@ -281,56 +318,11 @@ Blockly.Blocks['IntegerValue/number'] = {
 				},
 				
 			],
-			  "colour" : 200,
+			  "colour" : 55,
 			  "output" : "IntegerValue",
 			  
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Resources/resources'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Resources/resources",
-			  "message0" : "resources %1 { %2 { %3 { %4 %5 } %6 ",
-			  "args0" : [
-				{
-				  "name" : "a",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "resource",
-				  "type" : "input_statement",
-				  "check" : ["Instance", "epsilon"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				
-			],
-			  "colour" : 120,
-			  
-			  
-			  
-			  "inputsInline" : false,
 			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
@@ -344,7 +336,7 @@ Blockly.Blocks['StorageType/ebs'] = {
 			  "type" : "StorageType/ebs",
 			  "message0" : "EBS",
 			  
-			  "colour" : 56,
+			  "colour" : 110,
 			  "output" : "StorageType",
 			  
 			  
@@ -362,7 +354,7 @@ Blockly.Blocks['Image/redHat'] = {
 			  "type" : "Image/redHat",
 			  "message0" : "Red Hat Enterprise",
 			  
-			  "colour" : 304,
+			  "colour" : 259,
 			  "output" : "Image",
 			  
 			  
@@ -404,7 +396,7 @@ Blockly.Blocks['Storage/storage'] = {
 				},
 				
 			],
-			  "colour" : 5,
+			  "colour" : 222,
 			  "output" : "Storage",
 			  
 			  
@@ -422,7 +414,7 @@ Blockly.Blocks['Image/windows'] = {
 			  "type" : "Image/windows",
 			  "message0" : "Windows Server2019",
 			  
-			  "colour" : 350,
+			  "colour" : 72,
 			  "output" : "Image",
 			  
 			  

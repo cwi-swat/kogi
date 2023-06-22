@@ -1,13 +1,13 @@
 //module Syntax
 module kogi::demo::ccl::Syntax
 
-import Lexicals;
+//import Lexicals;
 
 extend lang::std::Id;
 extend lang::std::Layout;
 
 start syntax Resources
-  = resources: "resources" a "{" "{" "{" Instance* resource "}"
+  = resources: "resources" a "{" Instance* resource "}"
   ;
 
 syntax Instance

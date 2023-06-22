@@ -20,7 +20,7 @@ Blockly.Blocks['Declarations/declarations'] = {
 				},
 				
 			],
-			  "colour" : 261,
+			  "colour" : 145,
 			  "output" : "Declarations",
 			  
 			  
@@ -38,7 +38,7 @@ Blockly.Blocks['Ttype/string'] = {
 			  "type" : "Ttype/string",
 			  "message0" : "string",
 			  
-			  "colour" : 308,
+			  "colour" : 214,
 			  "output" : "Ttype",
 			  
 			  
@@ -80,7 +80,7 @@ Blockly.Blocks['Statement/whileStat'] = {
 				},
 				
 			],
-			  "colour" : 326,
+			  "colour" : 262,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -169,7 +169,7 @@ Blockly.Blocks['Statement/ifElseStat'] = {
 				},
 				
 			],
-			  "colour" : 297,
+			  "colour" : 335,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -187,7 +187,7 @@ Blockly.Blocks['Ttype/natural'] = {
 			  "type" : "Ttype/natural",
 			  "message0" : "natural",
 			  
-			  "colour" : 115,
+			  "colour" : 166,
 			  "output" : "Ttype",
 			  
 			  
@@ -212,7 +212,7 @@ Blockly.Blocks['Id/id'] = {
 				},
 				
 			],
-			  "colour" : 241,
+			  "colour" : 341,
 			  "output" : "Id",
 			  
 			  
@@ -245,7 +245,7 @@ Blockly.Blocks['String/string'] = {
 				},
 				
 			],
-			  "colour" : 47,
+			  "colour" : 183,
 			  "output" : "String",
 			  
 			  
@@ -270,7 +270,7 @@ Blockly.Blocks['Natural/natural'] = {
 				},
 				
 			],
-			  "colour" : 292,
+			  "colour" : 149,
 			  "output" : "Natural",
 			  
 			  
