@@ -6,6 +6,7 @@ import IO;
 import ParseTree;
 import util::IDEServices;
 import kogi::Block;
+import kogi::Compile;
 import kogi::Grammar2Blockly;
 import kogi::Plugin;
 import kogi::simplification::RemoveUnitProduction;
@@ -43,12 +44,17 @@ Response (Request) webServer(type[&T <: Tree] grammar, str folderName, list[Bloc
 public void main(type[&T <: Tree] grammar, str folderName) {
     bool alreadyExists = exists(|project://kogi/src/kogi/demo/<folderName>/index.html|);
 
-    if (!alreadyExists) {
-        kogify(grammar, folderName);
+    if(!alreadyExists) {
+        createBlocklyApp(grammar, targetPath = |project://kogi/src/kogi/demo/<folderName>|);
     }
 
-    set[Production] simplifiedGrammar = simplifyGrammar(grammar);
-    list[Block] blocks = renameDuplicatedBlocks(grammar2blocks(simplifiedGrammar));
+    // if (!alreadyExists) {
+    //     kogify2(grammar, folderName);
+    // }
+
+    //set[Production] simplifiedGrammar = simplifyGrammar(grammar);
+    //list[Block] blocks = renameDuplicatedBlocks(grammar2blocks(simplifiedGrammar));
+    list[Block] blocks = renameDuplicatedBlocks(grammar2blocks(getAllProductions(grammar)));
 
     showInteractiveContent(content("Hybrid Editor", webServer(grammar, folderName, blocks)));
 }

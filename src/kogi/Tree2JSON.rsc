@@ -14,33 +14,56 @@ import kogi::Block;
 data BlockInput = blockInput(str name, str \type, bool isStar, int pos) | none();
 data BlockField = blockField(str name, str \type, int pos, str text)
                 | blockField(str name, str \type, int pos, num \value, Range range = none())
-                //| blockField(str name, str \type, int pos, str src, int width, int height, str alt = "\"\"")
                 ;
-
-list[Block] tempBlockList = readTextValueFile(#list[Block], |project://kogi/src/kogi/demo/testSonification/blocks.txt|);
-Tree tempTree = readTextValueFile(#Tree, |project://kogi/src/kogi/demo/testSonification/parseTree.txt|);
-
-// str getFieldValue(list[Tree] t, str fieldName) {
-//     return "";
-// }
 
 node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
     node returnBlock = "returnBlock"();
 
     switch(t) {
+        case appl(prod(label(str blockName, lex(str blockType)), list[Symbol] inputSymbols, _), list[Tree] characters): {
+            Block refBlock = [x | x <- blocks, x.\type == blockType + "/" + blockName][0];
+            println("getBlocks lex-call for <blockType>/<blockName>");
+            BlockField refBlockField = getBlockFields(refBlock)[0];
+            str fieldValue = "";
+
+            top-down visit(characters) {
+                case char(int i): fieldValue = fieldValue + stringChar(i);
+            }
+
+            node returnBlockField = "retField"();
+
+            returnBlockField = setKeywordParameters(returnBlockField, (refBlockField.name: fieldValue));
+            returnBlock = "returnBlock"(\type = blockType + "/" + blockName, fields = returnBlockField);
+            
+            println("lex returnBlock: <returnBlock>");
+        }
+
         case appl(prod(label(str blockName, sort(str blockType)), list[Symbol] inputSymbols, _), list[Tree] elements) : {
             if (alternativeType != "") {
                 blockType = alternativeType;
             }
             list[Block] refBlockList = [x | x <- blocks, x.\type == blockType + "/" + blockName];
-            println("getBlocks call for <blockType>/<blockName>");
+            println("getBlocks sort-call for <blockType>/<blockName>");
 
             // If an non-terminal consists of only an immediate redirection to another grammar rule, 
-            // it'll be simplified and won't exist in the blocks structure.
-            // So we need to find the block that carries the non-temrinal's type, but actually is another rule.
-            if (size(inputSymbols) == 1 && label(_,_) := inputSymbols[0]) {
+            // it could be simplified and won't exist in the blocks structure.
+            // So we need to find the block that carries the non-terminal's type, but actually is another rule.
+            if (size(inputSymbols) == 1 && label(_,sort(_)) := inputSymbols[0]) {
                 println("Block <blockType>/<blockName> doesn\'t/shouldn\'t exist");
-                return getBlocks(elements[0], blocks, alternativeType = blockType);
+                node returnedBlock = getBlocks(elements[0], blocks, alternativeType = blockType);
+
+                if (returnedBlock != "returnBlock"()) {
+                    println("It indeed shouldn\'t exist, returning its child");
+                    return returnedBlock;
+                }
+                
+                println("Apologies, it should exist.");
+            }
+
+            // Check if there is a block for this element, if there isn't return empty block
+            if (refBlockList == []) {
+                println("This block doesn\'t exist and is also not a simplified rule, quitting function call.");
+                return returnBlock;
             }
 
             Block refBlock = refBlockList[0];
@@ -52,6 +75,7 @@ node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
             map[str \type, int counter] typeMap = ();
             map[str \type, int counter] fieldTypeMap = ();
             rel[str name, str \type, int pos] validFields = {};
+            rel[str name, str \type, int pos] validInputs = {};
 
             for (inputSymbol <- inputSymbols) {
                 switch (inputSymbol) {
@@ -73,9 +97,29 @@ node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
                                 validFields = validFields + {<inputName, inputType, typeCounter>};
                             }
                         }
+
+                        for (refBlockInput <- refBlockInputs) {
+                            if (refBlockInput.name == inputName) {
+                                println("Input symbol found, with name <inputName>");
+                                int typeCounter = 0;
+
+                                for (validInput <- validInputs) {
+                                    if (inputType == validInput.\type) {
+                                        typeCounter += 1;
+                                    }
+                                }
+
+                                println("Input type of <inputName> is <inputType>");
+
+                                validInputs = validInputs + {<inputName, inputType, typeCounter>};
+                            }
+                        }
                     }
                 }
             }
+
+            println("Valid fields for <blockType>/<blockName> are: <validFields>");
+            println("Valid inputs for <blockType>/<blockName> are: <validInputs>");
 
             for (element <- elements) {
                 switch(element) {
@@ -93,6 +137,8 @@ node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
                         for (refBlockInput <- refBlockInputs) {
                             if (refBlockInput.\type == inputBlockType && refBlockInput.pos == typeMap[inputBlockType]) {
                                 inputName = refBlockInput.name;
+                                println("Inputblock found!");
+                                println("Inputblock: <refBlockInput>");
                                 break;
                             }
                         }
@@ -142,14 +188,22 @@ node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
                         println("returnBlockInputs: <returnBlockInputs>");
                     }
 
-                    case appl(prod(label(_, lex(str fieldType)), _, _), [appl(_, list[Tree] characters)]) : {
+                    case appl(prod(label(_, lex(str fieldType)), _, _), list[Tree] characters) : {
                         bool isValidField = false;
+                        bool isValidInput = false;
 
                         println("Lex sort found, of type <fieldType>");
 
                         for (validField <- validFields) {
                             if (validField.\type == fieldType) {
                                 isValidField = true;
+                                break;
+                            }
+                        }
+
+                        for (validInput <- validInputs) {
+                            if (validInput.\type == fieldType) {
+                                isValidInput = true;
                                 break;
                             }
                         }
@@ -183,8 +237,48 @@ node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
 
                             returnBlockFields = setKeywordParameters(returnBlockFields, getKeywordParameters(returnBlockFields) + (fieldName: fieldValue));
                             println("returnBlockFields: <returnBlockFields>");
+                        } else if (isValidInput) {
+                            println("Lex input of type <fieldType> is valid!");
+                            if (typeMap[fieldType]?) {
+                                typeMap[fieldType] += 1;
+                            } else {
+                                typeMap = typeMap + (fieldType: 0);
+                            }
+
+                            str inputName = "";
+
+                            for (validInput <- validInputs) {
+                                if (validInput.\type == fieldType && validInput.pos == typeMap[fieldType]) {
+                                    inputName = validInput.name;
+                                    break;
+                                }
+                            }
+
+                            println("inputName for block <blockType>/<blockName>: <inputName>");
+
+                            str inputValue = "";
+
+                            for (character <- characters) {
+                                switch(character) {
+                                    case appl(prod(lit(_), _, _), _) : { println();}
+                                    
+                                    case appl(regular(_), _) : {
+                                        println("Normal characters found");
+                                        top-down visit(character) {
+                                            case char(int i): inputValue = inputValue + stringChar(i);
+                                        }
+                                    }
+                                }
+                            }
+
+                            println("inputValue for block <blockType>/<blockName>: <inputValue>");
+
+                            node lexInput = getBlocks(element, blocks);
+
+                            returnBlockInputs = setKeywordParameters(returnBlockInputs, getKeywordParameters(returnBlockInputs) + (inputName: "inputName"(block = lexInput)));
+                            println("returnBlockInputs: <returnBlockInputs>");
                         } else {
-                            println("Lex field of type <fieldType> is invalid! :x");
+                            println("Lex field of type <fieldType> is invalid!");
                         }
                     }
 
@@ -201,7 +295,7 @@ node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
                         }
 
                         if (isValidField) {
-                            println("Lex field of type <fieldType> is valid! :D");
+                            println("Lex field of type <fieldType> is valid!");
                             if (fieldTypeMap[fieldType]?) {
                                 fieldTypeMap[fieldType] += 1;
                             } else {
@@ -230,7 +324,7 @@ node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
                             returnBlockFields = setKeywordParameters(returnBlockFields, getKeywordParameters(returnBlockFields) + (fieldName: fieldValue));
                             println("returnBlockFields: <returnBlockFields>");
                         } else {
-                            println("Lex field of type <fieldType> is invalid! :x");
+                            println("Lex field of type <fieldType> is invalid!");
                         }
                     }
                 }
@@ -239,9 +333,6 @@ node getBlocks(Tree t, list[Block] blocks, str alternativeType = "") {
             println("refBlockInputs for block <blockType>/<blockName>: <refBlockInputs>");
             println("refBlockFields for block <blockType>/<blockName>: <refBlockFields>");
             returnBlock = "returnBlock"(\type = blockType + "/" + blockName, fields = returnBlockFields, inputs = returnBlockInputs);
-            //if (returnBlockInputs != "inputs"()) returnBlock = setKeywordParameters(returnBlock, getKeywordParameters(returnBlock) + ("inputs": returnBlockInputs));
-            //if (returnBlockNext != "next"()) returnBlock = setKeywordParameters(returnBlock, getKeywordParameters(returnBlock) + ("next": returnBlockNext));
-            //if (returnBlockFields != "fields"()) returnBlock = setKeywordParameters(returnBlock, getKeywordParameters(returnBlock) + ("fields": returnBlockFields));
         }
     }
     println("Return value:");
@@ -325,15 +416,19 @@ list[BlockInput] getBlockInputs(Block refBlock) {
     return refBlockInputs;
 }
 
+// This function will convert a parse tree to a JSON response string. 
+// It uses the list of possible blocks for this language and the parse tree as input,
+// and has the JSON response string as output.
+// It calls the recursive getBlocks() function with the root element of a tree (the startblock).
+// The elements in the tree are each checked if they are in a certain pattern (one that equals that of a block),
+// and if they do, the children of this element are then checked to be of certain patterns as well
+// to see the relation of the child to its parent.
+// If a child could be a block as well, getBlocks() will be called on that child too.
+// All tree elements that are blocks are converted to a node object, in a pattern that matches the layout of the required JSON response.
 str treeToRes(list[Block] blocks, Tree t) {
-    // if (blocks == []) {
-    //     blocks = tempBlockList;
-    //     t = tempTree;
-    // }
-
     list[node] rootBlocks = [getBlocks(t, blocks)];
     node res = "res"(blocks = "block"(languageVersion = 0, blocks = rootBlocks));
-    println(res);
+    println(asJSON(res));
 
     return asJSON(res);
 }
