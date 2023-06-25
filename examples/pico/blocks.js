@@ -20,7 +20,7 @@ Blockly.Blocks['Declarations/declarations'] = {
 				},
 				
 			],
-			  "colour" : 208,
+			  "colour" : 300,
 			  "output" : "Declarations",
 			  
 			  
@@ -62,7 +62,7 @@ Blockly.Blocks['Statement/whileStat'] = {
 				},
 				
 			],
-			  "colour" : 90,
+			  "colour" : 176,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -151,7 +151,7 @@ Blockly.Blocks['Statement/ifElseStat'] = {
 				},
 				
 			],
-			  "colour" : 325,
+			  "colour" : 258,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -176,7 +176,7 @@ Blockly.Blocks['Id/id'] = {
 				},
 				
 			],
-			  "colour" : 267,
+			  "colour" : 196,
 			  "output" : "Id",
 			  
 			  
@@ -209,7 +209,7 @@ Blockly.Blocks['String/string'] = {
 				},
 				
 			],
-			  "colour" : 8,
+			  "colour" : 250,
 			  "output" : "String",
 			  
 			  
@@ -234,7 +234,7 @@ Blockly.Blocks['Natural/natural'] = {
 				},
 				
 			],
-			  "colour" : 354,
+			  "colour" : 327,
 			  "output" : "Natural",
 			  
 			  
@@ -290,7 +290,7 @@ Blockly.Blocks['Ttype/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "string", "Ttype" ],[ "natural", "Ttype" ],]
+				  "options" : [[ "string", "TbnhJIzuhS" ],[ "natural", "kkGEYvETZW" ],]
 				},
 				
 			],
