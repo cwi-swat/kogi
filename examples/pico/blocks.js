@@ -20,30 +20,12 @@ Blockly.Blocks['Declarations/declarations'] = {
 				},
 				
 			],
-			  "colour" : 145,
+			  "colour" : 208,
 			  "output" : "Declarations",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "declarations",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Ttype/string'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Ttype/string",
-			  "message0" : "string",
-			  
-			  "colour" : 214,
-			  "output" : "Ttype",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "string",
 			  "helpUrl" : ""
 			}
 		);
@@ -80,7 +62,7 @@ Blockly.Blocks['Statement/whileStat'] = {
 				},
 				
 			],
-			  "colour" : 262,
+			  "colour" : 90,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -169,30 +151,12 @@ Blockly.Blocks['Statement/ifElseStat'] = {
 				},
 				
 			],
-			  "colour" : 335,
+			  "colour" : 325,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
 			  "inputsInline" : true,
 			  "tooltip" : "ifElseStat",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Ttype/natural'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Ttype/natural",
-			  "message0" : "natural",
-			  
-			  "colour" : 166,
-			  "output" : "Ttype",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "natural",
 			  "helpUrl" : ""
 			}
 		);
@@ -212,7 +176,7 @@ Blockly.Blocks['Id/id'] = {
 				},
 				
 			],
-			  "colour" : 341,
+			  "colour" : 267,
 			  "output" : "Id",
 			  
 			  
@@ -245,7 +209,7 @@ Blockly.Blocks['String/string'] = {
 				},
 				
 			],
-			  "colour" : 183,
+			  "colour" : 8,
 			  "output" : "String",
 			  
 			  
@@ -270,7 +234,7 @@ Blockly.Blocks['Natural/natural'] = {
 				},
 				
 			],
-			  "colour" : 149,
+			  "colour" : 354,
 			  "output" : "Natural",
 			  
 			  
@@ -307,6 +271,31 @@ Blockly.Blocks['Expression/binaryOperation'] = {
 			],
 			  "colour" : 120,
 			  "output" : "Expression",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Ttype/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Ttype/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "string", "Ttype" ],[ "natural", "Ttype" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "Ttype",
 			  
 			  
 			  "inputsInline" : true,

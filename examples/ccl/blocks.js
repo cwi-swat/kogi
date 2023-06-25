@@ -16,30 +16,12 @@ Blockly.Blocks['CPU/vcpus'] = {
 				},
 				
 			],
-			  "colour" : 122,
+			  "colour" : 50,
 			  "output" : "CPU",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "vcpus",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Image/ubuntu'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Image/ubuntu",
-			  "message0" : "Ubuntu Server",
-			  
-			  "colour" : 96,
-			  "output" : "Image",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "ubuntu",
 			  "helpUrl" : ""
 			}
 		);
@@ -120,152 +102,12 @@ Blockly.Blocks['Instance/instance'] = {
 				},
 				
 			],
-			  "colour" : 146,
+			  "colour" : 308,
 			  
 			  "previousStatement" : "Instance",
 			  "nextStatement" : "Instance",
 			  "inputsInline" : true,
 			  "tooltip" : "instance",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['IPV6/ipv6'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "IPV6/ipv6",
-			  "message0" : "IPV6: %1 %2 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "ipv6",
-				  "type" : "field_checkbox",
-				  "checked" : false
-				},
-				
-			],
-			  "colour" : 337,
-			  "output" : "IPV6",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "ipv6",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['BooleanValue/true'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "BooleanValue/true",
-			  "message0" : "%1",
-			  "args0" : [
-				{
-				  "name" : "StringValue",
-				  "type" : "field_checkbox",
-				  "checked" : false
-				},
-				
-			],
-			  "colour" : 187,
-			  "output" : "BooleanValue",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['BooleanValue/false'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "BooleanValue/false",
-			  "message0" : "%1",
-			  "args0" : [
-				{
-				  "name" : "StringValue",
-				  "type" : "field_checkbox",
-				  "checked" : false
-				},
-				
-			],
-			  "colour" : 225,
-			  "output" : "BooleanValue",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['StorageType/ssd'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "StorageType/ssd",
-			  "message0" : "SSD",
-			  
-			  "colour" : 171,
-			  "output" : "StorageType",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "ssd",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Id'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Id",
-			  "message0" : "%1",
-			  "args0" : [
-				{
-				  "name" : "Id",
-				  "type" : "field_input",
-				  "text" : "variable"
-				},
-				
-			],
-			  "colour" : 303,
-			  "output" : "Id",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Image/awsLinux'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Image/awsLinux",
-			  "message0" : "Amazon Linux",
-			  
-			  "colour" : 38,
-			  "output" : "Image",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "awsLinux",
 			  "helpUrl" : ""
 			}
 		);
@@ -293,7 +135,7 @@ Blockly.Blocks['Memory/memory'] = {
 				},
 				
 			],
-			  "colour" : 237,
+			  "colour" : 240,
 			  "output" : "Memory",
 			  
 			  
@@ -304,22 +146,51 @@ Blockly.Blocks['Memory/memory'] = {
 		);
 	}
 }
-Blockly.Blocks['IntegerValue/number'] = {
+Blockly.Blocks['IPV6/ipv6'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "IntegerValue/number",
-			  "message0" : "%1",
+			  "type" : "IPV6/ipv6",
+			  "message0" : "IPV6: %1 %2 ",
 			  "args0" : [
 				{
-				  "name" : "IntegerValue",
-				  "type" : "field_number",
-				  "value" : 0
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "ipv6",
+				  "type" : "field_checkbox",
+				  "checked" : false
 				},
 				
 			],
-			  "colour" : 55,
-			  "output" : "IntegerValue",
+			  "colour" : 20,
+			  "output" : "IPV6",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "ipv6",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['BooleanValue/true'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "BooleanValue/true",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "StringValue",
+				  "type" : "field_checkbox",
+				  "checked" : false
+				},
+				
+			],
+			  "colour" : 51,
+			  "output" : "BooleanValue",
 			  
 			  
 			  "inputsInline" : true,
@@ -329,37 +200,26 @@ Blockly.Blocks['IntegerValue/number'] = {
 		);
 	}
 }
-Blockly.Blocks['StorageType/ebs'] = {
+Blockly.Blocks['Id'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "StorageType/ebs",
-			  "message0" : "EBS",
-			  
-			  "colour" : 110,
-			  "output" : "StorageType",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "ebs",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Image/redHat'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Image/redHat",
-			  "message0" : "Red Hat Enterprise",
-			  
-			  "colour" : 259,
-			  "output" : "Image",
+			  "type" : "Id",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Id",
+				  "type" : "field_input",
+				  "text" : "variable"
+				},
+				
+			],
+			  "colour" : 37,
+			  "output" : "Id",
 			  
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "redHat",
+			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
 		);
@@ -396,7 +256,7 @@ Blockly.Blocks['Storage/storage'] = {
 				},
 				
 			],
-			  "colour" : 222,
+			  "colour" : 270,
 			  "output" : "Storage",
 			  
 			  
@@ -407,19 +267,76 @@ Blockly.Blocks['Storage/storage'] = {
 		);
 	}
 }
-Blockly.Blocks['Image/windows'] = {
+Blockly.Blocks['IntegerValue/number'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "Image/windows",
-			  "message0" : "Windows Server2019",
+			  "type" : "IntegerValue/number",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "IntegerValue",
+				  "type" : "field_number",
+				  "value" : 0
+				},
+				
+			],
+			  "colour" : 273,
+			  "output" : "IntegerValue",
 			  
-			  "colour" : 72,
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Image/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Image/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "Ubuntu Server", "ZuOaHPNeHd" ],[ "Amazon Linux", "wFUlXQtbCa" ],[ "Red Hat Enterprise", "DWuGEIVIZK" ],[ "Windows Server2019", "hEEtjqmseV" ],]
+				},
+				
+			],
+			  "colour" : 120,
 			  "output" : "Image",
 			  
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "windows",
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['StorageType/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "StorageType/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "SSD", "IOTTSrBDNP" ],[ "EBS", "umTDlutlYd" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "StorageType",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
 			  "helpUrl" : ""
 			}
 		);

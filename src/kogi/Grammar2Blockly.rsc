@@ -22,13 +22,16 @@ list[Block] grammar2blocks(set[Production] productions, bool epsilon = false) {
 	multiplicityInfo = nonTerminalMultiplicity(productions);
 	// Remove the start production from the productions and retrieve the start symbol name to set the 'hat' block
 	tuple[set[Production] prods, str name] p = getProductionsAndStart(productions);
-	tuple[Block, set[Production]] binSimplification = production2BinaryBlock(p.prods);
+	tuple[list[Block], set[Production]] binSimplification = production2BinaryBlock(p.prods);
 	newP = binSimplification[1];
 	lrel[str, str] lexicalRules = getLexicalRules(p.prods);
 
     blocks = [ production2Block(production, multiplicityInfo, p.name, lexicalRules) | production <- newP, containLayoutAttributes(production.attributes)];
     if (epsilon) blocks += createEpsilonBlock(newP);
-	blocks += binSimplification[0];
+	for (B <- binSimplification[0]) {
+		blocks += B;
+	};
+	
 	
 	//binary operator simplification
 	return [ block | block <- blocks, Block::none() !:= block ];

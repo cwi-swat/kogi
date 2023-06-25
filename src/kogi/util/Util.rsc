@@ -175,9 +175,16 @@ str escape(str string) {
 }
 
 // searches all options<X, Y> if X == T
-bool listContains(lrel[str, str] options, T) {
+bool lrelContains(lrel[str, str] options, T) {
     for (option <- options) {
 		if (option[0] == T) return true;
+	};
+	return false;
+}
+
+bool listContains(list[str] l, str item) {
+	for (L <- l) {
+		if (L == item) return true;
 	};
 	return false;
 }

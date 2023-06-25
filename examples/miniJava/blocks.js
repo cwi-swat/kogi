@@ -10,7 +10,7 @@ Blockly.Blocks['MainClass/main'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "lex/fVZCHUmbbi",
+				  "name" : "lex/ddtFAQmtTV",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -51,7 +51,7 @@ Blockly.Blocks['MainClass/main'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "lex/OomTtpcitT",
+				  "name" : "lex/ZVAygwVQPz",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -78,12 +78,42 @@ Blockly.Blocks['MainClass/main'] = {
 				},
 				
 			],
-			  "colour" : 188,
+			  "colour" : 147,
 			  "output" : "MainClass",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "main",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['FormalList/lst'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "FormalList/lst",
+			  "message0" : "%1 %2 ",
+			  "args0" : [
+				{
+				  "name" : "Type",
+				  "type" : "input_value",
+				  "check" : ["Type", "Identifier"]
+				},
+				  	{
+				  "name" : "i/LZijlfaHyP",
+				  "type" : "input_value",
+				  "check" : ["Identifier"]
+				},
+				
+			],
+			  "colour" : 255,
+			  "output" : "FormalList",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "lst",
 			  "helpUrl" : ""
 			}
 		);
@@ -120,7 +150,7 @@ Blockly.Blocks['Statement/s3'] = {
 				},
 				
 			],
-			  "colour" : 20,
+			  "colour" : 239,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -153,7 +183,7 @@ Blockly.Blocks['Expression/len'] = {
 				},
 				
 			],
-			  "colour" : 105,
+			  "colour" : 321,
 			  "output" : "Expression",
 			  
 			  
@@ -178,7 +208,7 @@ Blockly.Blocks['Integer/natural'] = {
 				},
 				
 			],
-			  "colour" : 288,
+			  "colour" : 37,
 			  "output" : "Integer",
 			  
 			  
@@ -229,7 +259,7 @@ Blockly.Blocks['Statement/s2'] = {
 				},
 				
 			],
-			  "colour" : 65,
+			  "colour" : 153,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -253,7 +283,7 @@ Blockly.Blocks['VarDecl/var'] = {
 				  "check" : ["Type", "Identifier"]
 				},
 				  	{
-				  "name" : "lex/KVvUKsJzEg",
+				  "name" : "lex/laEBhquwCA",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -263,7 +293,7 @@ Blockly.Blocks['VarDecl/var'] = {
 				},
 				
 			],
-			  "colour" : 102,
+			  "colour" : 64,
 			  
 			  "previousStatement" : "VarDecl",
 			  "nextStatement" : "VarDecl",
@@ -320,7 +350,7 @@ Blockly.Blocks['Statement/s4'] = {
 				},
 				
 			],
-			  "colour" : 11,
+			  "colour" : 126,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -345,30 +375,12 @@ Blockly.Blocks['Identifier/id'] = {
 				},
 				
 			],
-			  "colour" : 130,
+			  "colour" : 347,
 			  "output" : "Identifier",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/i2'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/i2",
-			  "message0" : "int",
-			  
-			  "colour" : 266,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "i2",
 			  "helpUrl" : ""
 			}
 		);
@@ -395,7 +407,7 @@ Blockly.Blocks['Type/i'] = {
 				},
 				
 			],
-			  "colour" : 211,
+			  "colour" : 240,
 			  "output" : "Type",
 			  
 			  
@@ -428,60 +440,12 @@ Blockly.Blocks['Statement/s1'] = {
 				},
 				
 			],
-			  "colour" : 156,
+			  "colour" : 185,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
 			  "inputsInline" : true,
 			  "tooltip" : "s1",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/b'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/b",
-			  "message0" : "boolean",
-			  
-			  "colour" : 138,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "b",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['FormalList/lst'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "FormalList/lst",
-			  "message0" : "%1 %2 ",
-			  "args0" : [
-				{
-				  "name" : "Type",
-				  "type" : "input_value",
-				  "check" : ["Type", "Identifier"]
-				},
-				  	{
-				  "name" : "i/gxvMrZvCBD",
-				  "type" : "input_value",
-				  "check" : ["Identifier"]
-				},
-				
-			],
-			  "colour" : 6,
-			  "output" : "FormalList",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "lst",
 			  "helpUrl" : ""
 			}
 		);
@@ -500,7 +464,7 @@ Blockly.Blocks['Expression/this'] = {
 				},
 				
 			],
-			  "colour" : 116,
+			  "colour" : 185,
 			  "output" : "Expression",
 			  
 			  
@@ -528,7 +492,7 @@ Blockly.Blocks['MethodDecl/mtd'] = {
 				  "check" : ["Type", "Identifier"]
 				},
 				  	{
-				  "name" : "lex/BLUQUlBSVH",
+				  "name" : "lex/frktpMzZCG",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -578,7 +542,7 @@ Blockly.Blocks['MethodDecl/mtd'] = {
 				},
 				
 			],
-			  "colour" : 112,
+			  "colour" : 68,
 			  
 			  "previousStatement" : "MethodDecl",
 			  "nextStatement" : "MethodDecl",
@@ -607,7 +571,7 @@ Blockly.Blocks['Expression/d'] = {
 				},
 				
 			],
-			  "colour" : 131,
+			  "colour" : 156,
 			  "output" : "Expression",
 			  
 			  
@@ -626,7 +590,7 @@ Blockly.Blocks['Statement/s6'] = {
 			  "message0" : "%1 [ %2 %3 ] %4 = %5 %6 ; %7 ",
 			  "args0" : [
 				{
-				  "name" : "i/munRBbYDVU",
+				  "name" : "i/TyuNYDREBK",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -658,7 +622,7 @@ Blockly.Blocks['Statement/s6'] = {
 				},
 				
 			],
-			  "colour" : 183,
+			  "colour" : 139,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -699,7 +663,7 @@ Blockly.Blocks['Expression/ne'] = {
 				},
 				
 			],
-			  "colour" : 317,
+			  "colour" : 262,
 			  "output" : "Expression",
 			  
 			  
@@ -728,7 +692,7 @@ Blockly.Blocks['Statement/s67'] = {
 				},
 				
 			],
-			  "colour" : 114,
+			  "colour" : 62,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -752,7 +716,7 @@ Blockly.Blocks['Expression/f'] = {
 				},
 				
 			],
-			  "colour" : 315,
+			  "colour" : 2,
 			  "output" : "Expression",
 			  
 			  
@@ -775,7 +739,7 @@ Blockly.Blocks['Expression/ne2'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "b/IWdFncDuov",
+				  "name" : "b/AHirDoVKfk",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -789,7 +753,7 @@ Blockly.Blocks['Expression/ne2'] = {
 				},
 				
 			],
-			  "colour" : 214,
+			  "colour" : 358,
 			  "output" : "Expression",
 			  
 			  
@@ -819,7 +783,7 @@ Blockly.Blocks['ExpressionList/e'] = {
 				},
 				
 			],
-			  "colour" : 128,
+			  "colour" : 283,
 			  
 			  "previousStatement" : "ExpressionList",
 			  "nextStatement" : "ExpressionList",
@@ -873,7 +837,7 @@ Blockly.Blocks['Expression/t'] = {
 				},
 				
 			],
-			  "colour" : 50,
+			  "colour" : 256,
 			  "output" : "Expression",
 			  
 			  
@@ -901,7 +865,7 @@ Blockly.Blocks['Expression/v'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "v/isnINOypfR",
+				  "name" : "v/bbmLYXriXe",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -920,7 +884,7 @@ Blockly.Blocks['Expression/v'] = {
 				},
 				
 			],
-			  "colour" : 269,
+			  "colour" : 282,
 			  "output" : "Expression",
 			  
 			  
@@ -958,7 +922,7 @@ Blockly.Blocks['Expression/a'] = {
 				},
 				
 			],
-			  "colour" : 316,
+			  "colour" : 9,
 			  "output" : "Expression",
 			  
 			  
@@ -981,7 +945,7 @@ Blockly.Blocks['ClassDecl/clsdcl'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "lex/UJhLAiGNTW",
+				  "name" : "lex/EIYLtdMIJn",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -1005,7 +969,7 @@ Blockly.Blocks['ClassDecl/clsdcl'] = {
 				},
 				
 			],
-			  "colour" : 100,
+			  "colour" : 94,
 			  
 			  "previousStatement" : "ClassDecl",
 			  "nextStatement" : "ClassDecl",
@@ -1024,7 +988,7 @@ Blockly.Blocks['Statement/s5'] = {
 			  "message0" : "%1 = %2 %3 ; %4 ",
 			  "args0" : [
 				{
-				  "name" : "i/wiCBSMNrNB",
+				  "name" : "i/tzEjxTUKWI",
 				  "type" : "input_value",
 				  "check" : ["Identifier"]
 				},
@@ -1043,7 +1007,7 @@ Blockly.Blocks['Statement/s5'] = {
 				},
 				
 			],
-			  "colour" : 207,
+			  "colour" : 211,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -1080,6 +1044,31 @@ Blockly.Blocks['Expression/binaryOperation'] = {
 			],
 			  "colour" : 120,
 			  "output" : "Expression",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Type/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Type/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "int", "Type" ],[ "boolean", "Type" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "Type",
 			  
 			  
 			  "inputsInline" : true,

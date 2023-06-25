@@ -1,3 +1,45 @@
+Blockly.Blocks['Statement/if'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Statement/if",
+			  "message0" : "if %1 ( %2 %3 ) %4 %5 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Statement",
+				  "type" : "input_statement",
+				  "check" : ["Statement"]
+				},
+				
+			],
+			  "colour" : 327,
+			  
+			  "previousStatement" : "Statement",
+			  "nextStatement" : "Statement",
+			  "inputsInline" : true,
+			  "tooltip" : "if",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
 Blockly.Blocks['ColorSetting/fill2'] = {
 	init: function() {
 		this.jsonInit(
@@ -33,7 +75,7 @@ Blockly.Blocks['ColorSetting/fill2'] = {
 				},
 				
 			],
-			  "colour" : 336,
+			  "colour" : 17,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -44,19 +86,38 @@ Blockly.Blocks['ColorSetting/fill2'] = {
 		);
 	}
 }
-Blockly.Blocks['CursorType/arrow'] = {
+Blockly.Blocks['Environment/smooth'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "CursorType/arrow",
-			  "message0" : "ARROW",
-			  
-			  "colour" : 24,
-			  "output" : "CursorType",
+			  "type" : "Environment/smooth",
+			  "message0" : "smooth %1 ( %2 %3 ) %4 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "Expression",
+				  "type" : "input_value",
+				  "check" : ["Expression"]
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 29,
+			  "output" : "Environment",
 			  
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "arrow",
+			  "tooltip" : "smooth",
 			  "helpUrl" : ""
 			}
 		);
@@ -151,7 +212,7 @@ Blockly.Blocks['Shape/rect3'] = {
 				},
 				
 			],
-			  "colour" : 282,
+			  "colour" : 74,
 			  "output" : "Shape",
 			  
 			  
@@ -219,7 +280,7 @@ Blockly.Blocks['Statement/assign'] = {
 				},
 				
 			],
-			  "colour" : 29,
+			  "colour" : 209,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -270,30 +331,12 @@ Blockly.Blocks['Statement/ifElse'] = {
 				},
 				
 			],
-			  "colour" : 101,
+			  "colour" : 213,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
 			  "inputsInline" : true,
 			  "tooltip" : "ifElse",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/bool'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/bool",
-			  "message0" : "boolean",
-			  
-			  "colour" : 158,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "bool",
 			  "helpUrl" : ""
 			}
 		);
@@ -352,48 +395,12 @@ Blockly.Blocks['Background/background4'] = {
 				},
 				
 			],
-			  "colour" : 57,
+			  "colour" : 66,
 			  "output" : "Background",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "background4",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['CursorType/move'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "CursorType/move",
-			  "message0" : "MOVE",
-			  
-			  "colour" : 204,
-			  "output" : "CursorType",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "move",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['CursorType/hand'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "CursorType/hand",
-			  "message0" : "HAND",
-			  
-			  "colour" : 228,
-			  "output" : "CursorType",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "hand",
 			  "helpUrl" : ""
 			}
 		);
@@ -434,7 +441,7 @@ Blockly.Blocks['Background/background2'] = {
 				},
 				
 			],
-			  "colour" : 201,
+			  "colour" : 108,
 			  "output" : "Background",
 			  
 			  
@@ -482,7 +489,7 @@ Blockly.Blocks['Shape/point'] = {
 				},
 				
 			],
-			  "colour" : 237,
+			  "colour" : 293,
 			  "output" : "Shape",
 			  
 			  
@@ -519,7 +526,7 @@ Blockly.Blocks['Background/background'] = {
 				},
 				
 			],
-			  "colour" : 227,
+			  "colour" : 210,
 			  "output" : "Background",
 			  
 			  
@@ -560,7 +567,7 @@ Blockly.Blocks['DrawFunction/draw'] = {
 				},
 				
 			],
-			  "colour" : 316,
+			  "colour" : 21,
 			  "output" : "DrawFunction",
 			  
 			  
@@ -615,7 +622,7 @@ Blockly.Blocks['ColorCreating/color3'] = {
 				},
 				
 			],
-			  "colour" : 347,
+			  "colour" : 112,
 			  "output" : "ColorCreating",
 			  
 			  
@@ -661,7 +668,7 @@ Blockly.Blocks['ColorSetting/colorMode2'] = {
 				},
 				
 			],
-			  "colour" : 298,
+			  "colour" : 99,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -716,7 +723,7 @@ Blockly.Blocks['Background/background3'] = {
 				},
 				
 			],
-			  "colour" : 77,
+			  "colour" : 12,
 			  "output" : "Background",
 			  
 			  
@@ -771,30 +778,12 @@ Blockly.Blocks['Transform/translate3d'] = {
 				},
 				
 			],
-			  "colour" : 160,
+			  "colour" : 120,
 			  "output" : "Transform",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "translate3d",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/float'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/float",
-			  "message0" : "float",
-			  
-			  "colour" : 146,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "float",
 			  "helpUrl" : ""
 			}
 		);
@@ -853,30 +842,12 @@ Blockly.Blocks['ColorCreating/color4'] = {
 				},
 				
 			],
-			  "colour" : 182,
+			  "colour" : 132,
 			  "output" : "ColorCreating",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "color4",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['ColorMode/rgb'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "ColorMode/rgb",
-			  "message0" : "RGB",
-			  
-			  "colour" : 251,
-			  "output" : "ColorMode",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "rgb",
 			  "helpUrl" : ""
 			}
 		);
@@ -905,48 +876,12 @@ Blockly.Blocks['Statement/decl'] = {
 				},
 				
 			],
-			  "colour" : 234,
+			  "colour" : 307,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
 			  "inputsInline" : true,
 			  "tooltip" : "decl",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/double'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/double",
-			  "message0" : "double",
-			  
-			  "colour" : 244,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "double",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/long'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/long",
-			  "message0" : "long",
-			  
-			  "colour" : 297,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "long",
 			  "helpUrl" : ""
 			}
 		);
@@ -966,7 +901,7 @@ Blockly.Blocks['Statement/draw'] = {
 				},
 				
 			],
-			  "colour" : 280,
+			  "colour" : 170,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -1024,7 +959,7 @@ Blockly.Blocks['Shape/square'] = {
 				},
 				
 			],
-			  "colour" : 168,
+			  "colour" : 47,
 			  "output" : "Shape",
 			  
 			  
@@ -1070,30 +1005,12 @@ Blockly.Blocks['ColorCreating/color2'] = {
 				},
 				
 			],
-			  "colour" : 297,
+			  "colour" : 231,
 			  "output" : "ColorCreating",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "color2",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/char'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/char",
-			  "message0" : "char",
-			  
-			  "colour" : 194,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "char",
 			  "helpUrl" : ""
 			}
 		);
@@ -1133,7 +1050,7 @@ Blockly.Blocks['Rendering/createGraphics3'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "renderer/MuaXjOdlRY",
+				  "name" : "renderer/weunIFtfOi",
 				  "type" : "input_value",
 				  "check" : ["StringValue"]
 				},
@@ -1142,7 +1059,7 @@ Blockly.Blocks['Rendering/createGraphics3'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "path/xqOoHOFoqo",
+				  "name" : "path/MUsfEVbLvg",
 				  "type" : "input_value",
 				  "check" : ["StringValue"]
 				},
@@ -1152,7 +1069,7 @@ Blockly.Blocks['Rendering/createGraphics3'] = {
 				},
 				
 			],
-			  "colour" : 85,
+			  "colour" : 341,
 			  "output" : "Rendering",
 			  
 			  
@@ -1177,7 +1094,7 @@ Blockly.Blocks['Value/id'] = {
 				},
 				
 			],
-			  "colour" : 27,
+			  "colour" : 115,
 			  "output" : "Value",
 			  
 			  
@@ -1214,7 +1131,7 @@ Blockly.Blocks['Environment/frameRate'] = {
 				},
 				
 			],
-			  "colour" : 267,
+			  "colour" : 225,
 			  "output" : "Environment",
 			  
 			  
@@ -1246,7 +1163,7 @@ Blockly.Blocks['Environment/fullScreen'] = {
 				},
 				
 			],
-			  "colour" : 47,
+			  "colour" : 60,
 			  "output" : "Environment",
 			  
 			  
@@ -1283,7 +1200,7 @@ Blockly.Blocks['Rendering/blendMode'] = {
 				},
 				
 			],
-			  "colour" : 318,
+			  "colour" : 68,
 			  "output" : "Rendering",
 			  
 			  
@@ -1391,7 +1308,7 @@ Blockly.Blocks['Shape/quad'] = {
 				},
 				
 			],
-			  "colour" : 166,
+			  "colour" : 19,
 			  "output" : "Shape",
 			  
 			  
@@ -1464,7 +1381,7 @@ Blockly.Blocks['ColorSetting/colorMode3'] = {
 				},
 				
 			],
-			  "colour" : 70,
+			  "colour" : 211,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -1505,7 +1422,7 @@ Blockly.Blocks['SetupFunction/setup'] = {
 				},
 				
 			],
-			  "colour" : 226,
+			  "colour" : 155,
 			  "output" : "SetupFunction",
 			  
 			  
@@ -1569,7 +1486,7 @@ Blockly.Blocks['ColorSetting/colorMode3'] = {
 				},
 				
 			],
-			  "colour" : 90,
+			  "colour" : 37,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -1657,7 +1574,7 @@ Blockly.Blocks['Shape/triangle'] = {
 				},
 				
 			],
-			  "colour" : 170,
+			  "colour" : 353,
 			  "output" : "Shape",
 			  
 			  
@@ -1714,7 +1631,7 @@ Blockly.Blocks['ColorSetting/clear'] = {
 				},
 				
 			],
-			  "colour" : 61,
+			  "colour" : 229,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -1746,90 +1663,12 @@ Blockly.Blocks['Environment/noSmooth'] = {
 				},
 				
 			],
-			  "colour" : 297,
+			  "colour" : 348,
 			  "output" : "Environment",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "noSmooth",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Statement/if'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Statement/if",
-			  "message0" : "if %1 ( %2 %3 ) %4 %5 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "Expression",
-				  "type" : "input_value",
-				  "check" : ["Expression"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "Statement",
-				  "type" : "input_statement",
-				  "check" : ["Statement"]
-				},
-				
-			],
-			  "colour" : 347,
-			  
-			  "previousStatement" : "Statement",
-			  "nextStatement" : "Statement",
-			  "inputsInline" : true,
-			  "tooltip" : "if",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/byte'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/byte",
-			  "message0" : "byte",
-			  
-			  "colour" : 94,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "byte",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['CursorType/text'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "CursorType/text",
-			  "message0" : "TEXT",
-			  
-			  "colour" : 137,
-			  "output" : "CursorType",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "text",
 			  "helpUrl" : ""
 			}
 		);
@@ -1849,7 +1688,7 @@ Blockly.Blocks['Type/id'] = {
 				},
 				
 			],
-			  "colour" : 155,
+			  "colour" : 305,
 			  "output" : "Type",
 			  
 			  
@@ -1907,7 +1746,7 @@ Blockly.Blocks['Shape/circle'] = {
 				},
 				
 			],
-			  "colour" : 142,
+			  "colour" : 359,
 			  "output" : "Shape",
 			  
 			  
@@ -1971,7 +1810,7 @@ Blockly.Blocks['Shape/rect'] = {
 				},
 				
 			],
-			  "colour" : 327,
+			  "colour" : 194,
 			  "output" : "Shape",
 			  
 			  
@@ -2003,7 +1842,7 @@ Blockly.Blocks['Environment/noCursor'] = {
 				},
 				
 			],
-			  "colour" : 344,
+			  "colour" : 84,
 			  "output" : "Environment",
 			  
 			  
@@ -2028,7 +1867,7 @@ Blockly.Blocks['Statement/setup'] = {
 				},
 				
 			],
-			  "colour" : 133,
+			  "colour" : 297,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -2065,7 +1904,7 @@ Blockly.Blocks['ColorSetting/colorMode'] = {
 				},
 				
 			],
-			  "colour" : 184,
+			  "colour" : 29,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2102,7 +1941,7 @@ Blockly.Blocks['Rendering/hint'] = {
 				},
 				
 			],
-			  "colour" : 351,
+			  "colour" : 180,
 			  "output" : "Rendering",
 			  
 			  
@@ -2127,67 +1966,12 @@ Blockly.Blocks['BuiltInFunction/trans'] = {
 				},
 				
 			],
-			  "colour" : 344,
+			  "colour" : 151,
 			  "output" : "BuiltInFunction",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "trans",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Environment/smooth'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Environment/smooth",
-			  "message0" : "smooth %1 ( %2 %3 ) %4 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "Expression",
-				  "type" : "input_value",
-				  "check" : ["Expression"]
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				
-			],
-			  "colour" : 148,
-			  "output" : "Environment",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "smooth",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['CursorType/cross'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "CursorType/cross",
-			  "message0" : "CROSS",
-			  
-			  "colour" : 206,
-			  "output" : "CursorType",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "cross",
 			  "helpUrl" : ""
 			}
 		);
@@ -2207,30 +1991,12 @@ Blockly.Blocks['Expression/vals'] = {
 				},
 				
 			],
-			  "colour" : 298,
+			  "colour" : 284,
 			  "output" : "Expression",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "vals",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['CursorType/wait'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "CursorType/wait",
-			  "message0" : "WAIT",
-			  
-			  "colour" : 175,
-			  "output" : "CursorType",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "wait",
 			  "helpUrl" : ""
 			}
 		);
@@ -2289,7 +2055,7 @@ Blockly.Blocks['ColorSetting/fill4'] = {
 				},
 				
 			],
-			  "colour" : 276,
+			  "colour" : 288,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2331,7 +2097,7 @@ Blockly.Blocks['Statement/while'] = {
 				},
 				
 			],
-			  "colour" : 9,
+			  "colour" : 197,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -2356,30 +2122,12 @@ Blockly.Blocks['BuiltInFunction/input'] = {
 				},
 				
 			],
-			  "colour" : 233,
+			  "colour" : 45,
 			  "output" : "BuiltInFunction",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "input",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Environment/height'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Environment/height",
-			  "message0" : "height",
-			  
-			  "colour" : 154,
-			  "output" : "Environment",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "height",
 			  "helpUrl" : ""
 			}
 		);
@@ -2411,7 +2159,7 @@ Blockly.Blocks['ColorSetting/fill'] = {
 				},
 				
 			],
-			  "colour" : 151,
+			  "colour" : 245,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2471,30 +2219,12 @@ Blockly.Blocks['Statement/for'] = {
 				},
 				
 			],
-			  "colour" : 180,
+			  "colour" : 340,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
 			  "inputsInline" : true,
 			  "tooltip" : "for",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/color'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/color",
-			  "message0" : "color",
-			  
-			  "colour" : 153,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "color",
 			  "helpUrl" : ""
 			}
 		);
@@ -2562,7 +2292,7 @@ Blockly.Blocks['Shape/rect2'] = {
 				},
 				
 			],
-			  "colour" : 32,
+			  "colour" : 314,
 			  "output" : "Shape",
 			  
 			  
@@ -2594,30 +2324,12 @@ Blockly.Blocks['Transform/pushMatrix'] = {
 				},
 				
 			],
-			  "colour" : 114,
+			  "colour" : 274,
 			  "output" : "Transform",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "pushMatrix",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Environment/focused'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Environment/focused",
-			  "message0" : "focused",
-			  
-			  "colour" : 219,
-			  "output" : "Environment",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "focused",
 			  "helpUrl" : ""
 			}
 		);
@@ -2649,7 +2361,7 @@ Blockly.Blocks['ColorCreating/color'] = {
 				},
 				
 			],
-			  "colour" : 302,
+			  "colour" : 336,
 			  "output" : "ColorCreating",
 			  
 			  
@@ -2707,7 +2419,7 @@ Blockly.Blocks['Shape/point2'] = {
 				},
 				
 			],
-			  "colour" : 59,
+			  "colour" : 191,
 			  "output" : "Shape",
 			  
 			  
@@ -2740,7 +2452,7 @@ Blockly.Blocks['Statement/stmts'] = {
 				},
 				
 			],
-			  "colour" : 225,
+			  "colour" : 232,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -2772,7 +2484,7 @@ Blockly.Blocks['Rendering/noClip'] = {
 				},
 				
 			],
-			  "colour" : 266,
+			  "colour" : 288,
 			  "output" : "Rendering",
 			  
 			  
@@ -2804,7 +2516,7 @@ Blockly.Blocks['ColorSetting/noFill'] = {
 				},
 				
 			],
-			  "colour" : 120,
+			  "colour" : 93,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2829,7 +2541,7 @@ Blockly.Blocks['Expression/builtFuncs'] = {
 				},
 				
 			],
-			  "colour" : 226,
+			  "colour" : 212,
 			  "output" : "Expression",
 			  
 			  
@@ -2876,7 +2588,7 @@ Blockly.Blocks['FunctionDecl/funcDecl'] = {
 				},
 				
 			],
-			  "colour" : 75,
+			  "colour" : 65,
 			  "output" : "FunctionDecl",
 			  
 			  
@@ -2905,7 +2617,7 @@ Blockly.Blocks['Statement/exp'] = {
 				},
 				
 			],
-			  "colour" : 135,
+			  "colour" : 322,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -2937,30 +2649,12 @@ Blockly.Blocks['Rendering/beginDraw'] = {
 				},
 				
 			],
-			  "colour" : 240,
+			  "colour" : 85,
 			  "output" : "Rendering",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "beginDraw",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/pImage'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/pImage",
-			  "message0" : "PImage",
-			  
-			  "colour" : 309,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "pImage",
 			  "helpUrl" : ""
 			}
 		);
@@ -2992,7 +2686,7 @@ Blockly.Blocks['Environment/pixelDensity'] = {
 				},
 				
 			],
-			  "colour" : 0,
+			  "colour" : 249,
 			  "output" : "Environment",
 			  
 			  
@@ -3017,30 +2711,12 @@ Blockly.Blocks['BuiltInFunction/setting'] = {
 				},
 				
 			],
-			  "colour" : 333,
+			  "colour" : 287,
 			  "output" : "BuiltInFunction",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "setting",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Environment/width'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Environment/width",
-			  "message0" : "width",
-			  
-			  "colour" : 84,
-			  "output" : "Environment",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "width",
 			  "helpUrl" : ""
 			}
 		);
@@ -3060,7 +2736,7 @@ Blockly.Blocks['BuiltInFunction/env'] = {
 				},
 				
 			],
-			  "colour" : 231,
+			  "colour" : 127,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -3092,7 +2768,7 @@ Blockly.Blocks['ColorSetting/noStroke'] = {
 				},
 				
 			],
-			  "colour" : 190,
+			  "colour" : 177,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -3147,7 +2823,7 @@ Blockly.Blocks['ColorSetting/fill3'] = {
 				},
 				
 			],
-			  "colour" : 158,
+			  "colour" : 150,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -3172,7 +2848,7 @@ Blockly.Blocks['BuiltInFunction/shape'] = {
 				},
 				
 			],
-			  "colour" : 150,
+			  "colour" : 297,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -3240,7 +2916,7 @@ Blockly.Blocks['Shape/line'] = {
 				},
 				
 			],
-			  "colour" : 209,
+			  "colour" : 194,
 			  "output" : "Shape",
 			  
 			  
@@ -3277,7 +2953,7 @@ Blockly.Blocks['Environment/delay'] = {
 				},
 				
 			],
-			  "colour" : 331,
+			  "colour" : 123,
 			  "output" : "Environment",
 			  
 			  
@@ -3322,7 +2998,7 @@ Blockly.Blocks['Rendering/createGraphics2'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "renderer/GBTbxpIzZz",
+				  "name" : "renderer/nVMicNBGOA",
 				  "type" : "input_value",
 				  "check" : ["StringValue"]
 				},
@@ -3332,7 +3008,7 @@ Blockly.Blocks['Rendering/createGraphics2'] = {
 				},
 				
 			],
-			  "colour" : 246,
+			  "colour" : 88,
 			  "output" : "Rendering",
 			  
 			  
@@ -3378,30 +3054,12 @@ Blockly.Blocks['Transform/translate2d'] = {
 				},
 				
 			],
-			  "colour" : 267,
+			  "colour" : 280,
 			  "output" : "Transform",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "translate2d",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/string'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/string",
-			  "message0" : "String",
-			  
-			  "colour" : 214,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "string",
 			  "helpUrl" : ""
 			}
 		);
@@ -3439,30 +3097,12 @@ Blockly.Blocks['Statement/decl2'] = {
 				},
 				
 			],
-			  "colour" : 220,
+			  "colour" : 351,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
 			  "inputsInline" : true,
 			  "tooltip" : "decl2",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/int'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/int",
-			  "message0" : "int",
-			  
-			  "colour" : 182,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "int",
 			  "helpUrl" : ""
 			}
 		);
@@ -3482,7 +3122,7 @@ Blockly.Blocks['ColorSetting/background'] = {
 				},
 				
 			],
-			  "colour" : 58,
+			  "colour" : 338,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -3570,7 +3210,7 @@ Blockly.Blocks['Shape/arc'] = {
 				},
 				
 			],
-			  "colour" : 106,
+			  "colour" : 2,
 			  "output" : "Shape",
 			  
 			  
@@ -3625,7 +3265,7 @@ Blockly.Blocks['Environment/cursor'] = {
 				},
 				
 			],
-			  "colour" : 294,
+			  "colour" : 357,
 			  "output" : "Environment",
 			  
 			  
@@ -3693,7 +3333,7 @@ Blockly.Blocks['Shape/ellipse'] = {
 				},
 				
 			],
-			  "colour" : 149,
+			  "colour" : 7,
 			  "output" : "Shape",
 			  
 			  
@@ -3739,7 +3379,7 @@ Blockly.Blocks['Environment/size'] = {
 				},
 				
 			],
-			  "colour" : 268,
+			  "colour" : 187,
 			  "output" : "Environment",
 			  
 			  
@@ -3807,30 +3447,12 @@ Blockly.Blocks['Rendering/clip'] = {
 				},
 				
 			],
-			  "colour" : 78,
+			  "colour" : 226,
 			  "output" : "Rendering",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "clip",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Input/mouseY'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Input/mouseY",
-			  "message0" : "mouseY",
-			  
-			  "colour" : 170,
-			  "output" : "Input",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "mouseY",
 			  "helpUrl" : ""
 			}
 		);
@@ -3850,7 +3472,7 @@ Blockly.Blocks['BuiltInFunction/creating'] = {
 				},
 				
 			],
-			  "colour" : 285,
+			  "colour" : 234,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -3875,7 +3497,7 @@ Blockly.Blocks['Statement/function'] = {
 				},
 				
 			],
-			  "colour" : 176,
+			  "colour" : 266,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -3900,7 +3522,7 @@ Blockly.Blocks['IntegerValue'] = {
 				},
 				
 			],
-			  "colour" : 273,
+			  "colour" : 297,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -3925,30 +3547,12 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 49,
+			  "colour" : 231,
 			  "output" : "Id",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Input/mouseX'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Input/mouseX",
-			  "message0" : "mouseX",
-			  
-			  "colour" : 319,
-			  "output" : "Input",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "mouseX",
 			  "helpUrl" : ""
 			}
 		);
@@ -3973,7 +3577,7 @@ Blockly.Blocks['Parameter/param'] = {
 				},
 				
 			],
-			  "colour" : 343,
+			  "colour" : 220,
 			  
 			  "previousStatement" : "Parameter",
 			  "nextStatement" : "Parameter",
@@ -4005,7 +3609,7 @@ Blockly.Blocks['Rendering/endDraw'] = {
 				},
 				
 			],
-			  "colour" : 59,
+			  "colour" : 105,
 			  "output" : "Rendering",
 			  
 			  
@@ -4031,7 +3635,7 @@ Blockly.Blocks['FloatValue'] = {
 				},
 				
 			],
-			  "colour" : 189,
+			  "colour" : 15,
 			  "output" : "FloatValue",
 			  
 			  
@@ -4063,7 +3667,7 @@ Blockly.Blocks['Transform/popMatrix'] = {
 				},
 				
 			],
-			  "colour" : 259,
+			  "colour" : 53,
 			  "output" : "Transform",
 			  
 			  
@@ -4096,7 +3700,7 @@ Blockly.Blocks['StringValue'] = {
 				},
 				
 			],
-			  "colour" : 223,
+			  "colour" : 196,
 			  "output" : "StringValue",
 			  
 			  
@@ -4107,19 +3711,47 @@ Blockly.Blocks['StringValue'] = {
 		);
 	}
 }
-Blockly.Blocks['ColorMode/hsb'] = {
+Blockly.Blocks['Rendering/createGraphics'] = {
 	init: function() {
 		this.jsonInit(
 			{
-			  "type" : "ColorMode/hsb",
-			  "message0" : "HSB",
-			  
-			  "colour" : 203,
-			  "output" : "ColorMode",
+			  "type" : "Rendering/createGraphics",
+			  "message0" : "createGraphics %1 ( %2 %3 , %4 %5 ) %6 ",
+			  "args0" : [
+				{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "w",
+				  "type" : "field_number",
+				  "value" : 0
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				  	{
+				  "name" : "h",
+				  "type" : "field_number",
+				  "value" : 0
+				},
+				  	{
+				  "name" : "",
+				  "type" : "input_dummy"
+				},
+				
+			],
+			  "colour" : 211,
+			  "output" : "Rendering",
 			  
 			  
 			  "inputsInline" : true,
-			  "tooltip" : "hsb",
+			  "tooltip" : "createGraphics",
 			  "helpUrl" : ""
 			}
 		);
@@ -4139,7 +3771,7 @@ Blockly.Blocks['BuiltInFunction/render'] = {
 				},
 				
 			],
-			  "colour" : 45,
+			  "colour" : 310,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -4227,76 +3859,12 @@ Blockly.Blocks['Shape/line2'] = {
 				},
 				
 			],
-			  "colour" : 249,
+			  "colour" : 2,
 			  "output" : "Shape",
 			  
 			  
 			  "inputsInline" : true,
 			  "tooltip" : "line2",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Type/pgGraphics'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Type/pgGraphics",
-			  "message0" : "PGraphics",
-			  
-			  "colour" : 351,
-			  "output" : "Type",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "pgGraphics",
-			  "helpUrl" : ""
-			}
-		);
-	}
-}
-Blockly.Blocks['Rendering/createGraphics'] = {
-	init: function() {
-		this.jsonInit(
-			{
-			  "type" : "Rendering/createGraphics",
-			  "message0" : "createGraphics %1 ( %2 %3 , %4 %5 ) %6 ",
-			  "args0" : [
-				{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "w",
-				  "type" : "field_number",
-				  "value" : 0
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				  	{
-				  "name" : "h",
-				  "type" : "field_number",
-				  "value" : 0
-				},
-				  	{
-				  "name" : "",
-				  "type" : "input_dummy"
-				},
-				
-			],
-			  "colour" : 43,
-			  "output" : "Rendering",
-			  
-			  
-			  "inputsInline" : true,
-			  "tooltip" : "createGraphics",
 			  "helpUrl" : ""
 			}
 		);
@@ -4328,6 +3896,131 @@ Blockly.Blocks['Expression/binaryOperation'] = {
 			],
 			  "colour" : 120,
 			  "output" : "Expression",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['CursorType/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "CursorType/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "ARROW", "CursorType" ],[ "MOVE", "CursorType" ],[ "HAND", "CursorType" ],[ "TEXT", "CursorType" ],[ "CROSS", "CursorType" ],[ "WAIT", "CursorType" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "CursorType",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Type/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Type/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "boolean", "Type" ],[ "float", "Type" ],[ "double", "Type" ],[ "long", "Type" ],[ "char", "Type" ],[ "byte", "Type" ],[ "color", "Type" ],[ "PImage", "Type" ],[ "String", "Type" ],[ "int", "Type" ],[ "PGraphics", "Type" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "Type",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ColorMode/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ColorMode/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "RGB", "ColorMode" ],[ "HSB", "ColorMode" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "ColorMode",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Environment/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Environment/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "height", "Environment" ],[ "focused", "Environment" ],[ "width", "Environment" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "Environment",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Input/simpleDropdown'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Input/simpleDropdown",
+			  "message0" : "%1",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "mouseY", "Input" ],[ "mouseX", "Input" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "Input",
 			  
 			  
 			  "inputsInline" : true,
