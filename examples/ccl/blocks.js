@@ -16,7 +16,7 @@ Blockly.Blocks['CPU/vcpus'] = {
 				},
 				
 			],
-			  "colour" : 158,
+			  "colour" : 40,
 			  "output" : "CPU",
 			  
 			  
@@ -102,7 +102,7 @@ Blockly.Blocks['Instance/instance'] = {
 				},
 				
 			],
-			  "colour" : 355,
+			  "colour" : 121,
 			  
 			  "previousStatement" : "Instance",
 			  "nextStatement" : "Instance",
@@ -135,7 +135,7 @@ Blockly.Blocks['Memory/memory'] = {
 				},
 				
 			],
-			  "colour" : 320,
+			  "colour" : 195,
 			  "output" : "Memory",
 			  
 			  
@@ -164,7 +164,7 @@ Blockly.Blocks['IPV6/ipv6'] = {
 				},
 				
 			],
-			  "colour" : 319,
+			  "colour" : 129,
 			  "output" : "IPV6",
 			  
 			  
@@ -189,7 +189,7 @@ Blockly.Blocks['BooleanValue/true'] = {
 				},
 				
 			],
-			  "colour" : 239,
+			  "colour" : 134,
 			  "output" : "BooleanValue",
 			  
 			  
@@ -214,7 +214,7 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 121,
+			  "colour" : 288,
 			  "output" : "Id",
 			  
 			  
@@ -256,7 +256,7 @@ Blockly.Blocks['Storage/storage'] = {
 				},
 				
 			],
-			  "colour" : 186,
+			  "colour" : 77,
 			  "output" : "Storage",
 			  
 			  
@@ -281,7 +281,7 @@ Blockly.Blocks['IntegerValue/number'] = {
 				},
 				
 			],
-			  "colour" : 307,
+			  "colour" : 232,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -302,7 +302,7 @@ Blockly.Blocks['Image/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "Ubuntu Server", "kiAstIcTuw" ],[ "Amazon Linux", "XocHTiZWEA" ],[ "Red Hat Enterprise", "qZzgdxBwWe" ],[ "Windows Server2019", "YqCfelMHdW" ],]
+				  "options" : [[ "Ubuntu Server", "ouietcqZDS" ],[ "Amazon Linux", "retsYjhqQJ" ],[ "Red Hat Enterprise", "xofjJlWEBt" ],[ "Windows Server2019", "QOIPRgHsbv" ],]
 				},
 				
 			],
@@ -327,7 +327,7 @@ Blockly.Blocks['StorageType/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "SSD", "YkPhmgKIHw" ],[ "EBS", "vTyqhWabGj" ],]
+				  "options" : [[ "SSD", "rKRxCysKxt" ],[ "EBS", "GkLtpvaNMX" ],]
 				},
 				
 			],

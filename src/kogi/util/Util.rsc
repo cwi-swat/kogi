@@ -1,6 +1,7 @@
 module kogi::util::Util
 
 import Set;
+import IO;
 import List;
 import Type;
 import String;
@@ -202,6 +203,8 @@ str randomString(int max_) {
 	return final;
 } 
 
+//this is a helper function for the removal of 'empty' blocks which take as input a lexical rule. Since if B -> A, A -> S, S -> string and we make B -> S, 
+//	then we want to make sure that B.check[A] turns into B.check[A,S] since it can still take an expression, but now also S. This function simply returns the [A,S].
 list[str] checkLexical(lrel[str, str] lexRules, str name) {
 	list[str] final = [name];
     for (R <- lexRules) {

@@ -27,7 +27,9 @@ map[str, bool] getSymbolsMultiplicity(list[Symbol] symbols, map[str, bool] multi
 }
 Block production2Block(prod(symbol:sort(str name), list[Symbol] symbols, set[Attr] attributes), map[str, bool] multiplicity, str startProduction, lrel[str, str] lexRules,  str labelName = "") {
 	
-	//remove blocks already handled by binary simplification
+	//remove blocks that only take as input a lexical; see Grammar2Blockly function for explanation
+	//TODO: this can also be done when looking at the production rules instead of here, so in Grammar2Blockly
+
 	if (size(symbols) == 1 && symbols[0] is label && symbols[0].symbol is lex) {
 		println("removing unnecessary block:");
 		println(symbols);

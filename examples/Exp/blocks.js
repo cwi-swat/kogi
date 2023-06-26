@@ -6,7 +6,7 @@ Blockly.Blocks['Exp/numbers'] = {
 			  "message0" : "%1 ",
 			  "args0" : [
 				{
-				  "name" : "lex/ltpsMpOyjc",
+				  "name" : "lex/YqzaZNVzwz",
 				  "type" : "input_value",
 				  "check" : ["IntegerLiteral"]
 				},
@@ -37,7 +37,7 @@ Blockly.Blocks['IntegerLiteral'] = {
 				},
 				
 			],
-			  "colour" : 258,
+			  "colour" : 28,
 			  "output" : "IntegerLiteral",
 			  
 			  

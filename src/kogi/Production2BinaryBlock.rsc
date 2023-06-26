@@ -29,9 +29,9 @@ tuple [list[Block], set[Production]] production2BinaryBlock(set[Production] prod
 
     for (P <- productions) {
         //get name of integer
-        println();
-        println(P.def);
-        println(P.symbols);
+        //println();
+        //println(P.def);
+        //println(P.symbols);
         
         if (P.symbols[0] == iter(\char-class([range(48,57)]))) { //corresponds to 0-9
             if (P.def is label) intType = P.def.symbol[0];
@@ -80,8 +80,8 @@ tuple [list[Block], set[Production]] production2BinaryBlock(set[Production] prod
 	} else println("No binary operation found");
     
     if (size(dropdownCategories) != 0) {
-        println(dropdownCategories);
-        println(dropdownOptions);
+        //println(dropdownCategories);
+        //println(dropdownOptions);
         
         for (cat <- dropdownCategories) {
             lrel[str, str] options = [];

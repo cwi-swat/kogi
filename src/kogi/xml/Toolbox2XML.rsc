@@ -26,38 +26,43 @@ str parseToolbox(Toolbox toolbox, set[Production] productions, str toolboxId = "
 
 list[Node] section2Element(list[Section] sections, tuple[str, str] str_)
 	= [ element( none(), "category", [ attribute(none(), "name", section.category), attribute(none(), "colour", getColour(section.colour)), attribute(none(), "toolboxitemid", section.category + "Id")] + 
-									 [ block2Element(block, sections, str_) | block <- section.blocks ]) | section <- sections ];
+									 [ block2Element(block, sections, section, str_) | block <- section.blocks ]) | section <- sections ];
 
-Node block2Element(Block block, list[Section] sections, tuple[str, str] str_) {
-	//println();
+Node block2Element(Block block, list[Section] sections, Section S, tuple[str, str] str_) {
+	blocktype = block.\type;
+
+	//creation of shadow blocks for the binaryoperation block created in Production2BinaryBlock
 	if (block.name == "binaryOperation") {
-		blocktype = block.\type;
 		
 		int_ = getIntType(sections);
-		intType = int_[0]; //type
-		intName = int_[1]; //name
+		intType = int_[0]; 
+		intName = int_[1]; 
 
-		//this returns the xml code/string which defines how the toolbox displays the block; can be seen in the index.html file
 		return 	element(none(), "block", [attribute(none(), "type", blocktype), 
+					
+					//left shadow block
 					element(none(),"value", [attribute(none(), "name", "OpLeft"),
 						element(none(), "shadow", [attribute(none(), "type", intType), 
 							element(none(), "field", [attribute(none(), "name", intName), 
 							charData(" 0 ")]),
 						charData("  ")]), 
 					charData("  ")]),
+
+					//right shadow block
 					element(none(),"value", [attribute(none(), "name", "OpRight"),
 						element(none(), "shadow", [attribute(none(), "type", intType), 
 							element(none(), "field", [attribute(none(), "name", intName), 
 							charData(" 0 ")]),
 						charData("  ")]), 
 					charData("  ")]),
+
 				charData("	")]);
 	}
 
 	//here we go through the arguments of every block to see if they have an argument which only requires an identifier and then fill in an identifier shadow block
 	strType = str_[0];
 	strName = str_[1];
-	//println("stringType:" + strType);
+	
 	list[Node] shadowBlockList = [];
 	int nrOfargs = 0;
 	for (A <- block.messages[0].args) {
@@ -87,6 +92,37 @@ Node block2Element(Block block, list[Section] sections, tuple[str, str] str_) {
 		};
 		//return [ element( none(), "block", [ attribute(none(), "type", block.\type), shadowBlock | shadowBlock <- shadowBlockList, charData("   ")]) ]; I TRIED HERE
 	}
+
+	//inserting shadow blocks from other categories
+	for (arg_ <- block.messages[0].args) {
+		
+		if (arg_.\type is \value || arg_.\type is statement) {
+			
+			list[str] check = [];
+			for (V <- arg_.\type.check) {
+				if (V != "epsilon") check = check + V;
+			};
+			
+			if (size(check) == 1) {
+				catName = arg_.\type.check[0];
+				for (section <- sections) {
+					if (section[0] == catName && size(section.blocks) == 1) {
+						println("inserting");
+
+						Node shadowblock = 	element(none(),"value", [attribute(none(), "name", arg_.name), 
+												element(none(), "shadow", [attribute(none(), "type", section.blocks[0].\type),
+												charData("	")]),
+											charData("	")]);
+
+						return 	element(none(), "block", [attribute(none(), "type", blocktype), shadowblock, charData("	")]);
+					};
+				};
+			};
+		};
+	};
+
+	//println(size(S.blocks));
+	
 
 	//under normal circumstances where we dont want shadow blocks or prefilled fields we return the line below
 	return element(none(), "block", [attribute(none(), "type", block.\type), charData("	")]); 
