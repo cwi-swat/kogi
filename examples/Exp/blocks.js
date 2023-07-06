@@ -6,7 +6,7 @@ Blockly.Blocks['Exp/numbers'] = {
 			  "message0" : "%1 ",
 			  "args0" : [
 				{
-				  "name" : "lex/YqzaZNVzwz",
+				  "name" : "lex/noDVPFvDFl",
 				  "type" : "input_value",
 				  "check" : ["IntegerLiteral"]
 				},
@@ -37,7 +37,7 @@ Blockly.Blocks['IntegerLiteral'] = {
 				},
 				
 			],
-			  "colour" : 28,
+			  "colour" : 315,
 			  "output" : "IntegerLiteral",
 			  
 			  
@@ -158,15 +158,15 @@ function extractFieldTypes(blockid) {
    for (var i = 0; i < args.length; i++) {
       var conn = args[i].connection;
          if (conn != null) {
-            var check = conn.check_;
+            var check_ = conn.check;
             if (conn.targetConnection != null) {
-			    for (var j = 0; j < check.length; j++) {
-				   if (!orangetypes.includes(check[j])) orangetypes.push(check[j]);
+			    for (var j = 0; j < check_.length; j++) {
+				   if (!orangetypes.includes(check_[j])) orangetypes.push(check_[j]);
 			    }
 		    } 
            else {
-              for (var j = 0; j < check.length; j++) {
-                 if (!greentypes.includes(check[j])) greentypes.push(check[j]);
+              for (var j = 0; j < check_.length; j++) {
+                 if (!greentypes.includes(check_[j])) greentypes.push(check_[j]);
               }
            }
         }

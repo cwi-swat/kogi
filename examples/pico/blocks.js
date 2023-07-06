@@ -20,7 +20,7 @@ Blockly.Blocks['Declarations/declarations'] = {
 				},
 				
 			],
-			  "colour" : 52,
+			  "colour" : 315,
 			  "output" : "Declarations",
 			  
 			  
@@ -62,7 +62,7 @@ Blockly.Blocks['Statement/whileStat'] = {
 				},
 				
 			],
-			  "colour" : 140,
+			  "colour" : 52,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -151,7 +151,7 @@ Blockly.Blocks['Statement/ifElseStat'] = {
 				},
 				
 			],
-			  "colour" : 89,
+			  "colour" : 31,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -176,7 +176,7 @@ Blockly.Blocks['Id/id'] = {
 				},
 				
 			],
-			  "colour" : 152,
+			  "colour" : 156,
 			  "output" : "Id",
 			  
 			  
@@ -209,7 +209,7 @@ Blockly.Blocks['String/string'] = {
 				},
 				
 			],
-			  "colour" : 98,
+			  "colour" : 137,
 			  "output" : "String",
 			  
 			  
@@ -234,7 +234,7 @@ Blockly.Blocks['Natural/natural'] = {
 				},
 				
 			],
-			  "colour" : 240,
+			  "colour" : 102,
 			  "output" : "Natural",
 			  
 			  
@@ -290,7 +290,7 @@ Blockly.Blocks['Ttype/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "string", "kayIXpMeGJ" ],[ "natural", "XmdXBgDIey" ],]
+				  "options" : [[ "string", "GvHrVkhHIN" ],[ "natural", "aVxTrTqFFm" ],]
 				},
 				
 			],
@@ -380,15 +380,15 @@ function extractFieldTypes(blockid) {
    for (var i = 0; i < args.length; i++) {
       var conn = args[i].connection;
          if (conn != null) {
-            var check = conn.check_;
+            var check_ = conn.check;
             if (conn.targetConnection != null) {
-			    for (var j = 0; j < check.length; j++) {
-				   if (!orangetypes.includes(check[j])) orangetypes.push(check[j]);
+			    for (var j = 0; j < check_.length; j++) {
+				   if (!orangetypes.includes(check_[j])) orangetypes.push(check_[j]);
 			    }
 		    } 
            else {
-              for (var j = 0; j < check.length; j++) {
-                 if (!greentypes.includes(check[j])) greentypes.push(check[j]);
+              for (var j = 0; j < check_.length; j++) {
+                 if (!greentypes.includes(check_[j])) greentypes.push(check_[j]);
               }
            }
         }

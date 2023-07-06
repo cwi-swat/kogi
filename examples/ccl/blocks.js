@@ -16,7 +16,7 @@ Blockly.Blocks['CPU/vcpus'] = {
 				},
 				
 			],
-			  "colour" : 40,
+			  "colour" : 236,
 			  "output" : "CPU",
 			  
 			  
@@ -102,7 +102,7 @@ Blockly.Blocks['Instance/instance'] = {
 				},
 				
 			],
-			  "colour" : 121,
+			  "colour" : 297,
 			  
 			  "previousStatement" : "Instance",
 			  "nextStatement" : "Instance",
@@ -135,7 +135,7 @@ Blockly.Blocks['Memory/memory'] = {
 				},
 				
 			],
-			  "colour" : 195,
+			  "colour" : 313,
 			  "output" : "Memory",
 			  
 			  
@@ -164,7 +164,7 @@ Blockly.Blocks['IPV6/ipv6'] = {
 				},
 				
 			],
-			  "colour" : 129,
+			  "colour" : 47,
 			  "output" : "IPV6",
 			  
 			  
@@ -189,7 +189,7 @@ Blockly.Blocks['BooleanValue/true'] = {
 				},
 				
 			],
-			  "colour" : 134,
+			  "colour" : 276,
 			  "output" : "BooleanValue",
 			  
 			  
@@ -214,7 +214,7 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 288,
+			  "colour" : 289,
 			  "output" : "Id",
 			  
 			  
@@ -256,7 +256,7 @@ Blockly.Blocks['Storage/storage'] = {
 				},
 				
 			],
-			  "colour" : 77,
+			  "colour" : 138,
 			  "output" : "Storage",
 			  
 			  
@@ -281,7 +281,7 @@ Blockly.Blocks['IntegerValue/number'] = {
 				},
 				
 			],
-			  "colour" : 232,
+			  "colour" : 338,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -302,7 +302,7 @@ Blockly.Blocks['Image/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "Ubuntu Server", "ouietcqZDS" ],[ "Amazon Linux", "retsYjhqQJ" ],[ "Red Hat Enterprise", "xofjJlWEBt" ],[ "Windows Server2019", "QOIPRgHsbv" ],]
+				  "options" : [[ "Ubuntu Server", "uLEvLCRnyQ" ],[ "Amazon Linux", "zdbtkFbuqD" ],[ "Red Hat Enterprise", "vLjOGGarPD" ],[ "Windows Server2019", "dYtTOSwyEH" ],]
 				},
 				
 			],
@@ -327,7 +327,7 @@ Blockly.Blocks['StorageType/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "SSD", "rKRxCysKxt" ],[ "EBS", "GkLtpvaNMX" ],]
+				  "options" : [[ "SSD", "KTKzGGrxou" ],[ "EBS", "PxaiSxnijQ" ],]
 				},
 				
 			],
@@ -417,15 +417,15 @@ function extractFieldTypes(blockid) {
    for (var i = 0; i < args.length; i++) {
       var conn = args[i].connection;
          if (conn != null) {
-            var check = conn.check_;
+            var check_ = conn.check;
             if (conn.targetConnection != null) {
-			    for (var j = 0; j < check.length; j++) {
-				   if (!orangetypes.includes(check[j])) orangetypes.push(check[j]);
+			    for (var j = 0; j < check_.length; j++) {
+				   if (!orangetypes.includes(check_[j])) orangetypes.push(check_[j]);
 			    }
 		    } 
            else {
-              for (var j = 0; j < check.length; j++) {
-                 if (!greentypes.includes(check[j])) greentypes.push(check[j]);
+              for (var j = 0; j < check_.length; j++) {
+                 if (!greentypes.includes(check_[j])) greentypes.push(check_[j]);
               }
            }
         }
