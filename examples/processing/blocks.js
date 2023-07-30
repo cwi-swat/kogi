@@ -29,7 +29,7 @@ Blockly.Blocks['Statement/if'] = {
 				},
 				
 			],
-			  "colour" : 218,
+			  "colour" : 56,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -75,7 +75,7 @@ Blockly.Blocks['ColorSetting/fill2'] = {
 				},
 				
 			],
-			  "colour" : 348,
+			  "colour" : 172,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -112,7 +112,7 @@ Blockly.Blocks['Environment/smooth'] = {
 				},
 				
 			],
-			  "colour" : 103,
+			  "colour" : 117,
 			  "output" : "Environment",
 			  
 			  
@@ -212,7 +212,7 @@ Blockly.Blocks['Shape/rect3'] = {
 				},
 				
 			],
-			  "colour" : 142,
+			  "colour" : 349,
 			  "output" : "Shape",
 			  
 			  
@@ -280,7 +280,7 @@ Blockly.Blocks['Statement/assign'] = {
 				},
 				
 			],
-			  "colour" : 96,
+			  "colour" : 260,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -331,7 +331,7 @@ Blockly.Blocks['Statement/ifElse'] = {
 				},
 				
 			],
-			  "colour" : 106,
+			  "colour" : 205,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -395,7 +395,7 @@ Blockly.Blocks['Background/background4'] = {
 				},
 				
 			],
-			  "colour" : 45,
+			  "colour" : 14,
 			  "output" : "Background",
 			  
 			  
@@ -441,7 +441,7 @@ Blockly.Blocks['Background/background2'] = {
 				},
 				
 			],
-			  "colour" : 88,
+			  "colour" : 201,
 			  "output" : "Background",
 			  
 			  
@@ -489,7 +489,7 @@ Blockly.Blocks['Shape/point'] = {
 				},
 				
 			],
-			  "colour" : 285,
+			  "colour" : 37,
 			  "output" : "Shape",
 			  
 			  
@@ -526,7 +526,7 @@ Blockly.Blocks['Background/background'] = {
 				},
 				
 			],
-			  "colour" : 159,
+			  "colour" : 315,
 			  "output" : "Background",
 			  
 			  
@@ -567,7 +567,7 @@ Blockly.Blocks['DrawFunction/draw'] = {
 				},
 				
 			],
-			  "colour" : 235,
+			  "colour" : 277,
 			  "output" : "DrawFunction",
 			  
 			  
@@ -622,7 +622,7 @@ Blockly.Blocks['ColorCreating/color3'] = {
 				},
 				
 			],
-			  "colour" : 339,
+			  "colour" : 105,
 			  "output" : "ColorCreating",
 			  
 			  
@@ -668,7 +668,7 @@ Blockly.Blocks['ColorSetting/colorMode2'] = {
 				},
 				
 			],
-			  "colour" : 55,
+			  "colour" : 257,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -723,7 +723,7 @@ Blockly.Blocks['Background/background3'] = {
 				},
 				
 			],
-			  "colour" : 80,
+			  "colour" : 353,
 			  "output" : "Background",
 			  
 			  
@@ -778,7 +778,7 @@ Blockly.Blocks['Transform/translate3d'] = {
 				},
 				
 			],
-			  "colour" : 11,
+			  "colour" : 158,
 			  "output" : "Transform",
 			  
 			  
@@ -842,7 +842,7 @@ Blockly.Blocks['ColorCreating/color4'] = {
 				},
 				
 			],
-			  "colour" : 305,
+			  "colour" : 62,
 			  "output" : "ColorCreating",
 			  
 			  
@@ -876,7 +876,7 @@ Blockly.Blocks['Statement/decl'] = {
 				},
 				
 			],
-			  "colour" : 259,
+			  "colour" : 342,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -901,7 +901,7 @@ Blockly.Blocks['Statement/draw'] = {
 				},
 				
 			],
-			  "colour" : 177,
+			  "colour" : 78,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -959,7 +959,7 @@ Blockly.Blocks['Shape/square'] = {
 				},
 				
 			],
-			  "colour" : 251,
+			  "colour" : 198,
 			  "output" : "Shape",
 			  
 			  
@@ -1005,7 +1005,7 @@ Blockly.Blocks['ColorCreating/color2'] = {
 				},
 				
 			],
-			  "colour" : 180,
+			  "colour" : 220,
 			  "output" : "ColorCreating",
 			  
 			  
@@ -1050,7 +1050,7 @@ Blockly.Blocks['Rendering/createGraphics3'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "renderer/eOQVPWEgDI",
+				  "name" : "renderer/vPeBOCTNbE",
 				  "type" : "input_value",
 				  "check" : ["StringValue"]
 				},
@@ -1059,7 +1059,7 @@ Blockly.Blocks['Rendering/createGraphics3'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "path/eEWGqRhqdL",
+				  "name" : "path/AaxgNCUzHt",
 				  "type" : "input_value",
 				  "check" : ["StringValue"]
 				},
@@ -1069,7 +1069,7 @@ Blockly.Blocks['Rendering/createGraphics3'] = {
 				},
 				
 			],
-			  "colour" : 65,
+			  "colour" : 163,
 			  "output" : "Rendering",
 			  
 			  
@@ -1094,7 +1094,7 @@ Blockly.Blocks['Value/id'] = {
 				},
 				
 			],
-			  "colour" : 304,
+			  "colour" : 108,
 			  "output" : "Value",
 			  
 			  
@@ -1131,7 +1131,7 @@ Blockly.Blocks['Environment/frameRate'] = {
 				},
 				
 			],
-			  "colour" : 340,
+			  "colour" : 300,
 			  "output" : "Environment",
 			  
 			  
@@ -1163,7 +1163,7 @@ Blockly.Blocks['Environment/fullScreen'] = {
 				},
 				
 			],
-			  "colour" : 78,
+			  "colour" : 237,
 			  "output" : "Environment",
 			  
 			  
@@ -1200,7 +1200,7 @@ Blockly.Blocks['Rendering/blendMode'] = {
 				},
 				
 			],
-			  "colour" : 313,
+			  "colour" : 186,
 			  "output" : "Rendering",
 			  
 			  
@@ -1308,7 +1308,7 @@ Blockly.Blocks['Shape/quad'] = {
 				},
 				
 			],
-			  "colour" : 220,
+			  "colour" : 154,
 			  "output" : "Shape",
 			  
 			  
@@ -1381,7 +1381,7 @@ Blockly.Blocks['ColorSetting/colorMode3'] = {
 				},
 				
 			],
-			  "colour" : 358,
+			  "colour" : 80,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -1422,7 +1422,7 @@ Blockly.Blocks['SetupFunction/setup'] = {
 				},
 				
 			],
-			  "colour" : 306,
+			  "colour" : 326,
 			  "output" : "SetupFunction",
 			  
 			  
@@ -1486,7 +1486,7 @@ Blockly.Blocks['ColorSetting/colorMode3'] = {
 				},
 				
 			],
-			  "colour" : 23,
+			  "colour" : 245,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -1574,7 +1574,7 @@ Blockly.Blocks['Shape/triangle'] = {
 				},
 				
 			],
-			  "colour" : 311,
+			  "colour" : 264,
 			  "output" : "Shape",
 			  
 			  
@@ -1631,7 +1631,7 @@ Blockly.Blocks['ColorSetting/clear'] = {
 				},
 				
 			],
-			  "colour" : 312,
+			  "colour" : 94,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -1663,7 +1663,7 @@ Blockly.Blocks['Environment/noSmooth'] = {
 				},
 				
 			],
-			  "colour" : 307,
+			  "colour" : 8,
 			  "output" : "Environment",
 			  
 			  
@@ -1688,7 +1688,7 @@ Blockly.Blocks['Type/id'] = {
 				},
 				
 			],
-			  "colour" : 82,
+			  "colour" : 158,
 			  "output" : "Type",
 			  
 			  
@@ -1746,7 +1746,7 @@ Blockly.Blocks['Shape/circle'] = {
 				},
 				
 			],
-			  "colour" : 243,
+			  "colour" : 40,
 			  "output" : "Shape",
 			  
 			  
@@ -1810,7 +1810,7 @@ Blockly.Blocks['Shape/rect'] = {
 				},
 				
 			],
-			  "colour" : 358,
+			  "colour" : 184,
 			  "output" : "Shape",
 			  
 			  
@@ -1842,7 +1842,7 @@ Blockly.Blocks['Environment/noCursor'] = {
 				},
 				
 			],
-			  "colour" : 145,
+			  "colour" : 123,
 			  "output" : "Environment",
 			  
 			  
@@ -1867,7 +1867,7 @@ Blockly.Blocks['Statement/setup'] = {
 				},
 				
 			],
-			  "colour" : 248,
+			  "colour" : 208,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -1904,7 +1904,7 @@ Blockly.Blocks['ColorSetting/colorMode'] = {
 				},
 				
 			],
-			  "colour" : 305,
+			  "colour" : 2,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -1941,7 +1941,7 @@ Blockly.Blocks['Rendering/hint'] = {
 				},
 				
 			],
-			  "colour" : 156,
+			  "colour" : 129,
 			  "output" : "Rendering",
 			  
 			  
@@ -1966,7 +1966,7 @@ Blockly.Blocks['BuiltInFunction/trans'] = {
 				},
 				
 			],
-			  "colour" : 170,
+			  "colour" : 245,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -1991,7 +1991,7 @@ Blockly.Blocks['Expression/vals'] = {
 				},
 				
 			],
-			  "colour" : 206,
+			  "colour" : 194,
 			  "output" : "Expression",
 			  
 			  
@@ -2055,7 +2055,7 @@ Blockly.Blocks['ColorSetting/fill4'] = {
 				},
 				
 			],
-			  "colour" : 250,
+			  "colour" : 258,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2097,7 +2097,7 @@ Blockly.Blocks['Statement/while'] = {
 				},
 				
 			],
-			  "colour" : 134,
+			  "colour" : 170,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -2122,7 +2122,7 @@ Blockly.Blocks['BuiltInFunction/input'] = {
 				},
 				
 			],
-			  "colour" : 139,
+			  "colour" : 293,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -2159,7 +2159,7 @@ Blockly.Blocks['ColorSetting/fill'] = {
 				},
 				
 			],
-			  "colour" : 228,
+			  "colour" : 34,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2219,7 +2219,7 @@ Blockly.Blocks['Statement/for'] = {
 				},
 				
 			],
-			  "colour" : 325,
+			  "colour" : 18,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -2292,7 +2292,7 @@ Blockly.Blocks['Shape/rect2'] = {
 				},
 				
 			],
-			  "colour" : 194,
+			  "colour" : 114,
 			  "output" : "Shape",
 			  
 			  
@@ -2324,7 +2324,7 @@ Blockly.Blocks['Transform/pushMatrix'] = {
 				},
 				
 			],
-			  "colour" : 75,
+			  "colour" : 101,
 			  "output" : "Transform",
 			  
 			  
@@ -2361,7 +2361,7 @@ Blockly.Blocks['ColorCreating/color'] = {
 				},
 				
 			],
-			  "colour" : 165,
+			  "colour" : 322,
 			  "output" : "ColorCreating",
 			  
 			  
@@ -2419,7 +2419,7 @@ Blockly.Blocks['Shape/point2'] = {
 				},
 				
 			],
-			  "colour" : 334,
+			  "colour" : 187,
 			  "output" : "Shape",
 			  
 			  
@@ -2452,7 +2452,7 @@ Blockly.Blocks['Statement/stmts'] = {
 				},
 				
 			],
-			  "colour" : 135,
+			  "colour" : 313,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -2484,7 +2484,7 @@ Blockly.Blocks['Rendering/noClip'] = {
 				},
 				
 			],
-			  "colour" : 40,
+			  "colour" : 169,
 			  "output" : "Rendering",
 			  
 			  
@@ -2516,7 +2516,7 @@ Blockly.Blocks['ColorSetting/noFill'] = {
 				},
 				
 			],
-			  "colour" : 348,
+			  "colour" : 258,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2541,7 +2541,7 @@ Blockly.Blocks['Expression/builtFuncs'] = {
 				},
 				
 			],
-			  "colour" : 350,
+			  "colour" : 79,
 			  "output" : "Expression",
 			  
 			  
@@ -2588,7 +2588,7 @@ Blockly.Blocks['FunctionDecl/funcDecl'] = {
 				},
 				
 			],
-			  "colour" : 7,
+			  "colour" : 154,
 			  "output" : "FunctionDecl",
 			  
 			  
@@ -2617,7 +2617,7 @@ Blockly.Blocks['Statement/exp'] = {
 				},
 				
 			],
-			  "colour" : 9,
+			  "colour" : 213,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -2649,7 +2649,7 @@ Blockly.Blocks['Rendering/beginDraw'] = {
 				},
 				
 			],
-			  "colour" : 329,
+			  "colour" : 18,
 			  "output" : "Rendering",
 			  
 			  
@@ -2686,7 +2686,7 @@ Blockly.Blocks['Environment/pixelDensity'] = {
 				},
 				
 			],
-			  "colour" : 53,
+			  "colour" : 306,
 			  "output" : "Environment",
 			  
 			  
@@ -2711,7 +2711,7 @@ Blockly.Blocks['BuiltInFunction/setting'] = {
 				},
 				
 			],
-			  "colour" : 136,
+			  "colour" : 243,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -2736,7 +2736,7 @@ Blockly.Blocks['BuiltInFunction/env'] = {
 				},
 				
 			],
-			  "colour" : 111,
+			  "colour" : 243,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -2768,7 +2768,7 @@ Blockly.Blocks['ColorSetting/noStroke'] = {
 				},
 				
 			],
-			  "colour" : 19,
+			  "colour" : 81,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2823,7 +2823,7 @@ Blockly.Blocks['ColorSetting/fill3'] = {
 				},
 				
 			],
-			  "colour" : 249,
+			  "colour" : 7,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -2848,7 +2848,7 @@ Blockly.Blocks['BuiltInFunction/shape'] = {
 				},
 				
 			],
-			  "colour" : 200,
+			  "colour" : 354,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -2916,7 +2916,7 @@ Blockly.Blocks['Shape/line'] = {
 				},
 				
 			],
-			  "colour" : 257,
+			  "colour" : 320,
 			  "output" : "Shape",
 			  
 			  
@@ -2953,7 +2953,7 @@ Blockly.Blocks['Environment/delay'] = {
 				},
 				
 			],
-			  "colour" : 272,
+			  "colour" : 183,
 			  "output" : "Environment",
 			  
 			  
@@ -2998,7 +2998,7 @@ Blockly.Blocks['Rendering/createGraphics2'] = {
 				  "type" : "input_dummy"
 				},
 				  	{
-				  "name" : "renderer/TANCwYPGTK",
+				  "name" : "renderer/BgCpqImUVk",
 				  "type" : "input_value",
 				  "check" : ["StringValue"]
 				},
@@ -3008,7 +3008,7 @@ Blockly.Blocks['Rendering/createGraphics2'] = {
 				},
 				
 			],
-			  "colour" : 13,
+			  "colour" : 298,
 			  "output" : "Rendering",
 			  
 			  
@@ -3054,7 +3054,7 @@ Blockly.Blocks['Transform/translate2d'] = {
 				},
 				
 			],
-			  "colour" : 146,
+			  "colour" : 117,
 			  "output" : "Transform",
 			  
 			  
@@ -3097,7 +3097,7 @@ Blockly.Blocks['Statement/decl2'] = {
 				},
 				
 			],
-			  "colour" : 68,
+			  "colour" : 48,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -3122,7 +3122,7 @@ Blockly.Blocks['ColorSetting/background'] = {
 				},
 				
 			],
-			  "colour" : 114,
+			  "colour" : 36,
 			  "output" : "ColorSetting",
 			  
 			  
@@ -3210,7 +3210,7 @@ Blockly.Blocks['Shape/arc'] = {
 				},
 				
 			],
-			  "colour" : 355,
+			  "colour" : 38,
 			  "output" : "Shape",
 			  
 			  
@@ -3265,7 +3265,7 @@ Blockly.Blocks['Environment/cursor'] = {
 				},
 				
 			],
-			  "colour" : 217,
+			  "colour" : 277,
 			  "output" : "Environment",
 			  
 			  
@@ -3333,7 +3333,7 @@ Blockly.Blocks['Shape/ellipse'] = {
 				},
 				
 			],
-			  "colour" : 351,
+			  "colour" : 115,
 			  "output" : "Shape",
 			  
 			  
@@ -3379,7 +3379,7 @@ Blockly.Blocks['Environment/size'] = {
 				},
 				
 			],
-			  "colour" : 252,
+			  "colour" : 274,
 			  "output" : "Environment",
 			  
 			  
@@ -3447,7 +3447,7 @@ Blockly.Blocks['Rendering/clip'] = {
 				},
 				
 			],
-			  "colour" : 22,
+			  "colour" : 267,
 			  "output" : "Rendering",
 			  
 			  
@@ -3472,7 +3472,7 @@ Blockly.Blocks['BuiltInFunction/creating'] = {
 				},
 				
 			],
-			  "colour" : 18,
+			  "colour" : 358,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -3497,7 +3497,7 @@ Blockly.Blocks['Statement/function'] = {
 				},
 				
 			],
-			  "colour" : 0,
+			  "colour" : 25,
 			  
 			  "previousStatement" : "Statement",
 			  "nextStatement" : "Statement",
@@ -3522,7 +3522,7 @@ Blockly.Blocks['IntegerValue'] = {
 				},
 				
 			],
-			  "colour" : 313,
+			  "colour" : 212,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -3547,7 +3547,7 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 25,
+			  "colour" : 349,
 			  "output" : "Id",
 			  
 			  
@@ -3577,7 +3577,7 @@ Blockly.Blocks['Parameter/param'] = {
 				},
 				
 			],
-			  "colour" : 326,
+			  "colour" : 141,
 			  
 			  "previousStatement" : "Parameter",
 			  "nextStatement" : "Parameter",
@@ -3609,7 +3609,7 @@ Blockly.Blocks['Rendering/endDraw'] = {
 				},
 				
 			],
-			  "colour" : 142,
+			  "colour" : 342,
 			  "output" : "Rendering",
 			  
 			  
@@ -3635,7 +3635,7 @@ Blockly.Blocks['FloatValue'] = {
 				},
 				
 			],
-			  "colour" : 60,
+			  "colour" : 300,
 			  "output" : "FloatValue",
 			  
 			  
@@ -3667,7 +3667,7 @@ Blockly.Blocks['Transform/popMatrix'] = {
 				},
 				
 			],
-			  "colour" : 108,
+			  "colour" : 16,
 			  "output" : "Transform",
 			  
 			  
@@ -3700,7 +3700,7 @@ Blockly.Blocks['StringValue'] = {
 				},
 				
 			],
-			  "colour" : 60,
+			  "colour" : 55,
 			  "output" : "StringValue",
 			  
 			  
@@ -3746,7 +3746,7 @@ Blockly.Blocks['Rendering/createGraphics'] = {
 				},
 				
 			],
-			  "colour" : 218,
+			  "colour" : 149,
 			  "output" : "Rendering",
 			  
 			  
@@ -3771,7 +3771,7 @@ Blockly.Blocks['BuiltInFunction/render'] = {
 				},
 				
 			],
-			  "colour" : 64,
+			  "colour" : 94,
 			  "output" : "BuiltInFunction",
 			  
 			  
@@ -3859,7 +3859,7 @@ Blockly.Blocks['Shape/line2'] = {
 				},
 				
 			],
-			  "colour" : 336,
+			  "colour" : 74,
 			  "output" : "Shape",
 			  
 			  
@@ -3915,7 +3915,7 @@ Blockly.Blocks['CursorType/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "ARROW", "nFuyWraoVs" ],[ "MOVE", "KYJdPuNuTv" ],[ "HAND", "bfQuQuLRPO" ],[ "TEXT", "WajgVdMDsx" ],[ "CROSS", "MaCXehLuIQ" ],[ "WAIT", "SmFqusTpQv" ],]
+				  "options" : [[ "ARROW", "SOKjAphSLR" ],[ "MOVE", "WVuFSkiyga" ],[ "HAND", "bLdPfqfNeY" ],[ "TEXT", "EjcVVZYiUD" ],[ "CROSS", "LgjcSqKuNH" ],[ "WAIT", "zBcdPagKFI" ],]
 				},
 				
 			],
@@ -3940,7 +3940,7 @@ Blockly.Blocks['Type/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "boolean", "XguesyjZKV" ],[ "float", "adjkFREJHr" ],[ "double", "qooUtcBsND" ],[ "long", "TqvDMZUkVT" ],[ "char", "hpbeMLBpDQ" ],[ "byte", "cNahuDLLOL" ],[ "color", "qMUhbOZPcZ" ],[ "PImage", "JawTFbmKZx" ],[ "String", "cJCErXGFUx" ],[ "int", "wnhDMdmLRo" ],[ "PGraphics", "YdlEkbysRR" ],]
+				  "options" : [[ "boolean", "ftAdaBxaXj" ],[ "float", "mJbVLfWMTL" ],[ "double", "yyvJflqFgB" ],[ "long", "tAEFeVjCRe" ],[ "char", "bfDowgHqQa" ],[ "byte", "wGldcrczyn" ],[ "color", "nRaHvrLBAr" ],[ "PImage", "YyfLEOVpbh" ],[ "String", "ixJYpLJJMp" ],[ "int", "kQQYlwhXJK" ],[ "PGraphics", "MeRMHCbBHU" ],]
 				},
 				
 			],
@@ -3965,7 +3965,7 @@ Blockly.Blocks['ColorMode/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "RGB", "uCrGxsHGPS" ],[ "HSB", "QPpmEcOKBA" ],]
+				  "options" : [[ "RGB", "aBOAeZvTjZ" ],[ "HSB", "BuXyggCHTu" ],]
 				},
 				
 			],
@@ -3990,7 +3990,7 @@ Blockly.Blocks['Environment/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "height", "HkgtgzwRTm" ],[ "focused", "tZWfPhQilM" ],[ "width", "WoaifbubSX" ],]
+				  "options" : [[ "height", "iTshZGHsba" ],[ "focused", "etqASfnAym" ],[ "width", "WWgbzXifFE" ],]
 				},
 				
 			],
@@ -4015,12 +4015,237 @@ Blockly.Blocks['Input/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "mouseY", "HWBYpYLrxQ" ],[ "mouseX", "vvVlbuozpV" ],]
+				  "options" : [[ "mouseY", "zfGJAxYzba" ],[ "mouseX", "poZsdMwnBe" ],]
 				},
 				
 			],
 			  "colour" : 120,
 			  "output" : "Input",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ColorSetting'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ColorSetting",
+			  "message0" : "colorMode ( ColorMode %1 , Expression %2 ) ",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "RGB", "aBOAeZvTjZ" ],[ "HSB", "BuXyggCHTu" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "colorMode2",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Statement'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Statement",
+			  "message0" : "DrawFunction %1 ",
+			  "args0" : [
+				{
+				  "name" : "DrawFunction",
+				  "type" : "input_value",
+				  "check" : ["DrawFunction"]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "draw",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ColorSetting'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ColorSetting",
+			  "message0" : "colorMode ( ColorMode %1 , Expression %2 , Expression %3 , Expression %4 , Expression %5 ) ",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "RGB", "aBOAeZvTjZ" ],[ "HSB", "BuXyggCHTu" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "colorMode3",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ColorSetting'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ColorSetting",
+			  "message0" : "colorMode ( ColorMode %1 , Expression %2 , Expression %3 , Expression %4 ) ",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "RGB", "aBOAeZvTjZ" ],[ "HSB", "BuXyggCHTu" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "colorMode3",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Statement'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Statement",
+			  "message0" : "SetupFunction %1 ",
+			  "args0" : [
+				{
+				  "name" : "SetupFunction",
+				  "type" : "input_value",
+				  "check" : ["SetupFunction"]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "setup",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['ColorSetting'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "ColorSetting",
+			  "message0" : "colorMode ( ColorMode %1 ) ",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "RGB", "aBOAeZvTjZ" ],[ "HSB", "BuXyggCHTu" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "colorMode",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['BuiltInFunction'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "BuiltInFunction",
+			  "message0" : "Input %1 ",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "mouseY", "zfGJAxYzba" ],[ "mouseX", "poZsdMwnBe" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "input",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Environment'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Environment",
+			  "message0" : "cursor ( CursorType %1 , Expression %2 , Expression %3 ) ",
+			  "args0" : [
+				{
+				  "name" : "Item",
+				  "type" : "field_dropdown",
+				  "options" : [[ "ARROW", "SOKjAphSLR" ],[ "MOVE", "WVuFSkiyga" ],[ "HAND", "bLdPfqfNeY" ],[ "TEXT", "EjcVVZYiUD" ],[ "CROSS", "LgjcSqKuNH" ],[ "WAIT", "zBcdPagKFI" ],]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "cursor",
+			  
+			  
+			  "inputsInline" : true,
+			  "tooltip" : "",
+			  "helpUrl" : ""
+			}
+		);
+	}
+}
+Blockly.Blocks['Statement'] = {
+	init: function() {
+		this.jsonInit(
+			{
+			  "type" : "Statement",
+			  "message0" : "FunctionDecl %1 ",
+			  "args0" : [
+				{
+				  "name" : "FunctionDecl",
+				  "type" : "input_value",
+				  "check" : ["FunctionDecl"]
+				},
+				
+			],
+			  "colour" : 120,
+			  "output" : "function",
 			  
 			  
 			  "inputsInline" : true,

@@ -28,18 +28,18 @@ lexical Identifier = id: [a-zA-Z]+;
 //               | "void";
 
 syntax Expression
-	= i: Integer inte
+	= i: Integer int
 	| len: Expression ex "." "length"
-	| t: "true" t
-	| f: "false" f
-	| i: Identifier i
+	| t: "true" true
+	| f: "false" false
+	| id: Identifier i
 	| this: "this" this
 	| ne: "new" "int" "[" Expression a "]"
 	| ne2: "new" Identifier b "(" ")"
 	| bracket "(" Expression x ")"
 	| a: Expression "[" Expression v "]" 
     | v: Expression a "." Identifier v "(" ExpressionList? opt ")"
-	>  d: "!" Expression e
+	>  d: "!" Expression expr
 	> a: Expression e "*" Expression e
 	> b: Expression e "+" Expression e
 	       | c:Expression e "-" Expression e
@@ -48,7 +48,7 @@ syntax Expression
 	;
 	
 syntax ExpressionList
-	=  e: Expression e ExpressionList*  bla
+	=  e: Expression expr ExpressionList*  list
 	;
 	
 syntax Statement 
@@ -58,7 +58,7 @@ syntax Statement
 	| s4:"System" "." "out" "." "println" "(" Expression e ")" ";"
 	| s5: Identifier i "=" Expression e ";"
 	| s6: Identifier i "[" Expression e "]" "=" Expression e ";"
-	| s67: Expression ";"
+	| s7: Expression ";"
 	;
 	
 syntax FormalList = lst: Type t Identifier i ;

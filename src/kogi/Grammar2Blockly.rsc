@@ -10,6 +10,7 @@ import kogi::util::Util;
 import kogi::Production2Block;
 import kogi::Production2BinaryBlock;
 import kogi::GetLexicalRules;
+import kogi::CategoryReduction;
 
 tuple[set[Production], str] getProductionsAndStart(set[Production] productions) {
 	Production startProd = getStartProduction(productions);
@@ -33,9 +34,13 @@ list[Block] grammar2blocks(set[Production] productions, bool epsilon = false) {
 	//	so if B -> A, A -> S, S -> string then we remove A and make B -> S
 	lrel[str, str] lexicalRules = getLexicalRules(p.prods);
 
+	//tuple[list[Block], set[Production]] catReduction = categoryReduction(newP, binSimplification[0], multiplicityInfo, lexicalRules);
+	//newP = catReduction[1];
+
     blocks = [ production2Block(production, multiplicityInfo, p.name, lexicalRules) | production <- newP, containLayoutAttributes(production.attributes)];
     if (epsilon) blocks += createEpsilonBlock(newP);
 	for (B <- binSimplification[0]) blocks += B;
+	//for (B <- catReduction[0]) blocks += B;
 	
 	return [ block | block <- blocks, Block::none() !:= block ];
 }

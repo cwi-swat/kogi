@@ -67,7 +67,7 @@ Node block2Element(Block block, list[Section] sections, Section S, tuple[str, st
 	int nrOfargs = 0;
 	for (A <- block.messages[0].args) {
 		//println(A);
-		if (A.\type is \value || A.\type is statement) {
+		if (!(A != none()) && (A.\type is \value || A.\type is statement)) {
 			if (size(A.\type.check) == 1 && A.\type.check[0] == strType) {
 				nrOfargs += 1;
 				name_ = A.name;
@@ -94,32 +94,34 @@ Node block2Element(Block block, list[Section] sections, Section S, tuple[str, st
 	}
 
 	//inserting shadow blocks from other categories
-	for (arg_ <- block.messages[0].args) {
+	// for (arg_ <- block.messages[0].args) {
 		
-		if (arg_.\type is \value || arg_.\type is statement) {
+	// 	if (arg_.\type is \value || arg_.\type is statement) {
 			
-			list[str] check = [];
-			for (V <- arg_.\type.check) {
-				if (V != "epsilon") check = check + V;
-			};
+	// 		list[str] check = [];
+	// 		for (V <- arg_.\type.check) {
+	// 			if (V != "epsilon") check = check + V;
+	// 		};
 			
-			if (size(check) == 1) {
-				catName = arg_.\type.check[0];
-				for (section <- sections) {
-					if (section[0] == catName && size(section.blocks) == 1) {
-						println("inserting");
+	// 		if (size(check) == 1) {
+	// 			catName = arg_.\type.check[0];
+	// 			for (section <- sections) {
+	// 				if (section[0] == catName && size(section.blocks) == 1) {
+	// 					println("inserting");
 
-						Node shadowblock = 	element(none(),"value", [attribute(none(), "name", arg_.name), 
-												element(none(), "shadow", [attribute(none(), "type", section.blocks[0].\type),
-												charData("	")]),
-											charData("	")]);
+	// 					Node shadowblock = 	element(none(),"value", [attribute(none(), "name", arg_.name), 
+	// 											element(none(), "shadow", [attribute(none(), "type", section.blocks[0].\type),
+	// 											charData("	")]),
+	// 										charData("	")]);
 
-						return 	element(none(), "block", [attribute(none(), "type", blocktype), shadowblock, charData("	")]);
-					};
-				};
-			};
-		};
-	};
+	// 					list[node] shadowblocklist = [shadowblock];
+
+	// 					return 	element(none(), "block", [attribute(none(), "type", blocktype), shadowblock, charData("	")]);
+	// 				};
+	// 			};
+	// 		};
+	// 	};
+	// };
 
 	//println(size(S.blocks));
 	

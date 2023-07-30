@@ -34,7 +34,7 @@ Blockly.Blocks['DataProcessing/dataSource'] = {
 				},
 				
 			],
-			  "colour" : 325,
+			  "colour" : 39,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -96,7 +96,7 @@ Blockly.Blocks['SoundSource/wave'] = {
 				},
 				
 			],
-			  "colour" : 358,
+			  "colour" : 93,
 			  "output" : "SoundSource",
 			  
 			  
@@ -129,7 +129,7 @@ Blockly.Blocks['DataSource/position'] = {
 				},
 				
 			],
-			  "colour" : 349,
+			  "colour" : 10,
 			  "output" : "DataSource",
 			  
 			  
@@ -162,7 +162,7 @@ Blockly.Blocks['PassingTime/wait'] = {
 				},
 				
 			],
-			  "colour" : 236,
+			  "colour" : 217,
 			  "output" : "PassingTime",
 			  
 			  
@@ -190,7 +190,7 @@ Blockly.Blocks['ImageValue'] = {
 				},
 				
 			],
-			  "colour" : 62,
+			  "colour" : 127,
 			  "output" : "ImageValue",
 			  
 			  
@@ -215,7 +215,7 @@ Blockly.Blocks['ToBe/sound'] = {
 				},
 				
 			],
-			  "colour" : 103,
+			  "colour" : 236,
 			  "output" : "ToBe",
 			  
 			  
@@ -240,7 +240,7 @@ Blockly.Blocks['Connection/passing'] = {
 				},
 				
 			],
-			  "colour" : 89,
+			  "colour" : 214,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -294,7 +294,7 @@ Blockly.Blocks['SoundSource/filtr'] = {
 				},
 				
 			],
-			  "colour" : 351,
+			  "colour" : 275,
 			  "output" : "SoundSource",
 			  
 			  
@@ -319,7 +319,7 @@ Blockly.Blocks['Id'] = {
 				},
 				
 			],
-			  "colour" : 88,
+			  "colour" : 166,
 			  "output" : "Id",
 			  
 			  
@@ -348,7 +348,7 @@ Blockly.Blocks['DataProcessing/processor'] = {
 				},
 				
 			],
-			  "colour" : 315,
+			  "colour" : 13,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -410,7 +410,7 @@ Blockly.Blocks['DataSource/movement'] = {
 				},
 				
 			],
-			  "colour" : 195,
+			  "colour" : 61,
 			  "output" : "DataSource",
 			  
 			  
@@ -435,7 +435,7 @@ Blockly.Blocks['Connection/sound'] = {
 				},
 				
 			],
-			  "colour" : 184,
+			  "colour" : 326,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -482,7 +482,7 @@ Blockly.Blocks['ControllingParameters/params'] = {
 				},
 				
 			],
-			  "colour" : 171,
+			  "colour" : 235,
 			  "output" : "ControllingParameters",
 			  
 			  
@@ -507,7 +507,7 @@ Blockly.Blocks['Connection/control'] = {
 				},
 				
 			],
-			  "colour" : 236,
+			  "colour" : 270,
 			  
 			  "previousStatement" : "Connection",
 			  "nextStatement" : "Connection",
@@ -545,7 +545,7 @@ Blockly.Blocks['DataProcessing/range'] = {
 				},
 				
 			],
-			  "colour" : 352,
+			  "colour" : 317,
 			  
 			  "previousStatement" : "DataProcessing",
 			  "nextStatement" : "DataProcessing",
@@ -583,7 +583,7 @@ Blockly.Blocks['SoundConnection/sound'] = {
 				},
 				
 			],
-			  "colour" : 155,
+			  "colour" : 41,
 			  "output" : "SoundConnection",
 			  
 			  
@@ -616,7 +616,7 @@ Blockly.Blocks['DataSource/rotation'] = {
 				},
 				
 			],
-			  "colour" : 46,
+			  "colour" : 24,
 			  "output" : "DataSource",
 			  
 			  
@@ -641,7 +641,7 @@ Blockly.Blocks['ToBe/dat'] = {
 				},
 				
 			],
-			  "colour" : 55,
+			  "colour" : 139,
 			  "output" : "ToBe",
 			  
 			  
@@ -666,7 +666,7 @@ Blockly.Blocks['IntegerValue/intf'] = {
 				},
 				
 			],
-			  "colour" : 182,
+			  "colour" : 317,
 			  "output" : "IntegerValue",
 			  
 			  
@@ -695,7 +695,7 @@ Blockly.Blocks['DataSource/slider'] = {
 				},
 				
 			],
-			  "colour" : 244,
+			  "colour" : 209,
 			  "output" : "DataSource",
 			  
 			  
@@ -716,7 +716,7 @@ Blockly.Blocks['DataProcessor/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "medium_ramp", "CoylBbQFLZ" ],[ "slow_ramp", "viFOVDLppF" ],[ "do_nothing", "lfLJgCpRGN" ],[ "fast_ramp", "DaUjHmtESg" ],[ "hump", "bSDlRXOolJ" ],[ "hard_cutoff", "tBsfmzQali" ],[ "reverse", "DAliJEzWIg" ],[ "rotate", "szItjkzCSX" ],]
+				  "options" : [[ "medium_ramp", "EklNyOcCnz" ],[ "slow_ramp", "TYSecNGRtq" ],[ "do_nothing", "KPrzBAJRRh" ],[ "fast_ramp", "yNduDQHRcP" ],[ "hump", "YILgfLaOgr" ],[ "hard_cutoff", "GHVTIMAWge" ],[ "reverse", "MBaUqDhQxv" ],[ "rotate", "HstWHvBPJx" ],]
 				},
 				
 			],
@@ -741,7 +741,7 @@ Blockly.Blocks['Wave/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "triangle", "HUFnukPiDt" ],[ "sine", "SNaOlauGNu" ],[ "sawtooth", "kAkhpaTfRQ" ],[ "square", "XtzprpdbRH" ],]
+				  "options" : [[ "triangle", "tconDjPrRV" ],[ "sine", "eEbOVTPLhq" ],[ "sawtooth", "HySeEhXtdi" ],[ "square", "ZMvFIQyWjs" ],]
 				},
 				
 			],
@@ -766,7 +766,7 @@ Blockly.Blocks['Filter/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "bandpass", "YVZSFmovXw" ],[ "highpass", "bAMvEwrZST" ],[ "lowpass", "xjBmBqtpSn" ],]
+				  "options" : [[ "bandpass", "OXpLdsOUMb" ],[ "highpass", "lOabVzAQbd" ],[ "lowpass", "TLutgcBQpq" ],]
 				},
 				
 			],
@@ -791,7 +791,7 @@ Blockly.Blocks['DataSource/simpleDropdown'] = {
 				{
 				  "name" : "Item",
 				  "type" : "field_dropdown",
-				  "options" : [[ "speaker", "slMUapqhVg" ],]
+				  "options" : [[ "speaker", "CnKsfenbjh" ],]
 				},
 				
 			],

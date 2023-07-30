@@ -29,7 +29,7 @@ tuple [list[Block], set[Production]] production2BinaryBlock(set[Production] prod
 
     for (P <- productions) {
         //get name of integer
-        //println();
+        // println(P);
         //println(P.def);
         //println(P.symbols);
         
@@ -40,14 +40,20 @@ tuple [list[Block], set[Production]] production2BinaryBlock(set[Production] prod
 
         //binary operation 
         if (size(P.symbols) == 5 && P.symbols[2] is lit && !(P.symbols[0] is lit) && !(P.symbols[4] is lit)) {
+            
             if (P.symbols[0] is lex && isEmpty(intType)) intType = P.symbols[0][0];
             if (P.def is label && isEmpty(binName)) binName = P.def.symbol[0];
             literal = P.symbols[2][0];
             if (!lrelContains(binaryOptions, literal)) {
+                
+                // println("BINARY OP SYMBOLS:");
+                // for (A <- P.symbols) println(A);
+
                 if (P.def is label) binaryOptions += <literal, P.def[0]>;
                 else binaryOptions += <literal, "tempName">;
                 productions = productions - P;
             };
+            
         };
 
         //simple dropdown block

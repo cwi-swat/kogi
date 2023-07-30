@@ -29,8 +29,8 @@ syntax Ttype
 
 syntax Statement 
    = asgStat: Id var ":="  Expression val 
-   | ifElseStat: "if" Expression cond "then" {Statement ";"}*  thenPart "else" {Statement ";"}* elsePart "fi"
-   | whileStat: "while" Expression cond "do" {Statement ";"}* body "od"
+   | ifElseStat: "if" Expression cond "then" {Statement ";"}*  thenPart "else" {Statement ";"}* elsePart
+   | whileStat: "while" Expression cond "do" {Statement ";"}* body "do"
   ;  
      
 syntax Expression 

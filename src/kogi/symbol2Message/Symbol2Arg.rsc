@@ -72,7 +72,7 @@ Arg symbol2Arg(\char-class([range(48,57)]), bool mult, lrel[str, str] lexRules, 
 
 // CharRange = range(int begin, int end);
 Arg symbol2Arg(\char-class(list[CharRange] ranges), bool mult, lrel[str, str] lexRules, str lexicalName = "") 
-	= arg(lexicalName + "Name", input(lexicalName)); // TODO: This needs a name
+	= arg(lexicalName + "Name", input("")); // TODO: This needs a name
 	
 Arg symbol2Arg(\conditional(Symbol symbol, set[Condition] conditions), bool mult, lrel[str, str] lexRules, str lexicalName = "") 
 	= symbol2Arg(symbol, mult, lexRules, lexicalName = lexicalName);
