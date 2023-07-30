@@ -65,10 +65,15 @@ Node block2Element(Block block, list[Section] sections, Section S, tuple[str, st
 	
 	list[Node] shadowBlockList = [];
 	int nrOfargs = 0;
+	println();
+	println(block);
 	for (A <- block.messages[0].args) {
-		//println(A);
-		if (!(A != none()) && (A.\type is \value || A.\type is statement)) {
+		println(A);
+		println(A.\type);
+		if ((A != none()) && (A.\type is \value || A.\type is statement)) {
+			println("YES");
 			if (size(A.\type.check) == 1 && A.\type.check[0] == strType) {
+				println("YAHOOO");
 				nrOfargs += 1;
 				name_ = A.name;
 				shadowBlock = 	element(none(),"value", [attribute(none(), "name", name_),
